@@ -1,0 +1,9 @@
+{
+  "status": { "msg": "Success", "code": 0, "version": "1.0" },
+  "metadata": {
+    "humming": [
+      { "acrid": "h1", "title": "Hum A", "artists": [{ "name": "X" }], "duration_ms": "194698", "score": 0.61, "external_metadata": {} },
+      { "acrid": "h2", "title": "Hum B", "artists": [{ "name": "Y" }], "duration_ms": "280008", "score": 0.58 }
+    ]
+  }
+}

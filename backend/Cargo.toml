@@ -1,0 +1,36 @@
+[package]
+name = "spectro-api"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+spectrograms = "2.1"
+non-empty-slice = "0.6"
+ndarray = "0.17"
+symphonia = { version = "0.5", features = ["all"] }
+plotters = { version = "0.3", default-features = false, features = ["bitmap_backend", "bitmap_encoder", "ab_glyph"] }
+image = { version = "0.25", default-features = false, features = ["png"] }
+axum = { version = "0.8", features = ["multipart", "ws"] }
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+tower-http = { version = "0.6", features = ["fs", "cors", "trace"] }
+tower = { version = "0.5", features = ["util"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "multipart"] }
+hmac = "0.12"
+sha1 = "0.10"
+base64 = "0.22"
+hound = "3.5"
+async-trait = "0.1"
+dotenvy = "0.15"
+chrono = { version = "0.4", features = ["serde"] }
+
+[dev-dependencies]
+http-body-util = "0.1"
+tokio-tungstenite = "0.29"
+tempfile = "3"

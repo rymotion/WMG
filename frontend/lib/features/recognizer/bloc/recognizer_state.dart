@@ -1,0 +1,83 @@
+part of 'recognizer_bloc.dart';
+
+enum RecognizerStatus {
+  idle,
+  connecting,
+
+  /// Mic open, PCM flowing to the server.
+  streaming,
+
+  /// `stop` sent; waiting for the last clip, pending identifications and the close.
+  finishing,
+  completed,
+  failure,
+}
+
+final class RecognizerState extends Equatable {
+  const RecognizerState({
+    this.status = RecognizerStatus.idle,
+    this.elapsed = Duration.zero,
+    this.level = 0,
+    this.bytesStreamed = 0,
+    this.session,
+    this.clips = const [],
+    this.spectrogram = const Spectrogram(),
+    this.error,
+  });
+
+  final RecognizerStatus status;
+
+  /// Stream time so far.
+  final Duration elapsed;
+
+  /// Normalised mic input level, 0..1.
+  final double level;
+
+  /// PCM bytes sent over the socket for this session.
+  final int bytesStreamed;
+
+  /// From the server's `session` message.
+  final LiveSessionStarted? session;
+
+  /// Saved clips, newest first, with their identifications as they arrive.
+  final List<ClipResult> clips;
+
+  /// Live mel spectrogram from `spectrum` messages.
+  final Spectrogram spectrogram;
+  final String? error;
+
+  bool get isStreaming => status == RecognizerStatus.streaming;
+  bool get isBusy => status == RecognizerStatus.connecting || status == RecognizerStatus.finishing;
+
+  /// Seconds per server clip (30 unless the server says otherwise).
+  double get clipSeconds => session?.clipSeconds ?? 30;
+
+  /// Progress through the clip currently being recorded, 0..1.
+  double get clipProgress {
+    final s = elapsed.inMilliseconds / 1000;
+    return (s % clipSeconds) / clipSeconds;
+  }
+
+  RecognizerState copyWith({
+    RecognizerStatus? status,
+    Duration? elapsed,
+    double? level,
+    int? bytesStreamed,
+    LiveSessionStarted? session,
+    List<ClipResult>? clips,
+    Spectrogram? spectrogram,
+    String? Function()? error,
+  }) => RecognizerState(
+    status: status ?? this.status,
+    elapsed: elapsed ?? this.elapsed,
+    level: level ?? this.level,
+    bytesStreamed: bytesStreamed ?? this.bytesStreamed,
+    session: session ?? this.session,
+    clips: clips ?? this.clips,
+    spectrogram: spectrogram ?? this.spectrogram,
+    error: error != null ? error() : this.error,
+  );
+
+  @override
+  List<Object?> get props => [status, elapsed, level, bytesStreamed, session, clips, spectrogram, error];
+}

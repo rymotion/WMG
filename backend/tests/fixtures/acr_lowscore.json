@@ -1,0 +1,5 @@
+{
+  "status": { "msg": "Success", "code": 0, "version": "1.0" },
+  "result_type": 0,
+  "metadata": { "music": [ { "acrid": "x", "title": "Unrelated Song", "artists": [{ "name": "Someone" }], "score": 28 } ] }
+}

@@ -1,0 +1,18 @@
+services:
+  api:
+    build: .
+    image: spectro-api:latest
+    ports:
+      - "${HOST_PORT:-9000}:9000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATA_DIR: /data
+      PORT: "9000"
+    volumes:
+      - audio-data:/data
+    restart: unless-stopped
+
+volumes:
+  audio-data:

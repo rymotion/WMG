@@ -1,0 +1,136 @@
+{
+ "path": "/Users/ryanpaglinawan/Projects/WMG/reports/scores/live/4d46c7a5-7d87-457a-84ac-6d9bf82d49d5/audio/session.wav",
+ "orig_sample_rate": 32000,
+ "p_ai": 0.0,
+ "band_scores": {
+  "bass": 0.0002,
+  "mid": 0.0,
+  "treble": 0.0
+ },
+ "windows": [
+  {
+   "start_s": 0.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0031,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 5.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 10.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 15.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 20.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 25.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 30.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 35.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 40.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 45.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 50.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 55.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 60.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  }
+ ],
+ "run_id": "20261019-155243-20261019-080656",
+ "session_id": "4d46c7a5-7d87-457a-84ac-6d9bf82d49d5",
+ "api": "http://localhost:9000",
+ "model_run": "20261019-080656",
+ "feature_spec_hash": "9f612611d1fccf8a",
+ "label": "",
+ "note": ""
+}

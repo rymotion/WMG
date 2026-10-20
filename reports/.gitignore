@@ -1,0 +1,7 @@
+# Audio stays local: recordings, segments and playlists contain copyrighted music, and are large.
+*.wav
+*.m4a
+*.mp3
+*.aiff
+*.flac
+.DS_Store

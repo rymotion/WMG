@@ -1,0 +1,29 @@
+[package]
+name = "wmg-features"
+version = "0.1.0"
+edition = "2024"
+description = "Detector feature extraction shared by training (Python), the backend and on-device inference."
+
+[lib]
+name = "wmg_features"
+crate-type = ["lib", "cdylib"]
+
+[features]
+default = []
+# Python bindings (built with maturin for the training image).
+python = ["dep:pyo3", "dep:numpy"]
+
+[dependencies]
+spectrograms = "2.1"
+non-empty-slice = "0.6"
+ndarray = "0.17"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+thiserror = "2"
+pyo3 = { version = "0.30", features = ["extension-module", "abi3-py310"], optional = true }
+numpy = { version = "0.30", optional = true }
+
+[dev-dependencies]
+symphonia = { version = "0.5", features = ["all"] }
+realfft = "3.5"

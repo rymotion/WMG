@@ -1,0 +1,642 @@
+{
+ "path": "/Users/ryanpaglinawan/Projects/WMG/reports/scores/live/f876f2a4-0bd2-473b-9f00-246492ddcbee/audio/session.wav",
+ "orig_sample_rate": 32000,
+ "input_rms_dbfs": -22.8,
+ "level_normalized_to_dbfs": -14.0,
+ "p_ai": 0.5001,
+ "band_scores": {
+  "bass": 0.5362,
+  "mid": 0.5667,
+  "treble": 0.5323
+ },
+ "windows": [
+  {
+   "start_s": 0.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0004
+   }
+  },
+  {
+   "start_s": 5.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 10.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 15.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 20.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0002,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 25.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0037,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 30.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0001,
+    "mid": 0.001,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 35.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 40.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 45.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 50.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0001,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 55.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0001,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 60.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0001,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 65.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 70.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0001
+   }
+  },
+  {
+   "start_s": 75.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 80.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 85.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 90.0,
+   "p_ai": 0.9993,
+   "band_scores": {
+    "bass": 0.9989,
+    "mid": 0.9989,
+    "treble": 0.9924
+   }
+  },
+  {
+   "start_s": 95.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9988,
+    "mid": 0.9997,
+    "treble": 0.9997
+   }
+  },
+  {
+   "start_s": 100.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9997,
+    "mid": 0.9991,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 105.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9999,
+    "mid": 0.9999,
+    "treble": 0.9999
+   }
+  },
+  {
+   "start_s": 110.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 1.0,
+    "mid": 0.9999,
+    "treble": 0.9998
+   }
+  },
+  {
+   "start_s": 115.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 1.0,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 120.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9998,
+    "mid": 1.0,
+    "treble": 0.9996
+   }
+  },
+  {
+   "start_s": 125.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9998,
+    "mid": 0.9998,
+    "treble": 0.9998
+   }
+  },
+  {
+   "start_s": 130.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9998,
+    "mid": 1.0,
+    "treble": 0.997
+   }
+  },
+  {
+   "start_s": 135.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9999,
+    "mid": 0.9997,
+    "treble": 0.9975
+   }
+  },
+  {
+   "start_s": 140.0,
+   "p_ai": 0.9991,
+   "band_scores": {
+    "bass": 0.9977,
+    "mid": 0.9995,
+    "treble": 0.9851
+   }
+  },
+  {
+   "start_s": 145.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9999,
+    "mid": 0.9994,
+    "treble": 0.9987
+   }
+  },
+  {
+   "start_s": 150.0,
+   "p_ai": 0.9998,
+   "band_scores": {
+    "bass": 0.9952,
+    "mid": 0.9998,
+    "treble": 0.9978
+   }
+  },
+  {
+   "start_s": 155.0,
+   "p_ai": 0.717,
+   "band_scores": {
+    "bass": 0.406,
+    "mid": 0.958,
+    "treble": 0.3438
+   }
+  },
+  {
+   "start_s": 160.0,
+   "p_ai": 0.9947,
+   "band_scores": {
+    "bass": 0.9887,
+    "mid": 0.9953,
+    "treble": 0.9396
+   }
+  },
+  {
+   "start_s": 165.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9997,
+    "mid": 1.0,
+    "treble": 0.9996
+   }
+  },
+  {
+   "start_s": 170.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.999,
+    "mid": 1.0,
+    "treble": 0.9999
+   }
+  },
+  {
+   "start_s": 175.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9947,
+    "mid": 1.0,
+    "treble": 0.9999
+   }
+  },
+  {
+   "start_s": 180.0,
+   "p_ai": 0.9737,
+   "band_scores": {
+    "bass": 0.0811,
+    "mid": 0.997,
+    "treble": 0.9711
+   }
+  },
+  {
+   "start_s": 185.0,
+   "p_ai": 0.0001,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0038,
+    "treble": 0.001
+   }
+  },
+  {
+   "start_s": 190.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.002,
+    "treble": 0.0002
+   }
+  },
+  {
+   "start_s": 195.0,
+   "p_ai": 0.6302,
+   "band_scores": {
+    "bass": 0.7784,
+    "mid": 0.9694,
+    "treble": 0.1672
+   }
+  },
+  {
+   "start_s": 200.0,
+   "p_ai": 0.1714,
+   "band_scores": {
+    "bass": 0.2441,
+    "mid": 0.6581,
+    "treble": 0.1409
+   }
+  },
+  {
+   "start_s": 205.0,
+   "p_ai": 0.3872,
+   "band_scores": {
+    "bass": 0.5097,
+    "mid": 0.7177,
+    "treble": 0.42
+   }
+  },
+  {
+   "start_s": 210.0,
+   "p_ai": 0.0734,
+   "band_scores": {
+    "bass": 0.0502,
+    "mid": 0.0877,
+    "treble": 0.1077
+   }
+  },
+  {
+   "start_s": 215.0,
+   "p_ai": 0.023,
+   "band_scores": {
+    "bass": 0.0134,
+    "mid": 0.0448,
+    "treble": 0.1304
+   }
+  },
+  {
+   "start_s": 220.0,
+   "p_ai": 0.0209,
+   "band_scores": {
+    "bass": 0.0177,
+    "mid": 0.1299,
+    "treble": 0.0216
+   }
+  },
+  {
+   "start_s": 225.0,
+   "p_ai": 0.1397,
+   "band_scores": {
+    "bass": 0.4966,
+    "mid": 0.3174,
+    "treble": 0.097
+   }
+  },
+  {
+   "start_s": 230.0,
+   "p_ai": 0.0018,
+   "band_scores": {
+    "bass": 0.076,
+    "mid": 0.0014,
+    "treble": 0.0574
+   }
+  },
+  {
+   "start_s": 235.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0041,
+    "mid": 0.0005,
+    "treble": 0.0001
+   }
+  },
+  {
+   "start_s": 240.0,
+   "p_ai": 0.0001,
+   "band_scores": {
+    "bass": 0.0004,
+    "mid": 0.0028,
+    "treble": 0.0019
+   }
+  },
+  {
+   "start_s": 245.0,
+   "p_ai": 0.0001,
+   "band_scores": {
+    "bass": 0.01,
+    "mid": 0.0027,
+    "treble": 0.0002
+   }
+  },
+  {
+   "start_s": 250.0,
+   "p_ai": 0.0008,
+   "band_scores": {
+    "bass": 0.0039,
+    "mid": 0.0109,
+    "treble": 0.0018
+   }
+  },
+  {
+   "start_s": 255.0,
+   "p_ai": 0.2491,
+   "band_scores": {
+    "bass": 0.4181,
+    "mid": 0.2279,
+    "treble": 0.4705
+   }
+  },
+  {
+   "start_s": 260.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9998,
+    "mid": 0.9998,
+    "treble": 0.9998
+   }
+  },
+  {
+   "start_s": 265.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9998,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 270.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9999,
+    "mid": 1.0,
+    "treble": 0.9999
+   }
+  },
+  {
+   "start_s": 275.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 1.0,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 280.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9991,
+    "mid": 1.0,
+    "treble": 0.9996
+   }
+  },
+  {
+   "start_s": 285.0,
+   "p_ai": 0.9995,
+   "band_scores": {
+    "bass": 0.9838,
+    "mid": 0.9996,
+    "treble": 0.9839
+   }
+  },
+  {
+   "start_s": 290.0,
+   "p_ai": 0.9918,
+   "band_scores": {
+    "bass": 0.9698,
+    "mid": 0.9902,
+    "treble": 0.9826
+   }
+  },
+  {
+   "start_s": 295.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9997,
+    "mid": 0.9986,
+    "treble": 0.9996
+   }
+  },
+  {
+   "start_s": 300.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9999,
+    "mid": 0.9992,
+    "treble": 0.9994
+   }
+  },
+  {
+   "start_s": 305.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9967,
+    "mid": 0.9999,
+    "treble": 0.9939
+   }
+  },
+  {
+   "start_s": 310.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9994,
+    "mid": 1.0,
+    "treble": 0.9989
+   }
+  },
+  {
+   "start_s": 315.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9983,
+    "mid": 0.9999,
+    "treble": 0.9999
+   }
+  },
+  {
+   "start_s": 320.0,
+   "p_ai": 0.9996,
+   "band_scores": {
+    "bass": 0.9941,
+    "mid": 0.9995,
+    "treble": 0.995
+   }
+  },
+  {
+   "start_s": 325.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9996,
+    "mid": 1.0,
+    "treble": 0.9983
+   }
+  },
+  {
+   "start_s": 330.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9998,
+    "mid": 1.0,
+    "treble": 0.996
+   }
+  },
+  {
+   "start_s": 335.0,
+   "p_ai": 0.9997,
+   "band_scores": {
+    "bass": 0.9983,
+    "mid": 0.9999,
+    "treble": 0.9956
+   }
+  },
+  {
+   "start_s": 340.0,
+   "p_ai": 0.9862,
+   "band_scores": {
+    "bass": 0.9747,
+    "mid": 0.9941,
+    "treble": 0.9448
+   }
+  }
+ ],
+ "run_id": "20261020-061220-20261019-080656",
+ "session_id": "f876f2a4-0bd2-473b-9f00-246492ddcbee",
+ "api": "http://localhost:9000",
+ "model_run": "20261019-080656",
+ "feature_spec_hash": "9f612611d1fccf8a",
+ "label": "",
+ "note": ""
+}

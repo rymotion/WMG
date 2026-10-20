@@ -1,0 +1,93 @@
+{
+ "path": "/Users/ryanpaglinawan/Projects/WMG/reports/scores/live/8b2b4432-7967-4623-8a21-bcf0a87154b1/audio/session.wav",
+ "orig_sample_rate": 32000,
+ "input_rms_dbfs": -37.1,
+ "level_normalized_to_dbfs": -14.0,
+ "p_ai": 0.04,
+ "band_scores": {
+  "bass": 0.2455,
+  "mid": 0.1151,
+  "treble": 0.5365
+ },
+ "windows": [
+  {
+   "start_s": 0.0,
+   "p_ai": 0.0001,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0002,
+    "treble": 0.0191
+   }
+  },
+  {
+   "start_s": 5.0,
+   "p_ai": 0.0156,
+   "band_scores": {
+    "bass": 0.0017,
+    "mid": 0.0051,
+    "treble": 0.8201
+   }
+  },
+  {
+   "start_s": 10.0,
+   "p_ai": 0.8277,
+   "band_scores": {
+    "bass": 0.1231,
+    "mid": 0.2816,
+    "treble": 0.9991
+   }
+  },
+  {
+   "start_s": 15.0,
+   "p_ai": 0.9866,
+   "band_scores": {
+    "bass": 0.7634,
+    "mid": 0.4809,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 20.0,
+   "p_ai": 0.8984,
+   "band_scores": {
+    "bass": 0.8852,
+    "mid": 0.1464,
+    "treble": 0.9994
+   }
+  },
+  {
+   "start_s": 25.0,
+   "p_ai": 0.002,
+   "band_scores": {
+    "bass": 0.1655,
+    "mid": 0.0001,
+    "treble": 0.4053
+   }
+  },
+  {
+   "start_s": 30.0,
+   "p_ai": 0.0007,
+   "band_scores": {
+    "bass": 0.0238,
+    "mid": 0.0003,
+    "treble": 0.027
+   }
+  },
+  {
+   "start_s": 35.0,
+   "p_ai": 0.0015,
+   "band_scores": {
+    "bass": 0.001,
+    "mid": 0.0062,
+    "treble": 0.0221
+   }
+  }
+ ],
+ "run_id": "20261020-061156-20261019-080656",
+ "session_id": "8b2b4432-7967-4623-8a21-bcf0a87154b1",
+ "api": "http://localhost:9000",
+ "model_run": "20261019-080656",
+ "feature_spec_hash": "9f612611d1fccf8a",
+ "label": "human",
+ "note": "human, likely computer-assisted, no known AI; phone speaker -> mic"
+}

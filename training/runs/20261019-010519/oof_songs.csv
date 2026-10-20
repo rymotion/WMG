@@ -1,0 +1,360 @@
+song_id,path,label,group,logit,n_windows,band_bass,band_mid,band_treble,p_ai,fold
+0098d3849d83,../training_data/human_talent/Unknown Artist/Unknown Album/16 Track 16.m4a,0,human:Unknown Artist,-19.515453,24,2.249704e-05,9.6403376e-08,7.915349e-07,3.346157e-09,0
+04ea4a27b69e,../training_data/human_talent/Unknown Artist/Unknown Album/9 Clueless Kit - vacation.mp3,0,human:Unknown Artist,-10.119739,24,0.054770604,0.1691529,0.07296137,4.027503e-05,0
+07ce60d7cf53,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 4.m4a,0,human:Unknown Artist,-19.738276,24,9.975161e-06,3.2817363e-07,4.255094e-07,2.677786e-09,0
+0d8b6c631c77,"../training_data/ai_generated/Chupa Xoxota (1980) - Ao Vivo - BLOW RECORDS, Mc 2k.m4a",1,ai:BLOW RECORDS,6.2307734,56,0.77004063,0.71114683,0.8251639,0.99803597,0
+139050c64f8f,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13 2.m4a,0,human:Unknown Artist,-19.396494,24,1.7691427e-05,5.434076e-07,8.3435344e-07,3.7688577e-09,0
+156e521640fa,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 4.m4a,0,human:Unknown Artist,-18.09329,24,2.4961077e-05,1.4063148e-06,3.7046268e-06,1.387343e-08,0
+166a210902ad,../training_data/human_talent/Unknown Artist/Unknown Album/3 Clueless Kit - spare.mp3,0,human:Unknown Artist,-13.40879,24,0.00021345679,0.0056253676,3.4210025e-05,1.5018826e-06,0
+1db1e8c24b84,../training_data/human_talent/Unknown Artist/Unknown Album/3 - soft sound.wav,0,human:Unknown Artist,-13.444928,24,0.0018495265,1.098657e-05,0.004442127,1.4485759e-06,0
+1e75b2a3543b,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - run.wav,0,human:Unknown Artist,-10.8642235,24,0.01527615,0.0019157501,0.011605131,1.9130195e-05,0
+20f70ded53a1,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 4.m4a,0,human:Unknown Artist,-19.378485,24,3.544345e-05,1.3440827e-07,1.8217647e-06,3.8373464e-09,0
+212034d0cce5,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 1.m4a,0,human:Unknown Artist,-20.651033,24,2.2052802e-05,1.0936313e-07,9.520691e-08,1.0749052e-09,0
+28f651bdd61b,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - down it.mp3,0,human:Unknown Artist,-13.992432,24,0.0012134487,0.0008458581,0.0006311075,8.378452e-07,0
+2a7658b7211c,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 2.m4a,0,human:Unknown Artist,-18.472584,24,2.0981466e-05,8.0074597e-07,8.4344896e-07,9.494209e-09,0
+2aad464e9b41,../training_data/human_talent/Unknown Artist/Unknown Album/Last Island - Down and Around.mp3,0,human:Unknown Artist,-9.10819,24,0.12030435,0.12780191,0.10424463,0.00011074279,0
+2c09744bde18,../training_data/human_talent/Unknown Artist/Unknown Album/black tusk.mp3,0,human:Unknown Artist,-2.6577647,24,0.33304805,0.19822241,0.15978858,0.065512046,0
+337d9da433c8,../training_data/human_talent/Unknown Artist/Unknown Album/6 - sleep.wav,0,human:Unknown Artist,-13.795234,24,0.0019240201,0.0010076774,0.00020892872,1.0204827e-06,0
+33cba97f8cca,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 1.m4a,0,human:Unknown Artist,-18.830462,24,2.5767149e-05,2.8563997e-07,1.9272281e-06,6.6379573e-09,0
+3a3826b2ad97,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 2.m4a,0,human:Unknown Artist,-19.996502,24,4.4597604e-05,3.712295e-07,9.890144e-07,2.0683764e-09,0
+3ea207046eb3,"../training_data/ai_generated/Popotão Grandão (1982) - Ao Vivo - BLOW RECORDS, Mc Neguinho do ITR.m4a",1,ai:BLOW RECORDS,-8.987051,48,0.017527623,0.02217826,0.01745128,0.0001250026,0
+40355b998f1f,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 2.m4a,0,human:Unknown Artist,-17.427126,24,2.0454898e-05,4.1398732e-07,1.6376938e-05,2.7008182e-08,0
+42261c5c5628,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 2.m4a,0,human:Unknown Artist,-20.39351,24,2.3496092e-05,1.6848604e-07,5.07533e-07,1.3906274e-09,0
+45ab4fdc6b40,../training_data/human_talent/Unknown Artist/Unknown Album/14 Track 14 2.m4a,0,human:Unknown Artist,-17.887249,16,9.570572e-06,2.4153172e-07,1.7138174e-05,1.7047727e-08,0
+481d6511af9b,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 3.m4a,0,human:Unknown Artist,-18.000872,24,1.8828914e-05,3.0049986e-07,1.7016574e-06,1.521671e-08,0
+4d4618c6b0e5,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 2.m4a,0,human:Unknown Artist,-19.699974,24,2.906862e-05,1.6790413e-07,3.1775804e-07,2.7823386e-09,0
+4f7f467b257d,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 3.m4a,0,human:Unknown Artist,-19.78759,24,3.3714296e-05,4.1357188e-07,2.1586374e-07,2.5489355e-09,0
+51fa1ef03891,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - below 15.mp3,0,human:Unknown Artist,-16.157152,24,2.8393231e-05,6.517583e-07,9.970729e-06,9.616962e-08,0
+53dfea15e18e,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 2.m4a,0,human:Unknown Artist,-16.995497,24,1.28226175e-05,4.3331337e-07,3.6769686e-06,4.1586226e-08,0
+55194dbce8f0,../training_data/human_talent/Unknown Artist/Unknown Album/15 Track 15 1.m4a,0,human:Unknown Artist,-20.945263,10,3.7302852e-05,8.0207045e-08,1.1296156e-08,8.009177e-10,0
+599d97561818,../training_data/human_talent/Unknown Artist/Unknown Album/10 Clueless Kit - right one.mp3,0,human:Unknown Artist,-0.0010725757,24,0.5478116,0.5156023,0.38880798,0.49973187,0
+5aa296316a77,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 4.m4a,0,human:Unknown Artist,-19.181213,24,1.8734258e-05,2.6815738e-07,2.2712887e-07,4.674174e-09,0
+5b4e97e61e6e,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04.m4a,0,human:Unknown Artist,-17.693594,24,7.721068e-05,3.603631e-07,2.625461e-06,2.0690441e-08,0
+5e8a1014555e,../training_data/human_talent/Unknown Artist/Unknown Album/Peak Design Syatem review.aiff,0,human:Unknown Artist,-18.781176,24,7.606884e-05,8.6857875e-07,1.8591605e-06,6.9733117e-09,0
+61728306afb2,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 4.m4a,0,human:Unknown Artist,-19.969934,24,9.559321e-06,2.216031e-07,5.0521076e-06,2.1240643e-09,0
+61d693dbd529,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 4.m4a,0,human:Unknown Artist,-19.151308,24,3.0105208e-05,2.957239e-07,1.6219941e-05,4.816068e-09,0
+62583920262b,../training_data/ai_generated/Dedo de Gorila (1971) - Ao Vivo - BLOW RECORDS.m4a,1,ai:BLOW RECORDS,5.3177314,60,0.8707158,0.89765364,0.70863974,0.99512,0
+669538f93fc2,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13 1.m4a,0,human:Unknown Artist,-19.638582,24,4.855377e-05,5.886928e-07,1.4611177e-06,2.9585037e-09,0
+687ec3cdfd80,"../training_data/ai_generated/Na Raba Toma Tapão (1988) - BLOW RECORDS, Niack.m4a",1,ai:BLOW RECORDS,-7.6738977,52,0.063602604,0.05787445,0.091840625,0.00046458666,0
+6c7e48b77788,../training_data/human_talent/Music/Unknown Artist/Unknown Album/[Halloween Remix] This is Halloween 6.mp3,0,human:Unknown Artist,-18.556528,24,2.7938586e-05,0.00070744817,0.00016821116,8.729758e-09,0
+6d8d5ad40eb0,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 2.m4a,0,human:Unknown Artist,-17.709276,24,1.0655408e-05,2.4118842e-07,3.4533152e-06,2.03685e-08,0
+6dd859f973bf,../training_data/human_talent/Unknown Artist/Unknown Album/4 - break.wav,0,human:Unknown Artist,-5.1756854,22,0.09398932,0.13054083,0.045415953,0.0056205723,0
+6f21d2b5afae,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 2.m4a,0,human:Unknown Artist,-22.916403,24,2.2599217e-05,2.2899137e-07,3.259996e-08,1.11566215e-10,0
+71a5396632f9,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - snake.mp3,0,human:Unknown Artist,-8.451472,24,0.009308398,0.000121735946,0.033766452,0.00021354012,0
+738168997ed6,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 4.m4a,0,human:Unknown Artist,-17.23062,24,3.8806724e-05,1.3908972e-06,2.8473644e-06,3.2872826e-08,0
+7428435c2e63,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 2.m4a,0,human:Unknown Artist,-21.877632,24,3.9690847e-05,8.730041e-07,7.0592245e-07,3.1525724e-10,0
+76f0c5221c41,../training_data/human_talent/Unknown Artist/Unknown Album/2 Clueless Kit - the springs.mp3,0,human:Unknown Artist,-13.283042,24,0.0009552709,7.761735e-06,0.0006942705,1.7031285e-06,0
+7830ae1f60f9,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13 3.m4a,0,human:Unknown Artist,-20.00318,24,1.4275155e-05,1.9688146e-07,5.307881e-07,2.0546105e-09,0
+78887825a085,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02.m4a,0,human:Unknown Artist,-19.124691,8,1.06592615e-05,1.0897137e-06,1.3063895e-07,4.9459783e-09,0
+7df8ad7da3c4,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 3.m4a,0,human:Unknown Artist,-19.66853,24,1.7602737e-05,1.1117532e-07,1.4449053e-07,2.871218e-09,0
+8545023c299f,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - it broke.mp3,0,human:Unknown Artist,-11.539905,24,8.4809966e-05,0.00013091204,0.01040523,9.7337215e-06,0
+86d0458b3637,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 4.m4a,0,human:Unknown Artist,-21.905268,24,7.3499873e-06,2.6635152e-07,4.9784248e-08,3.0666422e-10,0
+8b04ea70376d,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 4.m4a,0,human:Unknown Artist,-19.89834,24,2.013979e-05,1.2660882e-07,4.206246e-07,2.281711e-09,0
+8b420b5c5684,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10.m4a,0,human:Unknown Artist,-19.518076,24,5.7246292e-05,4.5886006e-07,1.5183643e-07,3.3373926e-09,0
+8ca0884f7aee,../training_data/human_talent/Unknown Artist/Unknown Album/16 Track 16 1.m4a,0,human:Unknown Artist,-17.373722,12,5.9676163e-06,4.3442597e-08,1.2204722e-06,2.8489733e-08,0
+8ddd173cf99d,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - pressure.mp3,0,human:Unknown Artist,-15.437816,24,0.0003385124,0.0009308131,0.00058336585,1.9744301e-07,0
+9335aac344e6,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 1.m4a,0,human:Unknown Artist,-20.081757,24,1.6954265e-05,1.7442251e-07,4.438556e-07,1.8993453e-09,0
+9698ce281ae8,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 3.m4a,0,human:Unknown Artist,-20.589952,24,2.1262706e-05,1.1082136e-07,4.1880664e-08,1.142608e-09,0
+986192ea9ead,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 1.m4a,0,human:Unknown Artist,-19.602255,24,4.3275722e-05,9.113422e-08,1.4242432e-06,3.0679541e-09,0
+9a2464f23081,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 3.m4a,0,human:Unknown Artist,-18.288061,24,1.2857647e-05,3.8263025e-07,1.500956e-06,1.1418156e-08,0
+9af69d2a9f27,../training_data/human_talent/Unknown Artist/Unknown Album/1 Clueless Kit - rooftop.mp3,0,human:Unknown Artist,-11.400815,24,0.0016217098,0.0037470416,0.0014027752,1.1186238e-05,0
+9d530c8d12f0,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 1.m4a,0,human:Unknown Artist,-17.839443,24,1.2914651e-05,2.0329476e-07,5.2919263e-06,1.78825e-08,0
+a03e69d8d399,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 3.m4a,0,human:Unknown Artist,-19.032621,24,3.599409e-05,4.0253443e-07,4.567641e-06,5.4229745e-09,0
+a2ac66c9f023,"../training_data/ai_generated/Predador de Perereca (1982) - Ao Vivo - BLOW RECORDS, Mc Jhey.m4a",1,ai:BLOW RECORDS,-2.6384714,48,0.32988337,0.29475418,0.40143767,0.06670313,0
+a43ad9a95912,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01.m4a,0,human:Unknown Artist,-19.269337,4,1.3250097e-05,7.407836e-08,1.0278763e-07,4.2798978e-09,0
+a92db0a765c4,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 3.m4a,0,human:Unknown Artist,-18.23257,24,2.7109616e-05,8.8754547e-07,7.1256095e-06,1.20696635e-08,0
+aa242b0957ee,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 1.m4a,0,human:Unknown Artist,-20.74579,24,1.4973265e-05,2.2872013e-07,1.0593395e-06,9.777271e-10,0
+ae253fa4fb97,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13.m4a,0,human:Unknown Artist,-19.60066,24,5.6960733e-05,3.5800562e-07,1.8422946e-07,3.07285e-09,0
+b0825b30c6f3,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05.m4a,0,human:Unknown Artist,-19.50436,24,2.9639186e-05,4.4485182e-07,2.6132264e-07,3.3834828e-09,0
+b20226e86406,../training_data/human_talent/Unknown Artist/Unknown Album/17 Track 17.m4a,0,human:Unknown Artist,-16.684605,10,6.2048435e-05,9.4269683e-07,6.760797e-05,5.6750313e-08,0
+b284b8a2742b,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07.m4a,0,human:Unknown Artist,-19.379953,24,1.7160792e-05,2.2755377e-07,5.9217916e-07,3.831715e-09,0
+bb671f95a0a4,"../training_data/ai_generated/Na Raba Toma Tapão (1988) - Ao Vivo - BLOW RECORDS, Niack.m4a",1,ai:BLOW RECORDS,-3.1198618,50,0.33811066,0.2556345,0.3261873,0.042295367,0
+bba69631b2a6,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 4.m4a,0,human:Unknown Artist,-18.859907,24,2.0839143e-05,2.4716928e-07,1.6132354e-06,6.4453483e-09,0
+be9c273e3aa0,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12.m4a,0,human:Unknown Artist,-18.756796,24,1.1856583e-05,4.862623e-07,8.2526384e-07,7.1454083e-09,0
+c14326f8a802,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 1.m4a,0,human:Unknown Artist,-19.378557,24,2.9807516e-05,2.0904264e-07,7.9942316e-07,3.8370684e-09,0
+c18a7e172bc7,../training_data/human_talent/Unknown Artist/Unknown Album/15 Track 15.m4a,0,human:Unknown Artist,-19.062357,24,2.9203615e-05,1.4297085e-07,1.65069e-06,5.264093e-09,0
+c331d8f79f8c,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 4.m4a,0,human:Unknown Artist,-21.178114,24,1.2050768e-05,1.231521e-07,4.202713e-08,6.3454436e-10,0
+c82721fd0880,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09.m4a,0,human:Unknown Artist,-20.296766,24,2.4465742e-05,1.7774695e-06,5.4644465e-07,1.5318858e-09,0
+ca86dcdaef6d,../training_data/human_talent/Unknown Artist/Unknown Album/8 - 2 colours.wav,0,human:Unknown Artist,-15.206562,24,5.498467e-06,1.2568241e-05,0.00020161185,2.4881348e-07,0
+cf5c20e877c0,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 1.m4a,0,human:Unknown Artist,-17.622686,24,2.5022384e-05,4.689131e-07,7.6918013e-07,2.2210816e-08,0
+cf6fbc9d64db,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 2.m4a,0,human:Unknown Artist,-18.540907,24,2.4093002e-05,1.4843106e-07,1.7429646e-06,8.867199e-09,0
+cf9e4ac7fb56,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11.m4a,0,human:Unknown Artist,-18.660032,24,3.2268017e-05,6.150613e-07,7.711141e-07,7.871382e-09,0
+d4183697091a,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 1.m4a,0,human:Unknown Artist,-17.319439,24,1.0666496e-05,5.1105195e-07,4.008255e-06,3.0078986e-08,0
+d55c13bcefc5,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 1.m4a,0,human:Unknown Artist,-19.267672,24,9.995197e-06,2.5516977e-06,1.5189236e-06,4.2870303e-09,0
+d594bdbf3f21,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 1.m4a,0,human:Unknown Artist,-20.57747,24,3.3077195e-05,1.8015406e-07,2.2730768e-07,1.156959e-09,0
+d7603c264de8,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 3.m4a,0,human:Unknown Artist,-18.927256,24,8.222587e-06,9.843303e-08,8.423694e-07,6.0255587e-09,0
+d8aa0b3559fb,../training_data/human_talent/Unknown Artist/Unknown Album/14 Track 14 1.m4a,0,human:Unknown Artist,-16.559547,24,1.6248077e-05,1.9508553e-07,1.0468018e-05,6.431021e-08,0
+dac91814be50,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08.m4a,0,human:Unknown Artist,-20.453299,24,4.8141894e-05,1.2333545e-07,1.11835014e-07,1.3099216e-09,0
+de326c76d7dc,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06.m4a,0,human:Unknown Artist,-18.23439,24,1.39831e-05,1.2310936e-07,1.4091739e-06,1.2047721e-08,0
+de51a14f15db,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 1.m4a,0,human:Unknown Artist,-19.890274,24,7.8900985e-06,1.7084216e-07,1.2785885e-07,2.3001903e-09,0
+e1ff03d22ee9,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 4.m4a,0,human:Unknown Artist,-19.82304,24,3.372217e-05,1.4860656e-07,2.8761767e-07,2.4601585e-09,0
+e29dd4262957,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 3.m4a,0,human:Unknown Artist,-21.306896,24,2.6930798e-05,7.266947e-08,1.926067e-07,5.578694e-10,0
+e31478abdd4e,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 2.m4a,0,human:Unknown Artist,-20.001118,24,1.5181053e-05,6.977029e-08,2.7891875e-07,2.058851e-09,0
+e65f0a70ebeb,../training_data/human_talent/Unknown Artist/Unknown Album/6 Clueless Kit - medication.mp3,0,human:Unknown Artist,-11.437711,24,0.014451586,0.0010091943,0.015403423,1.078104e-05,0
+e7b98b32ae43,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 3.m4a,0,human:Unknown Artist,-20.466047,24,3.324278e-05,7.1745134e-08,1.642021e-07,1.2933277e-09,0
+e8fc7aa122a3,../training_data/human_talent/Unknown Artist/Unknown Album/9 - tranada.wav,0,human:Unknown Artist,-4.5204797,24,0.20637536,0.06999768,0.05187404,0.01076662,0
+ea9ca894cfc5,../training_data/ai_generated/Sabor Energético (1983) - Ao Vivo - BLOW RECORDS.m4a,1,ai:BLOW RECORDS,-0.7923773,56,0.39789304,0.4024343,0.30216795,0.31165844,0
+ec520b0a2e05,../training_data/human_talent/Unknown Artist/Unknown Album/14 Track 14.m4a,0,human:Unknown Artist,-19.95693,24,7.829098e-05,1.4662233e-07,3.4372317e-07,2.1518667e-09,0
+ed90ca484d9c,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03.m4a,0,human:Unknown Artist,-20.021606,24,2.8343058e-05,8.026537e-08,2.5454966e-07,2.0170972e-09,0
+ef9ad2d3f93b,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 3.m4a,0,human:Unknown Artist,-20.189455,24,4.347342e-05,1.2428025e-07,4.063942e-06,1.7054189e-09,0
+f0c183fe6c05,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 3.m4a,0,human:Unknown Artist,-18.802526,24,1.4243614e-05,1.4996196e-07,9.309578e-07,6.8260033e-09,0
+f4352306bfbc,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 2.m4a,0,human:Unknown Artist,-18.436617,24,3.456514e-05,8.818568e-08,1.5931167e-06,9.8419015e-09,0
+0641fcc84a22,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/04 Hold the Applause (feat. Jay Kasai).m4a,0,human:Beezy,-20.67583,24,0.0001865581,4.2015776e-07,1.4388817e-05,1.048578e-09,1
+09192f5c7bcc,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/07 Don't Tell.m4a,0,human:Royal Blood,-11.724353,24,0.016753362,0.016056921,0.026889795,8.094215e-06,1
+11295ac05c7b,../training_data/ai_generated/Lost on the Wind - Enlly Blue.m4a,1,ai:Enlly Blue,9.037085,60,0.96815336,0.9805004,0.99671304,0.999881,1
+13a0ee0b58dc,../training_data/human_talent/Faja the Poet/Bad Words/08 Bad Words.m4a,0,human:Beezy,-17.334593,24,0.00391185,0.01152917,0.008167054,2.9626614e-08,1
+22236785ff8f,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/04 She's Creeping.m4a,0,human:Royal Blood,-9.661002,24,0.024048543,0.1325368,0.0148769235,6.371657e-05,1
+23a2582e7ec1,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/06 Where Are You Now_.m4a,0,human:Royal Blood,-7.632639,24,0.18346868,0.15409262,0.23280032,0.00048414638,1
+2b06df8ed58e,../training_data/human_talent/Royaljag/Chameleon - EP/05 Tea.m4a,0,human:Royaljag,-10.543619,24,0.0042671575,0.022835264,0.013374038,2.6360456e-05,1
+3a9a0d155daa,../training_data/human_talent/Faja the Poet/Bad Words/01 Above (feat. Luna Flores).m4a,0,human:Beezy,-21.686487,24,0.0004918126,0.0014964069,2.2185465e-07,3.8166145e-10,1
+3af9f6f11ea4,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/01 How Did We Get So Dark_.m4a,0,human:Royal Blood,-14.123077,24,0.0018315188,0.00083190604,0.0073699895,7.352332e-07,1
+3c6877bf9abc,../training_data/human_talent/Royaljag/Chameleon - EP/01 Daydream.m4a,0,human:Royaljag,-15.760555,24,0.00034352115,0.00048196036,0.021171287,1.4298081e-07,1
+44ed50b4f6cc,../training_data/ai_generated/Weightless Moment - Enlly Blue.m4a,1,ai:Enlly Blue,10.854277,60,0.9515146,0.9595511,0.9482389,0.9999807,1
+48eff2d57a0b,../training_data/human_talent/Terror Jr/Bop City/07 3 Strikes.m4a,0,human:Terror Jr,-13.943618,24,0.022802593,0.043852806,4.7703095e-05,8.7975826e-07,1
+4b9f021f6808,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/02 Lights Out.m4a,0,human:Royal Blood,-14.848422,24,0.0018399671,0.00032358215,0.002440586,3.5596892e-07,1
+5456b3960547,../training_data/human_talent/Baauer/Aa/06 Day Ones (feat. Novelist & Leikeli47).m4a,0,human:Baauer,-22.19235,24,1.7423306e-05,2.3268176e-05,5.257696e-06,2.3013606e-10,1
+62ca739cf8ed,../training_data/human_talent/Baauer/Aa/11 Kung Fu (feat. Pusha T & Future).m4a,0,human:Baauer,-23.412247,24,6.9821275e-05,0.00029864875,4.5297068e-07,6.795015e-11,1
+6c2c6885833e,../training_data/human_talent/Royaljag/Chameleon - EP/03 Afterglow.m4a,0,human:Royaljag,-7.690291,24,0.14608668,0.052292973,0.16239825,0.00045703613,1
+7199dc62da9a,../training_data/human_talent/Royaljag/Chameleon - EP/04 Jungle.m4a,0,human:Royaljag,-16.384846,24,0.0008105277,0.00018113833,0.010625653,7.658644e-08,1
+7310a08b6344,../training_data/human_talent/Faja the Poet/Bad Words/05 '02.m4a,0,human:Beezy,-17.457998,24,2.312311e-05,0.000126427,9.9780955e-06,2.6187116e-08,1
+76473ab3db93,../training_data/human_talent/Faja the Poet/Bad Words/03 Hmw (Nimbus) [feat. Staxx].m4a,0,human:Beezy,-19.668371,24,0.00026654216,0.0021692582,0.006797196,2.8716725e-09,1
+78006dfdf08c,"../training_data/human_talent/Royal Blood/How Did We Get So Dark_/08 Hook, Line & Sinker.m4a",0,human:Royal Blood,-17.048649,24,0.002694631,0.00016769838,0.0011685928,3.943355e-08,1
+788037914d42,../training_data/human_talent/Faja the Poet/Bad Words/04 Monologue (Interlude).m4a,0,human:Beezy,-25.75393,24,0.000746704,0.00014145483,2.94997e-05,6.534475e-12,1
+7ace92b192c4,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/10 Chasers.m4a,0,human:Beezy,-21.384993,24,8.2214385e-05,2.64349e-05,1.7899735e-07,5.159596e-10,1
+7c2d44a526cc,../training_data/human_talent/Compilations/Walt Disney Records the Legacy Collection_ Disneyland/1-05 Let's Dance at Disneyland (from Plaza Gardens).m4a,0,human:Compilations,-18.989222,24,1.8790229e-06,0.00035122476,0.00092194224,5.6635123e-09,1
+7cd831fcc124,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/03 Crop Tops (feat. R.N.B.).m4a,0,human:Beezy,-21.911924,24,0.0004263006,0.0002313342,4.169368e-08,3.0462963e-10,1
+80cc94dc1aff,../training_data/ai_generated/Breaking the Blue - Enlly Blue.m4a,1,ai:Enlly Blue,11.654277,60,0.999122,0.9981667,0.99662626,0.9999913,1
+87af7c6fd161,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/01 Breakfast (feat. Tru Speech).m4a,0,human:Beezy,-23.441284,24,0.000169627,0.00024069718,0.0004377384,6.600542e-11,1
+8c4bdd1da891,../training_data/ai_generated/Her Name in the Breeze - Enlly Blue.m4a,1,ai:Enlly Blue,12.593883,60,0.99931234,0.99946636,0.9996082,0.99999666,1
+92f04ddcdcf8,../training_data/human_talent/Kanye West/Ye vs. the People (starring T.I. as the People) - Single/01 Ye vs. the People (starring T.I. as the People).m4a,0,human:Kanye West,-24.11791,24,5.214732e-07,3.3348333e-05,5.6989354e-08,3.3552477e-11,1
+96c22901c2b4,../training_data/human_talent/Faja the Poet/Bad Words/06 Stay Smooth (feat. Kj Monk).m4a,0,human:Beezy,-22.107546,24,0.0006905811,0.00012850655,0.00026018958,2.505041e-10,1
+992e938c7d91,../training_data/ai_generated/Slow Sip of Solitude - Enlly Blue.m4a,1,ai:Enlly Blue,10.544328,60,0.96603924,0.9587471,0.9651526,0.99997365,1
+a22047cc7fa0,../training_data/ai_generated/Almost Said It - Enlly Blue.m4a,1,ai:Enlly Blue,13.010007,60,0.99475306,0.99855334,0.9883373,0.99999774,1
+a470155b175b,../training_data/human_talent/Compilations/Nothing But the Best (Remastered)/20 My Way.m4a,0,human:Compilations,-14.00135,24,0.03851002,0.006249457,0.0015233974,8.304059e-07,1
+a52adaaf0aa1,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/03 I Only Lie When I Love You.m4a,0,human:Royal Blood,-15.381387,24,0.0018704251,7.951843e-05,0.00013461155,2.0890484e-07,1
+a5c7dcdc74ab,../training_data/human_talent/Faja the Poet/Bad Words/07 Street Performers (feat. Prophet).m4a,0,human:Beezy,-19.220198,24,0.00029303724,6.705994e-06,3.0097883e-07,4.495461e-09,1
+a649da955adf,../training_data/ai_generated/Still Reaching - Enlly Blue.m4a,1,ai:Enlly Blue,14.059287,60,0.99809045,0.9990547,0.99943095,0.99999917,1
+a9c4c6e0647d,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/10 Sleep.m4a,0,human:Royal Blood,-9.894721,24,0.053626683,0.0067997775,0.09467708,5.043771e-05,1
+ae8ffb62c7d8,../training_data/ai_generated/Late Afternoon Light - Enlly Blue.m4a,1,ai:Enlly Blue,12.427959,60,0.9987499,0.9973913,0.97128904,0.99999595,1
+b115e5e17fab,../training_data/human_talent/Royaljag/Chameleon - EP/02 Wallspace.m4a,0,human:Royaljag,-9.625744,24,0.1093721,0.13936205,0.13011192,6.6003035e-05,1
+ba4b6ae30d76,../training_data/human_talent/Faja the Poet/Bad Words/02 College Kidz.m4a,0,human:Beezy,-23.112597,24,4.5216613e-05,0.00016040013,9.88801e-05,9.169103e-11,1
+c6756ef4819f,../training_data/ai_generated/City's Too Big - Enlly Blue.m4a,1,ai:Enlly Blue,10.386748,60,0.982774,0.986679,0.9808467,0.9999691,1
+c8a1426ff199,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/06 Better Days.m4a,0,human:Beezy,-23.599785,24,0.0005976976,0.0032015063,0.012199006,5.633051e-11,1
+ca1018b7f842,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/09 Hole in Your Heart.m4a,0,human:Royal Blood,-10.980802,24,0.12000386,0.030846782,0.03761283,1.7025155e-05,1
+d18483a79441,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/02 California Soul.m4a,0,human:Beezy,-19.727934,24,0.00046570846,1.8730739e-06,1.3797471e-06,2.7056224e-09,1
+d3aa5adabba0,../training_data/human_talent/Baauer/Aa/09 Temple (feat. M.I.A. & G-DRAGON).m4a,0,human:Baauer,-15.679436,24,0.0012109148,0.015815645,0.004878222,1.5506276e-07,1
+de334ab7eb04,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/11 Lft.m4a,0,human:Beezy,-19.121899,24,0.00015841164,5.9822137e-06,1.4783485e-07,4.959809e-09,1
+e0238b8b687f,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/08 Women (feat. Luna Flores).m4a,0,human:Beezy,-22.863527,24,3.7003792e-05,8.383673e-05,0.00022998302,1.1762409e-10,1
+ea4fb7643de9,../training_data/human_talent/Compilations/Walt Disney Records the Legacy Collection_ Disneyland/2-15 Space Mountain.m4a,0,human:Compilations,-13.260062,24,0.054924045,0.088616185,0.01449971,1.7427191e-06,1
+f012b0b7919f,../training_data/ai_generated/Far from the Noise - Enlly Blue.m4a,1,ai:Enlly Blue,11.486364,60,0.97761637,0.9968313,0.9859099,0.99998975,1
+f1ac5278066c,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/05 Look Like You Know.m4a,0,human:Royal Blood,-14.481317,24,0.00014593416,0.00022663122,0.00012771996,5.1385894e-07,1
+f24c35ed12f2,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/09 Sould.m4a,0,human:Beezy,-27.585464,24,4.5502916e-06,4.7528715e-07,1.0274941e-08,1.0466103e-12,1
+f29e605c61f8,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/05 Cliffhanger.m4a,0,human:Beezy,-18.676504,24,4.060345e-05,0.00053315255,5.3936103e-05,7.742787e-09,1
+f62e5a96012d,../training_data/human_talent/Baauer/Aa/05 Sow.m4a,0,human:Baauer,-20.34246,24,0.0009311284,0.0026507229,0.0016155402,1.4634625e-09,1
+f6ec4ef13b78,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/07 Palm Desert (feat. Tru Speech).m4a,0,human:Beezy,-24.07585,24,2.360155e-05,1.4322499e-06,1.07866015e-07,3.4993824e-11,1
+001657171888,../training_data/human_talent/Marian Hill/Unusual/01 Subtle Thing.m4a,0,human:Marian Hill,-11.688442,24,0.09871503,0.007951485,0.0010516526,8.390163e-06,2
+024735bf4dcc,../training_data/ai_generated/You're Just You - Kayla Kross.m4a,1,ai:Kayla Kross,12.953898,60,0.99594903,0.9872492,0.9941934,0.9999976,2
+055f158b7aac,../training_data/human_talent/Jaden Smith/SYRE/12 Watch Me.m4a,0,human:Jaden Smith,-18.064035,24,7.510332e-05,1.8987786e-05,5.4880948e-05,1.4285291e-08,2
+09402cee269f,../training_data/human_talent/Marian Hill/Unusual/07 Sideways 1.m4a,0,human:Marian Hill,-11.644039,24,0.117936455,0.05105126,0.0032898288,8.771103e-06,2
+0bb0e70281ac,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/08 Terrified.m4a",0,human:Childish Gambino,-7.213047,24,0.13248129,0.26785958,0.041411694,0.00073636574,2
+0ca2b25b3877,../training_data/human_talent/Marian Hill/Unusual/06 Don't Do It.m4a,0,human:Marian Hill,-19.4897,24,0.0008739657,6.640294e-05,4.162657e-05,3.4334497e-09,2
+1d26ebc5f369,../training_data/human_talent/Marian Hill/Unusual/05 Wish You Would.m4a,0,human:Marian Hill,-18.634693,24,7.259861e-05,1.5404019e-05,8.821911e-06,8.073384e-09,2
+1fac21ec2645,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/09 Baby Boy.m4a",0,human:Childish Gambino,-5.6593876,24,0.35598972,0.28240615,0.17401917,0.0034725496,2
+215d1dbbdc4c,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/10 The Night Me and Your Mama Met.m4a",0,human:Childish Gambino,-6.8034606,24,0.16272959,0.114809535,0.1744256,0.0011086969,2
+2798538317ea,../training_data/human_talent/Oliver Tree/Alien Boy - EP/04 All That.m4a,0,human:Oliver Tree,-20.596144,24,0.0015511191,3.5521587e-06,1.4874007e-07,1.1355556e-09,2
+2b3dc75cc113,../training_data/human_talent/Marian Hill/Unusual/06 Don't Do It 1.m4a,0,human:Marian Hill,-17.922882,24,0.01726601,5.1597148e-05,3.9978393e-05,1.6450958e-08,2
+2e576b2199df,../training_data/human_talent/Marian Hill/Unusual/03 All Night Long (feat. Steve Davit) 1.m4a,0,human:Marian Hill,-15.35451,24,0.0012414132,9.282189e-05,0.0002832479,2.1459559e-07,2
+39546a2f0cb9,"../training_data/ai_generated/So Wrong, So Right - Kayla Kross.m4a",1,ai:Kayla Kross,9.921152,60,0.9289795,0.8235485,0.969174,0.9999509,2
+39fc6bbc917e,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/11 Stand Tall.m4a",0,human:Childish Gambino,-10.076365,24,0.089679606,0.051658776,0.0010742352,4.2060245e-05,2
+3a91432c4e54,../training_data/human_talent/Marian Hill/Unusual/08 No Hesitation 1.m4a,0,human:Marian Hill,-19.387022,24,0.00043834912,2.0121946e-05,4.016417e-08,3.8047254e-09,2
+42fd27307b5e,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/01 Me and Your Mama.m4a",0,human:Childish Gambino,-10.543073,24,0.05438168,0.026742725,0.07135454,2.6374864e-05,2
+46b90bd21d2f,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/03 Boogieman.m4a",0,human:Childish Gambino,-15.957938,24,0.009019469,0.0039141546,0.036576137,1.1736955e-07,2
+475659d4c6e0,../training_data/ai_generated/Let You Feel This Love - Kayla Kross.m4a,1,ai:Kayla Kross,15.780757,60,0.9994275,0.9999479,0.9998112,0.9999999,2
+4cb65aa4b172,../training_data/human_talent/Jaden Smith/SYRE/11 Icon 1.m4a,0,human:Jaden Smith,-15.150665,24,0.0006778848,0.00083542085,7.4863674e-05,2.6311739e-07,2
+67807841bc63,../training_data/human_talent/The Avalanches/Wildflower/22 Frankie Sinatra (Extended Mix).m4a,0,human:The Avalanches,-12.187825,24,0.00013476798,0.0020188096,0.0027205227,5.092049e-06,2
+69c197d88fb5,../training_data/human_talent/Marian Hill/Unusual/10 Go Quietly.m4a,0,human:Marian Hill,-12.429847,24,0.039377686,0.0012297035,0.016240379,3.9974625e-06,2
+761485f29fc7,../training_data/human_talent/Oliver Tree/Alien Boy - EP/03 Enemy.m4a,0,human:Oliver Tree,-17.910423,24,0.0012130138,0.001949452,0.0110511035,1.66572e-08,2
+77d24f3a81df,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/06 Redbone.m4a",0,human:Childish Gambino,-15.625569,24,0.09175975,0.04851463,0.000115836156,1.636445e-07,2
+7b76aaf42bc8,../training_data/human_talent/Marian Hill/Unusual/03 All Night Long (feat. Steve Davit).m4a,0,human:Marian Hill,-16.22265,24,0.00010536649,1.05431545e-05,0.0001393383,9.007253e-08,2
+844e62b24e92,../training_data/human_talent/Oliver Tree/Alien Boy - EP/06 Upside Down.m4a,0,human:Oliver Tree,-20.084234,24,3.0768922e-05,1.7971497e-05,1.3451951e-07,1.8946453e-09,2
+8923b04f139f,../training_data/human_talent/Marian Hill/Unusual/02 Differently.m4a,0,human:Marian Hill,-16.214945,24,0.00072833645,4.8000543e-06,0.00031668736,9.0769284e-08,2
+a645fd312d60,../training_data/human_talent/Oliver Tree/Alien Boy - EP/02 All I Got.m4a,0,human:Oliver Tree,-15.035859,24,0.0018153026,0.033097062,0.00030761785,2.951272e-07,2
+a715844f7df1,../training_data/human_talent/Marian Hill/Unusual/08 No Hesitation.m4a,0,human:Marian Hill,-19.099976,24,0.0005009142,1.31968945e-05,3.7240914e-06,5.0697433e-09,2
+aa6967373cc2,../training_data/ai_generated/Broke the Rules - Kayla Kross.m4a,1,ai:Kayla Kross,11.122644,60,0.98366654,0.9985148,0.98791516,0.9999852,2
+b0a43d3a045e,../training_data/human_talent/Marcus Marr & Chet Faker/Work - EP/02 The Trouble with Us.m4a,0,human:Marcus Marr,-16.09957,24,0.000983138,6.182161e-05,0.00019827088,1.01869894e-07,2
+b13f486dc2bf,../training_data/human_talent/Marian Hill/Unusual/04 Don't Miss You 1.m4a,0,human:Marian Hill,-15.607722,24,0.0047092834,0.0075674853,0.0019924247,1.6659128e-07,2
+b2aaaf251da3,../training_data/human_talent/Drake/Take Care (Deluxe Version)/19 The Motto (feat. Lil Wayne) [Bonus Track].m4a,0,human:Drake,-19.571909,24,0.00061617634,0.0011005258,0.00014475409,3.1624812e-09,2
+b40cdf3f3b66,../training_data/human_talent/Marian Hill/Unusual/10 Go Quietly 1.m4a,0,human:Marian Hill,-12.105193,24,0.020876922,0.0013762176,0.006335558,5.5306864e-06,2
+b73eb2dac486,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/02 Have Some Love.m4a",0,human:Childish Gambino,-15.2984705,24,0.008288063,0.0003402684,6.402746e-05,2.2696483e-07,2
+b9190e36318c,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/05 Riot.m4a",0,human:Childish Gambino,-15.66402,24,6.889528e-05,0.000114588845,0.00013668959,1.5747175e-07,2
+ba6023a87dfd,../training_data/human_talent/Jaden Smith/SYRE/12 Watch Me 1.m4a,0,human:Jaden Smith,-17.488651,24,0.00015069442,5.121077e-05,2.9568999e-05,2.539658e-08,2
+bf18da94b603,../training_data/human_talent/Chet Faker/1998 (feat. Banks) - Single/01 1998 (feat. Banks).m4a,0,human:Marcus Marr,-13.69442,24,0.0022842165,4.8419864e-05,0.011296841,1.128726e-06,2
+c7133f3ecef1,../training_data/human_talent/Marian Hill/Unusual/09 Listening (feat. Steve Davit).m4a,0,human:Marian Hill,-14.295277,24,0.036550555,0.00044936044,0.014725659,6.189278e-07,2
+c80e76fcb514,../training_data/ai_generated/Might Be Falling - Kayla Kross.m4a,1,ai:Kayla Kross,3.6087518,60,0.6159309,0.62141323,0.6982482,0.97362864,2
+c8200a313276,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/04 Zombies.m4a",0,human:Childish Gambino,-9.832084,24,0.0696753,0.14132231,0.08660922,5.369786e-05,2
+cb2829bd5adb,../training_data/human_talent/Oliver Tree/Alien Boy - EP/01 Alien Boy.m4a,0,human:Oliver Tree,-15.142418,24,0.07816235,0.0013672761,0.00039920807,2.652964e-07,2
+d797b1952366,../training_data/human_talent/Oliver Tree/Alien Boy - EP/05 Welcome to LA.m4a,0,human:Oliver Tree,-11.842572,24,0.017497413,0.0020216343,0.0009541306,7.1917257e-06,2
+ddc6444af1d0,../training_data/human_talent/Andrew Gold/Unknown Album/Spooky Scary Skeletons (The Living Tombstone's Remix) Extended Mix.mp3,0,human:Andrew Gold,-19.275438,24,4.056538e-05,5.0125454e-06,5.927233e-06,4.253863e-09,2
+e3b1ac5c4b41,../training_data/human_talent/Marian Hill/Unusual/09 Listening (feat. Steve Davit) 1.m4a,0,human:Marian Hill,-15.124977,24,0.0018614073,0.00013400438,1.3974229e-05,2.6996395e-07,2
+e5e01ee2b0f9,../training_data/ai_generated/The Cutest Thing - Kayla Kross.m4a,1,ai:Kayla Kross,12.839929,60,0.9541069,0.96128976,0.9675973,0.9999974,2
+e67d68e3efe9,../training_data/ai_generated/Here I Am - Kayla Kross.m4a,1,ai:Kayla Kross,14.668658,60,0.9978171,0.99986917,0.999863,0.9999995,2
+ecb7903e604d,../training_data/human_talent/Marian Hill/Unusual/07 Sideways.m4a,0,human:Marian Hill,-14.899468,24,0.0077497954,0.0022693076,5.544022e-05,3.38254e-07,2
+faa3dd53afbb,../training_data/ai_generated/Maybe It's You - Kayla Kross.m4a,1,ai:Kayla Kross,14.367637,60,0.99842453,0.9989421,0.99946904,0.9999994,2
+fbd37b47a53b,"../training_data/ai_generated/I'll Be There, Too - Kayla Kross.m4a",1,ai:Kayla Kross,13.553512,60,0.9975409,0.97765154,0.99924004,0.9999987,2
+fc939b37e891,../training_data/human_talent/Marian Hill/Unusual/04 Don't Miss You.m4a,0,human:Marian Hill,-16.180628,24,0.00020821921,0.0013573378,0.011629965,9.3938276e-08,2
+fc962ac63cef,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/07 California.m4a",0,human:Childish Gambino,-17.462639,24,0.0036356219,0.00034736647,0.0009782846,2.6065875e-08,2
+fe54d725be13,../training_data/human_talent/Jaden Smith/SYRE/11 Icon.m4a,0,human:Jaden Smith,-13.495475,24,0.0030376334,0.0025980624,5.1190844e-05,1.3771752e-06,2
+01ae810ee356,../training_data/human_talent/88rising/Head in the Clouds/02 Red Rubies.m4a,0,human:88rising,-14.798997,24,0.003343245,0.030738309,0.010901648,3.7400477e-07,3
+02850d2baade,../training_data/human_talent/88rising/Head in the Clouds/17 Head in the Clouds.m4a,0,human:88rising,-14.286232,24,0.02371288,0.01141296,0.024170533,6.2455115e-07,3
+02eba3dc1776,../training_data/human_talent/88rising/Head in the Clouds/11 Let It Go.m4a,0,human:88rising,-24.8981,24,4.4166267e-08,1.4294914e-06,3.66908e-07,1.5377744e-11,3
+08206c9225ee,../training_data/human_talent/88rising/Head in the Clouds/10 Beam (feat. Playboi Carti).m4a,0,human:88rising,-19.835176,24,1.4386814e-05,0.0010620862,0.000851142,2.4304814e-09,3
+0eb662b22238,../training_data/human_talent/Joywave/Content/10 Thanks. Thanks for Coming.m4a,0,human:Joywave,-9.047788,24,0.01949943,0.012633367,0.029969484,0.000117637195,3
+12b917154ab5,../training_data/human_talent/88rising/Head in the Clouds/03 Swimming Pool.m4a,0,human:88rising,-17.103699,24,6.9733364e-06,0.00010246486,0.02934093,3.7321403e-08,3
+14fbb109b823,../training_data/human_talent/Joywave/Content/11 Let's Talk About Feelings.m4a,0,human:Joywave,-11.204791,24,0.093930386,0.13735265,0.0015226585,1.3608654e-05,3
+189d2d3f68d5,../training_data/human_talent/Viticz/Helix/VITICZ - Helix.mp3,0,human:Viticz,-16.671028,24,1.1586944e-05,7.2861785e-06,0.001521905,5.752604e-08,3
+201b1f64317d,../training_data/human_talent/ZHU/THE NIGHTDAY EP/02 Faded.m4a,0,human:ZHU,-13.658633,24,0.0023421107,0.00040624873,0.008229234,1.1698507e-06,3
+24961905b3cf,"../training_data/human_talent/88rising/Head in the Clouds/05 Midsummer Madness (feat. Joji, Rich Brian, Higher Brothers & AUGUST 08).m4a",0,human:88rising,-20.627592,24,0.00083894824,0.0019602564,1.3258191e-06,1.1004e-09,3
+2efd5081e93c,../training_data/human_talent/Joywave/Content/01 Content.m4a,0,human:Joywave,-16.141716,24,5.5814206e-05,0.0006000465,0.0013898957,9.7665634e-08,3
+30d85a851641,../training_data/ai_generated/AI D-42-00-00 The Universe Sings - ORIGIN.m4a,1,ai:The Universe Sings,5.6305594,32,0.769293,0.74859744,0.81360435,0.9964263,3
+312b8be49e49,../training_data/human_talent/88rising/Head in the Clouds/08 Lover Boy 88.m4a,0,human:88rising,-11.922894,24,0.059737667,0.1386122,0.062491223,6.63667e-06,3
+32f40ac9de34,../training_data/human_talent/Jain/Zanaka (Deluxe)/14 Come (Extended Version).m4a,0,human:Jain,-14.1101,24,0.0074187876,0.0007743854,0.0014626263,7.4483694e-07,3
+3d432827d5b4,../training_data/human_talent/Anderson .Paak/'Til It's Over - Single/01 'Til It's Over.m4a,0,human:Anderson .Paak,-14.312312,24,0.0059155934,0.00020631541,5.5308203e-05,6.0847333e-07,3
+4127ab0b9993,../training_data/human_talent/Joywave/Content/09 When You're Bored.m4a,0,human:Joywave,-11.358727,24,0.005328058,0.008196611,0.06318803,1.1667083e-05,3
+431103f3eed9,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/04 I Don_t Mind.m4a,0,human:The Greeting Committee,-12.481467,24,0.12037327,0.07434482,0.024774268,3.7963478e-06,3
+45e906c7dcc4,../training_data/human_talent/Joywave/Content/05 Confidence.m4a,0,human:Joywave,-10.855861,16,0.07605385,0.0015950205,0.012244123,1.9290843e-05,3
+6a614dc64003,../training_data/human_talent/Joywave/Content/07 Going to a Place.m4a,0,human:Joywave,-14.683933,24,0.027619021,0.02873111,0.012880581,4.196127e-07,3
+7091d7d200ff,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/02 Hands Down.m4a,0,human:The Greeting Committee,-5.3002534,24,0.2597075,0.24181312,0.21148862,0.00496555,3
+73974b56a2c9,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/03 Out of My Head.m4a,0,human:The Greeting Committee,-5.739746,24,0.21868712,0.1558773,0.10229972,0.0032052777,3
+797a28c6ddd7,../training_data/human_talent/88rising/Head in the Clouds/09 Poolside Manor.m4a,0,human:88rising,-14.091358,24,0.026728423,0.0038884878,9.433308e-05,7.5892797e-07,3
+826687249745,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/01 Your Side.m4a,0,human:The Greeting Committee,-9.995397,24,0.04027902,0.10421882,0.102585696,4.5607325e-05,3
+8517a6a097dd,../training_data/human_talent/Joywave/Content/03 It's a Trip!.m4a,0,human:Joywave,-13.305619,24,0.017156852,0.014820676,0.0413507,1.6651073e-06,3
+897d46a90d22,../training_data/human_talent/Joywave/Content/08 Little Lies You're Told.m4a,0,human:Joywave,-20.10004,24,2.7505876e-05,6.5262234e-06,0.00018752353,1.8649335e-09,3
+8c076d7dd3bf,../training_data/human_talent/Joywave/Content/02 Shutdown.m4a,0,human:Joywave,-11.918138,24,0.0018902696,0.010463543,0.0040973127,6.6683097e-06,3
+94db6f9e6f99,../training_data/human_talent/88rising/Head in the Clouds/04 Peach Jam.m4a,0,human:88rising,-16.02076,24,0.00080407923,0.033469018,0.007961814,1.10223056e-07,3
+99109ba6375e,../training_data/human_talent/Weezer/Weezer (White Album)/10 Endless Bummer.m4a,0,human:Weezer,-13.204164,24,0.0030764278,0.0022547997,0.0006558521,1.8429089e-06,3
+991cce68a4d7,../training_data/human_talent/Jain/Zanaka (Deluxe)/03 Mr Johnson.m4a,0,human:Jain,-15.353404,24,8.500578e-05,0.00033900517,0.0022704073,2.1483314e-07,3
+9a0384bf517b,../training_data/human_talent/Jain/Zanaka (Deluxe)/01 Come.m4a,0,human:Jain,-20.240133,24,9.856943e-06,3.8836456e-06,3.169519e-05,1.6211448e-09,3
+9d07751d6d10,../training_data/human_talent/Jain/Zanaka (Deluxe)/04 Lil Mama.m4a,0,human:Jain,-14.972434,24,5.247942e-05,0.00092554785,0.00023771694,3.1445202e-07,3
+a65ca0287402,../training_data/ai_generated/AI D-42-01-01 The Universe Sings.m4a,1,ai:The Universe Sings,4.8629107,60,0.6764185,0.7120942,0.8511256,0.99233127,3
+a872f5b6cd9b,../training_data/human_talent/ZHU/Generationwhy/14 Working For It (Bonus Track).m4a,0,human:ZHU,-21.658684,24,4.3971973e-05,0.00030307422,0.010259788,3.9242182e-10,3
+a8e49b487320,../training_data/human_talent/88rising/Head in the Clouds/13 Warpaint.m4a,0,human:88rising,-15.941006,24,5.1844687e-05,4.9547223e-05,0.00015569026,1.1937382e-07,3
+b776df59eedb,../training_data/human_talent/Joywave/Content/06 Doubt.m4a,0,human:Joywave,-10.214742,24,0.03998895,0.038314704,0.06988948,3.6625042e-05,3
+c88cb8966cee,../training_data/ai_generated/AI D-42-02-02 The Universe Sings.m4a,1,ai:The Universe Sings,1.1776023,60,0.41961333,0.5969448,0.71920884,0.7645164,3
+ceb8801fb4e2,../training_data/human_talent/88rising/Head in the Clouds/14 I Want In.m4a,0,human:88rising,-21.476898,24,5.9362894e-05,0.0001580024,1.2516856e-06,4.7065385e-10,3
+d2a1cb1f4b19,../training_data/human_talent/Jain/Zanaka (Deluxe)/08 Makeba.m4a,0,human:Jain,-21.046234,24,1.1676394e-05,7.984387e-06,9.911883e-05,7.2399686e-10,3
+d462ce888fc1,../training_data/human_talent/Joywave/Content/04 Rumors.m4a,0,human:Joywave,-9.081998,24,0.20333965,0.221762,0.1533065,0.000113681315,3
+d70fef75d34f,../training_data/ai_generated/AI D-42-03-03 The Universe Sings.m4a,1,ai:The Universe Sings,11.629081,60,0.9542219,0.9649285,0.97722,0.99999106,3
+e3b0a8d11c43,../training_data/human_talent/88rising/Head in the Clouds/15 Japan 88.m4a,0,human:88rising,-23.304758,24,2.3828093e-06,4.1997337e-05,0.00026325873,7.566102e-11,3
+eda44d1b487d,../training_data/human_talent/88rising/Head in the Clouds/01 La Cienega.m4a,0,human:88rising,-16.7871,24,0.00011529456,0.056685988,0.0015644428,5.1221836e-08,3
+edb93c7d4eea,../training_data/human_talent/88rising/Head in the Clouds/06 Plans.m4a,0,human:88rising,-16.329626,24,0.00014340399,0.006720254,0.00018914638,8.0934456e-08,3
+f14f80bf8bca,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/05 Make It Right.m4a,0,human:The Greeting Committee,-3.3771935,24,0.2708472,0.2817311,0.2834296,0.03301588,3
+f29a3ebeb79f,../training_data/human_talent/88rising/Head in the Clouds/12 Disrespectin.m4a,0,human:88rising,-19.615118,24,5.944658e-05,7.730235e-05,5.369809e-06,3.0287435e-09,3
+f82011167671,../training_data/human_talent/88rising/Head in the Clouds/07 History.m4a,0,human:88rising,-20.177889,24,0.00012846674,0.0013940237,0.0010510337,1.7252587e-09,3
+f8fc63433ede,../training_data/human_talent/88rising/Head in the Clouds/16 Nothing Wrong (feat. Goldlink).m4a,0,human:88rising,-18.913172,24,0.0005699046,0.005405871,7.2075745e-05,6.1110224e-09,3
+0270c7001b2f,../training_data/human_talent/Rodriguez/Cold Fact/10 Gommorah (a Nursery Rhyme).m4a,0,human:Rodriguez,-16.851538,24,7.257659e-05,7.722188e-05,8.997205e-06,4.8025306e-08,4
+033e82103007,../training_data/human_talent/Rodriguez/Cold Fact/07 Inner City Blues.m4a,0,human:Rodriguez,-19.157743,24,8.386869e-05,2.1373244e-05,1.7545824e-08,4.785174e-09,4
+0430e84823f0,../training_data/human_talent/Sofi Tukker/Treehouse/04 Batshit.m4a,0,human:Sofi Tukker,-18.41507,24,9.600906e-05,0.00024069256,0.0015081313,1.005627e-08,4
+0b958cef366a,../training_data/human_talent/Lemaitre/Chapter One/10 Playing To Lose (feat. Stanaj).m4a,0,human:Lemaitre,-8.116912,24,0.055430915,0.042759027,0.044909757,0.00029835984,4
+13581d2a0d80,../training_data/human_talent/Sofi Tukker/Treehouse/05 Good Time Girl (feat. Charlie Barker).m4a,0,human:Sofi Tukker,-21.944921,24,1.1542663e-05,0.0001935505,2.9464744e-07,2.9474176e-10,4
+139398566c3d,../training_data/ai_generated/Outro - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-2.152064,60,0.49187496,0.46796912,0.28560236,0.1041385,4
+1b87b0f29ffe,../training_data/human_talent/Sofi Tukker/Treehouse/08 The Dare 1.m4a,0,human:Sofi Tukker,-13.81702,24,0.0010017192,0.00015632201,0.00042363294,9.984902e-07,4
+1d8c17cea1c0,../training_data/human_talent/Rodriguez/Cold Fact/01 Sugar Man.m4a,0,human:Rodriguez,-16.574724,24,0.00095124054,0.00015327799,2.4669394e-05,6.334155e-08,4
+220992e683e7,../training_data/human_talent/The Wombats/Beautiful People Will Ruin Your Life/03 Turn.m4a,0,human:The Wombats,-12.744873,24,0.047004953,0.03772638,0.04141246,2.9172302e-06,4
+22f2e7ddcaab,../training_data/ai_generated/Ride... - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,0.4054952,60,0.48923728,0.5213786,0.59009844,0.60000724,4
+258fd73f31e0,../training_data/ai_generated/Marching Shadows - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-5.5129395,60,0.18124832,0.16933212,0.16998269,0.0040180217,4
+2842e5894e4f,../training_data/human_talent/Rodriguez/Cold Fact/05 Hate Street Dialogue.m4a,0,human:Rodriguez,-12.1038475,24,0.036334816,0.007013245,0.0015994804,5.5381333e-06,4
+2cea792d86b8,../training_data/human_talent/Sofi Tukker/Treehouse/06 Johny.m4a,0,human:Sofi Tukker,-12.48817,24,0.00029158985,0.001357181,0.006994981,3.7709883e-06,4
+3435c690126a,../training_data/human_talent/Sofi Tukker/Treehouse/05 Good Time Girl (feat. Charlie Barker) 1.m4a,0,human:Sofi Tukker,-20.54387,24,1.3385036e-05,0.0001746341,2.4142566e-05,1.1964931e-09,4
+35c5bb18ae7f,../training_data/human_talent/Pale Waves/My Mind Makes Noises/01 Eighteen.m4a,0,human:Pale Waves,-6.718586,24,0.27633134,0.22315936,0.29670957,0.0012067874,4
+36d7124a8cc6,../training_data/human_talent/Pale Waves/Television Romance - Single/01 Television Romance.m4a,0,human:Pale Waves,-11.529716,24,0.004158605,0.00023496443,0.0070087654,9.833405e-06,4
+406d6c18b346,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/03 My Obsession.m4a,0,human:Pale Waves,-8.348606,24,0.092450224,0.08373019,0.06770234,0.00023667022,4
+40d78eeb4784,../training_data/ai_generated/Floating on Echoes - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-5.110575,60,0.2062388,0.18168594,0.25927794,0.0059964377,4
+426706605bb5,../training_data/ai_generated/Drift Beyond the Flame - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-4.994823,60,0.19551753,0.17475371,0.24368805,0.006727356,4
+4352806345c0,../training_data/ai_generated/Back Home Never Came - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-8.294783,60,0.046501137,0.12815888,0.025336454,0.00024975443,4
+4b2b48324f17,../training_data/ai_generated/Freedom's Song - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-1.0972228,60,0.45347777,0.50911623,0.3850974,0.25026062,4
+618f853a058f,../training_data/human_talent/Rodriguez/Cold Fact/06 Forget It.m4a,0,human:Rodriguez,-13.4146385,24,0.00055010844,0.0010915943,5.5018504e-06,1.4931239e-06,4
+6558d0f6c6c1,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/04 Heavenly.m4a,0,human:Pale Waves,-11.804351,24,0.0023624427,0.0013412392,0.0025253722,7.471922e-06,4
+65c1e7dd7347,../training_data/human_talent/Rodriguez/Cold Fact/09 Like Janis.m4a,0,human:Rodriguez,-10.163166,24,0.00042846645,0.0017143507,0.0007834225,3.856349e-05,4
+7795bfb993bf,../training_data/ai_generated/The Wind Still Knows Our Name - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-1.8934963,58,0.35704875,0.3790632,0.50508887,0.13084634,4
+7bd401ed2288,../training_data/human_talent/Pale Waves/My Mind Makes Noises/02 There_s a Honey.m4a,0,human:Pale Waves,-2.144316,24,0.5196524,0.35154364,0.43674257,0.10486357,4
+7cd75e58311f,../training_data/ai_generated/End the Pain - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,2.895206,60,0.70163935,0.7493718,0.7695093,0.94760895,4
+81e810b99194,../training_data/human_talent/Sofi Tukker/Treehouse/03 Benadryl.m4a,0,human:Sofi Tukker,-12.964299,24,0.039168496,0.009092347,0.034922477,2.3424773e-06,4
+8e3c37f13839,../training_data/ai_generated/Dust on the Wind - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-0.32886598,60,0.41204765,0.54056203,0.47328594,0.41851658,4
+9452e512c78c,../training_data/human_talent/Sofi Tukker/Treehouse/03 Benadryl 1.m4a,0,human:Sofi Tukker,-12.960313,24,0.0022073647,0.0010246708,0.00034390236,2.3518337e-06,4
+9a2c856ee46b,../training_data/human_talent/Sofi Tukker/Treehouse/08 The Dare.m4a,0,human:Sofi Tukker,-15.051337,24,0.00015525358,0.00019626423,0.00054510654,2.9059433e-07,4
+a5736e44bf00,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/02 The Tide.m4a,0,human:Pale Waves,-8.926139,24,0.14662234,0.085852325,0.12391422,0.00013285241,4
+a794c9b1e220,"../training_data/human_talent/Rodriguez/Cold Fact/04 This is Not a Song, It's an Outburst! or, The Establishment Blues.m4a",0,human:Rodriguez,-18.21345,24,3.091583e-05,2.1022506e-05,1.866534e-07,1.230267e-08,4
+aa58e80b05a4,../training_data/human_talent/Lemaitre/Chapter One/14 Playing To Lose (feat. Stanaj) [Coucheron Remix].m4a,0,human:Lemaitre,-14.433717,24,7.219781e-05,0.00061244733,0.0006815649,5.3891e-07,4
+ac2c6d437e94,"../training_data/human_talent/Sofi Tukker/Treehouse/10 Best Friend (feat. NERVO, The Knocks & Alisa Ueno).m4a",0,human:Sofi Tukker,-19.219858,24,0.0024139828,8.546226e-05,1.8964306e-06,4.4969872e-09,4
+ae9839158e76,../training_data/human_talent/Sofi Tukker/Treehouse/07 My Body Hurts.m4a,0,human:Sofi Tukker,-14.851523,24,0.008587879,0.008901301,0.04224557,3.5486664e-07,4
+af42eef7d632,../training_data/human_talent/Pale Waves/My Mind Makes Noises/03 Noises.m4a,0,human:Pale Waves,-12.433822,24,0.043230485,0.041046996,0.03583822,3.9816046e-06,4
+b208ee3f02cd,../training_data/human_talent/Pale Waves/My Mind Makes Noises/12 Kiss.m4a,0,human:Pale Waves,-7.623892,24,0.008864305,0.009312204,0.019444877,0.0004883978,4
+b3866c97dc44,../training_data/human_talent/Sofi Tukker/Treehouse/02 Energia.m4a,0,human:Sofi Tukker,-19.4487,24,4.5386705e-06,6.195854e-06,0.0006521277,3.5771484e-09,4
+b637beb6c3d8,../training_data/human_talent/Rodriguez/Cold Fact/11 Rich Folks Hoax.m4a,0,human:Rodriguez,-21.972221,24,0.00023755025,4.377584e-06,1.3962521e-09,2.868042e-10,4
+badf20ed019f,../training_data/human_talent/Lemaitre/Chapter One/04 Higher (feat. Maty Noyes).m4a,0,human:Lemaitre,-12.650215,24,0.06334683,0.0010889593,0.002042123,3.20686e-06,4
+bf6d2c7f89a3,../training_data/human_talent/Iggy Pop/Lust For Life/02 Sixteen.m4a,0,human:Iggy Pop,-12.8047495,24,0.0008710737,9.554142e-05,0.018262928,2.747684e-06,4
+c0f45b84c5cb,../training_data/ai_generated/Rebel Shout - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-6.60605,60,0.12236927,0.04303682,0.19258289,0.0013503367,4
+c122624aa8ea,../training_data/human_talent/Banks/Better - Single/01 Better.m4a,0,human:Banks,-10.6562195,24,0.017249398,0.04500322,0.0016129524,2.3553337e-05,4
+c4c373688d12,../training_data/human_talent/Sofi Tukker/Treehouse/07 My Body Hurts 1.m4a,0,human:Sofi Tukker,-12.412865,24,0.07387615,0.023452414,0.08200693,4.0659274e-06,4
+c69ef89efe01,../training_data/human_talent/Nas/Illmatic/02 N.Y. State of Mind.m4a,0,human:Nas,-14.87204,24,6.470693e-05,0.0003926638,5.4750806e-05,3.4766023e-07,4
+c6b274264ca9,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/01 New Year's Eve.m4a,0,human:Pale Waves,-4.9754786,24,0.29677132,0.20766467,0.21205723,0.0068578576,4
+ca107f5d4119,../training_data/human_talent/Sofi Tukker/Treehouse/09 Baby I'm a Queen.m4a,0,human:Sofi Tukker,-15.667538,24,0.00047951963,0.00012331655,0.00018623268,1.5691872e-07,4
+d237ba0dbea4,../training_data/human_talent/Rodriguez/Cold Fact/08 I Wonder.m4a,0,human:Rodriguez,-11.663459,24,0.0023259711,0.0061093997,0.0017637779,8.6024165e-06,4
+d61cbde73c04,../training_data/ai_generated/Smoke and Silence - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,8.639049,60,0.94214886,0.9367071,0.9283272,0.99982303,4
+d8076b23ba2f,../training_data/human_talent/Rodriguez/Cold Fact/02 Only Good for Conversation.m4a,0,human:Rodriguez,-14.945583,24,4.8425853e-05,0.00011267516,0.00020526208,3.2300966e-07,4
+d8117e29d350,../training_data/ai_generated/Interlude - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-0.84897256,50,0.39084038,0.5090008,0.2922622,0.29964843,4
+dba3ebe7e192,../training_data/human_talent/Sofi Tukker/Treehouse/06 Johny 1.m4a,0,human:Sofi Tukker,-14.669547,24,6.74363e-05,0.00029401068,0.0028504264,4.2569295e-07,4
+dcb6d674c457,../training_data/human_talent/Rodriguez/Cold Fact/03 Crucify Your Mind.m4a,0,human:Rodriguez,-17.413023,24,1.3660479e-05,0.0006664542,8.129821e-06,2.7391776e-08,4
+ebab956b1ea4,../training_data/human_talent/Rodriguez/Cold Fact/12 Jane S. Piddy.m4a,0,human:Rodriguez,-15.718491,24,0.0001585399,0.000100567,3.509199e-05,1.4912354e-07,4
+f51a353b48f8,../training_data/human_talent/Sofi Tukker/Treehouse/01 Fuck They.m4a,0,human:Sofi Tukker,-18.509432,24,0.00015119072,2.7148637e-05,0.00016798137,9.150733e-09,4
+04e196cc65ef,../training_data/human_talent/NVDES/Vol. 2 - EP/02 D.Y.T. (Do Your Thing) [feat. REMMI].m4a,0,human:NVDES,-23.41907,24,5.7503735e-06,3.4708264e-06,2.2966162e-09,6.748813e-11,5
+06cbdf4441e3,../training_data/human_talent/CHVRCHES/Love Is Dead/12 ii.m4a,0,human:CHVRCHES,-13.560954,24,0.00029646003,0.0011803905,0.0018538764,1.2898878e-06,5
+0f674dfd2e6c,../training_data/human_talent/CHVRCHES/Love Is Dead/08 Graves.m4a,0,human:CHVRCHES,-10.626962,24,0.020807091,0.040845964,0.04693896,2.4252618e-05,5
+18890a1de2e0,../training_data/human_talent/CHVRCHES/Love Is Dead/09 Heaven_Hell.m4a,0,human:CHVRCHES,-12.94252,24,0.022672556,0.005936042,0.008270212,2.3940536e-06,5
+1c6f60522a47,../training_data/human_talent/Kiiara/Whippin (feat. Felix Snow) - Single/01 Whippin (feat. Felix Snow).m4a,0,human:Kiiara,-12.332789,24,0.0031910958,0.0017749589,0.00062680995,4.4048966e-06,5
+224b2ad85ca7,../training_data/ai_generated/The First time I Laid Eyes On You.mp3,1,ai:unknown,9.139096,60,0.93143696,0.96639067,0.91319686,0.9998926,5
+22e5f932a91d,../training_data/human_talent/Rich Brian/Amen/09 See Me.m4a,0,human:Rich Brian,-17.161907,24,0.00029019362,0.0019304566,7.6826924e-05,3.5211006e-08,5
+245323379136,../training_data/human_talent/Amy Shark/Love Monster/04 I Said Hi.m4a,0,human:Amy Shark,-8.265985,24,0.014065801,0.12000536,0.110361755,0.00025704957,5
+2b14935fa778,../training_data/human_talent/Rich Brian/Amen/02 Cold.m4a,0,human:Rich Brian,-19.167143,24,0.00085661263,0.080119975,0.007963388,4.740407e-09,5
+2bd3225d5558,../training_data/human_talent/Rich Brian/Amen/14 Arizona (feat. AUGUST 08).m4a,0,human:Rich Brian,-18.045523,24,7.158701e-05,0.0008541388,0.00040173382,1.45522145e-08,5
+3c41ad822fa6,../training_data/human_talent/Rich Brian/Amen/12 Little Prince (feat. NIKI).m4a,0,human:Rich Brian,-15.366462,24,0.0001470964,1.44040305e-05,0.0001742164,2.1204613e-07,5
+3ea407a83a30,../training_data/ai_generated/Midnight Confessiona.mp3,1,ai:unknown,4.6812563,60,0.72244805,0.80587554,0.64339775,0.9908178,5
+402423625a66,../training_data/ai_generated/A Mother's Love.mp3,1,ai:unknown,10.486654,60,0.87575287,0.9957511,0.9954395,0.9999721,5
+44e0c11f2970,../training_data/human_talent/CHVRCHES/Love Is Dead/05 Forever.m4a,0,human:CHVRCHES,-12.969402,24,0.007744258,0.026779657,0.020863784,2.3305538e-06,5
+530b00dc3598,../training_data/ai_generated/Miscarriage Blues.mp3,1,ai:unknown,4.977761,60,0.7022496,0.86386454,0.79698426,0.9931577,5
+568c2e97ad25,../training_data/human_talent/Rich Brian/Amen/03 Occupied.m4a,0,human:Rich Brian,-19.999254,24,2.1876053e-06,4.84925e-05,0.000384546,2.0626914e-09,5
+5a395d299577,../training_data/human_talent/Rich Brian/Amen/13 Chaos.m4a,0,human:Rich Brian,-15.222674,24,9.427945e-06,8.6551736e-05,0.0006897323,2.4483663e-07,5
+64011ef7908d,../training_data/human_talent/Youngblood Brass Band/Center_ Level_ Roar/04 Brooklyn.m4a,0,human:Youngblood Brass Band,-15.649883,24,0.013079935,0.022370255,0.03832316,1.5971362e-07,5
+652dc0fb23f8,../training_data/human_talent/CHVRCHES/Love Is Dead/06 Never Say Die.m4a,0,human:CHVRCHES,-14.929751,24,0.042180777,0.0007425226,0.048737552,3.281642e-07,5
+65d527526c3d,../training_data/ai_generated/Social media Lies.mp3,1,ai:unknown,1.9975953,60,0.5827483,0.6490277,0.5827835,0.88054436,5
+65f02b25e0d8,../training_data/human_talent/NVDES/Vol. 2 - EP/04 Amsterdam in My Mind.m4a,0,human:NVDES,-14.42244,24,0.0002639206,7.483444e-05,0.038738195,5.4502175e-07,5
+6651233eb631,../training_data/human_talent/Amy Shark/Love Monster/02 Adore.m4a,0,human:Amy Shark,-17.622807,24,0.00012474274,2.1591439e-05,7.86289e-06,2.220815e-08,5
+67a7cc721929,../training_data/human_talent/Rich Brian/Amen/04 Introvert (feat. Joji).m4a,0,human:Rich Brian,-20.592293,24,1.0601037e-05,8.6614655e-06,0.00061588193,1.139937e-09,5
+7841a2706d71,../training_data/human_talent/CHVRCHES/Love Is Dead/11 Really Gone.m4a,0,human:CHVRCHES,-11.040497,24,0.037329465,0.050250355,0.04180481,1.603859e-05,5
+784910787322,"../training_data/human_talent/NVDES/La NVDITÉ, Vol. 1 - EP/05 Turning Heads.m4a",0,human:NVDES,-11.964058,24,0.012835867,0.01042772,0.017916223,6.369024e-06,5
+7cdb9e37ab28,../training_data/human_talent/PrototyperRaptor/Unknown Album/PrototypeRaptor - Still Waiting.mp3,0,human:PrototyperRaptor,-16.382774,24,3.493077e-05,0.0018429674,0.00012756976,7.674524e-08,5
+7de061bbc321,../training_data/human_talent/Amy Shark/Love Monster/09 Don't Turn Around.m4a,0,human:Amy Shark,-12.295228,24,0.01979524,0.018457519,0.018909214,4.5734964e-06,5
+87026c6ec59c,../training_data/ai_generated/I asked for so little.mp3,1,ai:unknown,11.716943,60,0.99157697,0.996575,0.9961828,0.9999919,5
+8d2c207c01c5,../training_data/human_talent/NVDES/Vol. 2 - EP/03 Everyday.m4a,0,human:NVDES,-14.2493105,24,0.0109474,0.00011412642,5.2304673e-05,6.4804146e-07,5
+98e4d17af335,../training_data/human_talent/CHVRCHES/Love Is Dead/02 Get Out.m4a,0,human:CHVRCHES,-5.6146526,24,0.23998393,0.19605462,0.25005084,0.0036308444,5
+9a1a6e29b94e,../training_data/human_talent/Rich Brian/Amen/06 Glow Like Dat.m4a,0,human:Rich Brian,-18.563988,24,0.0011736848,0.00067640725,0.00033844638,8.66488e-09,5
+9a35c4930bf1,../training_data/human_talent/CHVRCHES/Love Is Dead/10 God's Plan.m4a,0,human:CHVRCHES,-15.708114,24,3.576772e-05,0.0007716497,0.001791311,1.5067904e-07,5
+9feb921189c2,../training_data/human_talent/The Buggles/The Age of Plastic/02 Video Killed the Radio Star.m4a,0,human:The Buggles,-15.243049,24,0.052329835,0.051458016,0.004065092,2.3989875e-07,5
+a015b4fd3eee,../training_data/human_talent/Rich Brian/Amen/08 Flight.m4a,0,human:Rich Brian,-20.021597,24,8.1511535e-05,8.6340704e-05,1.1580425e-08,2.0171165e-09,5
+a970333b4f8b,../training_data/human_talent/CHVRCHES/Love Is Dead/07 Miracle.m4a,0,human:CHVRCHES,-13.489854,24,0.0012526575,0.0019961442,0.00038809204,1.384938e-06,5
+ae36e5649186,../training_data/human_talent/Rich Brian/Amen/11 Kitty.m4a,0,human:Rich Brian,-20.246264,24,0.00012258872,7.045798e-07,1.1022197e-07,1.6112371e-09,5
+b5297879d357,../training_data/human_talent/Rich Brian/Amen/10 Enemies.m4a,0,human:Rich Brian,-21.173475,24,6.002072e-06,0.00011381967,1.3540047e-05,6.374946e-10,5
+b66b28a1a286,../training_data/human_talent/NVDES/Vol. 2 - EP/05 Walls.m4a,0,human:NVDES,-6.138266,24,0.2926257,0.25813168,0.2889193,0.0021540136,5
+b7d8c29f3cf3,../training_data/human_talent/NVDES/Vol. 2 - EP/06 Where Is Your Mind_.m4a,0,human:NVDES,-18.646244,24,3.7385045e-05,7.884373e-06,0.00060769916,7.980666e-09,5
+b8e734d4c416,../training_data/human_talent/CHVRCHES/Love Is Dead/01 Graffiti.m4a,0,human:CHVRCHES,-9.6511965,24,0.029185534,0.005015533,0.011630912,6.4344385e-05,5
+bfbe0cfbf6fa,../training_data/human_talent/CHVRCHES/Love Is Dead/04 My Enemy (feat. Matt Berninger).m4a,0,human:CHVRCHES,-16.233644,24,0.00012494028,0.00034384136,4.550787e-05,8.90877e-08,5
+c022c80b5906,../training_data/human_talent/CHVRCHES/Love Is Dead/03 Deliverance.m4a,0,human:CHVRCHES,-14.4493,24,0.000336978,0.00047851153,0.022632264,5.305772e-07,5
+d1a3860e41ae,../training_data/human_talent/CHVRCHES/Love Is Dead/13 Wonderland.m4a,0,human:CHVRCHES,-11.894517,24,0.049315006,0.017517291,0.04398517,6.8276927e-06,5
+d52f572c1328,../training_data/human_talent/Kiiara/Messy - Single/01 Messy.m4a,0,human:Kiiara,-17.81423,24,0.00013761657,0.0009325055,1.487576e-07,1.833911e-08,5
+d80a0149509a,../training_data/human_talent/Rich Brian/Amen/01 Amen.m4a,0,human:Rich Brian,-18.081055,24,5.6579916e-06,9.6492795e-06,0.0001036915,1.4044223e-08,5
+ddb95827dcd4,../training_data/human_talent/Rich Brian/Amen/07 Trespass.m4a,0,human:Rich Brian,-24.227339,24,0.0010052704,4.7317233e-08,2.7921516e-08,3.007464e-11,5
+e429c388ee9a,"../training_data/human_talent/NVDES/La NVDITÉ, Vol. 1 - EP/04 Sugar.m4a",0,human:NVDES,-18.323164,24,0.00079193286,3.9442082e-05,0.00025005906,1.10243e-08,5
+e6dd7da7756c,../training_data/ai_generated/This Aint No Tryout.mp3,1,ai:unknown,5.5068135,60,0.78051585,0.83413446,0.7307831,0.9959573,5
+f47c0f69e24a,../training_data/ai_generated/How Was I supposed to Know_.mp3,1,ai:unknown,5.752043,60,0.6866188,0.89480585,0.8102745,0.99683374,5
+fb91108ab11c,../training_data/human_talent/Rich Brian/Amen/05 Attention (feat. Offset).m4a,0,human:Rich Brian,-17.273973,24,8.370808e-06,0.03371291,0.028133051,3.147811e-08,5
+fbf79e88666b,"../training_data/human_talent/NVDES/La NVDITÉ, Vol. 1 - EP/02 Dancer from New York.m4a",0,human:NVDES,-17.933382,24,4.6392273e-05,9.52816e-05,0.00031917353,1.6279127e-08,5

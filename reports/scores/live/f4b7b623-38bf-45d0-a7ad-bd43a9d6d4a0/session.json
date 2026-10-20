@@ -1,0 +1,132 @@
+{
+ "path": "../reports/scores/live/f4b7b623-38bf-45d0-a7ad-bd43a9d6d4a0/session.wav",
+ "orig_sample_rate": 32000,
+ "p_ai": 1.0,
+ "band_scores": {
+  "bass": 0.9927,
+  "mid": 0.9988,
+  "treble": 0.9921
+ },
+ "windows": [
+  {
+   "start_s": 0.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9999,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 5.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 1.0,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 10.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9995,
+    "mid": 0.9999,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 15.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9996,
+    "mid": 0.9985,
+    "treble": 0.9962
+   }
+  },
+  {
+   "start_s": 20.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9995,
+    "mid": 1.0,
+    "treble": 0.9998
+   }
+  },
+  {
+   "start_s": 25.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 1.0,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 30.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9963,
+    "mid": 0.999,
+    "treble": 0.9998
+   }
+  },
+  {
+   "start_s": 35.0,
+   "p_ai": 0.9991,
+   "band_scores": {
+    "bass": 0.9932,
+    "mid": 0.9945,
+    "treble": 0.9978
+   }
+  },
+  {
+   "start_s": 40.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9998,
+    "mid": 1.0,
+    "treble": 0.9999
+   }
+  },
+  {
+   "start_s": 45.0,
+   "p_ai": 0.9999,
+   "band_scores": {
+    "bass": 0.9996,
+    "mid": 0.9992,
+    "treble": 0.996
+   }
+  },
+  {
+   "start_s": 50.0,
+   "p_ai": 0.9978,
+   "band_scores": {
+    "bass": 0.9188,
+    "mid": 0.9939,
+    "treble": 0.9078
+   }
+  },
+  {
+   "start_s": 55.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 1.0,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  },
+  {
+   "start_s": 60.0,
+   "p_ai": 1.0,
+   "band_scores": {
+    "bass": 0.9996,
+    "mid": 1.0,
+    "treble": 1.0
+   }
+  }
+ ],
+ "session_id": "f4b7b623-38bf-45d0-a7ad-bd43a9d6d4a0",
+ "api": "http://localhost:9000",
+ "feature_spec_hash": "9f612611d1fccf8a"
+}

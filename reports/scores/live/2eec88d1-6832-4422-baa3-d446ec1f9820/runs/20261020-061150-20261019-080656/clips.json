@@ -1,0 +1,24 @@
+[
+ {
+  "clip_index": 0,
+  "clip_id": "cca5823d-050e-48c5-8269-5395925826f7",
+  "duration_s": 30.0,
+  "p_ai": 0.0,
+  "band_scores": {
+   "bass": 0.0065,
+   "mid": 0.0016,
+   "treble": 0.0095
+  }
+ },
+ {
+  "clip_index": 1,
+  "clip_id": "2b995927-2d33-4eed-9f11-ecb271dc0cfe",
+  "duration_s": 9.18465625,
+  "p_ai": 0.0,
+  "band_scores": {
+   "bass": 0.0021,
+   "mid": 0.0003,
+   "treble": 0.0007
+  }
+ }
+]

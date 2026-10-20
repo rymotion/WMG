@@ -1,0 +1,35 @@
+[
+ {
+  "clip_index": 0,
+  "clip_id": "3aef211c-4c49-4ad2-aba4-ea3640e1d75a",
+  "duration_s": 30.0,
+  "p_ai": 1.0,
+  "band_scores": {
+   "bass": 0.9942,
+   "mid": 0.9987,
+   "treble": 0.9963
+  }
+ },
+ {
+  "clip_index": 1,
+  "clip_id": "fa0803e4-d6f7-4bc8-b574-9c333440ca9d",
+  "duration_s": 30.0,
+  "p_ai": 1.0,
+  "band_scores": {
+   "bass": 0.9963,
+   "mid": 0.9982,
+   "treble": 0.9923
+  }
+ },
+ {
+  "clip_index": 2,
+  "clip_id": "e030cf9e-5e5a-4fd7-bfe7-cc400a5ef6a0",
+  "duration_s": 10.0,
+  "p_ai": 1.0,
+  "band_scores": {
+   "bass": 0.9999,
+   "mid": 1.0,
+   "treble": 1.0
+  }
+ }
+]

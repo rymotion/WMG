@@ -26,7 +26,7 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
   RecognizerBloc({
     required AudioRecorderService recorder,
     required IdentificationRepository repository,
-    this.sampleRate = 16000,
+    this.sampleRate = 32000,
     this.maxDuration = const Duration(minutes: 60),
     this.finishTimeout = const Duration(seconds: 20),
   }) : _recorder = recorder,

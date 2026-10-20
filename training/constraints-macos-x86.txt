@@ -1,0 +1,12 @@
+# Constraints for an x86_64 (Rosetta) Python on macOS, where PyPI's newest torch is 2.2.2,
+# which needs NumPy 1.x. Usage: pip install -c constraints-macos-x86.txt -e '.[export]'
+torch==2.2.2
+torchaudio==2.2.2
+numpy<2
+scipy<1.14
+scikit-learn<1.6
+pandas<2.3
+pyarrow<17
+onnx<1.17
+ml-dtypes<0.5
+onnxruntime<1.20

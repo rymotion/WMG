@@ -1,0 +1,46 @@
+# Dataset + feature parameters. `audio` and `windows` must match the wmg_features crate SPEC
+# (features/src/lib.rs); wmg_train.features.check_spec() enforces this when the crate is installed.
+
+audio:
+  sample_rate: 32000
+  n_mels: 128
+  window_ms: 25        # 800 samples
+  hop_ms: 10           # 320 samples -> 1000 frames per 10 s window
+  n_fft: 1024
+  fmin: 20.0
+  fmax: 16000.0
+  mel_scale: slaney
+  db: absolute         # 0 dB = full-scale 1 kHz sine, floor -100 dB
+
+windows:
+  seconds: 10.0
+  hop_seconds: 5.0
+  min_partial_seconds: 3.0   # shorter clips are dropped; 3-10 s clips become one zero-padded window
+  rms_gate_dbfs: -45.0       # windows quieter than this are dropped
+
+# Class folders under the data root.
+classes:
+  ai_generated:   {label: 1, hybrid: false}
+  human_talent:   {label: 0, hybrid: false}
+  dj_mixes:       {label: 0, hybrid: false}
+  computer_aided: {label: 0, hybrid: false}  # human music made with computers/DAWs: counts as human
+  ai_hybrid:      {label: 1, hybrid: true}   # AI stems + human parts: eval-only, always in the test split
+
+# .m4a/.aac decode through ffmpeg (must be on PATH); the rest through libsndfile.
+audio_extensions: [".wav", ".flac", ".mp3", ".ogg", ".aiff", ".aif", ".m4a", ".aac"]
+
+splits:
+  fractions: {train: 0.70, val: 0.15, test: 0.15}
+  seed: 1337
+  min_test_generators: 1   # generators present only in test
+  min_test_artists: 3      # "M": artists present only in test
+
+balance:
+  tolerance: 0.10          # per-bucket positive fraction within +/-10 points of the global fraction
+  max_majority: 0.80       # no bucket may be >80% one class
+  min_bucket_rows: 0       # buckets smaller than this are reported but not enforced
+  buckets: [subgenre, decade, codec_bitrate]
+
+confound:
+  features: [source_bitrate_kbps, sample_rate_orig, lufs]
+  max_auc: 0.55

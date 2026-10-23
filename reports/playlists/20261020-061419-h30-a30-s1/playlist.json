@@ -1,0 +1,612 @@
+{
+ "playlist_id": "20261020-061419-h30-a30-s1",
+ "sample_rate": 44100,
+ "gap_s": 2.0,
+ "env_rate": 100,
+ "duration_s": 3722.0,
+ "n_human": 30,
+ "n_ai": 30,
+ "seed": 1,
+ "entries": [
+  {
+   "index": 0,
+   "song_id": "ba6023a87dfd",
+   "label": 0,
+   "group": "human:Jaden Smith",
+   "path": "training_data/human_talent/Jaden Smith/SYRE/12 Watch Me 1.m4a",
+   "source_start_s": 45.063,
+   "playlist_start_s": 2.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 1,
+   "song_id": "761485f29fc7",
+   "label": 0,
+   "group": "human:Oliver Tree",
+   "path": "training_data/human_talent/Oliver Tree/Alien Boy - EP/03 Enemy.m4a",
+   "source_start_s": 14.327,
+   "playlist_start_s": 64.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 2,
+   "song_id": "c6756ef4819f",
+   "label": 1,
+   "group": "ai:Enlly Blue",
+   "path": "training_data/ai_generated/City's Too Big - Enlly Blue.m4a",
+   "source_start_s": 142.803,
+   "playlist_start_s": 126.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 3,
+   "song_id": "9feb921189c2",
+   "label": 0,
+   "group": "human:The Buggles",
+   "path": "training_data/human_talent/The Buggles/The Age of Plastic/02 Video Killed the Radio Star.m4a",
+   "source_start_s": 113.548,
+   "playlist_start_s": 188.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 4,
+   "song_id": "faa3dd53afbb",
+   "label": 1,
+   "group": "ai:Kayla Kross",
+   "path": "training_data/ai_generated/Maybe It's You - Kayla Kross.m4a",
+   "source_start_s": 21.926,
+   "playlist_start_s": 250.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 5,
+   "song_id": "3ea407a83a30",
+   "label": 1,
+   "group": "ai:unknown",
+   "path": "training_data/ai_generated/Midnight Confessiona.mp3",
+   "source_start_s": 100.859,
+   "playlist_start_s": 312.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 6,
+   "song_id": "a65ca0287402",
+   "label": 1,
+   "group": "ai:The Universe Sings",
+   "path": "training_data/ai_generated/AI D-42-01-01 The Universe Sings.m4a",
+   "source_start_s": 137.206,
+   "playlist_start_s": 374.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 7,
+   "song_id": "632b92efb170",
+   "label": 0,
+   "group": "human:[Halloween Remix] This is Halloween 6",
+   "path": "training_data/dj_mixes/[Halloween Remix] This is Halloween 6.mp3",
+   "source_start_s": 133.961,
+   "playlist_start_s": 436.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 8,
+   "song_id": "8c4bdd1da891",
+   "label": 1,
+   "group": "ai:Enlly Blue",
+   "path": "training_data/ai_generated/Her Name in the Breeze - Enlly Blue.m4a",
+   "source_start_s": 123.325,
+   "playlist_start_s": 498.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 9,
+   "song_id": "992e938c7d91",
+   "label": 1,
+   "group": "ai:Enlly Blue",
+   "path": "training_data/ai_generated/Slow Sip of Solitude - Enlly Blue.m4a",
+   "source_start_s": 121.323,
+   "playlist_start_s": 560.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 10,
+   "song_id": "c69ef89efe01",
+   "label": 0,
+   "group": "human:Nas",
+   "path": "training_data/human_talent/Nas/Illmatic/02 N.Y. State of Mind.m4a",
+   "source_start_s": 58.106,
+   "playlist_start_s": 622.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 11,
+   "song_id": "80cc94dc1aff",
+   "label": 1,
+   "group": "ai:Enlly Blue",
+   "path": "training_data/ai_generated/Breaking the Blue - Enlly Blue.m4a",
+   "source_start_s": 40.861,
+   "playlist_start_s": 684.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 12,
+   "song_id": "bf18da94b603",
+   "label": 0,
+   "group": "human:Marcus Marr",
+   "path": "training_data/human_talent/Chet Faker/1998 (feat. Banks) - Single/01 1998 (feat. Banks).m4a",
+   "source_start_s": 30.219,
+   "playlist_start_s": 746.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 13,
+   "song_id": "d61cbde73c04",
+   "label": 1,
+   "group": "ai:The Velvet Sundown",
+   "path": "training_data/ai_generated/Smoke and Silence - The Velvet Sundown.m4a",
+   "source_start_s": 90.718,
+   "playlist_start_s": 808.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 14,
+   "song_id": "64011ef7908d",
+   "label": 0,
+   "group": "human:Youngblood Brass Band",
+   "path": "training_data/human_talent/Youngblood Brass Band/Center_ Level_ Roar/04 Brooklyn.m4a",
+   "source_start_s": 215.237,
+   "playlist_start_s": 870.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 15,
+   "song_id": "f24c35ed12f2",
+   "label": 0,
+   "group": "human:Beezy",
+   "path": "training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/09 Sould.m4a",
+   "source_start_s": 161.794,
+   "playlist_start_s": 932.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 16,
+   "song_id": "97dd1f2e55a1",
+   "label": 1,
+   "group": "ai:BLOW RECORDS",
+   "path": "training_data/ai_generated/Sabor Energ\u00e9tico (1983) - Ao Vivo - BLOW RECORDS.m4a",
+   "source_start_s": 35.532,
+   "playlist_start_s": 994.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 17,
+   "song_id": "48eff2d57a0b",
+   "label": 0,
+   "group": "human:Terror Jr",
+   "path": "training_data/human_talent/Terror Jr/Bop City/07 3 Strikes.m4a",
+   "source_start_s": 78.465,
+   "playlist_start_s": 1056.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 18,
+   "song_id": "c88cb8966cee",
+   "label": 1,
+   "group": "ai:The Universe Sings",
+   "path": "training_data/ai_generated/AI D-42-02-02 The Universe Sings.m4a",
+   "source_start_s": 32.615,
+   "playlist_start_s": 1118.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 19,
+   "song_id": "c122624aa8ea",
+   "label": 0,
+   "group": "human:Banks",
+   "path": "training_data/human_talent/Banks/Better - Single/01 Better.m4a",
+   "source_start_s": 33.443,
+   "playlist_start_s": 1180.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 20,
+   "song_id": "50acdf2b3f92",
+   "label": 0,
+   "group": "human:PinkPantheress",
+   "path": "training_data/dj_mixes/PinkPantheress - Stateside (Cosmo's Midnight Mix).wav",
+   "source_start_s": 45.688,
+   "playlist_start_s": 1242.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 21,
+   "song_id": "d6b641b9b9f1",
+   "label": 1,
+   "group": "ai:BLOW RECORDS",
+   "path": "training_data/ai_generated/Popot\u00e3o Grand\u00e3o (1982) - Ao Vivo - BLOW RECORDS, Mc Neguinho do ITR.m4a",
+   "source_start_s": 35.901,
+   "playlist_start_s": 1304.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 22,
+   "song_id": "aa6967373cc2",
+   "label": 1,
+   "group": "ai:Kayla Kross",
+   "path": "training_data/ai_generated/Broke the Rules - Kayla Kross.m4a",
+   "source_start_s": 80.656,
+   "playlist_start_s": 1366.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 23,
+   "song_id": "04e196cc65ef",
+   "label": 0,
+   "group": "human:NVDES",
+   "path": "training_data/human_talent/NVDES/Vol. 2 - EP/02 D.Y.T. (Do Your Thing) [feat. REMMI].m4a",
+   "source_start_s": 57.627,
+   "playlist_start_s": 1428.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 24,
+   "song_id": "220992e683e7",
+   "label": 0,
+   "group": "human:The Wombats",
+   "path": "training_data/human_talent/The Wombats/Beautiful People Will Ruin Your Life/03 Turn.m4a",
+   "source_start_s": 65.822,
+   "playlist_start_s": 1490.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 25,
+   "song_id": "a2ac66c9f023",
+   "label": 1,
+   "group": "ai:BLOW RECORDS",
+   "path": "training_data/ai_generated/Predador de Perereca (1982) - Ao Vivo - BLOW RECORDS, Mc Jhey.m4a",
+   "source_start_s": 37.268,
+   "playlist_start_s": 1552.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 26,
+   "song_id": "530b00dc3598",
+   "label": 1,
+   "group": "ai:unknown",
+   "path": "training_data/ai_generated/Miscarriage Blues.mp3",
+   "source_start_s": 134.242,
+   "playlist_start_s": 1614.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 27,
+   "song_id": "30d85a851641",
+   "label": 1,
+   "group": "ai:The Universe Sings",
+   "path": "training_data/ai_generated/AI D-42-00-00 The Universe Sings - ORIGIN.m4a",
+   "source_start_s": 13.706,
+   "playlist_start_s": 1676.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 28,
+   "song_id": "92f04ddcdcf8",
+   "label": 0,
+   "group": "human:Kanye West",
+   "path": "training_data/human_talent/Kanye West/Ye vs. the People (starring T.I. as the People) - Single/01 Ye vs. the People (starring T.I. as the People).m4a",
+   "source_start_s": 105.781,
+   "playlist_start_s": 1738.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 29,
+   "song_id": "a872f5b6cd9b",
+   "label": 0,
+   "group": "human:ZHU",
+   "path": "training_data/human_talent/ZHU/Generationwhy/14 Working For It (Bonus Track).m4a",
+   "source_start_s": 30.191,
+   "playlist_start_s": 1800.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 30,
+   "song_id": "0d8b6c631c77",
+   "label": 1,
+   "group": "ai:BLOW RECORDS",
+   "path": "training_data/ai_generated/Chupa Xoxota (1980) - Ao Vivo - BLOW RECORDS, Mc 2k.m4a",
+   "source_start_s": 38.117,
+   "playlist_start_s": 1862.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 31,
+   "song_id": "6c2c6885833e",
+   "label": 0,
+   "group": "human:Royaljag",
+   "path": "training_data/human_talent/Royaljag/Chameleon - EP/03 Afterglow.m4a",
+   "source_start_s": 101.622,
+   "playlist_start_s": 1924.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 32,
+   "song_id": "d70fef75d34f",
+   "label": 1,
+   "group": "ai:The Universe Sings",
+   "path": "training_data/ai_generated/AI D-42-03-03 The Universe Sings.m4a",
+   "source_start_s": 103.598,
+   "playlist_start_s": 1986.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 33,
+   "song_id": "8923b04f139f",
+   "label": 0,
+   "group": "human:Marian Hill",
+   "path": "training_data/human_talent/Marian Hill/Unusual/02 Differently.m4a",
+   "source_start_s": 51.018,
+   "playlist_start_s": 2048.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 34,
+   "song_id": "65d527526c3d",
+   "label": 1,
+   "group": "ai:unknown",
+   "path": "training_data/ai_generated/Social media Lies.mp3",
+   "source_start_s": 88.87,
+   "playlist_start_s": 2110.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 35,
+   "song_id": "189d2d3f68d5",
+   "label": 0,
+   "group": "human:Viticz",
+   "path": "training_data/human_talent/Viticz/Helix/VITICZ - Helix.mp3",
+   "source_start_s": 139.382,
+   "playlist_start_s": 2172.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 36,
+   "song_id": "73974b56a2c9",
+   "label": 0,
+   "group": "human:The Greeting Committee",
+   "path": "training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/03 Out of My Head.m4a",
+   "source_start_s": 107.6,
+   "playlist_start_s": 2234.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 37,
+   "song_id": "44ed50b4f6cc",
+   "label": 1,
+   "group": "ai:Enlly Blue",
+   "path": "training_data/ai_generated/Weightless Moment - Enlly Blue.m4a",
+   "source_start_s": 128.569,
+   "playlist_start_s": 2296.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 38,
+   "song_id": "67807841bc63",
+   "label": 0,
+   "group": "human:The Avalanches",
+   "path": "training_data/human_talent/The Avalanches/Wildflower/22 Frankie Sinatra (Extended Mix).m4a",
+   "source_start_s": 36.894,
+   "playlist_start_s": 2358.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 39,
+   "song_id": "224b2ad85ca7",
+   "label": 1,
+   "group": "ai:unknown",
+   "path": "training_data/ai_generated/The First time I Laid Eyes On You.mp3",
+   "source_start_s": 31.091,
+   "playlist_start_s": 2420.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 40,
+   "song_id": "99109ba6375e",
+   "label": 0,
+   "group": "human:Weezer",
+   "path": "training_data/human_talent/Weezer/Weezer (White Album)/10 Endless Bummer.m4a",
+   "source_start_s": 55.864,
+   "playlist_start_s": 2482.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 41,
+   "song_id": "1d8c17cea1c0",
+   "label": 0,
+   "group": "human:Rodriguez",
+   "path": "training_data/human_talent/Rodriguez/Cold Fact/01 Sugar Man.m4a",
+   "source_start_s": 39.967,
+   "playlist_start_s": 2544.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 42,
+   "song_id": "d8117e29d350",
+   "label": 1,
+   "group": "ai:The Velvet Sundown",
+   "path": "training_data/ai_generated/Interlude - The Velvet Sundown.m4a",
+   "source_start_s": 56.581,
+   "playlist_start_s": 2606.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 43,
+   "song_id": "139398566c3d",
+   "label": 1,
+   "group": "ai:The Velvet Sundown",
+   "path": "training_data/ai_generated/Outro - The Velvet Sundown.m4a",
+   "source_start_s": 17.063,
+   "playlist_start_s": 2668.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 44,
+   "song_id": "c80e76fcb514",
+   "label": 1,
+   "group": "ai:Kayla Kross",
+   "path": "training_data/ai_generated/Might Be Falling - Kayla Kross.m4a",
+   "source_start_s": 48.686,
+   "playlist_start_s": 2730.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 45,
+   "song_id": "62583920262b",
+   "label": 1,
+   "group": "ai:BLOW RECORDS",
+   "path": "training_data/ai_generated/Dedo de Gorila (1971) - Ao Vivo - BLOW RECORDS.m4a",
+   "source_start_s": 29.242,
+   "playlist_start_s": 2792.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 46,
+   "song_id": "aa58e80b05a4",
+   "label": 0,
+   "group": "human:Lemaitre",
+   "path": "training_data/human_talent/Lemaitre/Chapter One/14 Playing To Lose (feat. Stanaj) [Coucheron Remix].m4a",
+   "source_start_s": 72.575,
+   "playlist_start_s": 2854.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 47,
+   "song_id": "b73eb2dac486",
+   "label": 0,
+   "group": "human:Childish Gambino",
+   "path": "training_data/human_talent/Childish Gambino/_Awaken, My Love!_/02 Have Some Love.m4a",
+   "source_start_s": 27.982,
+   "playlist_start_s": 2916.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 48,
+   "song_id": "f82011167671",
+   "label": 0,
+   "group": "human:88rising",
+   "path": "training_data/human_talent/88rising/Head in the Clouds/07 History.m4a",
+   "source_start_s": 27.972,
+   "playlist_start_s": 2978.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 49,
+   "song_id": "ea4fb7643de9",
+   "label": 0,
+   "group": "human:Compilations",
+   "path": "training_data/human_talent/Compilations/Walt Disney Records the Legacy Collection_ Disneyland/2-15 Space Mountain.m4a",
+   "source_start_s": 26.499,
+   "playlist_start_s": 3040.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 50,
+   "song_id": "568c2e97ad25",
+   "label": 0,
+   "group": "human:Rich Brian",
+   "path": "training_data/human_talent/Rich Brian/Amen/03 Occupied.m4a",
+   "source_start_s": 35.054,
+   "playlist_start_s": 3102.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 51,
+   "song_id": "e5e01ee2b0f9",
+   "label": 1,
+   "group": "ai:Kayla Kross",
+   "path": "training_data/ai_generated/The Cutest Thing - Kayla Kross.m4a",
+   "source_start_s": 95.755,
+   "playlist_start_s": 3164.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 52,
+   "song_id": "b3866c97dc44",
+   "label": 0,
+   "group": "human:Sofi Tukker",
+   "path": "training_data/human_talent/Sofi Tukker/Treehouse/02 Energia.m4a",
+   "source_start_s": 91.394,
+   "playlist_start_s": 3226.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 53,
+   "song_id": "258fd73f31e0",
+   "label": 1,
+   "group": "ai:The Velvet Sundown",
+   "path": "training_data/ai_generated/Marching Shadows - The Velvet Sundown.m4a",
+   "source_start_s": 51.445,
+   "playlist_start_s": 3288.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 54,
+   "song_id": "36d7124a8cc6",
+   "label": 0,
+   "group": "human:Pale Waves",
+   "path": "training_data/human_talent/Pale Waves/Television Romance - Single/01 Television Romance.m4a",
+   "source_start_s": 50.061,
+   "playlist_start_s": 3350.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 55,
+   "song_id": "87026c6ec59c",
+   "label": 1,
+   "group": "ai:unknown",
+   "path": "training_data/ai_generated/I asked for so little.mp3",
+   "source_start_s": 120.526,
+   "playlist_start_s": 3412.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 56,
+   "song_id": "39546a2f0cb9",
+   "label": 1,
+   "group": "ai:Kayla Kross",
+   "path": "training_data/ai_generated/So Wrong, So Right - Kayla Kross.m4a",
+   "source_start_s": 127.368,
+   "playlist_start_s": 3474.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 57,
+   "song_id": "9af69d2a9f27",
+   "label": 0,
+   "group": "human:Unknown Artist",
+   "path": "training_data/human_talent/Unknown Artist/Unknown Album/1 Clueless Kit - rooftop.mp3",
+   "source_start_s": 17.977,
+   "playlist_start_s": 3536.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 58,
+   "song_id": "e6dd7da7756c",
+   "label": 1,
+   "group": "ai:unknown",
+   "path": "training_data/ai_generated/This Aint No Tryout.mp3",
+   "source_start_s": 91.582,
+   "playlist_start_s": 3598.0,
+   "duration_s": 60.0
+  },
+  {
+   "index": 59,
+   "song_id": "7cd75e58311f",
+   "label": 1,
+   "group": "ai:The Velvet Sundown",
+   "path": "training_data/ai_generated/End the Pain - The Velvet Sundown.m4a",
+   "source_start_s": 76.475,
+   "playlist_start_s": 3660.0,
+   "duration_s": 60.0
+  }
+ ]
+}

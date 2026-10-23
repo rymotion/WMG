@@ -4,12 +4,14 @@ import 'dart:typed_data';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wmg_detector/wmg_detector.dart';
 
 import '../../../data/api/live_audio_client.dart';
 import '../../../data/models/live_message.dart';
 import '../../../data/recorder/audio_recorder_service.dart';
 import '../../../data/repository/identification_repository.dart';
 import '../models/clip_result.dart';
+import '../models/on_device_detection.dart';
 import '../models/spectrogram.dart';
 
 part 'recognizer_event.dart';
@@ -29,7 +31,9 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     this.sampleRate = 32000,
     this.maxDuration = const Duration(minutes: 60),
     this.finishTimeout = const Duration(seconds: 20),
+    WmgDetector? detector,
   }) : _recorder = recorder,
+       _detector = detector,
        _repository = repository,
        super(const RecognizerState()) {
     // Taps that arrive while a connect/stop is still in flight are dropped.
@@ -41,11 +45,23 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     on<_ServerMessageReceived>(_onServerMessage, transformer: sequential());
     on<_SessionClosed>(_onSessionClosed, transformer: sequential());
     on<_FinishTimedOut>(_onFinishTimedOut);
+    on<_OnDeviceScored>(_onOnDeviceScored, transformer: sequential());
+    on<_OnDeviceFailed>(_onOnDeviceFailed);
+    on<_OnDeviceInfo>(_onOnDeviceInfo);
   }
 
   final AudioRecorderService _recorder;
   final IdentificationRepository _repository;
+
+  /// Scores audio locally; null where no on-device model exists (Android, tests).
+  final WmgDetector? _detector;
   final int sampleRate;
+
+  /// Audio scored per on-device call: one 10 s detector window.
+  static const _detectSeconds = 10;
+
+  /// A trailing chunk shorter than this isn't scored (matches the 3 s partial-window rule).
+  static const _minDetectSeconds = 3;
 
   /// The server caps sessions at `LIVE_MAX_MINUTES` (60 by default).
   final Duration maxDuration;
@@ -60,6 +76,11 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
   Completer<void>? _pcmDrained;
   Timer? _ticker;
   Timer? _finishTimer;
+
+  final _detectBuffer = BytesBuilder(copy: false);
+  int _detectedBytes = 0;
+  int _detectGeneration = 0;
+  Future<void> _detectChain = Future<void>.value();
 
   Future<void> _onMicPressed(RecognizerMicPressed event, Emitter<RecognizerState> emit) async {
     if (state.isStreaming) {
@@ -107,13 +128,31 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
       return;
     }
 
-    emit(state.copyWith(status: RecognizerStatus.streaming));
+    emit(
+      state.copyWith(
+        status: RecognizerStatus.streaming,
+        onDevice: OnDeviceDetection(status: _detector == null ? OnDeviceStatus.unavailable : OnDeviceStatus.listening),
+      ),
+    );
+    _detectBuffer.clear();
+    _detectedBytes = 0;
+    _detectGeneration++;
+    final detector = _detector;
+    if (detector != null) {
+      unawaited(
+        detector.info().then(
+          (info) => _addIfOpen(_OnDeviceInfo(info)),
+          onError: (Object e) => _addIfOpen(_OnDeviceFailed('$e')),
+        ),
+      );
+    }
 
     final drained = _pcmDrained = Completer<void>();
     var lastProgress = DateTime.fromMillisecondsSinceEpoch(0);
     _pcmSub = pcm.listen(
       (chunk) {
         session.addPcm(chunk);
+        _bufferForDetection(chunk);
         final now = DateTime.now();
         if (now.difference(lastProgress) >= _progressInterval) {
           lastProgress = now;
@@ -238,6 +277,87 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     await _pcmDrained?.future.timeout(const Duration(seconds: 1), onTimeout: () {});
     await _pcmSub?.cancel();
     _pcmSub = null;
+    _flushDetection();
+  }
+
+  // On-device detection: the same PCM that goes to the server is cut into 10 s chunks and
+  // scored locally, one call at a time, without blocking the stream.
+
+  void _bufferForDetection(Uint8List chunk) {
+    if (_detector == null) return;
+    _detectBuffer.add(chunk);
+    final chunkBytes = sampleRate * 2 * _detectSeconds;
+    while (_detectBuffer.length >= chunkBytes) {
+      final all = _detectBuffer.takeBytes();
+      _scoreChunk(Uint8List.sublistView(all, 0, chunkBytes));
+      if (all.length > chunkBytes) _detectBuffer.add(Uint8List.sublistView(all, chunkBytes));
+    }
+  }
+
+  void _flushDetection() {
+    if (_detector == null || _detectBuffer.length < sampleRate * 2 * _minDetectSeconds) {
+      _detectBuffer.clear();
+      return;
+    }
+    _scoreChunk(_detectBuffer.takeBytes());
+  }
+
+  void _scoreChunk(Uint8List pcm) {
+    final detector = _detector!;
+    final offsetS = _detectedBytes / (sampleRate * 2);
+    final generation = _detectGeneration;
+    _detectedBytes += pcm.length;
+    _detectChain = _detectChain.then(
+      (_) => detector.scorePcm16(pcm, sampleRate).then(
+        (r) => _addIfOpen(_OnDeviceScored(r, offsetS, generation)),
+        onError: (Object e) => _addIfOpen(_OnDeviceFailed('$e')),
+      ),
+    );
+  }
+
+  void _addIfOpen(RecognizerEvent event) {
+    if (!isClosed) add(event);
+  }
+
+  void _onOnDeviceInfo(_OnDeviceInfo event, Emitter<RecognizerState> emit) {
+    final info = event.info;
+    emit(
+      state.copyWith(
+        onDevice: info.compatible
+            ? state.onDevice.copyWith(modelRun: info.modelRun)
+            : state.onDevice.copyWith(
+                status: OnDeviceStatus.failed,
+                modelRun: info.modelRun,
+                error: () => 'Model ${info.modelRun} expects features ${info.modelSpecHash}, app has ${info.featureSpecHash}',
+              ),
+      ),
+    );
+  }
+
+  void _onOnDeviceScored(_OnDeviceScored event, Emitter<RecognizerState> emit) {
+    if (event.generation != _detectGeneration ||
+        state.status == RecognizerStatus.idle ||
+        state.onDevice.status == OnDeviceStatus.failed) {
+      return;
+    }
+    final shifted = [
+      for (final w in event.result.windows)
+        WindowScore(startS: w.startS + event.offsetS, logit: w.logit, bands: w.bands),
+    ];
+    emit(
+      state.copyWith(
+        onDevice: state.onDevice.copyWith(
+          status: state.onDevice.windows.isEmpty && shifted.isEmpty ? OnDeviceStatus.listening : OnDeviceStatus.ready,
+          windows: [...state.onDevice.windows, ...shifted],
+          inputRmsDbfs: event.result.inputRmsDbfs,
+        ),
+      ),
+    );
+  }
+
+  void _onOnDeviceFailed(_OnDeviceFailed event, Emitter<RecognizerState> emit) {
+    if (state.status == RecognizerStatus.idle) return;
+    emit(state.copyWith(onDevice: state.onDevice.copyWith(status: OnDeviceStatus.failed, error: () => event.reason)));
   }
 
   /// Stops the mic and forgets the session; optionally closes the socket.

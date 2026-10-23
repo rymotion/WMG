@@ -22,6 +22,7 @@ final class RecognizerState extends Equatable {
     this.session,
     this.clips = const [],
     this.spectrogram = const Spectrogram(),
+    this.onDevice = const OnDeviceDetection(),
     this.error,
   });
 
@@ -44,6 +45,9 @@ final class RecognizerState extends Equatable {
 
   /// Live mel spectrogram from `spectrum` messages.
   final Spectrogram spectrogram;
+
+  /// Local AI estimate (Rust features + Core ML), independent of the server.
+  final OnDeviceDetection onDevice;
   final String? error;
 
   bool get isStreaming => status == RecognizerStatus.streaming;
@@ -66,6 +70,7 @@ final class RecognizerState extends Equatable {
     LiveSessionStarted? session,
     List<ClipResult>? clips,
     Spectrogram? spectrogram,
+    OnDeviceDetection? onDevice,
     String? Function()? error,
   }) => RecognizerState(
     status: status ?? this.status,
@@ -75,9 +80,10 @@ final class RecognizerState extends Equatable {
     session: session ?? this.session,
     clips: clips ?? this.clips,
     spectrogram: spectrogram ?? this.spectrogram,
+    onDevice: onDevice ?? this.onDevice,
     error: error != null ? error() : this.error,
   );
 
   @override
-  List<Object?> get props => [status, elapsed, level, bytesStreamed, session, clips, spectrogram, error];
+  List<Object?> get props => [status, elapsed, level, bytesStreamed, session, clips, spectrogram, onDevice, error];
 }

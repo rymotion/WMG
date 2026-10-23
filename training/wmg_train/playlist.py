@@ -131,7 +131,10 @@ def cmd_make(args) -> None:
         for i, s in enumerate(picked):
             x, sr = decode(s.path, Path(d))
             if sr != PLAYLIST_SR:
-                raise SystemExit(f"{s.path}: {sr} Hz; playlist assumes {PLAYLIST_SR} Hz sources")
+                import wmg_features
+                x = np.stack([wmg_features.resample(np.ascontiguousarray(x[:, c], dtype=np.float64), sr, PLAYLIST_SR)
+                              for c in range(x.shape[1])], axis=1).astype(np.float32)
+                sr = PLAYLIST_SR
             if x.shape[1] == 1:
                 x = np.repeat(x, 2, axis=1)
             dur = len(x) / sr
@@ -293,6 +296,47 @@ def cmd_match(args) -> None:
           f"{sum(r['duration_s'] for r in rows) / 60:.1f} min -> {sdir}")
 
 
+def cmd_label_session(args) -> None:
+    """Label every clip of a live session with one label, e.g. a streaming playlist that is all
+    human-made. Nothing to align against, so each 30 s clip becomes a segment as recorded.
+    The session is one CV group (artists are unknown), so it is held out as a whole."""
+    session, clips = _session_clips(args.api.rstrip("/"), args.session)
+    sdir = CAPTURES / session
+    if (sdir / "segments.csv").exists() and not args.force:
+        raise SystemExit(f"{sdir}/segments.csv exists; pass --force to redo this session")
+    (sdir / "segments").mkdir(parents=True, exist_ok=True)
+    label = 1 if args.label == "ai" else 0
+    # A name with a prefix ("ai:The Velvet Sundown", "human:CHVRCHES") joins that existing training
+    # group, so CV holds the phone clips out together with the artist's clean files.
+    group = args.group if args.group and ":" in args.group else f"phone:{args.group or session[:8]}"
+    rows = []
+    for idx, clip_id, f in clips:
+        info = sf.info(str(f))
+        if info.duration < MIN_SEGMENT_S:
+            print(f"  clip {idx:3d}: {info.duration:.1f} s, shorter than one window; skipped")
+            continue
+        name = f"clip{idx:03d}_{args.label}.wav"
+        dest = sdir / "segments" / name
+        if not dest.exists():
+            dest.write_bytes(Path(f).read_bytes())
+        rows.append({
+            "session_id": session, "playlist_id": "", "clip_index": idx, "clip_id": clip_id or "",
+            "segment": f"segments/{name}", "label": label,
+            # Songs are unknown; each clip stands in for a "song" when scores are aggregated.
+            "song_id": f"{session[:8]}-{idx:03d}", "group": group, "source_path": args.source,
+            "source_start_s": "", "duration_s": round(info.duration, 2), "align_corr": "",
+            "sample_rate": info.samplerate,
+        })
+    if not rows:
+        raise SystemExit("no clip long enough to use")
+    with (sdir / "segments.csv").open("w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+        w.writeheader()
+        w.writerows(rows)
+    print(f"{session}: {len(rows)} clips labelled {args.label} "
+          f"({sum(r['duration_s'] for r in rows) / 60:.1f} min), group {group} -> {sdir}")
+
+
 def cmd_score(args) -> None:
     """Score a capture's labelled segments with a model; writes scores_<model_run>.csv."""
     import pandas as pd
@@ -347,13 +391,24 @@ def main() -> None:
     mt.add_argument("--api", default="http://localhost:9000")
     mt.add_argument("--wav", type=Path, help="use a local recording instead of a backend session")
     mt.add_argument("--force", action="store_true")
+    ls = sub.add_parser("label-session", help="label every clip of a live session (e.g. an all-human streaming playlist)")
+    ls.add_argument("--session", help="live session id (default: most recent)")
+    ls.add_argument("--label", required=True, choices=["human", "ai"])
+    ls.add_argument("--source", default="", help="what was played, e.g. 'Spotify: Indie Mix'")
+    ls.add_argument("--group", help="CV group name (default: the session id); reuse a name to keep "
+                                    "sessions of the same playlist/artists in one group. Use an existing "
+                                    "group such as 'ai:The Velvet Sundown' if every song is by an artist "
+                                    "already in training_data")
+    ls.add_argument("--api", default="http://localhost:9000")
+    ls.add_argument("--force", action="store_true")
     sc = sub.add_parser("score", help="score a capture's labelled segments with a model")
     sc.add_argument("session", help="session id (folder under reports/phone_captures)")
     sc.add_argument("model", type=Path)
     sc.add_argument("--force", action="store_true")
     sc.add_argument("--no-normalize", action="store_true", help="score at the recording's own level")
     args = ap.parse_args()
-    {"make": cmd_make, "match": cmd_match, "score": cmd_score}[args.cmd](args)
+    {"make": cmd_make, "match": cmd_match, "label-session": cmd_label_session,
+     "score": cmd_score}[args.cmd](args)
 
 
 if __name__ == "__main__":

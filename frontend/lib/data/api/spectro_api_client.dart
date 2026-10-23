@@ -33,6 +33,17 @@ class SpectroApiClient {
     return AudioUpload.fromJson(_decode(response, expect: 201) as Map<String, dynamic>);
   }
 
+  /// `POST /models/personalized` with a `.wmgmodel` JSON body (on-device fine-tuned layer +
+  /// its labelled embeddings). Returns the server's summary, including the stored `id`.
+  Future<Map<String, dynamic>> uploadPersonalModel(String bundleJson) async {
+    final response = await _http.post(
+      _uri('/models/personalized'),
+      headers: {'content-type': 'application/json'},
+      body: bundleJson,
+    );
+    return _decode(response, expect: 201) as Map<String, dynamic>;
+  }
+
   /// `POST /audio/{id}/identification`
   Future<Identification> getIdentification(String id) async {
     final response = await _http.get(_uri('/audio/$id/identification'));

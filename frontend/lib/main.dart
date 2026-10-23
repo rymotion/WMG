@@ -20,6 +20,7 @@ void main() {
     MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: config),
+        RepositoryProvider.value(value: api),
         RepositoryProvider(create: (_) => AudioRecorderService(), dispose: (recorder) => recorder.dispose()),
         RepositoryProvider(
           create: (_) => IdentificationRepository(

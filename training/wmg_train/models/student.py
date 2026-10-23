@@ -183,7 +183,9 @@ class BandNet(nn.Module):
         band_logits = (frames * w).sum(dim=-1)  # [B, 3]
 
         z = self.dropout(pooled)
-        ai_logit = self.clip_head(torch.cat([z, band_logits], dim=1)).squeeze(1)  # [B]
+        # Input to the final decision layer; on-device personalisation re-fits clip_head on it.
+        head_in = torch.cat([z, band_logits], dim=1)  # [B, 3C + 3]
+        ai_logit = self.clip_head(head_in).squeeze(1)  # [B]
         stem_logits = self.stem_head(z)  # [B, 4]
         return {
             "p_ai": torch.sigmoid(ai_logit),
@@ -194,6 +196,8 @@ class BandNet(nn.Module):
             # Logits for numerically stable BCE during training; not exported.
             "ai_logit": ai_logit,
             "stem_logits": stem_logits,
+            # Final-layer input (exported for on-device fine-tuning: ai_logit = w . embedding + b).
+            "embedding": head_in,
         }
 
     @classmethod

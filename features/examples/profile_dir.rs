@@ -106,7 +106,7 @@ fn ltas(x: &[f64]) -> Vec<f64> {
     let mut acc = vec![0.0; LTAS_FFT / 2 + 1];
     let (mut inp, mut out) = (fft.make_input_vec(), fft.make_output_vec());
     let mut n = 0;
-    for chunk in x.chunks_exact(LTAS_FFT) {
+    for chunk in x.as_chunks::<LTAS_FFT>().0 {
         for ((d, s), w) in inp.iter_mut().zip(chunk).zip(&win) {
             *d = s * w;
         }
@@ -307,7 +307,7 @@ fn main() {
                 let mut w = writer.lock().expect("writer");
                 writeln!(w, "{row}").expect("write");
                 let n = done.fetch_add(1, Ordering::Relaxed) + 1;
-                if n % 25 == 0 || n == keep.len() {
+                if n.is_multiple_of(25) || n == keep.len() {
                     eprintln!("{n}/{}", keep.len());
                 }
             });

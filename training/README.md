@@ -151,3 +151,28 @@ captures are collected with a labelled playlist:
    - A clip is accepted only when its offset agrees with a neighbouring clip.
 
 About 1 hour of playback yields roughly 110 segments of 10–30 s. Use a new `--seed` for each playlist so each one draws a different mix of songs. Songs heard on a phone are still grouped by artist for cross-validation.
+
+### Training on phone recordings of a streaming playlist (all one label)
+
+When you play a playlist that isn't in `training_data/` (Spotify, Apple Music, ...), the tool can't match songs. Instead, every clip in the session gets one label.
+
+1. Record the playlist through the app (live mode, 32 kHz). Sessions stop after `LIVE_MAX_MINUTES` (60 by default).
+2. Label the session. It defaults to the most recent one; pass `--session <id>` to pick another:
+   ```bash
+   .venv-arm64/bin/python -m wmg_train.playlist label-session --label human \
+       --source "Spotify: Indie Mix" --group spotify-indie-mix
+   ```
+   Artists aren't known, so the session is one cross-validation group and is held out as a whole. Give recordings of the same playlist the same `--group` so they're held out together.
+3. Rebuild the phone cache. It includes every session in `reports/phone_captures/`, from both matched playlists and labelled sessions:
+   ```bash
+   .venv-arm64/bin/python -m wmg_train.phone_cache --out cache-phone
+   ```
+4. Train with clean and phone data together:
+   ```bash
+   .venv-arm64/bin/python -m wmg_train.train_baseline --cache cache-v2 --phone-cache cache-phone
+   ```
+   By default, 25% of each class's half of every batch comes from real phone windows (`--phone-frac`). `metrics.json` gains a `phone` summary, `phone_*` scores per fold, and an `oof_phone` block, which scores phone clips with models that never saw that artist or session.
+
+**AI playlists** work the same way with `--label ai`. If a whole session is by one artist that's already in `ai_generated/`, pass that artist's existing group, for example `--group "ai:The Velvet Sundown"`. Then cross-validation holds the phone clips out together with that artist's clean files. A mixed playlist gets its own name, for example `--group suno-mix`.
+
+**Balance guard:** training refuses to run if phone audio is more than 80% one class. Training on it would teach the model "phone audio = human", and AI songs played through a phone would then go undetected. Record AI music through the phone too, for example the AI half of a `playlist make` playlist, in similar amounts. `--allow-imbalanced-phone` overrides the guard for experiments only.

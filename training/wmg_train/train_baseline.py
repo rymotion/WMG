@@ -36,8 +36,55 @@ def load_cache(cache: Path) -> tuple[np.memmap, pd.DataFrame]:
     return x, index
 
 
+class Windows:
+    """Several window caches (clean + phone) addressed as one array of global row numbers."""
+
+    def __init__(self, parts: list[np.memmap]):
+        self.parts = parts
+        self.offsets = np.cumsum([0] + [len(p) for p in parts])
+
+    def __len__(self) -> int:
+        return int(self.offsets[-1])
+
+    def __getitem__(self, idx) -> np.ndarray:
+        idx = np.asarray(idx)
+        out = np.empty((len(idx), 128, 1000), dtype=np.float16)
+        src = np.searchsorted(self.offsets, idx, side="right") - 1
+        for s in np.unique(src):
+            m = src == s
+            out[m] = self.parts[s][idx[m] - self.offsets[s]]
+        return out
+
+
+def load_all(cache: Path, phone_cache: Path | None) -> tuple[Windows, pd.DataFrame]:
+    x, index = load_cache(cache)
+    index = index.assign(source="clean")
+    parts = [x]
+    if phone_cache:
+        px, pindex = load_cache(phone_cache)
+        index = pd.concat([index, pindex.assign(source="phone")], ignore_index=True)
+        parts.append(px)
+    index["row"] = np.arange(len(index))
+    return Windows(parts), index
+
+
 def make_folds(index: pd.DataFrame, seed: int = 0) -> list[tuple[str, set[str]]]:
-    """One fold per AI group; human groups spread greedily so folds get similar song counts."""
+    """One fold per clean AI group; human groups spread greedily so folds get similar song counts.
+
+    Phone segments from a playlist keep their artist group, so they follow that artist's fold.
+    Phone-only groups (whole labelled sessions, `phone:*`) are spread over the folds the same way.
+    """
+    if "source" in index:
+        folds = make_folds(index[index.source == "clean"].drop(columns="source"), seed)
+        clean_groups = set(index.loc[index.source == "clean", "group"])
+        extra = (index[(index.source == "phone") & ~index.group.isin(clean_groups)]
+                 .drop_duplicates("song_id").groupby("group").size().sort_values(ascending=False))
+        load = np.zeros(len(folds))
+        for g, n in extra.items():
+            k = int(load.argmin())
+            folds[k][1].add(g)
+            load[k] += n
+        return folds
     songs = index.drop_duplicates("song_id")
     ai_groups = sorted(songs.loc[songs.label == 1, "group"].unique())
     sizes = songs.loc[songs.label == 0].groupby("group").size()
@@ -69,11 +116,23 @@ def spec_augment(x: torch.Tensor, gen: torch.Generator) -> torch.Tensor:
     return x
 
 
-def batches_balanced(labels: np.ndarray, batch: int, steps: int, rng: np.random.Generator):
-    pos, neg = np.flatnonzero(labels == 1), np.flatnonzero(labels == 0)
+def batches_balanced(labels: np.ndarray, batch: int, steps: int, rng: np.random.Generator,
+                     is_phone: np.ndarray | None = None, phone_frac: float = 0.0):
+    """Half AI, half human. Within each half, `phone_frac` of the windows come from real phone
+    captures of that class when there are any, so scarce phone audio isn't drowned out."""
+    is_phone = np.zeros(len(labels), bool) if is_phone is None else is_phone
+    halves = ((1, batch // 2), (0, batch - batch // 2))
+    pools = {c: (np.flatnonzero((labels == c) & ~is_phone), np.flatnonzero((labels == c) & is_phone))
+             for c, _ in halves}
     for _ in range(steps):
-        idx = np.concatenate([rng.choice(pos, batch // 2), rng.choice(neg, batch - batch // 2)])
-        yield np.sort(idx)
+        idx = []
+        for c, n in halves:
+            clean, phone = pools[c]
+            k = int(round(phone_frac * n)) if len(phone) else 0
+            if not len(clean):
+                k = n
+            idx += [rng.choice(phone, k), rng.choice(clean, n - k)] if k < n else [rng.choice(phone, k)]
+        yield np.sort(np.concatenate(idx))
 
 
 def train_model(x: np.memmap, index: pd.DataFrame, rows: np.ndarray, args, device, seed: int) -> BandNet:
@@ -84,13 +143,14 @@ def train_model(x: np.memmap, index: pd.DataFrame, rows: np.ndarray, args, devic
     total = args.epochs * args.steps
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=args.lr, total_steps=total, pct_start=0.1)
     labels = index.label.to_numpy()[rows]
+    is_phone = (index.source.to_numpy()[rows] == "phone") if "source" in index else None
     rng = np.random.default_rng(seed)
     gen = torch.Generator().manual_seed(seed)
     model.train()
     t0 = time.time()
     for ep in range(args.epochs):
         losses = []
-        for idx in batches_balanced(labels, args.batch, args.steps, rng):
+        for idx in batches_balanced(labels, args.batch, args.steps, rng, is_phone, args.phone_frac):
             xb = torch.from_numpy(np.asarray(x[rows[idx]], dtype=np.float32))[:, None]
             yb = torch.from_numpy(labels[idx].astype(np.float32))
             xb = spec_augment(xb, gen).to(device)
@@ -132,21 +192,55 @@ def song_table(index: pd.DataFrame, rows: np.ndarray, pred: dict[str, np.ndarray
     return agg
 
 
-def confound_gate(index: pd.DataFrame) -> float:
-    """Spec gate on the *augmented* windows: recording-chain metadata alone vs label."""
+# Spec: metadata-only AUC <= 0.55. Far *below* 0.5 is as separable as far above, so strong
+# inversions fail too; the lower bound is looser because leave-group-out CV on uninformative
+# features is itself biased a little below 0.5.
+GATE_RANGE = (0.40, 0.55)
+
+
+def gate_passes(auc: float) -> bool:
+    return GATE_RANGE[0] <= auc <= GATE_RANGE[1]
+
+
+def confound_gate(index: pd.DataFrame, phone_frac: float | None = None) -> float:
+    """Spec gate on the *augmented* windows: recording-chain metadata alone vs label.
+
+    With phone audio, rows are weighted the way training samples them (phone = `phone_frac` of
+    each class), so the gate measures what the model sees rather than the raw row counts
+    (each 30 s phone clip is its own row and the AI class has fewer clean songs).
+    """
     songs = index.drop_duplicates(["song_id", "variant"])
     cols = [songs.bitrate_kbps, songs.codec.eq("mp3"), songs.orig_sr, songs.gain_db,
             songs.lowpass_hz.notna(), songs.noise_snr_db.notna()]
     if "speaker" in songs:
         cols.append(songs.speaker.notna())
+    if "source" in songs:
+        cols.append(songs.source.eq("phone"))  # catches "phone audio = one class"
     X = np.c_[tuple(cols)].astype(float)
     y, groups = songs.label.to_numpy(), songs.group.to_numpy()
-    scores = np.zeros(len(y))
+    sw = np.ones(len(y))
+    if phone_frac is not None and "source" in songs:
+        ph = songs.source.eq("phone").to_numpy()
+        for c in (0, 1):
+            m = y == c
+            n_ph, n_cl = (m & ph).sum(), (m & ~ph).sum()
+            if n_ph and n_cl:
+                sw[m & ph] = phone_frac / n_ph
+                sw[m & ~ph] = (1 - phone_frac) / n_cl
+            else:
+                sw[m] = 1 / m.sum()
+    # AUC within each held-out fold, averaged. Pooling scores across folds is biased below 0.5
+    # when features are uninformative: each fold's intercept follows its training-set class
+    # balance, which is the opposite of its test fold's.
+    aucs, sizes = [], []
     for tr, te in GroupKFold(5).split(X, y, groups):
+        if len(np.unique(y[te])) < 2:
+            continue
         mu, sd = X[tr].mean(0), X[tr].std(0) + 1e-9
-        clf = LogisticRegression(class_weight="balanced").fit((X[tr] - mu) / sd, y[tr])
-        scores[te] = clf.decision_function((X[te] - mu) / sd)
-    return float(roc_auc_score(y, scores))
+        clf = LogisticRegression().fit((X[tr] - mu) / sd, y[tr], sample_weight=sw[tr])
+        aucs.append(roc_auc_score(y[te], clf.decision_function((X[te] - mu) / sd), sample_weight=sw[te]))
+        sizes.append(len(te))
+    return float(np.average(aucs, weights=sizes))
 
 
 def calibration(songs: pd.DataFrame, bins: int = 5) -> list[dict]:
@@ -170,20 +264,46 @@ def main() -> None:
     ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--lr", type=float, default=2e-3)
     ap.add_argument("--folds", type=str, default="all", help="'all', 'none', or comma list of AI groups")
+    ap.add_argument("--phone-cache", type=Path, help="cache of real phone captures (wmg_train.phone_cache)")
+    ap.add_argument("--phone-frac", type=float, default=0.25,
+                    help="share of each class's half-batch drawn from phone windows of that class")
+    ap.add_argument("--allow-imbalanced-phone", action="store_true",
+                    help="train even if phone audio is >80%% one class (risks learning 'phone = that class')")
     args = ap.parse_args()
 
     device = pick_device()
-    x, index = load_cache(args.cache)
+    x, index = load_all(args.cache, args.phone_cache)
+    phone_stats = None
+    if args.phone_cache:
+        ph = index[index.source == "phone"]
+        share_ai = float(ph.label.mean()) if len(ph) else 0.0
+        phone_stats = {"windows": len(ph), "ai_windows": int(ph.label.sum()),
+                       "human_windows": int((ph.label == 0).sum()), "ai_share": round(share_ai, 3),
+                       "sessions": int(ph.session_id.nunique()), "phone_frac": args.phone_frac}
+        print(f"phone audio: {phone_stats}", flush=True)
+        if not 0.2 <= share_ai <= 0.8:
+            msg = (f"phone windows are {share_ai:.0%} AI / {1 - share_ai:.0%} human. Training on this teaches "
+                   f"the model that phone-recorded audio means "
+                   f"{'AI' if share_ai > 0.5 else 'human'}; record the other class through the phone too.")
+            if not args.allow_imbalanced_phone:
+                raise SystemExit("REFUSING: " + msg + " (override: --allow-imbalanced-phone)")
+            print("WARNING: " + msg, flush=True)
     run = args.out / time.strftime("%Y%m%d-%H%M%S")
     run.mkdir(parents=True, exist_ok=True)
     cache_meta = json.loads((args.cache / "meta.json").read_text())
     print(f"device {device}; {len(index)} windows, {index.song_id.nunique()} songs; run {run}", flush=True)
 
-    gate = confound_gate(index)
-    print(f"confound gate (augmented codec/bitrate/sr/gain metadata) AUC = {gate:.3f} "
-          f"({'PASS' if gate <= 0.55 else 'FAIL'})", flush=True)
+    # Gate the augmented clean data. Phone audio is checked by the class-balance rule above and
+    # sampled at the same share for both classes; its sessions are single-class groups, which
+    # makes a grouped-CV gate on it measure fold composition rather than leakage.
+    clean = index[index.source == "clean"].drop(columns="source") if "source" in index else index
+    gate = confound_gate(clean)
+    print(f"confound gate (augmented recording-chain metadata, clean data) AUC = {gate:.3f} "
+          f"({'PASS' if gate_passes(gate) else 'FAIL'}: needs {GATE_RANGE[0]}-{GATE_RANGE[1]})", flush=True)
 
-    metrics: dict = {"args": vars(args) | {"cache": str(args.cache), "out": str(args.out)},
+    metrics: dict = {"args": vars(args) | {"cache": str(args.cache), "out": str(args.out),
+                                           "phone_cache": str(args.phone_cache) if args.phone_cache else None},
+                     "phone": phone_stats,
                      "device": str(device), "confound_gate_auc": gate,
                      "feature_spec_hash": cache_meta["feature_spec_hash"],
                      "feature_crate_commit": cache_meta["feature_crate_commit"], "folds": []}
@@ -218,6 +338,17 @@ def main() -> None:
             for name, m in (("clean", ~spk), ("speaker", spk)):
                 if len(np.unique(y_te[m])) == 2:
                     fm[f"window_auc_{name}"] = round(roc_auc_score(y_te[m], pred["logit"][m]), 4)
+        if "source" in index and (index.source.to_numpy()[te_rows] == "phone").any():
+            ph = index.source.to_numpy()[te_rows] == "phone"
+            y_te = index.label.to_numpy()[te_rows]
+            ps = song_table(index, te_rows[ph], {k: v[ph] for k, v in pred.items()})
+            fm["phone_windows"] = int(ph.sum())
+            if len(np.unique(y_te[ph])) == 2:
+                fm["phone_window_auc"] = round(roc_auc_score(y_te[ph], pred["logit"][ph]), 4)
+            if (ps.label == 1).any():
+                fm["phone_ai_recall@0.5"] = round(float((ps[ps.label == 1].p_ai > 0.5).mean()), 3)
+            if (ps.label == 0).any():
+                fm["phone_human_fpr@0.5"] = round(float((ps[ps.label == 0].p_ai > 0.5).mean()), 3)
         metrics["folds"].append(fm)
         print("   ", fm, flush=True)
 
@@ -235,7 +366,17 @@ def main() -> None:
                 .apply(lambda p: round(float((p > 0.5).mean()), 3)).to_dict(),
             "calibration": calibration(allsongs),
         }
-        print("OOF:", json.dumps(metrics["oof"], indent=1), flush=True)
+        phone_paths = set(index.loc[index.source == "phone", "path"]) if "source" in index else set()
+        ps = allsongs[allsongs.path.isin(phone_paths)]
+        if len(ps):
+            # Phone segments/clips scored by models that never saw that artist or session.
+            metrics["oof_phone"] = {
+                "segments": len(ps), "ai_segments": int(ps.label.sum()), "human_segments": int((ps.label == 0).sum()),
+                "segment_auc": round(roc_auc_score(ps.label, ps.logit), 4) if ps.label.nunique() == 2 else None,
+                "ai_recall@0.5": round(float((ps[ps.label == 1].p_ai > 0.5).mean()), 3) if (ps.label == 1).any() else None,
+                "human_fpr@0.5": round(float((ps[ps.label == 0].p_ai > 0.5).mean()), 3) if (ps.label == 0).any() else None,
+            }
+        print("OOF:", json.dumps({k: metrics[k] for k in ("oof", "oof_phone") if k in metrics}, indent=1), flush=True)
 
     print("final model on all data", flush=True)
     model = train_model(x, index, np.arange(len(index)), args, device, seed=100)

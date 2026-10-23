@@ -35,6 +35,10 @@ def load_model(path: Path) -> BandNet:
     return model.eval()
 
 
+# Same rule as wmg_features::MIN_INPUT_DBFS (applied before normalisation).
+MIN_INPUT_DBFS = -60.0
+
+
 def normalize_level(mono: np.ndarray, target_dbfs: float = TARGET_RMS_DBFS) -> np.ndarray:
     """Scale to the RMS level training used. Features are absolute dB, so a quiet phone capture
     (-35 to -45 dBFS) would otherwise sit 20-30 dB below anything the model has seen."""
@@ -48,6 +52,8 @@ def score_file(model: BandNet, path: Path, normalize: bool = True) -> dict:
         x, sr = decode(path, Path(d))
     mono = x.astype(np.float64).mean(axis=1)
     in_rms = 20 * np.log10(np.sqrt(np.mean(mono**2)) + 1e-12)
+    if normalize and in_rms < MIN_INPUT_DBFS:
+        return {"path": str(path), "error": f"input is {in_rms:.0f} dBFS: silence (below {MIN_INPUT_DBFS:.0f} dBFS)"}
     if normalize:
         mono = normalize_level(mono)
     windows = features.extract_windows(mono, sr)

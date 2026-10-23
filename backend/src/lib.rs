@@ -55,7 +55,7 @@ fn cors(origins: &[String]) -> CorsLayer {
 }
 
 pub fn app(state: AppState) -> Router {
-    use routes::{analysis as an, audio};
+    use routes::{analysis as an, audio, models};
     let body_limit = state.config.max_upload_bytes;
     Router::new()
         .route("/health", get(|| async { Json(json!({ "status": "ok" })) }))
@@ -68,6 +68,8 @@ pub fn app(state: AppState) -> Router {
         .route("/audio/{id}/plot/{kind}", get(an::plot))
         .route("/audio/{id}/data/{kind}", get(an::data))
         .route("/live", get(live::handler))
+        .route("/models/personalized", post(models::upload).get(models::list))
+        .route("/models/personalized/{id}", get(models::get))
         .layer(DefaultBodyLimit::max(body_limit))
         .layer(cors(&state.config.cors_origins))
         .layer(TraceLayer::new_for_http())

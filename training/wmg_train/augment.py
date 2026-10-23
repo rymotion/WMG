@@ -19,6 +19,9 @@ import lameenc
 import numpy as np
 import soundfile as sf
 
+# Every source is brought to this rate before encoding, so the source sample rate (Suno exports
+# 48 kHz, most other audio here is 44.1 kHz) can't become a label shortcut.
+WORK_SR = 44_100
 CODECS: tuple[tuple[str, int], ...] = (("aac", 96), ("aac", 128), ("aac", 160), ("mp3", 128), ("mp3", 192))
 TARGET_RMS_DBFS = -14.0
 GAIN_JITTER_DB = 6.0
@@ -160,6 +163,11 @@ def augment(path: Path, rng: np.random.Generator) -> tuple[np.ndarray, int, AugM
     with tempfile.TemporaryDirectory(prefix="wmg_aug_") as d:
         tmp = Path(d)
         x, sr = decode(path, tmp)
+        if sr != WORK_SR:
+            import wmg_features
+            x = np.stack([wmg_features.resample(np.ascontiguousarray(x[:, c], dtype=np.float64), sr, WORK_SR)
+                          for c in range(x.shape[1])], axis=1).astype(np.float32)
+            sr = WORK_SR
         codec, kbps = CODECS[rng.integers(len(CODECS))]
         y = encode_decode(x, sr, codec, kbps, tmp)
     mono = y.astype(np.float64).mean(axis=1)

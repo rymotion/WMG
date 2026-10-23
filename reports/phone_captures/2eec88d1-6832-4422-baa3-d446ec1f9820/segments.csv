@@ -1,0 +1,2 @@
+session_id,playlist_id,clip_index,clip_id,segment,label,song_id,group,source_path,source_start_s,duration_s,align_corr,sample_rate
+2eec88d1-6832-4422-baa3-d446ec1f9820,,0,cca5823d-050e-48c5-8269-5395925826f7,segments/clip000_human.wav,0,2eec88d1-000,phone:live-2eec88d1,"single song, phone speaker -> mic",,30.0,,32000

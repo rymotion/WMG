@@ -6,12 +6,14 @@ description = "Detector feature extraction shared by training (Python), the back
 
 [lib]
 name = "wmg_features"
-crate-type = ["lib", "cdylib"]
+crate-type = ["lib", "cdylib", "staticlib"]
 
 [features]
 default = []
 # Python bindings (built with maturin for the training image).
 python = ["dep:pyo3", "dep:numpy"]
+# C ABI for on-device use (iOS/macOS via an XCFramework, Android via JNI later).
+ffi = []
 
 [dependencies]
 spectrograms = "2.1"

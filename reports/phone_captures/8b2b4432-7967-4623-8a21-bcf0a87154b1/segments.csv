@@ -1,0 +1,3 @@
+session_id,playlist_id,clip_index,clip_id,segment,label,song_id,group,source_path,source_start_s,duration_s,align_corr,sample_rate
+8b2b4432-7967-4623-8a21-bcf0a87154b1,,0,5ca80fa1-16e3-4e63-8d7a-48e1925b5a3a,segments/clip000_human.wav,0,8b2b4432-000,phone:live-8b2b4432,"human computer-assisted song, phone speaker -> mic",,30.0,,32000
+8b2b4432-7967-4623-8a21-bcf0a87154b1,,1,f576f1aa-02b4-4f74-8b84-eacecc8d5c0b,segments/clip001_human.wav,0,8b2b4432-001,phone:live-8b2b4432,"human computer-assisted song, phone speaker -> mic",,18.08,,32000

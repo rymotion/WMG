@@ -6,8 +6,9 @@ import '../models/clip_result.dart';
 
 /// One saved clip of the live session and its identification result.
 class ClipResultCard extends StatelessWidget {
-  const ClipResultCard({super.key, required this.clip});
+  const ClipResultCard({super.key, required this.context, required this.clip});
 
+  final BuildContext context;
   final ClipResult clip;
 
   @override
@@ -25,12 +26,23 @@ class ClipResultCard extends StatelessWidget {
             Row(
               children: [
                 if (id == null)
-                  const SizedBox.square(dimension: 20, child: CircularProgressIndicator(strokeWidth: 2))
+                  const SizedBox.square(
+                    dimension: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
                 else
                   Icon(_icon(status), color: _color(status, theme.colorScheme)),
                 const SizedBox(width: 8),
-                Expanded(child: Text(_headline(status), style: theme.textTheme.titleMedium)),
-                Text('Clip ${clip.index + 1}', style: theme.textTheme.labelMedium),
+                Expanded(
+                  child: Text(
+                    _headline(status),
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ),
+                Text(
+                  'Clip ${clip.index + 1}',
+                  style: theme.textTheme.labelMedium,
+                ),
               ],
             ),
             if (id != null && id.matches.isNotEmpty) ...[
@@ -41,7 +53,12 @@ class ClipResultCard extends StatelessWidget {
               Text(id!.message!, style: theme.textTheme.bodyMedium),
             ],
             const SizedBox(height: 8),
-            Text(_timing(), style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            Text(
+              _timing(),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
           ],
         ),
       ),
@@ -55,7 +72,8 @@ class ClipResultCard extends StatelessWidget {
     return '${_mmss(start)}–${_mmss(start + duration)} · ${clip.id}';
   }
 
-  static String _mmss(double s) => '${s ~/ 60}:${(s % 60).floor().toString().padLeft(2, '0')}';
+  static String _mmss(double s) =>
+      '${s ~/ 60}:${(s % 60).floor().toString().padLeft(2, '0')}';
 
   static String _headline(IdentificationStatus s) => switch (s) {
     IdentificationStatus.pending => 'Identifying…',
@@ -66,6 +84,13 @@ class ClipResultCard extends StatelessWidget {
     IdentificationStatus.disabled => 'Identification disabled on server',
     IdentificationStatus.skipped => 'Identification skipped',
     IdentificationStatus.unknown => 'Unknown status',
+  };
+
+  String _generatedProbability(double confidence) => switch (confidence) {
+    >= 0.9 => 'High',
+    >= 0.7 => 'Medium',
+    >= 0.5 => 'Low',
+    _ => 'Very Low',
   };
 
   static IconData _icon(IdentificationStatus s) => switch (s) {
@@ -101,7 +126,11 @@ class _MatchTile extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       leading: const CircleAvatar(child: Icon(Icons.music_note_rounded)),
       title: Text(match.displayTitle),
-      subtitle: Text(details.isEmpty ? match.displayArtists : '${match.displayArtists}\n$details'),
+      subtitle: Text(
+        details.isEmpty
+            ? match.displayArtists
+            : '${match.displayArtists}\n$details',
+      ),
       isThreeLine: details.isNotEmpty,
       trailing: match.score == null ? null : Text('${match.score!.round()}%'),
     );

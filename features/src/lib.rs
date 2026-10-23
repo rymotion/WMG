@@ -17,6 +17,8 @@ use spectrograms::{
 use std::num::NonZeroUsize;
 use std::sync::OnceLock;
 
+#[cfg(feature = "ffi")]
+pub mod ffi;
 #[cfg(feature = "python")]
 mod python;
 pub mod resample;
@@ -123,6 +125,26 @@ pub fn spec_hash() -> &'static str {
 
 fn nz(n: usize) -> NonZeroUsize {
     NonZeroUsize::new(n.max(1)).expect("max(1) is non-zero")
+}
+
+/// RMS level every clip is scaled to before windowing, at training and inference alike. Phone
+/// captures arrive 20-30 dB quieter than mastered files; features are absolute dB, so without
+/// this the model would see levels it was never trained on.
+pub const LEVEL_TARGET_DBFS: f64 = -14.0;
+
+/// Input quieter than this (before normalisation) is treated as silence and not scored.
+/// Normalisation would otherwise lift a silent room or a muted mic to music level, and the
+/// -45 dBFS window gate, which runs after normalisation, could no longer catch it.
+pub const MIN_INPUT_DBFS: f64 = -60.0;
+
+/// Scale `samples` so their RMS is `LEVEL_TARGET_DBFS` (silence is returned unchanged).
+pub fn normalize_level(samples: &[f64]) -> Vec<f64> {
+    let ms = samples.iter().map(|v| v * v).sum::<f64>() / samples.len().max(1) as f64;
+    if ms <= 0.0 {
+        return samples.to_vec();
+    }
+    let g = 10f64.powf(LEVEL_TARGET_DBFS / 20.0) / ms.sqrt();
+    samples.iter().map(|v| v * g).collect()
 }
 
 /// RMS level in dBFS (full scale = 1.0); −inf for silence.

@@ -87,18 +87,30 @@ def ai_artist(stem: str) -> str:
     return "unknown"
 
 
+def _ai_key(p: Path, root: Path) -> str:
+    """Dedupe key: folder + title with download suffixes removed, so "Pulse - usesuno.com.wav"
+    and "Pulse [f802dde3].mp3" count as one song."""
+    stem = re.sub(r"\s*\[[0-9a-f]{6,}\]$", "", p.stem.strip())  # Suno MP3 id suffix
+    stem = re.sub(r"\s*-\s*usesuno\.com$", "", stem, flags=re.I)  # Suno WAV suffix
+    folder = p.parent.relative_to(root).as_posix()
+    return folder + "/" + re.sub(r"\s+", " ", stem.lower())
+
+
 def ai_songs(root: Path) -> list[Song]:
-    """Flat folder of "Title - Artist.ext". The same stem in several formats is kept once."""
+    """`ai_generated/`: flat "Title - Artist.ext" files, plus one subfolder per generator
+    (e.g. `suno/`), grouped as `ai:<folder>`. The same song in several formats is kept once,
+    preferring lossless."""
     best: dict[str, Path] = {}
     for p in _audio_files(root):
-        key = re.sub(r"\s+", " ", p.stem.strip().lower())
+        key = _ai_key(p, root)
         cur = best.get(key)
         if cur is None or _EXT_RANK.get(p.suffix.lower(), 3) < _EXT_RANK.get(cur.suffix.lower(), 3):
             best[key] = p
-    return [
-        Song(song_id("ai/" + str(p.relative_to(root))), p, 1, "ai:" + ai_artist(p.stem))
-        for p in sorted(best.values())
-    ]
+    def group(p: Path) -> str:
+        rel = p.relative_to(root)
+        return "ai:" + (rel.parts[0] if len(rel.parts) > 1 else ai_artist(p.stem))
+
+    return [Song(song_id("ai/" + str(p.relative_to(root))), p, 1, group(p)) for p in sorted(best.values())]
 
 
 # Human-made folders. computer_aided = produced with computers/DAWs, which counts as human;

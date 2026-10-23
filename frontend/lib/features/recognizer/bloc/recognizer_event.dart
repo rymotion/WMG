@@ -74,3 +74,37 @@ final class _SessionClosed extends RecognizerEvent {
 final class _FinishTimedOut extends RecognizerEvent {
   const _FinishTimedOut();
 }
+
+/// On-device scores for one chunk of recorded audio.
+final class _OnDeviceScored extends RecognizerEvent {
+  const _OnDeviceScored(this.result, this.offsetS, this.generation);
+
+  final DetectorResult result;
+
+  /// Recording the chunk belongs to; late results from an earlier recording are dropped.
+  final int generation;
+
+  /// Where the chunk starts within the recording.
+  final double offsetS;
+
+  @override
+  List<Object?> get props => [result, offsetS, generation];
+}
+
+final class _OnDeviceFailed extends RecognizerEvent {
+  const _OnDeviceFailed(this.reason);
+
+  final String reason;
+
+  @override
+  List<Object?> get props => [reason];
+}
+
+final class _OnDeviceInfo extends RecognizerEvent {
+  const _OnDeviceInfo(this.info);
+
+  final DetectorInfo info;
+
+  @override
+  List<Object?> get props => [info.modelRun, info.compatible];
+}

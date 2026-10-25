@@ -73,6 +73,13 @@ void main() {
     expect(config(identify: false).liveAudioUri.queryParameters, {'sample_rate': '32000', 'identify': 'false'});
   });
 
+  test('connect(identify: false) adds the flag without dropping the others', () async {
+    final c = config();
+    final session = await LiveAudioClient(uri: c.liveAudioUri, sampleRate: c.liveSampleRate).connect(identify: false);
+    expect(requestUri.queryParameters, {'sample_rate': '32000', 'identify': 'false'});
+    await session.close();
+  });
+
   test('https base URL maps to wss', () {
     final uri = AppConfig(apiBaseUrl: Uri.parse('https://api.example.com')).liveAudioUri;
     expect(uri.toString(), 'wss://api.example.com/live?sample_rate=32000');

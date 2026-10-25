@@ -61,6 +61,8 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
           head: () => head,
           trainingMode: settings['training_mode'] as bool? ?? false,
           usePersonal: settings['use_personal'] as bool? ?? false,
+          offlineMode: settings['offline_mode'] as bool? ?? false,
+          identifyMode: settings['identify_mode'] as bool? ?? false,
           counts: _countFor(base.modelRun),
         ),
       );
@@ -96,10 +98,22 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
   Future<void> _saveSettings() => _store.saveSettings({
     'training_mode': state.trainingMode,
     'use_personal': state.usePersonal,
+    'offline_mode': state.offlineMode,
+    'identify_mode': state.identifyMode,
   });
 
   Future<void> setTrainingMode(bool on) async {
     emit(state.copyWith(trainingMode: on));
+    await _saveSettings();
+  }
+
+  Future<void> setOfflineMode(bool on) async {
+    emit(state.copyWith(offlineMode: on));
+    await _saveSettings();
+  }
+
+  Future<void> setIdentifyMode(bool on) async {
+    emit(state.copyWith(identifyMode: on));
     await _saveSettings();
   }
 
@@ -211,6 +225,7 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
   /// Sends the head + its labelled embeddings to the backend; falls back to a file if that fails.
   Future<void> sendToComputer({Rect? origin}) async {
     if (state.head == null) return;
+    if (state.offlineMode) return exportFile(origin: origin);
     emit(state.copyWith(busy: () => 'Uploading…'));
     try {
       final res = await _api.uploadPersonalModel(_bundle());

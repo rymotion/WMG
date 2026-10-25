@@ -18,7 +18,13 @@ final class SampleCounts extends Equatable {
   final int otherModelWindows;
 
   @override
-  List<Object?> get props => [aiWindows, humanWindows, aiRecordings, humanRecordings, otherModelWindows];
+  List<Object?> get props => [
+    aiWindows,
+    humanWindows,
+    aiRecordings,
+    humanRecordings,
+    otherModelWindows,
+  ];
 }
 
 final class PersonalizationState extends Equatable {
@@ -27,6 +33,8 @@ final class PersonalizationState extends Equatable {
     this.base,
     this.head,
     this.trainingMode = false,
+    this.offlineMode = false,
+    this.identifyMode = false,
     this.usePersonal = false,
     this.counts = const SampleCounts(),
     this.labelled = const {},
@@ -44,6 +52,8 @@ final class PersonalizationState extends Equatable {
 
   /// When on, each finished recording can be labelled human/AI for retraining.
   final bool trainingMode;
+  final bool offlineMode;
+  final bool identifyMode;
   final bool usePersonal;
   final SampleCounts counts;
 
@@ -53,7 +63,8 @@ final class PersonalizationState extends Equatable {
   final String? message;
 
   /// The head was fitted on this exact base model (embeddings differ between models).
-  bool get headUsable => head != null && base != null && head!.baseModelRun == base!.modelRun;
+  bool get headUsable =>
+      head != null && base != null && head!.baseModelRun == base!.modelRun;
 
   /// The head scoring should use right now, or null for the base model.
   PersonalHead? get activeHead => usePersonal && headUsable ? head : null;
@@ -63,6 +74,8 @@ final class PersonalizationState extends Equatable {
     DetectorInfo? base,
     PersonalHead? Function()? head,
     bool? trainingMode,
+    bool? offlineMode,
+    bool? identifyMode,
     bool? usePersonal,
     SampleCounts? counts,
     Map<String, int>? labelled,
@@ -73,6 +86,8 @@ final class PersonalizationState extends Equatable {
     base: base ?? this.base,
     head: head != null ? head() : this.head,
     trainingMode: trainingMode ?? this.trainingMode,
+    offlineMode: offlineMode ?? this.offlineMode,
+    identifyMode: identifyMode ?? this.identifyMode,
     usePersonal: usePersonal ?? this.usePersonal,
     counts: counts ?? this.counts,
     labelled: labelled ?? this.labelled,
@@ -81,5 +96,17 @@ final class PersonalizationState extends Equatable {
   );
 
   @override
-  List<Object?> get props => [loaded, base?.modelRun, head?.id, trainingMode, usePersonal, counts, labelled, busy, message];
+  List<Object?> get props => [
+    loaded,
+    base?.modelRun,
+    head?.id,
+    trainingMode,
+    offlineMode,
+    identifyMode,
+    usePersonal,
+    counts,
+    labelled,
+    busy,
+    message,
+  ];
 }

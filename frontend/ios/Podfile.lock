@@ -40,7 +40,7 @@ SPEC CHECKSUMS:
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
   record_ios: 390a30c7caaf8b5d0fb1cb1d2fd5064b48b4520c
   share_plus: eccd7beb7cea61271aeed1800e8ccb2b952c0c7f
-  wmg_detector: b285af5fd7c8bd9d2f73841bfe9079a9aff4a3ab
+  wmg_detector: 9536b6f3b5ed08ee6a7c2d6cb6ca986407e03d47
 
 PODFILE CHECKSUM: 15493a09e6c7356e7217d6d0357fa632918bfa1e
 

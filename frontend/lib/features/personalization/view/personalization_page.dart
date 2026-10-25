@@ -14,7 +14,12 @@ class PersonalizationPage extends StatelessWidget {
       body: BlocConsumer<PersonalizationCubit, PersonalizationState>(
         listenWhen: (a, b) => b.message != null && a.message != b.message,
         listener: (context, s) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(s.message!), duration: const Duration(seconds: 6)));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(s.message!),
+              duration: const Duration(seconds: 6),
+            ),
+          );
           context.read<PersonalizationCubit>().clearMessage();
         },
         builder: (context, s) {
@@ -22,7 +27,11 @@ class PersonalizationPage extends StatelessWidget {
           final theme = Theme.of(context);
           final c = s.counts;
           final busy = s.busy != null;
-          final canTrain = !busy && s.base?.headWeights != null && c.aiWindows >= 6 && c.humanWindows >= 6;
+          final canTrain =
+              !busy &&
+              s.base?.headWeights != null &&
+              c.aiWindows >= 6 &&
+              c.humanWindows >= 6;
           final r = s.head?.report;
           String pct(double? v) => v == null ? 'n/a' : '${(v * 100).round()}%';
           return ListView(
@@ -31,9 +40,29 @@ class PersonalizationPage extends StatelessWidget {
               if (busy) const LinearProgressIndicator(),
               SwitchListTile(
                 title: const Text('Training mode'),
-                subtitle: const Text('After each recording, label it Human or AI to teach the model this device.'),
+                subtitle: const Text(
+                  'After each recording, label it Human or AI to teach the model this device.',
+                ),
                 value: s.trainingMode,
                 onChanged: s.base == null ? null : cubit.setTrainingMode,
+              ),
+              SwitchListTile(
+                title: const Text('Offline mode'),
+                subtitle: const Text(
+                  'Use the on-device model without sending data to the server.',
+                ),
+                value: s.offlineMode,
+                // Offline needs the bundled model; disabled where there is none.
+                onChanged: s.base == null ? null : cubit.setOfflineMode,
+              ),
+              SwitchListTile(
+                title: const Text('Identify mode'),
+                subtitle: const Text(
+                  'Look up each saved clip with ACRCloud on the server.',
+                ),
+                value: s.identifyMode,
+                // A server setting, so it works without the on-device model.
+                onChanged: cubit.setIdentifyMode,
               ),
               const Divider(),
               ListTile(
@@ -63,7 +92,10 @@ class PersonalizationPage extends StatelessWidget {
               ),
               const Divider(height: 32),
               if (s.head == null)
-                const ListTile(title: Text('No personalised model yet'), subtitle: Text('Using the bundled model.'))
+                const ListTile(
+                  title: Text('No personalised model yet'),
+                  subtitle: Text('Using the bundled model.'),
+                )
               else ...[
                 ListTile(
                   title: Text('Personalised layer ${s.head!.id}'),
@@ -76,7 +108,11 @@ class PersonalizationPage extends StatelessWidget {
                 ),
                 SwitchListTile(
                   title: const Text('Use personalised model'),
-                  subtitle: Text(s.usePersonal && s.headUsable ? 'Scores use the fine-tuned layer.' : 'Scores use the bundled model.'),
+                  subtitle: Text(
+                    s.usePersonal && s.headUsable
+                        ? 'Scores use the fine-tuned layer.'
+                        : 'Scores use the bundled model.',
+                  ),
                   value: s.usePersonal && s.headUsable,
                   onChanged: s.headUsable ? cubit.setUsePersonal : null,
                 ),
@@ -90,12 +126,18 @@ class PersonalizationPage extends StatelessWidget {
                       FilledButton.tonalIcon(
                         icon: const Icon(Icons.cloud_upload_rounded),
                         label: const Text('Send to computer'),
-                        onPressed: busy ? null : () => cubit.sendToComputer(origin: _origin(context)),
+                        onPressed: busy
+                            ? null
+                            : () => cubit.sendToComputer(
+                                origin: _origin(context),
+                              ),
                       ),
                       OutlinedButton.icon(
                         icon: const Icon(Icons.ios_share_rounded),
                         label: const Text('Save / share file'),
-                        onPressed: busy ? null : () => cubit.exportFile(origin: _origin(context)),
+                        onPressed: busy
+                            ? null
+                            : () => cubit.exportFile(origin: _origin(context)),
                       ),
                     ],
                   ),
@@ -104,7 +146,9 @@ class PersonalizationPage extends StatelessWidget {
               const Divider(height: 32),
               TextButton.icon(
                 icon: const Icon(Icons.delete_outline_rounded),
-                label: const Text('Delete labelled data and personalised layer'),
+                label: const Text(
+                  'Delete labelled data and personalised layer',
+                ),
                 onPressed: busy ? null : () => _confirmReset(context),
               ),
             ],
@@ -125,11 +169,19 @@ class PersonalizationPage extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Delete on-device training data?'),
-        content: const Text('Removes every labelled recording and the personalised layer from this device. '
-            'Anything already sent to the computer is kept there.'),
+        content: const Text(
+          'Removes every labelled recording and the personalised layer from this device. '
+          'Anything already sent to the computer is kept there.',
+        ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Delete')),
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Delete'),
+          ),
         ],
       ),
     );

@@ -30,7 +30,9 @@ void main() {
     mic = StreamController<Uint8List>();
     session = FakeLiveSession();
     when(() => recorder.hasPermission()).thenAnswer((_) async => true);
-    when(() => repository.openLiveSession()).thenAnswer((_) async => session);
+    when(
+      () => repository.openLiveSession(identify: any(named: 'identify')),
+    ).thenAnswer((_) async => session);
     when(() => recorder.startPcmStream(sampleRate: any(named: 'sampleRate'))).thenAnswer((_) async => mic.stream);
     when(() => recorder.stop()).thenAnswer((_) async => mic.close());
     when(() => recorder.cancel()).thenAnswer((_) async {});
@@ -73,7 +75,7 @@ void main() {
       expect(session.sent, [chunkA, chunkB]);
       expect(s.bytesStreamed, 1280);
       expect(s.session?.clipSeconds, 30);
-      expect(s.spectrogram.frames, hasLength(3));
+      expect(s.spectrogram.length, 3);
       expect(s.spectrogram.dbFloor, -80);
       expect(s.clips.map((c) => c.index), [1, 0]); // newest first
       expect(s.clips.last.identification?.matches.single.title, 'Song 0');

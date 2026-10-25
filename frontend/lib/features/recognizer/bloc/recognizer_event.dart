@@ -9,8 +9,18 @@ sealed class RecognizerEvent extends Equatable {
 
 /// The mic button was tapped: opens a live session and starts streaming, or
 /// sends `stop` and waits for the server's final messages.
+///
+/// The flags only apply when starting. [offline] scores audio with the
+/// on-device model alone and never opens the socket; [identify] `false` keeps
+/// the server from running ACRCloud on the saved clips.
 final class RecognizerMicPressed extends RecognizerEvent {
-  const RecognizerMicPressed();
+  const RecognizerMicPressed({this.offline = false, this.identify = true});
+
+  final bool offline;
+  final bool identify;
+
+  @override
+  List<Object?> get props => [offline, identify];
 }
 
 /// Drop the session (closing the socket) and return to idle.
@@ -77,18 +87,21 @@ final class _FinishTimedOut extends RecognizerEvent {
 
 /// On-device scores for one chunk of recorded audio.
 final class _OnDeviceScored extends RecognizerEvent {
-  const _OnDeviceScored(this.result, this.offsetS, this.generation);
+  const _OnDeviceScored(this.result, this.offsetS, this.generation, {this.model = '10s'});
 
   final DetectorResult result;
 
   /// Recording the chunk belongs to; late results from an earlier recording are dropped.
   final int generation;
 
+  /// Which detector scored it: '10s' or '5s'.
+  final String model;
+
   /// Where the chunk starts within the recording.
   final double offsetS;
 
   @override
-  List<Object?> get props => [result, offsetS, generation];
+  List<Object?> get props => [result, offsetS, generation, model];
 }
 
 final class _OnDeviceFailed extends RecognizerEvent {
@@ -101,10 +114,11 @@ final class _OnDeviceFailed extends RecognizerEvent {
 }
 
 final class _OnDeviceInfo extends RecognizerEvent {
-  const _OnDeviceInfo(this.info);
+  const _OnDeviceInfo(this.info, {this.model = '10s'});
 
   final DetectorInfo info;
+  final String model;
 
   @override
-  List<Object?> get props => [info.modelRun, info.compatible];
+  List<Object?> get props => [info.modelRun, info.compatible, model];
 }

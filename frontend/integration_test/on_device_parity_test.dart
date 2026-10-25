@@ -68,4 +68,19 @@ void main() {
       expect(r.windows[i].pAi, closeTo(sigmoid(parityLogits[i]), 0.01), reason: 'window $i');
     }
   });
+
+  testWidgets('the 5 s model on device matches PyTorch on the same audio', (tester) async {
+    const detector = WmgDetector();
+    final info = await detector.info(model: '5s');
+    expect(info.compatible, isTrue);
+    expect(info.windowSeconds, 5);
+    expect(info.modelRun, parityModelRun5s, reason: 'regenerate parity_expected.dart with --model5');
+    final r = await detector.scorePcm16(syntheticPcm(), _sr, model: '5s');
+    // ignore: avoid_print
+    print('on-device 5s: ${r.windows.map((w) => w.logit.toStringAsFixed(3)).toList()} vs $parityLogits5s');
+    expect(r.windows.map((w) => w.startS).toList(), parityStarts5s);
+    for (var i = 0; i < parityLogits5s.length; i++) {
+      expect(r.windows[i].pAi, closeTo(sigmoid(parityLogits5s[i]), 0.01), reason: '5 s window $i');
+    }
+  });
 }

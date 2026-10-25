@@ -21,11 +21,17 @@ void main() {
       providers: [
         RepositoryProvider.value(value: config),
         RepositoryProvider.value(value: api),
-        RepositoryProvider(create: (_) => AudioRecorderService(), dispose: (recorder) => recorder.dispose()),
+        RepositoryProvider(
+          create: (_) => AudioRecorderService(),
+          dispose: (recorder) => recorder.dispose(),
+        ),
         RepositoryProvider(
           create: (_) => IdentificationRepository(
             api: api,
-            live: LiveAudioClient(uri: config.liveAudioUri, sampleRate: config.liveSampleRate),
+            live: LiveAudioClient(
+              uri: config.liveAudioUri,
+              sampleRate: config.liveSampleRate,
+            ),
           ),
           dispose: (_) => api.close(),
         ),
@@ -41,10 +47,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Audio Identifier',
+      title: 'Audio Detector',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),
-      darkTheme: ThemeData(colorSchemeSeed: Colors.indigo, brightness: Brightness.dark, useMaterial3: true),
+      darkTheme: ThemeData(
+        colorSchemeSeed: Colors.indigo,
+        brightness: Brightness.dark,
+        useMaterial3: true,
+      ),
       home: const RecognizerPage(),
     );
   }
@@ -59,7 +69,8 @@ class _LoggingBlocObserver extends BlocObserver {
     super.onEvent(bloc, event);
     // Level/tick events fire ~20×/s; keep the log readable.
     final name = event.runtimeType.toString();
-    if (name != '_PcmChunkSent' && name != '_RecordingTicked') debugPrint('[${bloc.runtimeType}] event: $name');
+    if (name != '_PcmChunkSent' && name != '_RecordingTicked')
+      debugPrint('[${bloc.runtimeType}] event: $name');
   }
 
   @override

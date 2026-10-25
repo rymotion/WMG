@@ -1,0 +1,47 @@
+# Fly.io config for spectro-api. See docs/deploy.md.
+# One machine + one volume: uploads, caches and identification jobs live on local disk.
+app = "wmg-spectro-api"
+primary_region = "sjc" # close to ACRCloud us-west-2
+
+[build]
+  dockerfile = "Dockerfile"
+  build-target = "runtime"
+
+[env]
+  PORT = "9000"
+  DATA_DIR = "/data"
+  ACR_HOST = "identify-us-west-2.acrcloud.com"
+  CORS_ORIGINS = "*" # tighten to the frontend origin once it exists
+  MAX_UPLOAD_MB = "100"
+  RUST_LOG = "info"
+  # ACR_ACCESS_KEY / ACR_ACCESS_SECRET are Fly secrets (`fly secrets set`), never in this file.
+
+[http_service]
+  internal_port = 9000
+  force_https = true
+  auto_stop_machines = "off" # /live WebSockets and background identification must not be cut off
+  auto_start_machines = true
+  min_machines_running = 1
+  [http_service.concurrency]
+    type = "connections"
+    soft_limit = 100
+    hard_limit = 200
+
+[[http_service.checks]]
+  method = "GET"
+  path = "/health"
+  interval = "15s"
+  timeout = "5s"
+  grace_period = "10s"
+
+[mounts]
+  source = "spectro_data"
+  destination = "/data"
+  initial_size = "3gb"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1gb"
+
+[deploy]
+  strategy = "immediate" # single machine with a volume: no rolling/blue-green

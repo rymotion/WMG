@@ -24,6 +24,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+from wmg_features import N_SIDE, SIDE_FEATURES
 
 RUNS = Path(__file__).resolve().parents[1] / "runs"
 FORMAT = "wmg-personal-head/1"
@@ -72,6 +73,11 @@ def cmd_merge(args) -> None:
     b_base = float(sd["clip_head.bias"].item())
     w = np.asarray(bundle["head"]["weights"], dtype=np.float64)
     b = float(bundle["head"]["bias"])
+    # Heads fitted with side features carry N_SIDE extra weights after the embedding ones.
+    # BandNet has no side input, so they are split off and kept in the report / samples.
+    side_w = np.zeros(0)
+    if w.size == w_base.size + N_SIDE:
+        w, side_w = w[: w_base.size], w[w_base.size :]
     if w.shape != w_base.shape:
         raise SystemExit(f"head has {w.size} weights, base clip_head has {w_base.size}")
 
@@ -80,6 +86,7 @@ def cmd_merge(args) -> None:
     # of the Human-vs-AI layer, so they're excluded from its accuracy.
     samples = [s for s in all_samples if s.get("category", "ai" if s["label"] == 1 else "human") != "ai_assisted"]
     x = np.asarray([s["embedding"] for s in samples], dtype=np.float64).reshape(len(samples), -1) if samples else np.zeros((0, w.size))
+    side = np.asarray([s.get("side", [0.0] * N_SIDE) for s in samples], dtype=np.float64).reshape(len(samples), N_SIDE)
     y = np.asarray([s["label"] for s in samples], dtype=int)
     sessions = np.asarray([s["session_id"] for s in samples])
 
@@ -89,13 +96,16 @@ def cmd_merge(args) -> None:
     sd["clip_head.weight"] = torch.tensor(w, dtype=sd["clip_head.weight"].dtype).reshape(sd["clip_head.weight"].shape)
     sd["clip_head.bias"] = torch.tensor([b], dtype=sd["clip_head.bias"].dtype)
     torch.save({**ckpt, "state_dict": sd, "personalized_from": bundle["id"], "base_model_run": base_run}, out / "model.pt")
-    np.savez_compressed(out / "samples.npz", embedding=x.astype(np.float32), label=y, session_id=sessions)
+    np.savez_compressed(out / "samples.npz", embedding=x.astype(np.float32), side=side.astype(np.float32), label=y, session_id=sessions)
     report = {
         "head_id": bundle["id"], "base_model_run": base_run, "device": bundle.get("device"),
         "exported_at": bundle.get("exported_at"), "device_train_report": bundle.get("train"),
         "samples": int(len(y)), "ai_samples": int(y.sum()),
         "ai_assisted_samples": int(len(all_samples) - len(samples)), "recordings": int(len(set(sessions))),
         "accuracy_base_head": accuracy(x, y, w_base, b_base), "accuracy_personal_head": accuracy(x, y, w, b),
+        # With the side features the device's head actually uses (the merged model can't).
+        "accuracy_personal_head_with_side": accuracy(np.hstack([x, side]), y, np.concatenate([w, side_w]), b) if side_w.size else None,
+        "side_features": SIDE_FEATURES, "side_weights": side_w.tolist(),
         "weight_change_l2": float(np.linalg.norm(w - w_base)), "feature_spec_hash": bundle["feature_spec_hash"],
     }
     (out / "personal.json").write_text(json.dumps(report, indent=1))

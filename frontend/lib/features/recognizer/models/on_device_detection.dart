@@ -89,7 +89,7 @@ final class OnDeviceDetection extends Equatable {
   /// The 10 s windows re-scored with an on-device fine-tuned final layer (personalisation is
   /// fitted on the 10 s model's embeddings; the 5 s model is unchanged).
   OnDeviceDetection personalised(PersonalHead head) =>
-      copyWith(windows: [for (final w in windows) w.embedding == null ? w : w.withLogit(head.logit(w.embedding!))]);
+      copyWith(windows: [for (final w in windows) w.embedding == null ? w : w.withLogit(head.logit(w.embedding!, w.side))]);
 
   /// Only the windows that start within `[startS, endS)`, e.g. one saved clip.
   /// A 10 s window starting near the end runs a little past it.

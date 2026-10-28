@@ -45,6 +45,13 @@ class HeadTrainer {
     }
   }
 
+  /// The base model's head weights followed by zeros for the side features.
+  static Float64List padded(Float64List w0) {
+    final w = Float64List(w0.length + kSideFeatures);
+    w.setRange(0, w0.length, w0);
+    return w;
+  }
+
   (Float64List, double) fit(List<LabelledSample> samples, Float64List w0, double b0) {
     final n = samples.length, d = w0.length;
     final ai = samples.where((s) => s.label == 1).length;
@@ -60,7 +67,7 @@ class HeadTrainer {
       gw.fillRange(0, d, 0);
       var gb = 0.0;
       for (final s in samples) {
-        final x = s.embedding;
+        final x = s.input;
         var z = b;
         for (var i = 0; i < d; i++) {
           z += w[i] * x[i];
@@ -89,9 +96,11 @@ class HeadTrainer {
     if (samples.isEmpty) return double.nan;
     var ok = 0;
     for (final s in samples) {
+      final x = s.input;
       var z = b;
-      for (var i = 0; i < w.length; i++) {
-        z += w[i] * s.embedding[i];
+      final n = math.min(w.length, x.length);
+      for (var i = 0; i < n; i++) {
+        z += w[i] * x[i];
       }
       if ((z > 0 ? 1 : 0) == s.label) ok++;
     }
@@ -129,8 +138,10 @@ class HeadTrainer {
         .where((s) => s.binary && s.modelRun == baseModelRun && s.embedding.length == w0.length)
         .toList();
     check(usable);
-    final (w, b) = fit(usable, w0, b0);
-    final held = heldOut(usable, w0, b0);
+    // The side features start at weight 0: the base model never saw them.
+    final w0p = padded(w0);
+    final (w, b) = fit(usable, w0p, b0);
+    final held = heldOut(usable, w0p, b0);
     final ai = usable.where((s) => s.label == 1).length;
     final now = DateTime.now().toUtc();
     return PersonalHead(
@@ -144,7 +155,7 @@ class HeadTrainer {
         aiWindows: ai,
         humanWindows: usable.length - ai,
         sessions: usable.map((s) => s.sessionId).toSet().length,
-        accuracyBefore: accuracy(usable, w0, b0),
+        accuracyBefore: accuracy(usable, w0p, b0),
         accuracyAfter: accuracy(usable, w, b),
         heldOutAccuracyBefore: held?.$1,
         heldOutAccuracyAfter: held?.$2,

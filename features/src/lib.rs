@@ -22,8 +22,10 @@ pub mod ffi;
 #[cfg(feature = "python")]
 mod python;
 pub mod resample;
+pub mod side;
 
 pub use resample::resample;
+pub use side::{N_SIDE, SIDE_FEATURES, SIDE_SCALING, side_features, side_features_raw};
 
 /// Git commit this crate was built from (or `WMG_FEATURES_COMMIT`, or "unknown").
 pub const COMMIT: &str = env!("WMG_FEATURES_COMMIT");
@@ -225,6 +227,8 @@ pub struct Window {
     pub rms_dbfs: f64,
     /// Log-mel `[n_mels, frames_per_window]`.
     pub logmel: Array2<f32>,
+    /// Standardised side features (see [`side`]), appended to the embedding on device.
+    pub side: [f32; N_SIDE],
 }
 
 /// Window start offsets (in 32 kHz samples) for a clip of `len` samples, before RMS gating.
@@ -258,6 +262,7 @@ pub fn extract_windows(mel: &DetectorMel, samples: &[f64], sr: u32) -> Result<Ve
             start_s: start as f64 / SPEC.sample_rate as f64,
             rms_dbfs: rms,
             logmel: mel.logmel(&chunk)?,
+            side: side_features(&chunk),
         });
     }
     Ok(out)

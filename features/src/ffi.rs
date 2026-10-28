@@ -59,6 +59,33 @@ pub unsafe extern "C" fn wmg_extract_windows(
     out_start_s: *mut f32,
     max_windows: usize,
 ) -> i64 {
+    unsafe {
+        wmg_extract_windows_side(samples, n_samples, sample_rate, normalize, out_mel, out_start_s, std::ptr::null_mut(), max_windows)
+    }
+}
+
+/// Number of side features per window (`wmg_extract_windows_side`).
+#[unsafe(no_mangle)]
+pub extern "C" fn wmg_n_side() -> u32 {
+    crate::N_SIDE as u32
+}
+
+/// As `wmg_extract_windows`, also writing each window's standardised side features
+/// (`n_side` floats per window) into `out_side` when it is non-null.
+///
+/// # Safety
+/// As `wmg_extract_windows`; `out_side`, if non-null, must point to `max_windows * n_side` floats.
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn wmg_extract_windows_side(
+    samples: *const f32,
+    n_samples: usize,
+    sample_rate: u32,
+    normalize: i32,
+    out_mel: *mut f32,
+    out_start_s: *mut f32,
+    out_side: *mut f32,
+    max_windows: usize,
+) -> i64 {
     if samples.is_null() || out_mel.is_null() || out_start_s.is_null() || sample_rate == 0 {
         return -1;
     }
@@ -76,9 +103,18 @@ pub unsafe extern "C" fn wmg_extract_windows(
         let n = windows.len().min(max_windows);
         let out = unsafe { std::slice::from_raw_parts_mut(out_mel, max_windows * per) };
         let starts = unsafe { std::slice::from_raw_parts_mut(out_start_s, max_windows) };
+        let side = if out_side.is_null() {
+            None
+        } else {
+            Some(unsafe { std::slice::from_raw_parts_mut(out_side, max_windows * crate::N_SIDE) })
+        };
         for (i, w) in windows.iter().take(n).enumerate() {
             out[i * per..(i + 1) * per].copy_from_slice(w.logmel.as_slice()?);
             starts[i] = w.start_s as f32;
+            if let Some(s) = &side {
+                // Written through a raw pointer: `side` is a shared borrow of the slice here.
+                unsafe { std::ptr::copy_nonoverlapping(w.side.as_ptr(), s.as_ptr().add(i * crate::N_SIDE) as *mut f32, crate::N_SIDE) };
+            }
         }
         Some(n as i64)
     });

@@ -555,6 +555,7 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
           logit: w.logit,
           bands: w.bands,
           embedding: w.embedding, // kept for Training-mode labelling
+          side: w.side,
         ),
     ];
     final d = state.onDevice;

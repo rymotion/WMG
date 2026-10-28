@@ -136,6 +136,7 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
             label: category.binaryLabel ?? -1,
             category: category,
             embedding: w.embedding!,
+            side: w.side,
             modelRun: base.modelRun,
             recordedAt: now,
           ),

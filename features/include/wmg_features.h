@@ -20,6 +20,13 @@ size_t wmg_max_windows(size_t n_samples, uint32_t sample_rate);
 int64_t wmg_extract_windows(const float *samples, size_t n_samples, uint32_t sample_rate,
                             int32_t normalize, float *out_mel, float *out_start_s,
                             size_t max_windows);
+// Side features per window (hand-crafted 8-16 kHz numbers appended to the embedding on device).
+uint32_t wmg_n_side(void);
+// As wmg_extract_windows, also writing [max_windows][n_side] standardised side features to
+// out_side when it is non-NULL.
+int64_t wmg_extract_windows_side(const float *samples, size_t n_samples, uint32_t sample_rate,
+                                 int32_t normalize, float *out_mel, float *out_start_s,
+                                 float *out_side, size_t max_windows);
 int64_t wmg_resample(const float *input, size_t n, uint32_t sr_in, uint32_t sr_out,
                      float *out, size_t out_cap);
 

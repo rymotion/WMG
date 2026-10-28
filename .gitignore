@@ -1,0 +1,2 @@
+# Training audio (~6 GB) stays local; never commit it.
+training_data/

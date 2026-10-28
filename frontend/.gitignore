@@ -52,3 +52,5 @@ app.*.map.json
 *.mp4
 *.wav
 *.mp3
+*.aiff
+*.flac

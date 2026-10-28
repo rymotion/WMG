@@ -1,0 +1,3 @@
+session_id,playlist_id,clip_index,clip_id,segment,label,song_id,group,source_path,source_start_s,duration_s,align_corr,sample_rate
+4fd86149-6fa4-4e49-9103-4335e972698c,,0,988c2378-7b6d-48f7-93ee-d5646bf0dac4,segments/clip000_ai.wav,1,4fd86149-000,phone:live-4fd86149,"fully AI song, phone speaker -> mic",,30.0,,32000
+4fd86149-6fa4-4e49-9103-4335e972698c,,1,09b59e6b-e2c1-4be4-a451-22dc7f14f987,segments/clip001_ai.wav,1,4fd86149-001,phone:live-4fd86149,"fully AI song, phone speaker -> mic",,30.0,,32000

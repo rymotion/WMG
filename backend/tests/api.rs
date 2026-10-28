@@ -262,3 +262,42 @@ async fn identification_transport_error() {
     let ident = wait_for_identification(&app, meta["id"].as_str().unwrap()).await;
     assert_eq!(ident["status"], "error");
 }
+
+#[tokio::test]
+async fn personalised_head_upload_list_and_fetch() {
+    let dir = tempfile::tempdir().unwrap();
+    let state = AppState::new(config(dir.path(), "http://127.0.0.1:9"), Arc::new(FsStore::new(dir.path()).await.unwrap()));
+    let app = app(state);
+    let body = serde_json::json!({
+        "format": "wmg-personal-head/1", "id": "20261023120000-abc", "base_model_run": "20261019-080656",
+        "feature_spec_hash": "9f612611d1fccf8a", "device": "test", "created_at": "2026-10-23T12:00:00Z",
+        "head": {"weights": [0.1, -0.2, 0.3], "bias": -0.5},
+        "train": {"ai_windows": 6, "human_windows": 6}, "samples": [{"label": 1}, {"label": 0}],
+    });
+    let req = |method: &str, uri: &str, body: Option<&Value>| {
+        Request::builder().method(method).uri(uri).header(header::CONTENT_TYPE, "application/json")
+            .body(body.map_or(Body::empty(), |b| Body::from(b.to_string()))).unwrap()
+    };
+    let res = app.clone().oneshot(req("POST", "/models/personalized", Some(&body))).await.unwrap();
+    assert_eq!(res.status(), StatusCode::CREATED);
+    let created: Value = serde_json::from_slice(&res.into_body().collect().await.unwrap().to_bytes()).unwrap();
+    assert_eq!(created["samples"], 2);
+    let id = created["id"].as_str().unwrap().to_string();
+    assert!(id.contains("20261023120000-abc"));
+
+    let res = app.clone().oneshot(req("GET", "/models/personalized", None)).await.unwrap();
+    let list: Value = serde_json::from_slice(&res.into_body().collect().await.unwrap().to_bytes()).unwrap();
+    assert_eq!(list.as_array().unwrap().len(), 1);
+
+    let res = app.clone().oneshot(req("GET", &format!("/models/personalized/{id}"), None)).await.unwrap();
+    assert_eq!(res.status(), StatusCode::OK);
+    let back: Value = serde_json::from_slice(&res.into_body().collect().await.unwrap().to_bytes()).unwrap();
+    assert_eq!(back["head"]["bias"], -0.5);
+
+    // Wrong format and path traversal are rejected.
+    let bad = serde_json::json!({"format": "other"});
+    let res = app.clone().oneshot(req("POST", "/models/personalized", Some(&bad))).await.unwrap();
+    assert_eq!(res.status(), StatusCode::BAD_REQUEST);
+    let res = app.clone().oneshot(req("GET", "/models/personalized/..%2Fsecret", None)).await.unwrap();
+    assert_eq!(res.status(), StatusCode::NOT_FOUND);
+}

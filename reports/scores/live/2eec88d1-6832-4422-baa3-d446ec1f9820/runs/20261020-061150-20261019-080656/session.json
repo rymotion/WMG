@@ -1,0 +1,75 @@
+{
+ "path": "/Users/ryanpaglinawan/Projects/WMG/reports/scores/live/2eec88d1-6832-4422-baa3-d446ec1f9820/audio/session.wav",
+ "orig_sample_rate": 32000,
+ "input_rms_dbfs": -38.4,
+ "level_normalized_to_dbfs": -14.0,
+ "p_ai": 0.0,
+ "band_scores": {
+  "bass": 0.0044,
+  "mid": 0.0017,
+  "treble": 0.0076
+ },
+ "windows": [
+  {
+   "start_s": 0.0,
+   "p_ai": 0.0001,
+   "band_scores": {
+    "bass": 0.0007,
+    "mid": 0.001,
+    "treble": 0.0008
+   }
+  },
+  {
+   "start_s": 5.0,
+   "p_ai": 0.0001,
+   "band_scores": {
+    "bass": 0.0042,
+    "mid": 0.0004,
+    "treble": 0.0006
+   }
+  },
+  {
+   "start_s": 10.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0,
+    "mid": 0.0,
+    "treble": 0.0
+   }
+  },
+  {
+   "start_s": 15.0,
+   "p_ai": 0.0,
+   "band_scores": {
+    "bass": 0.0185,
+    "mid": 0.0,
+    "treble": 0.0016
+   }
+  },
+  {
+   "start_s": 20.0,
+   "p_ai": 0.0009,
+   "band_scores": {
+    "bass": 0.0008,
+    "mid": 0.0067,
+    "treble": 0.0324
+   }
+  },
+  {
+   "start_s": 25.0,
+   "p_ai": 0.0003,
+   "band_scores": {
+    "bass": 0.0019,
+    "mid": 0.0022,
+    "treble": 0.0104
+   }
+  }
+ ],
+ "run_id": "20261020-061150-20261019-080656",
+ "session_id": "2eec88d1-6832-4422-baa3-d446ec1f9820",
+ "api": "http://localhost:9000",
+ "model_run": "20261019-080656",
+ "feature_spec_hash": "9f612611d1fccf8a",
+ "label": "human",
+ "note": "one song, phone speaker -> mic"
+}

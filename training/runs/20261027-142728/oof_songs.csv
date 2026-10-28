@@ -1,0 +1,779 @@
+song_id,path,label,group,logit,n_windows,band_bass,band_mid,band_treble,p_ai,fold
+0098d3849d83,../training_data/human_talent/Unknown Artist/Unknown Album/16 Track 16.m4a,0,human:Unknown Artist,-16.046877,45,0.007725128,2.6565706e-06,0.00020778184,1.07381595e-07,0
+0157b62bb086,"../training_data/ai_generated/Na Raba Toma Tapão (1988) - BLOW RECORDS, Niack.m4a",1,ai:BLOW RECORDS,3.1574736,54,0.6870467,0.6248999,0.8308663,0.95920223,0
+04ea4a27b69e,../training_data/human_talent/Unknown Artist/Unknown Album/9 Clueless Kit - vacation.mp3,0,human:Unknown Artist,-9.986434,33,0.013472713,0.0029134233,0.08137635,4.6017904e-05,0
+07ce60d7cf53,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 4.m4a,0,human:Unknown Artist,-13.814094,43,0.0017178985,1.1476492e-05,0.003350129,1.001417e-06,0
+0d8b6c631c77,"../training_data/ai_generated/Chupa Xoxota (1980) - Ao Vivo - BLOW RECORDS, Mc 2k.m4a",1,ai:BLOW RECORDS,3.317425,58,0.66975313,0.67930055,0.79402167,0.9650218,0
+139050c64f8f,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13 2.m4a,0,human:Unknown Artist,-16.882473,44,0.00062952697,1.6604724e-06,0.0024751667,4.6562374e-08,0
+156e521640fa,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 4.m4a,0,human:Unknown Artist,-16.048601,41,0.0010988559,3.7999307e-05,0.00035113905,1.071966e-07,0
+166a210902ad,../training_data/human_talent/Unknown Artist/Unknown Album/3 Clueless Kit - spare.mp3,0,human:Unknown Artist,-11.304426,26,0.012425817,0.0023119391,0.0055947048,1.2318128e-05,0
+1db1e8c24b84,../training_data/human_talent/Unknown Artist/Unknown Album/3 - soft sound.wav,0,human:Unknown Artist,-8.600014,36,0.12508689,0.11365918,0.08645428,0.00018406937,0
+1e75b2a3543b,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - run.wav,0,human:Unknown Artist,-5.1052265,33,0.31016853,0.28095582,0.1674499,0.006028403,0
+20f70ded53a1,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 4.m4a,0,human:Unknown Artist,-16.340012,44,0.0027610997,1.0860868e-05,0.0005582989,8.009827e-08,0
+212034d0cce5,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 1.m4a,0,human:Unknown Artist,-18.456709,45,0.00054046564,6.0625104e-07,7.2862684e-05,9.646131e-09,0
+28f651bdd61b,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - down it.mp3,0,human:Unknown Artist,-7.81202,37,0.09625837,0.07442807,0.26455015,0.0004046757,0
+2a7658b7211c,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 2.m4a,0,human:Unknown Artist,-18.010658,41,0.00083269225,1.14450515e-07,3.604035e-05,1.5068517e-08,0
+2aad464e9b41,../training_data/human_talent/Unknown Artist/Unknown Album/Last Island - Down and Around.mp3,0,human:Unknown Artist,-5.551623,41,0.2159661,0.20448875,0.1846187,0.0038661484,0
+2c09744bde18,../training_data/human_talent/Unknown Artist/Unknown Album/black tusk.mp3,0,human:Unknown Artist,-1.0401157,41,0.47229317,0.3572474,0.40805128,0.26112768,0
+337d9da433c8,../training_data/human_talent/Unknown Artist/Unknown Album/6 - sleep.wav,0,human:Unknown Artist,-7.9493256,40,0.07455096,0.04299838,0.0073134853,0.00035277562,0
+33cba97f8cca,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 1.m4a,0,human:Unknown Artist,-15.024889,42,0.0026769908,5.919095e-05,0.00073235255,2.983826e-07,0
+3a3826b2ad97,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 2.m4a,0,human:Unknown Artist,-13.583861,44,0.003663136,0.00024991774,0.00918259,1.2606758e-06,0
+40355b998f1f,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 2.m4a,0,human:Unknown Artist,-14.515483,43,0.0011943727,3.1677046e-05,0.0030354962,4.965988e-07,0
+42261c5c5628,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 2.m4a,0,human:Unknown Artist,-12.974676,42,0.009658719,8.603357e-05,0.0099451095,2.3182952e-06,0
+45ab4fdc6b40,../training_data/human_talent/Unknown Artist/Unknown Album/14 Track 14 2.m4a,0,human:Unknown Artist,-15.86341,18,0.008780721,0.0006047118,0.00012720171,1.2900558e-07,0
+481d6511af9b,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 3.m4a,0,human:Unknown Artist,-15.104805,46,0.00055773783,1.6816952e-05,0.008429311,2.75465e-07,0
+4d4618c6b0e5,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 2.m4a,0,human:Unknown Artist,-17.13619,45,0.013492892,4.543489e-07,0.00029940312,3.612826e-08,0
+4f7f467b257d,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 3.m4a,0,human:Unknown Artist,-12.839452,42,0.020242942,0.01408635,0.03605128,2.6539685e-06,0
+51fa1ef03891,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - below 15.mp3,0,human:Unknown Artist,-7.33979,38,0.008139361,0.0031248636,0.08873754,0.00064876577,0
+53dfea15e18e,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 2.m4a,0,human:Unknown Artist,-13.920531,43,0.003903817,3.9502633e-05,0.003826621,9.0030505e-07,0
+55194dbce8f0,../training_data/human_talent/Unknown Artist/Unknown Album/15 Track 15 1.m4a,0,human:Unknown Artist,-14.964837,12,0.00040990047,2.4681985e-05,0.00038238833,3.1685e-07,0
+599d97561818,../training_data/human_talent/Unknown Artist/Unknown Album/10 Clueless Kit - right one.mp3,0,human:Unknown Artist,-1.0667617,35,0.3608717,0.4613894,0.22758977,0.2560194,0
+5aa296316a77,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 4.m4a,0,human:Unknown Artist,-14.180909,43,0.001516179,2.5662872e-05,0.01058603,6.9391956e-07,0
+5b4e97e61e6e,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04.m4a,0,human:Unknown Artist,-11.17882,44,0.0021255782,0.00030109132,0.05315338,1.3966714e-05,0
+5e8a1014555e,../training_data/human_talent/Unknown Artist/Unknown Album/Peak Design Syatem review.aiff,0,human:Unknown Artist,-13.516194,28,0.0025075078,6.4472464e-05,0.00077629293,1.3489343e-06,0
+61728306afb2,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 4.m4a,0,human:Unknown Artist,-16.903454,44,0.0017340585,5.5005944e-06,0.0003314799,4.5595634e-08,0
+61d693dbd529,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 4.m4a,0,human:Unknown Artist,-16.221504,44,0.001462711,4.7812982e-06,9.775223e-05,9.017584e-08,0
+62583920262b,../training_data/ai_generated/Dedo de Gorila (1971) - Ao Vivo - BLOW RECORDS.m4a,1,ai:BLOW RECORDS,3.5937986,79,0.6947363,0.77217156,0.5552451,0.973242,0
+669538f93fc2,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13 1.m4a,0,human:Unknown Artist,-17.400757,42,0.0017121783,4.556526e-06,0.0014486366,2.772984e-08,0
+6baf0fb4e4cf,"../training_data/ai_generated/Na Raba Toma Tapão (1988) - Ao Vivo - BLOW RECORDS, Niack.m4a",1,ai:BLOW RECORDS,-4.252643,52,0.13404435,0.17225052,0.12736431,0.014027025,0
+6c7e48b77788,../training_data/human_talent/Music/Unknown Artist/Unknown Album/[Halloween Remix] This is Halloween 6.mp3,0,human:Unknown Artist,-11.524694,42,0.008079253,0.020418448,0.02729955,9.882902e-06,0
+6d8d5ad40eb0,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 2.m4a,0,human:Unknown Artist,-15.036386,41,0.001963237,2.881404e-06,0.003721601,2.9497187e-07,0
+6dd859f973bf,../training_data/human_talent/Unknown Artist/Unknown Album/4 - break.wav,0,human:Unknown Artist,-3.768101,24,0.12768333,0.119687974,0.15316877,0.022574503,0
+6f21d2b5afae,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 2.m4a,0,human:Unknown Artist,-16.782639,42,0.0017106402,7.404667e-06,0.000586405,5.145086e-08,0
+71a5396632f9,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - snake.mp3,0,human:Unknown Artist,-0.6268724,36,0.33347085,0.4911677,0.3365231,0.34822002,0
+738168997ed6,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 4.m4a,0,human:Unknown Artist,-14.87467,45,0.0017381248,2.5898322e-05,0.0005676403,3.4674702e-07,0
+7428435c2e63,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 2.m4a,0,human:Unknown Artist,-12.826843,47,0.012845635,0.0007318863,0.029171005,2.687643e-06,0
+76f0c5221c41,../training_data/human_talent/Unknown Artist/Unknown Album/2 Clueless Kit - the springs.mp3,0,human:Unknown Artist,-6.8242264,41,0.05315829,0.027156617,0.08115663,0.0010859361,0
+7830ae1f60f9,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13 3.m4a,0,human:Unknown Artist,-13.954868,39,0.0056602345,0.0011979477,0.019317584,8.69916e-07,0
+78887825a085,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02.m4a,0,human:Unknown Artist,-11.387271,10,0.060962886,0.0013326505,0.06723228,1.1338775e-05,0
+7df8ad7da3c4,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 3.m4a,0,human:Unknown Artist,-17.193684,43,0.0013567347,0.00017296903,0.00053884316,3.410971e-08,0
+8545023c299f,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - it broke.mp3,0,human:Unknown Artist,-3.6798651,41,0.07021092,0.24693385,0.36706606,0.024605665,0
+86d0458b3637,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 4.m4a,0,human:Unknown Artist,-16.268147,44,0.007943183,1.2625935e-05,0.00039214522,8.6066414e-08,0
+8b04ea70376d,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 4.m4a,0,human:Unknown Artist,-15.6434,43,0.00076458725,1.0189205e-05,0.00021689865,1.6075244e-07,0
+8b420b5c5684,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10.m4a,0,human:Unknown Artist,-13.44951,42,0.03409541,0.00020935203,0.0027782782,1.4419546e-06,0
+8ca0884f7aee,../training_data/human_talent/Unknown Artist/Unknown Album/16 Track 16 1.m4a,0,human:Unknown Artist,-14.877833,14,0.015342343,2.2309776e-05,0.0023613677,3.4565187e-07,0
+8ddd173cf99d,../training_data/human_talent/Unknown Artist/Unknown Album/Clueless Kit - pressure.mp3,0,human:Unknown Artist,-8.594252,37,0.023836909,0.032755982,0.12353442,0.00018513287,0
+9335aac344e6,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01 1.m4a,0,human:Unknown Artist,-16.079535,45,0.0035962902,1.3844974e-05,0.00022615283,1.0393141e-07,0
+9698ce281ae8,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 3.m4a,0,human:Unknown Artist,-16.600197,44,0.0053849216,3.5458852e-05,0.00024088546,6.174846e-08,0
+97dd1f2e55a1,../training_data/ai_generated/Sabor Energético (1983) - Ao Vivo - BLOW RECORDS.m4a,1,ai:BLOW RECORDS,4.6028166,58,0.89580667,0.82813936,0.89886147,0.9900759,0
+986192ea9ead,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 1.m4a,0,human:Unknown Artist,-16.16912,44,0.003452603,2.6768523e-06,0.0006887328,9.502547e-08,0
+9a2464f23081,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 3.m4a,0,human:Unknown Artist,-13.012517,41,0.0036452515,3.7853704e-05,0.001453475,2.2322083e-06,0
+9af69d2a9f27,../training_data/human_talent/Unknown Artist/Unknown Album/1 Clueless Kit - rooftop.mp3,0,human:Unknown Artist,-8.198056,37,0.0668721,0.08302332,0.10530667,0.00027511225,0
+9d530c8d12f0,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 1.m4a,0,human:Unknown Artist,-13.135007,41,0.0015920638,2.272183e-05,0.009851504,1.9748682e-06,0
+a03e69d8d399,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 3.m4a,0,human:Unknown Artist,-13.81218,45,0.0031626136,0.00011423683,0.0055796476,1.0033356e-06,0
+a2ac66c9f023,"../training_data/ai_generated/Predador de Perereca (1982) - Ao Vivo - BLOW RECORDS, Mc Jhey.m4a",1,ai:BLOW RECORDS,1.2142597,50,0.5458408,0.51234996,0.630308,0.7710518,0
+a43ad9a95912,../training_data/human_talent/Unknown Artist/Unknown Album/01 Track 01.m4a,0,human:Unknown Artist,-14.442573,6,0.00045292228,1.3816934e-05,0.00074222515,5.341585e-07,0
+a92db0a765c4,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09 3.m4a,0,human:Unknown Artist,-15.105358,41,0.0087369615,1.4345271e-05,0.0005054264,2.753127e-07,0
+aa242b0957ee,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 1.m4a,0,human:Unknown Artist,-13.605263,43,0.012650124,2.1952885e-05,0.0051287855,1.2339823e-06,0
+ae253fa4fb97,../training_data/human_talent/Unknown Artist/Unknown Album/13 Track 13.m4a,0,human:Unknown Artist,-15.879093,43,0.0012894685,1.1225389e-05,0.00015126764,1.2699815e-07,0
+b0825b30c6f3,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05.m4a,0,human:Unknown Artist,-13.383427,44,0.0013536266,3.7603062e-05,0.011610663,1.5404619e-06,0
+b20226e86406,../training_data/human_talent/Unknown Artist/Unknown Album/17 Track 17.m4a,0,human:Unknown Artist,-18.703764,12,0.0022137002,3.913287e-07,7.2150683e-06,7.534571e-09,0
+b284b8a2742b,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07.m4a,0,human:Unknown Artist,-17.28356,39,0.001544004,1.527648e-07,0.000115095565,3.117779e-08,0
+bba69631b2a6,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 4.m4a,0,human:Unknown Artist,-14.4077635,45,0.009615378,0.0006160327,0.011961133,5.5307953e-07,0
+be9c273e3aa0,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12.m4a,0,human:Unknown Artist,-14.769511,45,0.00453704,2.8475397e-06,0.0007741653,3.8519673e-07,0
+c14326f8a802,../training_data/human_talent/Unknown Artist/Unknown Album/07 Track 07 1.m4a,0,human:Unknown Artist,-15.788664,41,0.00068217807,2.0047573e-06,0.0002637519,1.3901779e-07,0
+c18a7e172bc7,../training_data/human_talent/Unknown Artist/Unknown Album/15 Track 15.m4a,0,human:Unknown Artist,-13.841313,42,0.0019158924,1.3571447e-05,0.0059879515,9.745263e-07,0
+c331d8f79f8c,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 4.m4a,0,human:Unknown Artist,-17.064486,44,0.0026038105,1.5168945e-05,9.3540846e-05,3.881397e-08,0
+c82721fd0880,../training_data/human_talent/Unknown Artist/Unknown Album/09 Track 09.m4a,0,human:Unknown Artist,-12.596499,43,0.02446539,0.0006611484,0.036630258,3.3838285e-06,0
+ca86dcdaef6d,../training_data/human_talent/Unknown Artist/Unknown Album/8 - 2 colours.wav,0,human:Unknown Artist,-9.138002,33,0.076618455,0.109729536,0.05042817,0.00010749031,0
+cf5c20e877c0,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 1.m4a,0,human:Unknown Artist,-12.175473,46,0.0030483895,0.00013187391,0.008972182,5.1553357e-06,0
+cf6fbc9d64db,../training_data/human_talent/Unknown Artist/Unknown Album/02 Track 02 2.m4a,0,human:Unknown Artist,-14.413829,42,0.008212209,1.4323906e-05,0.0016410103,5.4973503e-07,0
+cf9e4ac7fb56,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11.m4a,0,human:Unknown Artist,-16.897558,41,0.0015084879,5.27652e-06,0.002674113,4.586524e-08,0
+d4183697091a,../training_data/human_talent/Unknown Artist/Unknown Album/10 Track 10 1.m4a,0,human:Unknown Artist,-11.768707,44,0.014278378,0.00055833074,0.032562483,7.743049e-06,0
+d55c13bcefc5,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 1.m4a,0,human:Unknown Artist,-15.700654,46,0.0023888086,1.6695052e-05,0.00017392433,1.5180726e-07,0
+d594bdbf3f21,../training_data/human_talent/Unknown Artist/Unknown Album/05 Track 05 1.m4a,0,human:Unknown Artist,-18.094492,41,0.00078696373,3.139884e-07,0.00032949154,1.3856769e-08,0
+d6b641b9b9f1,"../training_data/ai_generated/Popotão Grandão (1982) - Ao Vivo - BLOW RECORDS, Mc Neguinho do ITR.m4a",1,ai:BLOW RECORDS,-1.034757,50,0.36591282,0.29660985,0.4012342,0.2621629,0
+d7603c264de8,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06 3.m4a,0,human:Unknown Artist,-13.79678,44,0.0080375215,2.1790387e-05,0.011456123,1.0189063e-06,0
+d8aa0b3559fb,../training_data/human_talent/Unknown Artist/Unknown Album/14 Track 14 1.m4a,0,human:Unknown Artist,-16.472761,40,0.0017833827,3.2062733e-06,0.0012787033,7.01408e-08,0
+dac91814be50,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08.m4a,0,human:Unknown Artist,-14.516169,41,0.049110457,0.00047058708,0.014808034,4.962584e-07,0
+de326c76d7dc,../training_data/human_talent/Unknown Artist/Unknown Album/06 Track 06.m4a,0,human:Unknown Artist,-15.102216,40,0.000988438,1.7418984e-05,0.005122677,2.7617915e-07,0
+de51a14f15db,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03 1.m4a,0,human:Unknown Artist,-16.714907,43,0.0026327758,1.9185909e-05,0.00014493713,5.505645e-08,0
+e1ff03d22ee9,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 4.m4a,0,human:Unknown Artist,-15.448136,42,0.007570786,3.810392e-06,0.000233139,1.9541574e-07,0
+e29dd4262957,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 3.m4a,0,human:Unknown Artist,-16.982218,47,0.0023967398,1.3336638e-06,7.290812e-05,4.2142137e-08,0
+e31478abdd4e,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 2.m4a,0,human:Unknown Artist,-13.81073,41,0.0043338253,7.359304e-05,0.0075501148,1.004791e-06,0
+e65f0a70ebeb,../training_data/human_talent/Unknown Artist/Unknown Album/6 Clueless Kit - medication.mp3,0,human:Unknown Artist,-1.5920923,28,0.34297776,0.23281083,0.39725634,0.16908973,0
+e7b98b32ae43,../training_data/human_talent/Unknown Artist/Unknown Album/04 Track 04 3.m4a,0,human:Unknown Artist,-16.194855,45,0.0010042212,7.5626103e-06,0.006644167,9.261129e-08,0
+e8fc7aa122a3,../training_data/human_talent/Unknown Artist/Unknown Album/9 - tranada.wav,0,human:Unknown Artist,-0.10660916,26,0.38852245,0.5189185,0.5943232,0.47337297,0
+ec520b0a2e05,../training_data/human_talent/Unknown Artist/Unknown Album/14 Track 14.m4a,0,human:Unknown Artist,-17.18998,36,0.002254824,1.1318315e-06,8.052745e-05,3.423629e-08,0
+ed90ca484d9c,../training_data/human_talent/Unknown Artist/Unknown Album/03 Track 03.m4a,0,human:Unknown Artist,-13.048834,45,0.009292058,8.6679735e-05,0.00706697,2.1525962e-06,0
+ef9ad2d3f93b,../training_data/human_talent/Unknown Artist/Unknown Album/12 Track 12 3.m4a,0,human:Unknown Artist,-14.501935,38,0.01088502,1.156063e-05,0.0011496344,5.0337246e-07,0
+f0c183fe6c05,../training_data/human_talent/Unknown Artist/Unknown Album/11 Track 11 3.m4a,0,human:Unknown Artist,-14.360582,41,0.0020727967,7.670866e-06,0.007386796,5.797998e-07,0
+f4352306bfbc,../training_data/human_talent/Unknown Artist/Unknown Album/08 Track 08 2.m4a,0,human:Unknown Artist,-16.520536,45,0.003292494,1.2459474e-05,0.00037028678,6.6868594e-08,0
+f82469e7-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip000_human.wav,0,phone:apple-playlist-mac,-6.6060147,12,0.09726799,0.28002694,0.018916944,0.0013503843,0
+f82469e7-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip001_human.wav,0,phone:apple-playlist-mac,-9.482301,12,0.073714346,0.0044755186,1.6852582e-05,7.6182645e-05,0
+f82469e7-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip002_human.wav,0,phone:apple-playlist-mac,-9.468638,12,0.07489008,0.05098465,0.0006074425,7.7230536e-05,0
+f82469e7-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip003_human.wav,0,phone:apple-playlist-mac,-10.719243,12,0.04867937,0.008940569,5.1210664e-06,2.2114762e-05,0
+f82469e7-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip004_human.wav,0,phone:apple-playlist-mac,-12.579047,12,0.08030731,0.00020555816,4.941406e-05,3.443402e-06,0
+f82469e7-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip005_human.wav,0,phone:apple-playlist-mac,-7.117504,12,0.18049745,0.32799903,0.1595427,0.00081013096,0
+f82469e7-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip006_human.wav,0,phone:apple-playlist-mac,0.79057884,12,0.6487016,0.66595536,0.46597302,0.6879556,0
+f82469e7-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip007_human.wav,0,phone:apple-playlist-mac,-9.312094,12,0.08123701,0.020657301,0.018896181,9.031707e-05,0
+f82469e7-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip008_human.wav,0,phone:apple-playlist-mac,-15.076478,12,0.0036721528,0.0057661054,7.404542e-06,2.8337965e-07,0
+f82469e7-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip009_human.wav,0,phone:apple-playlist-mac,-9.271993,12,0.0071583358,0.007310029,0.01058146,9.401213e-05,0
+f82469e7-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip010_human.wav,0,phone:apple-playlist-mac,-10.673702,12,0.0049365773,0.009201835,0.0018454184,2.3145149e-05,0
+f82469e7-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip011_human.wav,0,phone:apple-playlist-mac,-7.3253098,12,0.009043648,0.013248465,0.01379219,0.00065822207,0
+f82469e7-012,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip012_human.wav,0,phone:apple-playlist-mac,-13.650891,12,0.00029255624,0.00028132953,1.2545355e-05,1.1789427e-06,0
+f82469e7-013,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip013_human.wav,0,phone:apple-playlist-mac,-14.103162,12,4.321315e-05,0.00014469402,3.7844384e-05,7.5002254e-07,0
+f82469e7-014,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip014_human.wav,0,phone:apple-playlist-mac,-8.500758,12,0.012323532,0.046795245,0.0014319337,0.00020327284,0
+f82469e7-015,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip015_human.wav,0,phone:apple-playlist-mac,-11.497008,12,0.008833342,0.005237952,4.5287193e-06,1.0160341e-05,0
+f82469e7-016,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip016_human.wav,0,phone:apple-playlist-mac,-7.614221,11,0.026521407,0.0039687525,0.09442168,0.00049314153,0
+f82469e7-017,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip017_human.wav,0,phone:apple-playlist-mac,-10.482956,12,0.0044251387,0.00058573246,0.008869869,2.8009019e-05,0
+f82469e7-018,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip018_human.wav,0,phone:apple-playlist-mac,-8.520143,12,0.00070762663,0.0020814186,0.0023851795,0.00019937124,0
+f82469e7-019,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip019_human.wav,0,phone:apple-playlist-mac,-8.489583,12,0.0014479527,0.0031292718,0.0042049624,0.00020555672,0
+f82469e7-020,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip020_human.wav,0,phone:apple-playlist-mac,-10.167532,12,0.0019071981,0.03444684,0.00017354358,3.8395498e-05,0
+f82469e7-021,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip021_human.wav,0,phone:apple-playlist-mac,-5.7951007,12,0.118797064,0.10075435,0.13731949,0.0030331959,0
+f82469e7-022,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip022_human.wav,0,phone:apple-playlist-mac,-10.063444,12,0.006271376,0.009462595,0.00043606572,4.2607222e-05,0
+f82469e7-023,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip023_human.wav,0,phone:apple-playlist-mac,-6.7635674,12,0.010221863,0.00772253,0.03101392,0.0011537684,0
+f82469e7-024,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip024_human.wav,0,phone:apple-playlist-mac,-8.289392,12,0.021448014,0.0071907085,0.04871085,0.00025110395,0
+f82469e7-025,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip025_human.wav,0,phone:apple-playlist-mac,-10.779678,12,0.0041374187,0.0005218691,0.0015229537,2.0817863e-05,0
+f82469e7-026,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip026_human.wav,0,phone:apple-playlist-mac,-10.127997,12,0.003157353,0.0010384277,0.0114876,3.994379e-05,0
+f82469e7-027,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip027_human.wav,0,phone:apple-playlist-mac,-8.677386,12,0.0020920867,0.0022110827,0.003994635,0.00017036682,0
+f82469e7-028,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip028_human.wav,0,phone:apple-playlist-mac,-12.964062,12,0.0016741621,0.0003936158,0.0016215787,2.3430337e-06,0
+f82469e7-029,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip029_human.wav,0,phone:apple-playlist-mac,-9.755974,12,0.0010316503,0.002020405,0.0014387034,5.7944104e-05,0
+f82469e7-030,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip030_human.wav,0,phone:apple-playlist-mac,-8.135358,12,0.004282745,0.00047689976,0.01089707,0.00029290837,0
+f82469e7-031,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip031_human.wav,0,phone:apple-playlist-mac,-11.09634,12,0.16443661,0.16037756,0.16815968,1.5167503e-05,0
+f82469e7-032,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip032_human.wav,0,phone:apple-playlist-mac,-14.843094,12,0.026394015,0.07954302,0.026219048,3.5787065e-07,0
+f82469e7-033,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip033_human.wav,0,phone:apple-playlist-mac,-17.127985,12,0.00013526948,0.0019679312,0.0017780568,3.6425927e-08,0
+f82469e7-034,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip034_human.wav,0,phone:apple-playlist-mac,-17.78317,12,0.00013668438,2.3477665e-05,4.409561e-06,1.8917646e-08,0
+f82469e7-035,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip035_human.wav,0,phone:apple-playlist-mac,-14.0561075,12,0.0013564504,0.00038607905,0.00015293737,7.861578e-07,0
+f82469e7-036,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip036_human.wav,0,phone:apple-playlist-mac,-13.842046,12,0.00033134804,0.00067795784,0.0013048389,9.738128e-07,0
+f82469e7-037,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip037_human.wav,0,phone:apple-playlist-mac,-12.986134,12,0.00017820114,0.00016598833,0.0007265299,2.2918853e-06,0
+f82469e7-038,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip038_human.wav,0,phone:apple-playlist-mac,-15.227562,12,5.3038882e-05,0.00017307169,2.4423216e-05,2.436429e-07,0
+f82469e7-039,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip039_human.wav,0,phone:apple-playlist-mac,-14.575638,12,7.006068e-05,0.0025279028,0.0074069705,4.6760672e-07,0
+f82469e7-040,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip040_human.wav,0,phone:apple-playlist-mac,-10.111705,12,0.10267714,0.011530862,0.046548504,4.0599884e-05,0
+f82469e7-041,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip041_human.wav,0,phone:apple-playlist-mac,-12.903217,12,0.009738092,6.4292285e-06,5.8951566e-05,2.49002e-06,0
+f82469e7-042,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip042_human.wav,0,phone:apple-playlist-mac,-10.798404,12,0.006651882,0.00073139364,0.012796451,2.0431675e-05,0
+f82469e7-043,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip043_human.wav,0,phone:apple-playlist-mac,-14.237281,12,0.0055499226,2.3321072e-05,6.210099e-05,6.5588426e-07,0
+f82469e7-044,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip044_human.wav,0,phone:apple-playlist-mac,-11.375865,12,0.032545634,0.0013046497,0.016280545,1.1468844e-05,0
+f82469e7-045,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip045_human.wav,0,phone:apple-playlist-mac,-7.084585,12,0.14902115,0.21298571,0.23079395,0.00083722075,0
+f82469e7-046,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip046_human.wav,0,phone:apple-playlist-mac,-12.85583,12,0.0006265936,0.0065314253,5.5310116e-05,2.610855e-06,0
+f82469e7-047,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip047_human.wav,0,phone:apple-playlist-mac,-9.763008,12,0.0079862615,0.009132355,0.0009081676,5.7537964e-05,0
+f82469e7-048,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip048_human.wav,0,phone:apple-playlist-mac,-9.609725,12,0.042792182,0.02547755,0.029375987,6.7068766e-05,0
+f82469e7-049,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip049_human.wav,0,phone:apple-playlist-mac,-8.543262,12,0.10226456,0.10214255,0.20437586,0.00019481573,0
+f82469e7-050,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip050_human.wav,0,phone:apple-playlist-mac,-14.483273,12,0.00037220735,0.00010785479,8.783988e-05,5.128548e-07,0
+f82469e7-051,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip051_human.wav,0,phone:apple-playlist-mac,1.7268184,12,0.8902695,0.516285,0.7337046,0.84900504,0
+f82469e7-052,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip052_human.wav,0,phone:apple-playlist-mac,-9.753423,12,0.12062817,0.060073882,0.13542807,5.8092104e-05,0
+f82469e7-053,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip053_human.wav,0,phone:apple-playlist-mac,-14.524045,12,0.010438644,0.00018079918,4.945171e-06,4.92365e-07,0
+f82469e7-054,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip054_human.wav,0,phone:apple-playlist-mac,-9.778941,12,0.014317419,0.0024119825,0.013790708,5.6628523e-05,0
+f82469e7-055,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip055_human.wav,0,phone:apple-playlist-mac,-6.010776,12,0.06624445,0.13741177,0.10699914,0.0024461858,0
+f82469e7-056,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip056_human.wav,0,phone:apple-playlist-mac,-9.332255,12,0.08099929,0.03605024,0.089288734,8.851452e-05,0
+f82469e7-057,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip057_human.wav,0,phone:apple-playlist-mac,-3.333128,12,0.18982486,0.2931586,0.23607598,0.034452025,0
+f82469e7-058,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip058_human.wav,0,phone:apple-playlist-mac,-3.8408635,12,0.06873701,0.08585882,0.19229166,0.021023568,0
+f82469e7-059,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip059_human.wav,0,phone:apple-playlist-mac,0.45314065,12,0.64545363,0.5484391,0.35467088,0.6113857,0
+f82469e7-060,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip060_human.wav,0,phone:apple-playlist-mac,-11.815848,12,0.017855067,0.001749673,0.07873522,7.3865062e-06,0
+f82469e7-061,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip061_human.wav,0,phone:apple-playlist-mac,-21.978643,12,2.0583202e-05,8.587705e-06,2.8375246e-06,2.8496824e-10,0
+f82469e7-062,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip062_human.wav,0,phone:apple-playlist-mac,-13.540279,12,0.003973951,0.0011335344,0.053063747,1.3168333e-06,0
+f82469e7-063,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip063_human.wav,0,phone:apple-playlist-mac,-0.40553963,12,0.6050734,0.5195882,0.66331124,0.39998212,0
+f82469e7-064,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip064_human.wav,0,phone:apple-playlist-mac,-8.143237,12,0.0045890827,0.0034941686,0.19180477,0.0002906102,0
+f82469e7-065,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip065_human.wav,0,phone:apple-playlist-mac,-10.299121,12,0.031266328,0.0027555237,0.00032547434,3.366154e-05,0
+f82469e7-066,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip066_human.wav,0,phone:apple-playlist-mac,-15.770482,12,0.00016359094,6.440712e-05,0.0006904742,1.4156849e-07,0
+f82469e7-067,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip067_human.wav,0,phone:apple-playlist-mac,-15.898899,12,0.0050173835,2.1965686e-06,4.0922034e-05,1.245076e-07,0
+f82469e7-068,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip068_human.wav,0,phone:apple-playlist-mac,-13.491153,12,0.03448643,0.00016621874,0.0003535954,1.3831402e-06,0
+f82469e7-069,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip069_human.wav,0,phone:apple-playlist-mac,-11.305388,12,0.042391513,0.0014416223,0.011883333,1.2306282e-05,0
+f82469e7-070,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip070_human.wav,0,phone:apple-playlist-mac,-15.80066,12,0.00042570438,0.0002654208,0.05045462,1.3736005e-07,0
+f82469e7-071,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip071_human.wav,0,phone:apple-playlist-mac,-0.79353017,12,0.6342209,0.61230546,0.6668486,0.31141117,0
+f82469e7-072,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip072_human.wav,0,phone:apple-playlist-mac,-12.655979,12,0.0011826713,0.00027418966,0.17662793,3.1884285e-06,0
+f82469e7-073,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip073_human.wav,0,phone:apple-playlist-mac,2.6862762,12,0.7379121,0.6996656,0.8333566,0.93621194,0
+f82469e7-074,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip074_human.wav,0,phone:apple-playlist-mac,-2.1673858,12,0.24220838,0.100626804,0.8929651,0.10271772,0
+f82469e7-075,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip075_human.wav,0,phone:apple-playlist-mac,-10.411147,12,0.18308218,0.02744071,0.34198606,3.0094227e-05,0
+f82469e7-076,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip076_human.wav,0,phone:apple-playlist-mac,-9.667496,12,0.00014403992,0.0006021065,0.0045796023,6.330419e-05,0
+f82469e7-077,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip077_human.wav,0,phone:apple-playlist-mac,-6.1291885,12,0.12817371,0.011279464,0.21648388,0.002173613,0
+f82469e7-078,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip078_human.wav,0,phone:apple-playlist-mac,-9.820375,12,0.00029858845,0.00086651085,0.0010224786,5.433023e-05,0
+f82469e7-079,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip079_human.wav,0,phone:apple-playlist-mac,-5.621307,12,0.063319504,0.017316883,0.30836305,0.0036068507,0
+f82469e7-080,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip080_human.wav,0,phone:apple-playlist-mac,-9.241894,12,0.0012819635,0.00044221003,0.0030888657,9.6884534e-05,0
+f82469e7-081,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip081_human.wav,0,phone:apple-playlist-mac,-6.928524,12,0.0020481737,0.0058866013,0.030102147,0.0009784871,0
+f82469e7-082,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip082_human.wav,0,phone:apple-playlist-mac,-7.2285404,12,0.0015242854,0.030105561,0.014792491,0.000725053,0
+f82469e7-083,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip083_human.wav,0,phone:apple-playlist-mac,-6.048279,12,0.010851357,0.0048982888,0.10471186,0.0023563583,0
+f82469e7-084,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip084_human.wav,0,phone:apple-playlist-mac,-1.8383762,12,0.5121947,0.42320505,0.36467877,0.13724345,0
+f82469e7-085,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip085_human.wav,0,phone:apple-playlist-mac,-13.054886,12,0.00088001956,0.00017450891,4.7850055e-05,2.139608e-06,0
+f82469e7-086,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip086_human.wav,0,phone:apple-playlist-mac,-9.147801,12,0.0015869788,0.002928221,0.06579765,0.00010644226,0
+f82469e7-087,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip087_human.wav,0,phone:apple-playlist-mac,-12.236545,12,0.00017319298,0.001157818,4.142204e-05,4.8499146e-06,0
+f82469e7-088,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip088_human.wav,0,phone:apple-playlist-mac,-9.899527,12,0.00053247774,0.0033219839,0.0043720366,5.0195922e-05,0
+f82469e7-089,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip089_human.wav,0,phone:apple-playlist-mac,-13.760751,12,0.00011703974,5.52986e-05,0.00029084508,1.0562857e-06,0
+f82469e7-090,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip090_human.wav,0,phone:apple-playlist-mac,-11.016587,12,0.00037946322,0.0057572476,0.0012638377,1.642668e-05,0
+f82469e7-091,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip091_human.wav,0,phone:apple-playlist-mac,-6.5118833,12,0.24095994,0.21496516,0.26101956,0.0014834752,0
+f82469e7-092,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip092_human.wav,0,phone:apple-playlist-mac,-9.852214,12,0.057056263,0.0277727,0.00065719406,5.2627776e-05,0
+f82469e7-093,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip093_human.wav,0,phone:apple-playlist-mac,-14.675733,12,0.0003610426,0.0010421387,4.3784107e-06,4.2306795e-07,0
+f82469e7-094,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip094_human.wav,0,phone:apple-playlist-mac,-13.061104,12,0.0011044772,7.932419e-05,6.0854964e-06,2.1263452e-06,0
+f82469e7-095,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip095_human.wav,0,phone:apple-playlist-mac,-10.057122,12,0.028535565,0.0019062093,0.07440198,4.2877422e-05,0
+f82469e7-096,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip096_human.wav,0,phone:apple-playlist-mac,-8.710353,12,0.091577284,0.033889398,0.0037275997,0.00016484289,0
+f82469e7-097,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip097_human.wav,0,phone:apple-playlist-mac,-5.8316007,12,0.087919824,0.022553153,0.055054855,0.0029247983,0
+f82469e7-098,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip098_human.wav,0,phone:apple-playlist-mac,-5.0893188,12,0.037460476,0.06253209,0.060436934,0.0061244764,0
+f82469e7-099,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip099_human.wav,0,phone:apple-playlist-mac,-8.83587,12,0.012448712,0.010537469,0.0026495366,0.00014540099,0
+f82469e7-100,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip100_human.wav,0,phone:apple-playlist-mac,-12.0507345,12,0.0004988448,0.0021064247,0.0001458858,5.84023e-06,0
+f82469e7-101,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip101_human.wav,0,phone:apple-playlist-mac,-10.004349,12,0.008926803,0.004863511,0.016372921,4.520088e-05,0
+f82469e7-102,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip102_human.wav,0,phone:apple-playlist-mac,-9.600399,12,0.04974413,0.06701234,0.17135529,6.769713e-05,0
+f82469e7-103,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip103_human.wav,0,phone:apple-playlist-mac,-9.54688,12,0.0047273766,0.00390767,0.04409108,7.1418675e-05,0
+f82469e7-104,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip104_human.wav,0,phone:apple-playlist-mac,-9.747585,12,0.11951702,0.082193024,0.15413783,5.8432186e-05,0
+f82469e7-105,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip105_human.wav,0,phone:apple-playlist-mac,-10.450358,12,0.011407425,0.005954135,0.0018598769,2.8937062e-05,0
+f82469e7-106,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip106_human.wav,0,phone:apple-playlist-mac,-7.24659,12,0.20190485,0.17882256,0.26954344,0.00071209273,0
+f82469e7-107,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip107_human.wav,0,phone:apple-playlist-mac,-7.55735,12,0.05844648,0.0075550023,0.013105729,0.0005219847,0
+f82469e7-108,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip108_human.wav,0,phone:apple-playlist-mac,-5.4017982,12,0.115548514,0.22014892,0.088491835,0.004488231,0
+f82469e7-109,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip109_human.wav,0,phone:apple-playlist-mac,-7.872862,12,0.072562955,0.057678655,0.07506394,0.00038079754,0
+f82469e7-110,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip110_human.wav,0,phone:apple-playlist-mac,-7.667518,12,0.0972422,0.10048878,0.055096533,0.00046755862,0
+f82469e7-111,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip111_human.wav,0,phone:apple-playlist-mac,-5.5024047,12,0.19471031,0.2824779,0.12590264,0.0040604016,0
+f82469e7-112,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip112_human.wav,0,phone:apple-playlist-mac,-12.463618,12,0.0039496715,0.0015581247,0.000764397,3.8647167e-06,0
+f82469e7-113,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip113_human.wav,0,phone:apple-playlist-mac,-12.501855,12,0.0017039563,0.0057473606,0.00019053162,3.719733e-06,0
+f82469e7-114,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip114_human.wav,0,phone:apple-playlist-mac,2.352753,12,0.7900241,0.73340935,0.79627943,0.9131528,0
+f82469e7-115,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip115_human.wav,0,phone:apple-playlist-mac,3.5347688,12,0.84497076,0.8477307,0.67504096,0.97166103,0
+f82469e7-116,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip116_human.wav,0,phone:apple-playlist-mac,3.5203266,12,0.95104194,0.77446693,0.94535065,0.9712606,0
+f82469e7-117,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip117_human.wav,0,phone:apple-playlist-mac,2.0852473,12,0.79389757,0.7049857,0.47776964,0.889461,0
+f82469e7-118,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip118_human.wav,0,phone:apple-playlist-mac,0.7654419,12,0.74987894,0.5206522,0.56454164,0.68253404,0
+f82469e7-119,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f82469e7-43c9-4455-8d11-ff16ca651dd4/segments/clip119_human.wav,0,phone:apple-playlist-mac,-10.874183,10,0.0004065425,0.008190819,1.1554866e-05,1.8940622e-05,0
+04e196cc65ef,../training_data/human_talent/NVDES/Vol. 2 - EP/02 D.Y.T. (Do Your Thing) [feat. REMMI].m4a,0,human:NVDES,-15.269717,41,0.053120676,0.001663067,0.006393951,2.3358554e-07,1
+0641fcc84a22,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/04 Hold the Applause (feat. Jay Kasai).m4a,0,human:Beezy,-13.7906685,42,0.008988781,0.00020790528,0.0018590533,1.0251522e-06,1
+0b958cef366a,../training_data/human_talent/Lemaitre/Chapter One/10 Playing To Lose (feat. Stanaj).m4a,0,human:Lemaitre,-7.8047895,44,0.1087847,0.08521307,0.026049744,0.00040761102,1
+11295ac05c7b,../training_data/ai_generated/Lost on the Wind - Enlly Blue.m4a,1,ai:Enlly Blue,6.055035,86,0.9050278,0.9139566,0.88225496,0.99765944,1
+13a0ee0b58dc,../training_data/human_talent/Faja the Poet/Bad Words/08 Bad Words.m4a,0,human:Beezy,-11.507674,38,0.045122534,0.0017127083,0.002590295,1.0052549e-05,1
+19a293452efd,"../training_data/human_talent/NVDES/La NVDITÉ, Vol. 1 - EP/04 Sugar.m4a",0,human:NVDES,-8.761147,43,0.06863929,0.06989849,0.07529408,0.00015668028,1
+3a9a0d155daa,../training_data/human_talent/Faja the Poet/Bad Words/01 Above (feat. Luna Flores).m4a,0,human:Beezy,-10.32577,39,0.013479147,0.002650403,0.0037355137,3.2776356e-05,1
+44ed50b4f6cc,../training_data/ai_generated/Weightless Moment - Enlly Blue.m4a,1,ai:Enlly Blue,3.4475498,90,0.80500776,0.84951746,0.78019536,0.969158,1
+48eff2d57a0b,../training_data/human_talent/Terror Jr/Bop City/07 3 Strikes.m4a,0,human:Terror Jr,-9.668088,40,0.011653066,0.018806469,0.0028388924,6.3266714e-05,1
+5456b3960547,../training_data/human_talent/Baauer/Aa/06 Day Ones (feat. Novelist & Leikeli47).m4a,0,human:Baauer,-12.636863,37,0.009936597,0.0015600292,0.005961513,3.2499659e-06,1
+624d8223ab43,"../training_data/human_talent/NVDES/La NVDITÉ, Vol. 1 - EP/05 Turning Heads.m4a",0,human:NVDES,-9.560225,37,0.0786397,0.06543818,0.076694466,7.0472e-05,1
+62ca739cf8ed,../training_data/human_talent/Baauer/Aa/11 Kung Fu (feat. Pusha T & Future).m4a,0,human:Baauer,-10.212074,42,0.068024844,0.09621527,0.0130652785,3.6722864e-05,1
+65f02b25e0d8,../training_data/human_talent/NVDES/Vol. 2 - EP/04 Amsterdam in My Mind.m4a,0,human:NVDES,-7.3313637,34,0.046444014,0.07645216,0.021809649,0.00065425184,1
+67807841bc63,../training_data/human_talent/The Avalanches/Wildflower/22 Frankie Sinatra (Extended Mix).m4a,0,human:The Avalanches,-9.329597,40,0.09374498,0.093688406,0.06767582,8.875008e-05,1
+7310a08b6344,../training_data/human_talent/Faja the Poet/Bad Words/05 '02.m4a,0,human:Beezy,-9.423807,44,0.078189544,0.0075884745,0.018519899,8.077137e-05,1
+76473ab3db93,../training_data/human_talent/Faja the Poet/Bad Words/03 Hmw (Nimbus) [feat. Staxx].m4a,0,human:Beezy,-8.442892,46,0.12503673,0.11683446,0.10520077,0.00021537983,1
+788037914d42,../training_data/human_talent/Faja the Poet/Bad Words/04 Monologue (Interlude).m4a,0,human:Beezy,-16.816612,36,0.03530378,0.015884038,0.031177968,4.9732243e-08,1
+7ace92b192c4,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/10 Chasers.m4a,0,human:Beezy,-12.980787,45,0.0040162215,0.0014429512,0.0030268524,2.304171e-06,1
+7cd831fcc124,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/03 Crop Tops (feat. R.N.B.).m4a,0,human:Beezy,-11.7380085,42,0.01517341,0.016011195,0.005199387,7.984435e-06,1
+80cc94dc1aff,../training_data/ai_generated/Breaking the Blue - Enlly Blue.m4a,1,ai:Enlly Blue,7.941188,94,0.96684563,0.9888464,0.9506262,0.9996443,1
+87af7c6fd161,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/01 Breakfast (feat. Tru Speech).m4a,0,human:Beezy,-15.291674,45,0.039477482,0.001357887,0.02461402,2.2851275e-07,1
+8c4bdd1da891,../training_data/ai_generated/Her Name in the Breeze - Enlly Blue.m4a,1,ai:Enlly Blue,4.3181095,79,0.8602013,0.83900964,0.8184081,0.98685014,1
+8d2c207c01c5,../training_data/human_talent/NVDES/Vol. 2 - EP/03 Everyday.m4a,0,human:NVDES,-7.547972,41,0.11013228,0.037945475,0.08322578,0.0005269003,1
+96c22901c2b4,../training_data/human_talent/Faja the Poet/Bad Words/06 Stay Smooth (feat. Kj Monk).m4a,0,human:Beezy,-15.49941,39,0.0065223873,0.024392834,0.006847653,1.8564867e-07,1
+99109ba6375e,../training_data/human_talent/Weezer/Weezer (White Album)/10 Endless Bummer.m4a,0,human:Weezer,-10.96993,45,0.0043730675,0.014508046,0.006122895,1.7211258e-05,1
+99109ba6375e,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip007_human_99109ba6375e.wav,0,human:Weezer,-4.5344653,3,0.03224543,0.09747716,0.09481973,0.010618677,1
+992e938c7d91,../training_data/ai_generated/Slow Sip of Solitude - Enlly Blue.m4a,1,ai:Enlly Blue,6.4118233,79,0.92195815,0.8948847,0.8844397,0.9983607,1
+a22047cc7fa0,../training_data/ai_generated/Almost Said It - Enlly Blue.m4a,1,ai:Enlly Blue,6.5080895,95,0.96101445,0.9384054,0.90782607,0.9985109,1
+a3ab2991fff1,"../training_data/human_talent/NVDES/La NVDITÉ, Vol. 1 - EP/02 Dancer from New York.m4a",0,human:NVDES,-7.439641,39,0.05977192,0.07680414,0.038109533,0.0005871511,1
+a5c7dcdc74ab,../training_data/human_talent/Faja the Poet/Bad Words/07 Street Performers (feat. Prophet).m4a,0,human:Beezy,-13.949521,39,0.0013895474,0.0002428745,0.000552082,8.7458005e-07,1
+a649da955adf,../training_data/ai_generated/Still Reaching - Enlly Blue.m4a,1,ai:Enlly Blue,6.266394,93,0.93417275,0.90625954,0.9350001,0.99810445,1
+aa58e80b05a4,../training_data/human_talent/Lemaitre/Chapter One/14 Playing To Lose (feat. Stanaj) [Coucheron Remix].m4a,0,human:Lemaitre,-9.316492,45,0.06522219,0.0693104,0.02357122,8.992074e-05,1
+ae8ffb62c7d8,../training_data/ai_generated/Late Afternoon Light - Enlly Blue.m4a,1,ai:Enlly Blue,4.3361993,93,0.8950255,0.79414296,0.83971506,0.98708284,1
+b66b28a1a286,../training_data/human_talent/NVDES/Vol. 2 - EP/05 Walls.m4a,0,human:NVDES,-7.9883437,41,0.1849634,0.13985598,0.07101861,0.0003392806,1
+b7d8c29f3cf3,../training_data/human_talent/NVDES/Vol. 2 - EP/06 Where Is Your Mind_.m4a,0,human:NVDES,-10.924354,40,0.0036123402,0.029564496,0.047369603,1.8013816e-05,1
+ba4b6ae30d76,../training_data/human_talent/Faja the Poet/Bad Words/02 College Kidz.m4a,0,human:Beezy,-17.16884,41,0.04050257,0.019054256,0.024537595,3.496772e-08,1
+badf20ed019f,../training_data/human_talent/Lemaitre/Chapter One/04 Higher (feat. Maty Noyes).m4a,0,human:Lemaitre,-11.050775,42,0.11787206,0.036077514,0.01187156,1.5874597e-05,1
+badf20ed019f,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip006_human_badf20ed019f.wav,0,human:Lemaitre,-7.004104,4,0.0016474279,0.09061826,0.041370537,0.00090732315,1
+c6756ef4819f,../training_data/ai_generated/City's Too Big - Enlly Blue.m4a,1,ai:Enlly Blue,2.7166328,89,0.73209107,0.75016606,0.7189007,0.93800104,1
+c6756ef4819f,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip003_ai_c6756ef4819f.wav,1,ai:Enlly Blue,-4.3952374,4,0.03700415,0.04609525,0.07223915,0.01218563,1
+c8a1426ff199,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/06 Better Days.m4a,0,human:Beezy,-12.974196,39,0.010676332,0.013207066,0.0058461134,2.3194077e-06,1
+d18483a79441,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/02 California Soul.m4a,0,human:Beezy,-12.685015,43,0.0037348312,0.0011504827,0.015108501,3.0971821e-06,1
+d3aa5adabba0,../training_data/human_talent/Baauer/Aa/09 Temple (feat. M.I.A. & G-DRAGON).m4a,0,human:Baauer,-10.258611,41,0.06914725,0.052723534,0.06865127,3.5053126e-05,1
+de334ab7eb04,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/11 Lft.m4a,0,human:Beezy,-11.644769,40,0.023858305,8.2158964e-05,0.0012497765,8.764707e-06,1
+e0238b8b687f,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/08 Women (feat. Luna Flores).m4a,0,human:Beezy,-19.868942,39,0.00021469388,0.0001592758,0.017997744,2.3497844e-09,1
+f012b0b7919f,../training_data/ai_generated/Far from the Noise - Enlly Blue.m4a,1,ai:Enlly Blue,4.341515,92,0.8963676,0.914523,0.82438624,0.98715043,1
+f24c35ed12f2,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/09 Sould.m4a,0,human:Beezy,-14.442669,41,0.0031994644,0.011818663,0.0021642956,5.3410713e-07,1
+f29e605c61f8,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/05 Cliffhanger.m4a,0,human:Beezy,-13.1009245,37,0.0027479243,0.0016538919,0.005622387,2.0433365e-06,1
+f62e5a96012d,../training_data/human_talent/Baauer/Aa/05 Sow.m4a,0,human:Baauer,-13.307225,41,0.0012747897,0.0010925946,0.0031599486,1.6624355e-06,1
+f6ec4ef13b78,../training_data/human_talent/Beezy & Faja the Poet/Beats 4 Breakfast/07 Palm Desert (feat. Tru Speech).m4a,0,human:Beezy,-14.782237,42,0.002784026,0.0055610393,0.00030922532,3.8032584e-07,1
+fd9aaa00-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip000_ai.wav,1,phone:apple_mu,0.12518515,12,0.6124987,0.4554509,0.3797504,0.5312555,1
+fd9aaa00-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip001_ai.wav,1,phone:apple_mu,-0.18208663,12,0.5519475,0.41343293,0.4469205,0.45460373,1
+fd9aaa00-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip002_ai.wav,1,phone:apple_mu,-0.424558,12,0.5051274,0.3178741,0.4280794,0.39542657,1
+fd9aaa00-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip003_ai.wav,1,phone:apple_mu,-3.1047878,12,0.2769148,0.27254066,0.18308336,0.042910196,1
+fd9aaa00-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip004_ai.wav,1,phone:apple_mu,3.0190217,12,0.83278114,0.833646,0.7791047,0.9534261,1
+fd9aaa00-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip005_ai.wav,1,phone:apple_mu,4.4027185,12,0.8349626,0.82404536,0.8448138,0.98790413,1
+fd9aaa00-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip006_ai.wav,1,phone:apple_mu,-0.7420828,12,0.5343251,0.40704617,0.7047117,0.32254887,1
+fd9aaa00-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip007_ai.wav,1,phone:apple_mu,5.0173955,12,0.92441434,0.924493,0.9793396,0.99342185,1
+fd9aaa00-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip008_ai.wav,1,phone:apple_mu,3.2609224,12,0.6859053,0.81105345,0.9236167,0.96306366,1
+fd9aaa00-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip009_ai.wav,1,phone:apple_mu,5.0033994,12,0.95763487,0.853982,0.85289025,0.9933297,1
+fd9aaa00-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip010_ai.wav,1,phone:apple_mu,6.1199036,12,0.82848793,0.83398414,0.83648366,0.99780613,1
+fd9aaa00-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip011_ai.wav,1,phone:apple_mu,5.621636,12,0.91318125,0.96205324,0.8716843,0.99639434,1
+fd9aaa00-012,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip012_ai.wav,1,phone:apple_mu,6.3166013,12,0.9327008,0.9493549,0.98477936,0.99819726,1
+fd9aaa00-013,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip013_ai.wav,1,phone:apple_mu,3.760073,12,0.88595605,0.79337907,0.8363826,0.97724766,1
+fd9aaa00-014,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip014_ai.wav,1,phone:apple_mu,4.5302033,12,0.9308323,0.9333739,0.89456934,0.9893365,1
+fd9aaa00-015,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip015_ai.wav,1,phone:apple_mu,5.898035,12,0.9633841,0.9431236,0.97446936,0.9972627,1
+fd9aaa00-016,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip016_ai.wav,1,phone:apple_mu,2.2281764,12,0.7750227,0.77675843,0.8985114,0.9027514,1
+fd9aaa00-017,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip017_ai.wav,1,phone:apple_mu,4.5661216,12,0.882518,0.8228226,0.9829955,0.9897087,1
+fd9aaa00-018,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip018_ai.wav,1,phone:apple_mu,7.813074,12,0.96870726,0.939025,0.9701987,0.9995958,1
+fd9aaa00-019,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip019_ai.wav,1,phone:apple_mu,10.170142,12,0.9966883,0.99957806,0.99177736,0.99996173,1
+fd9aaa00-020,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip020_ai.wav,1,phone:apple_mu,7.2859063,12,0.99383384,0.98642474,0.9920469,0.9993154,1
+fd9aaa00-021,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip021_ai.wav,1,phone:apple_mu,7.1098523,12,0.87619615,0.84511733,0.974694,0.9991836,1
+fd9aaa00-022,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip022_ai.wav,1,phone:apple_mu,-7.2200737,12,0.027213609,0.028153896,0.03468662,0.0007312134,1
+fd9aaa00-023,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip023_ai.wav,1,phone:apple_mu,-8.032358,12,0.0027243074,0.011220723,0.03649737,0.00032467596,1
+fd9aaa00-024,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip024_ai.wav,1,phone:apple_mu,-7.5688605,12,0.064066745,0.014576874,0.07362922,0.000516014,1
+fd9aaa00-025,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip025_ai.wav,1,phone:apple_mu,-12.144681,12,0.044022743,0.04144782,0.05682659,5.316548e-06,1
+fd9aaa00-026,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip026_ai.wav,1,phone:apple_mu,-11.0905695,12,0.0014786596,0.0060332767,0.0013761943,1.5255283e-05,1
+fd9aaa00-027,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip027_ai.wav,1,phone:apple_mu,-5.3012223,12,0.14863835,0.102361165,0.16525453,0.0049607647,1
+fd9aaa00-028,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip028_ai.wav,1,phone:apple_mu,-7.7685065,12,0.00306614,0.0099368105,0.030697748,0.00042266556,1
+fd9aaa00-029,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip029_ai.wav,1,phone:apple_mu,-4.538013,12,0.07104633,0.082133465,0.15357257,0.010581471,1
+fd9aaa00-030,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip030_ai.wav,1,phone:apple_mu,-7.5209785,12,0.00467468,0.009866091,0.032321233,0.0005413092,1
+fd9aaa00-031,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip031_ai.wav,1,phone:apple_mu,-7.01042,12,0.079811476,0.007827555,0.14785443,0.000901616,1
+fd9aaa00-032,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip032_ai.wav,1,phone:apple_mu,2.7848473,12,0.8331656,0.7852685,0.80663586,0.9418515,1
+fd9aaa00-033,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip033_ai.wav,1,phone:apple_mu,1.5320358,12,0.62432384,0.71706325,0.7598781,0.82230395,1
+fd9aaa00-034,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/fd9aaa00-bae1-4f57-b708-a27b3577e79f/segments/clip034_ai.wav,1,phone:apple_mu,1.6270763,12,0.61666673,0.7097139,0.63523895,0.8357687,1
+001657171888,../training_data/human_talent/Marian Hill/Unusual/01 Subtle Thing.m4a,0,human:Marian Hill,-0.777703,41,0.49506062,0.5090527,0.3124822,0.31481516,2
+024735bf4dcc,../training_data/ai_generated/You're Just You - Kayla Kross.m4a,1,ai:Kayla Kross,14.52952,75,0.9995936,0.999695,0.9993371,0.9999995,2
+055f158b7aac,../training_data/human_talent/Jaden Smith/SYRE/12 Watch Me.m4a,0,human:Jaden Smith,-11.260802,37,0.0055015846,0.010017253,0.0028993383,1.286738e-05,2
+09192f5c7bcc,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/07 Don't Tell.m4a,0,human:Royal Blood,-6.3037415,44,0.08684833,0.14975487,0.08402463,0.0018261063,2
+09402cee269f,../training_data/human_talent/Marian Hill/Unusual/07 Sideways 1.m4a,0,human:Marian Hill,-6.086209,42,0.15628044,0.17960647,0.06335749,0.0022688543,2
+0ca2b25b3877,../training_data/human_talent/Marian Hill/Unusual/06 Don't Do It.m4a,0,human:Marian Hill,-11.802693,42,0.014463473,0.010476686,0.00043354835,7.4843165e-06,2
+1d26ebc5f369,../training_data/human_talent/Marian Hill/Unusual/05 Wish You Would.m4a,0,human:Marian Hill,-11.638026,45,0.024442673,0.022455065,0.01746565,8.824002e-06,2
+22236785ff8f,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/04 She's Creeping.m4a,0,human:Royal Blood,-6.412814,40,0.06545545,0.09159326,0.07004123,0.0016377151,2
+23a2582e7ec1,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/06 Where Are You Now_.m4a,0,human:Royal Blood,1.6236603,42,0.5926089,0.6826982,0.714897,0.8352993,2
+2b3dc75cc113,../training_data/human_talent/Marian Hill/Unusual/06 Don't Do It 1.m4a,0,human:Marian Hill,-8.16012,40,0.052500516,0.045082755,0.017992552,0.0002857464,2
+2e576b2199df,../training_data/human_talent/Marian Hill/Unusual/03 All Night Long (feat. Steve Davit) 1.m4a,0,human:Marian Hill,-6.168694,40,0.081924096,0.079341635,0.050137825,0.0020895933,2
+39546a2f0cb9,"../training_data/ai_generated/So Wrong, So Right - Kayla Kross.m4a",1,ai:Kayla Kross,11.537814,85,0.96629083,0.97023785,0.98067176,0.9999902,2
+3a91432c4e54,../training_data/human_talent/Marian Hill/Unusual/08 No Hesitation 1.m4a,0,human:Marian Hill,-14.599316,42,0.0014012655,0.0050859367,0.0004482252,4.5666485e-07,2
+3af9f6f11ea4,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/01 How Did We Get So Dark_.m4a,0,human:Royal Blood,-5.333768,40,0.25225732,0.2920497,0.19766268,0.0048026755,2
+475659d4c6e0,../training_data/ai_generated/Let You Feel This Love - Kayla Kross.m4a,1,ai:Kayla Kross,16.026457,88,0.9996521,0.99984586,0.9983593,0.9999999,2
+4b9f021f6808,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/02 Lights Out.m4a,0,human:Royal Blood,-9.199697,44,0.013129913,0.018323246,0.06261003,0.00010105986,2
+4cb65aa4b172,../training_data/human_talent/Jaden Smith/SYRE/11 Icon 1.m4a,0,human:Jaden Smith,-4.4252243,44,0.1432605,0.24430913,0.18826762,0.011829904,2
+50acdf2b3f92,../training_data/dj_mixes/PinkPantheress - Stateside (Cosmo's Midnight Mix).wav,0,human:PinkPantheress,-4.746536,40,0.17103359,0.16452739,0.1095898,0.0086069945,2
+69c197d88fb5,../training_data/human_talent/Marian Hill/Unusual/10 Go Quietly.m4a,0,human:Marian Hill,-7.017068,45,0.10824489,0.040913407,0.12915042,0.0008956473,2
+78006dfdf08c,"../training_data/human_talent/Royal Blood/How Did We Get So Dark_/08 Hook, Line & Sinker.m4a",0,human:Royal Blood,-5.4501653,42,0.17452216,0.27115932,0.24787557,0.0042772214,2
+7b76aaf42bc8,../training_data/human_talent/Marian Hill/Unusual/03 All Night Long (feat. Steve Davit).m4a,0,human:Marian Hill,-5.4177656,40,0.11017734,0.10267459,0.12945576,0.0044174492,2
+7c2d44a526cc,../training_data/human_talent/Compilations/Walt Disney Records the Legacy Collection_ Disneyland/1-05 Let's Dance at Disneyland (from Plaza Gardens).m4a,0,human:Compilations,-10.100795,35,0.017498117,0.0329279,0.020810064,4.1045234e-05,2
+8923b04f139f,../training_data/human_talent/Marian Hill/Unusual/02 Differently.m4a,0,human:Marian Hill,-7.9395585,42,0.060015157,0.013254139,0.059820175,0.00035623682,2
+92f04ddcdcf8,../training_data/human_talent/Kanye West/Ye vs. the People (starring T.I. as the People) - Single/01 Ye vs. the People (starring T.I. as the People).m4a,0,human:Kanye West,-11.85685,42,0.04707883,0.03799569,0.017591912,7.0897763e-06,2
+a470155b175b,../training_data/human_talent/Compilations/Nothing But the Best (Remastered)/20 My Way.m4a,0,human:Compilations,-7.1383524,43,0.13554642,0.12550305,0.12493728,0.00079342927,2
+a52adaaf0aa1,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/03 I Only Lie When I Love You.m4a,0,human:Royal Blood,-6.129917,40,0.07191214,0.2297693,0.06878475,0.0021720333,2
+a715844f7df1,../training_data/human_talent/Marian Hill/Unusual/08 No Hesitation.m4a,0,human:Marian Hill,-14.817042,43,0.0035200317,0.00041713877,0.00017295453,3.6731623e-07,2
+a9c4c6e0647d,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/10 Sleep.m4a,0,human:Royal Blood,-3.5970354,41,0.25482327,0.35655752,0.2870378,0.026673855,2
+aa6967373cc2,../training_data/ai_generated/Broke the Rules - Kayla Kross.m4a,1,ai:Kayla Kross,11.370501,77,0.983597,0.98514813,0.99305964,0.99998844,2
+aa6967373cc2,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip004_ai_aa6967373cc2.wav,1,ai:Kayla Kross,1.4903476,1,0.42697436,0.85543823,0.69358116,0.8161304,2
+b13f486dc2bf,../training_data/human_talent/Marian Hill/Unusual/04 Don't Miss You 1.m4a,0,human:Marian Hill,-7.429513,45,0.15100113,0.13575274,0.11687173,0.0005931245,2
+b40cdf3f3b66,../training_data/human_talent/Marian Hill/Unusual/10 Go Quietly 1.m4a,0,human:Marian Hill,-6.214335,45,0.14714551,0.07615471,0.13220565,0.001996552,2
+ba6023a87dfd,../training_data/human_talent/Jaden Smith/SYRE/12 Watch Me 1.m4a,0,human:Jaden Smith,-10.720602,37,0.020978078,0.067129776,0.021212965,2.208473e-05,2
+c7133f3ecef1,../training_data/human_talent/Marian Hill/Unusual/09 Listening (feat. Steve Davit).m4a,0,human:Marian Hill,-6.299588,42,0.102015674,0.11761394,0.052517503,0.0018336924,2
+c80e76fcb514,../training_data/ai_generated/Might Be Falling - Kayla Kross.m4a,1,ai:Kayla Kross,6.0854306,69,0.8865316,0.8346095,0.9506682,0.99772936,2
+ca1018b7f842,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/09 Hole in Your Heart.m4a,0,human:Royal Blood,-2.5195353,41,0.28678784,0.5462594,0.13901497,0.07449998,2
+e31b0ae9-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip000_human.wav,0,phone:89+synth,0.11598921,12,0.5411211,0.80509144,0.46172857,0.5289648,2
+e31b0ae9-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip001_human.wav,0,phone:89+synth,8.943826,12,0.98237586,0.99937505,0.9277304,0.99986947,2
+e31b0ae9-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip002_human.wav,0,phone:89+synth,9.577831,12,0.99967605,0.9797554,0.99960274,0.99993074,2
+e31b0ae9-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip003_human.wav,0,phone:89+synth,7.1739616,12,0.99768525,0.73111486,0.9990163,0.9992343,2
+e31b0ae9-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip004_human.wav,0,phone:89+synth,9.264212,12,0.9946577,0.8896596,0.9971115,0.9999052,2
+e31b0ae9-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip005_human.wav,0,phone:89+synth,5.1129494,12,0.9684313,0.7917023,0.99215436,0.9940177,2
+e31b0ae9-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip006_human.wav,0,phone:89+synth,2.4919965,12,0.6868381,0.587127,0.6815846,0.92357886,2
+e31b0ae9-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip007_human.wav,0,phone:89+synth,7.093555,12,0.97551376,0.9611435,0.9927602,0.9991703,2
+e31b0ae9-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip008_human.wav,0,phone:89+synth,2.9315708,12,0.7909143,0.93230295,0.43413493,0.94938517,2
+e31b0ae9-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip009_human.wav,0,phone:89+synth,-2.7506273,12,0.48054588,0.33662534,0.13607995,0.060051236,2
+e31b0ae9-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip010_human.wav,0,phone:89+synth,-0.51372427,12,0.6724388,0.4557643,0.32458624,0.37432086,2
+e31b0ae9-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip011_human.wav,0,phone:89+synth,-9.518191,12,0.005369719,0.003700491,0.0005240458,7.349708e-05,2
+e31b0ae9-012,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip012_human.wav,0,phone:89+synth,-1.0986086,12,0.50073296,0.4677039,0.31918332,0.2500007,2
+e31b0ae9-013,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip013_human.wav,0,phone:89+synth,3.228323,12,0.5129911,0.67916065,0.5161888,0.96188635,2
+e31b0ae9-014,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip014_human.wav,0,phone:89+synth,-1.5904737,12,0.4749379,0.42088553,0.23573828,0.16931728,2
+e31b0ae9-015,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip015_human.wav,0,phone:89+synth,-3.3483117,12,0.33576223,0.31999436,0.21344908,0.033950493,2
+e31b0ae9-016,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip016_human.wav,0,phone:89+synth,1.6115645,12,0.75602865,0.79569197,0.55027926,0.8336285,2
+e31b0ae9-017,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip017_human.wav,0,phone:89+synth,-4.5767474,12,0.32197574,0.06925915,0.24326216,0.010183534,2
+e31b0ae9-018,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip018_human.wav,0,phone:89+synth,-8.47685,12,0.1580574,0.0826811,0.114422806,0.00020819034,2
+e31b0ae9-019,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip019_human.wav,0,phone:89+synth,-12.08057,12,0.026291557,0.0022235934,0.0030399375,5.6685576e-06,2
+e31b0ae9-020,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip020_human.wav,0,phone:89+synth,-11.879051,12,0.0038458614,0.0073560663,8.27091e-05,6.934108e-06,2
+e31b0ae9-021,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip021_human.wav,0,phone:89+synth,-7.802686,12,0.21780194,0.31266353,0.033673488,0.0004084689,2
+e31b0ae9-022,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip022_human.wav,0,phone:89+synth,-5.477253,12,0.27277002,0.28644153,0.2994754,0.0041633924,2
+e31b0ae9-023,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip023_human.wav,0,phone:89+synth,-3.8204834,12,0.31394383,0.3838277,0.3634992,0.02144714,2
+e31b0ae9-024,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip024_human.wav,0,phone:89+synth,-6.097158,12,0.16771775,0.28061703,0.2232126,0.0022442034,2
+e31b0ae9-025,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip025_human.wav,0,phone:89+synth,-5.0102563,12,0.2008516,0.276979,0.19934534,0.00662501,2
+e31b0ae9-026,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip026_human.wav,0,phone:89+synth,-1.1335969,12,0.4318798,0.35150564,0.3432335,0.24349791,2
+e31b0ae9-027,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e31b0ae9-8bc8-4662-9da2-bee6192a0648/segments/clip027_human.wav,0,phone:89+synth,0.3761306,12,0.60688156,0.49513593,0.41693446,0.5929395,2
+e3b1ac5c4b41,../training_data/human_talent/Marian Hill/Unusual/09 Listening (feat. Steve Davit) 1.m4a,0,human:Marian Hill,-5.791837,42,0.11751562,0.18633607,0.07550406,0.0030430804,2
+e5e01ee2b0f9,../training_data/ai_generated/The Cutest Thing - Kayla Kross.m4a,1,ai:Kayla Kross,14.895946,80,0.99431074,0.997911,0.99776566,0.99999964,2
+e67d68e3efe9,../training_data/ai_generated/Here I Am - Kayla Kross.m4a,1,ai:Kayla Kross,14.914805,81,0.99957174,0.9997793,0.9983916,0.99999964,2
+ea4fb7643de9,../training_data/human_talent/Compilations/Walt Disney Records the Legacy Collection_ Disneyland/2-15 Space Mountain.m4a,0,human:Compilations,-8.818442,41,0.047211293,0.06250001,0.012863204,0.00014795679,2
+ecb7903e604d,../training_data/human_talent/Marian Hill/Unusual/07 Sideways.m4a,0,human:Marian Hill,-5.0731225,42,0.23876941,0.29592556,0.11813343,0.006223855,2
+f1ac5278066c,../training_data/human_talent/Royal Blood/How Did We Get So Dark_/05 Look Like You Know.m4a,0,human:Royal Blood,-10.017371,40,0.001307345,0.056616567,0.014783174,4.46161e-05,2
+faa3dd53afbb,../training_data/ai_generated/Maybe It's You - Kayla Kross.m4a,1,ai:Kayla Kross,15.110249,71,0.9997395,0.9980097,0.99880564,0.99999976,2
+fbd37b47a53b,"../training_data/ai_generated/I'll Be There, Too - Kayla Kross.m4a",1,ai:Kayla Kross,15.142047,82,0.99957055,0.9998151,0.99946034,0.99999976,2
+fc939b37e891,../training_data/human_talent/Marian Hill/Unusual/04 Don't Miss You.m4a,0,human:Marian Hill,-6.024917,45,0.21367012,0.24334976,0.23443663,0.0024119206,2
+fe54d725be13,../training_data/human_talent/Jaden Smith/SYRE/11 Icon.m4a,0,human:Jaden Smith,-9.122809,44,0.016348563,0.053360675,0.054957855,0.00010913569,2
+01ae810ee356,../training_data/human_talent/88rising/Head in the Clouds/02 Red Rubies.m4a,0,human:88rising,-9.271515,37,0.023133535,0.051688537,0.01087851,9.405705e-05,3
+02850d2baade,../training_data/human_talent/88rising/Head in the Clouds/17 Head in the Clouds.m4a,0,human:88rising,-8.539673,39,0.0035966188,0.028326496,0.014741251,0.00019551598,3
+02eba3dc1776,../training_data/human_talent/88rising/Head in the Clouds/11 Let It Go.m4a,0,human:88rising,-20.809105,37,0.0004241023,3.0707863e-05,4.2129027e-06,9.177419e-10,3
+08206c9225ee,../training_data/human_talent/88rising/Head in the Clouds/10 Beam (feat. Playboi Carti).m4a,0,human:88rising,-15.326866,38,0.0011656045,0.00040143845,7.496382e-05,2.2061066e-07,3
+12b917154ab5,../training_data/human_talent/88rising/Head in the Clouds/03 Swimming Pool.m4a,0,human:88rising,-9.727751,42,0.04811408,0.026522513,0.04000288,5.960266e-05,3
+220992e683e7,../training_data/human_talent/The Wombats/Beautiful People Will Ruin Your Life/03 Turn.m4a,0,human:The Wombats,-8.177628,41,0.04666811,0.063808866,0.12365663,0.00028078863,3
+24961905b3cf,"../training_data/human_talent/88rising/Head in the Clouds/05 Midsummer Madness (feat. Joji, Rich Brian, Higher Brothers & AUGUST 08).m4a",0,human:88rising,-9.150762,43,0.04812285,0.046238653,0.010263703,0.00010612767,3
+30d85a851641,../training_data/ai_generated/AI D-42-00-00 The Universe Sings - ORIGIN.m4a,1,ai:The Universe Sings,2.6235218,34,0.72833645,0.7546047,0.66058433,0.9323601,3
+312b8be49e49,../training_data/human_talent/88rising/Head in the Clouds/08 Lover Boy 88.m4a,0,human:88rising,-14.202467,42,0.0018175965,0.00075503625,0.0005230595,6.7912026e-07,3
+35c5bb18ae7f,../training_data/human_talent/Pale Waves/My Mind Makes Noises/01 Eighteen.m4a,0,human:Pale Waves,-6.778283,41,0.15242341,0.17366433,0.11735639,0.0011369333,3
+36d7124a8cc6,../training_data/human_talent/Pale Waves/Television Romance - Single/01 Television Romance.m4a,0,human:Pale Waves,-4.503906,43,0.114492424,0.11087261,0.18467222,0.0109445825,3
+406d6c18b346,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/03 My Obsession.m4a,0,human:Pale Waves,-3.4192407,41,0.36064973,0.33456346,0.18737943,0.031699527,3
+431103f3eed9,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/04 I Don_t Mind.m4a,0,human:The Greeting Committee,-7.6095705,46,0.16170768,0.124008976,0.13428587,0.0004954391,3
+6558d0f6c6c1,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/04 Heavenly.m4a,0,human:Pale Waves,-3.2592554,41,0.25555485,0.19707142,0.19188906,0.036995728,3
+7091d7d200ff,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/02 Hands Down.m4a,0,human:The Greeting Committee,-5.3480744,39,0.14498998,0.1491154,0.22196034,0.004734778,3
+73974b56a2c9,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/03 Out of My Head.m4a,0,human:The Greeting Committee,-5.231995,42,0.17228644,0.10965855,0.109136716,0.0053144605,3
+797a28c6ddd7,../training_data/human_talent/88rising/Head in the Clouds/09 Poolside Manor.m4a,0,human:88rising,-11.157793,38,0.041044887,0.012828618,0.016750619,1.4263491e-05,3
+7bd401ed2288,../training_data/human_talent/Pale Waves/My Mind Makes Noises/02 There_s a Honey.m4a,0,human:Pale Waves,-2.4239864,42,0.33651125,0.2826477,0.30471876,0.0813618,3
+7fd3b795-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip000_ai.wav,1,phone:7fd3b795,10.663127,12,0.99991685,0.9992239,0.9546873,0.99997663,3
+7fd3b795-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip001_ai.wav,1,phone:7fd3b795,12.919933,12,0.9999604,0.9998761,0.9995351,0.9999975,3
+7fd3b795-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip002_ai.wav,1,phone:7fd3b795,11.247003,12,0.99992687,0.9991898,0.979271,0.999987,3
+7fd3b795-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip003_ai.wav,1,phone:7fd3b795,9.312681,12,0.99994713,0.97966605,0.9930435,0.99990976,3
+7fd3b795-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip004_ai.wav,1,phone:7fd3b795,9.890957,12,0.99977595,0.99991435,0.97025114,0.99994934,3
+7fd3b795-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip005_ai.wav,1,phone:7fd3b795,8.503091,12,0.9950773,0.9750131,0.95062846,0.99979717,3
+7fd3b795-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip006_ai.wav,1,phone:7fd3b795,10.935056,12,0.9999737,0.9982345,0.9966991,0.9999821,3
+7fd3b795-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip007_ai.wav,1,phone:7fd3b795,10.755853,12,0.9999729,0.9983775,0.998532,0.99997866,3
+7fd3b795-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip008_ai.wav,1,phone:7fd3b795,6.7530484,12,0.9970527,0.9847527,0.9018676,0.9988341,3
+7fd3b795-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip009_ai.wav,1,phone:7fd3b795,8.424381,12,0.99962014,0.94356585,0.9558794,0.9997806,3
+7fd3b795-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip010_ai.wav,1,phone:7fd3b795,14.356652,12,0.9999826,0.999919,0.9995931,0.9999994,3
+7fd3b795-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip011_ai.wav,1,phone:7fd3b795,11.990887,12,0.9998827,0.99991083,0.9991713,0.9999938,3
+7fd3b795-012,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip012_ai.wav,1,phone:7fd3b795,13.361043,12,0.9999654,0.9998987,0.99917626,0.99999845,3
+7fd3b795-013,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip013_ai.wav,1,phone:7fd3b795,15.762279,12,0.999973,0.9998364,0.99999493,0.9999999,3
+7fd3b795-014,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip014_ai.wav,1,phone:7fd3b795,14.90318,12,0.9999873,0.9997584,0.99998474,0.99999964,3
+7fd3b795-015,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip015_ai.wav,1,phone:7fd3b795,13.955232,12,0.9998889,0.9997153,0.99992913,0.99999917,3
+7fd3b795-016,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip016_ai.wav,1,phone:7fd3b795,12.091634,12,0.999908,0.99857944,0.9996337,0.9999944,3
+7fd3b795-017,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip017_ai.wav,1,phone:7fd3b795,3.6812012,12,0.73443335,0.8845651,0.8673944,0.9754263,3
+7fd3b795-018,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip018_ai.wav,1,phone:7fd3b795,11.054381,12,0.99974465,0.995285,0.9981784,0.99998415,3
+7fd3b795-019,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip019_ai.wav,1,phone:7fd3b795,9.474938,12,0.9997807,0.9944639,0.9944391,0.9999232,3
+7fd3b795-020,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip020_ai.wav,1,phone:7fd3b795,13.448781,12,0.999996,0.9997073,0.9987283,0.99999857,3
+7fd3b795-021,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip021_ai.wav,1,phone:7fd3b795,11.452077,12,0.99424535,0.99930686,0.9702825,0.9999894,3
+7fd3b795-022,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip022_ai.wav,1,phone:7fd3b795,10.909275,12,0.99996567,0.99980634,0.9931142,0.99998176,3
+7fd3b795-023,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/7fd3b795-5b19-4b71-85e6-36ee65d9ef69/segments/clip023_ai.wav,1,phone:7fd3b795,3.0551481,8,0.69322,0.60040754,0.61946934,0.95500433,3
+826687249745,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/01 Your Side.m4a,0,human:The Greeting Committee,-8.449485,40,0.0940627,0.047008075,0.10278352,0.00021396484,3
+94db6f9e6f99,../training_data/human_talent/88rising/Head in the Clouds/04 Peach Jam.m4a,0,human:88rising,-12.697033,37,0.003289088,0.0035448256,0.006831053,3.0601825e-06,3
+9feb921189c2,../training_data/human_talent/The Buggles/The Age of Plastic/02 Video Killed the Radio Star.m4a,0,human:The Buggles,-8.887318,43,0.05432074,0.05300542,0.027594618,0.0001381106,3
+a5736e44bf00,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/02 The Tide.m4a,0,human:Pale Waves,-4.265683,39,0.18667936,0.14488341,0.2665514,0.013847816,3
+a65ca0287402,../training_data/ai_generated/AI D-42-01-01 The Universe Sings.m4a,1,ai:The Universe Sings,9.146403,83,0.9810955,0.9806869,0.9484593,0.9998934,3
+a8e49b487320,../training_data/human_talent/88rising/Head in the Clouds/13 Warpaint.m4a,0,human:88rising,-7.4722824,40,0.04857302,0.022129858,0.12321808,0.00056830584,3
+af42eef7d632,../training_data/human_talent/Pale Waves/My Mind Makes Noises/03 Noises.m4a,0,human:Pale Waves,-8.656368,43,0.09798506,0.121628605,0.05149873,0.00017398487,3
+b0a43d3a045e,../training_data/human_talent/Marcus Marr & Chet Faker/Work - EP/02 The Trouble with Us.m4a,0,human:Marcus Marr,-17.452896,42,0.0054301,0.011330728,0.006782345,2.632107e-08,3
+b208ee3f02cd,../training_data/human_talent/Pale Waves/My Mind Makes Noises/12 Kiss.m4a,0,human:Pale Waves,-1.565423,40,0.3992372,0.32219848,0.3486181,0.17286986,3
+bf18da94b603,../training_data/human_talent/Chet Faker/1998 (feat. Banks) - Single/01 1998 (feat. Banks).m4a,0,human:Marcus Marr,-14.250587,42,0.0011804667,0.0036590074,0.0110451225,6.4721445e-07,3
+bf6d2c7f89a3,../training_data/human_talent/Iggy Pop/Lust For Life/02 Sixteen.m4a,0,human:Iggy Pop,-6.5586147,38,0.017593479,0.02992951,0.12629758,0.0014158409,3
+c6b274264ca9,../training_data/human_talent/Pale Waves/All the Things I Never Said - Ep/01 New Year's Eve.m4a,0,human:Pale Waves,-7.0696807,40,0.02415951,0.05740366,0.12345759,0.00084978185,3
+c88cb8966cee,../training_data/ai_generated/AI D-42-02-02 The Universe Sings.m4a,1,ai:The Universe Sings,5.5106235,78,0.81525105,0.82493114,0.76765424,0.9959727,3
+ceb8801fb4e2,../training_data/human_talent/88rising/Head in the Clouds/14 I Want In.m4a,0,human:88rising,-13.142675,37,0.043103963,0.02085826,0.024118952,1.959782e-06,3
+d70fef75d34f,../training_data/ai_generated/AI D-42-03-03 The Universe Sings.m4a,1,ai:The Universe Sings,10.107735,83,0.98945785,0.9931573,0.9815882,0.99995923,3
+e3b0a8d11c43,../training_data/human_talent/88rising/Head in the Clouds/15 Japan 88.m4a,0,human:88rising,-16.947632,42,0.00036964242,0.0005631715,0.0073602553,4.3625153e-08,3
+eda44d1b487d,../training_data/human_talent/88rising/Head in the Clouds/01 La Cienega.m4a,0,human:88rising,-9.798926,39,0.028636083,0.022451809,0.050674614,5.5508088e-05,3
+edb93c7d4eea,../training_data/human_talent/88rising/Head in the Clouds/06 Plans.m4a,0,human:88rising,-9.730576,41,0.046461996,0.07500115,0.010316821,5.9434544e-05,3
+f14f80bf8bca,../training_data/human_talent/The Greeting Committee/It_s Not All That Bad - EP/05 Make It Right.m4a,0,human:The Greeting Committee,-6.71705,41,0.03591389,0.06642856,0.035962787,0.00120864,3
+f29a3ebeb79f,../training_data/human_talent/88rising/Head in the Clouds/12 Disrespectin.m4a,0,human:88rising,-14.619692,42,0.018896252,0.00027446222,0.0023132544,4.474539e-07,3
+f82011167671,../training_data/human_talent/88rising/Head in the Clouds/07 History.m4a,0,human:88rising,-9.868768,39,0.13385247,0.15153132,0.090172894,5.17638e-05,3
+f8fc63433ede,../training_data/human_talent/88rising/Head in the Clouds/16 Nothing Wrong (feat. Goldlink).m4a,0,human:88rising,-13.023676,42,0.0014637501,0.011767972,0.00029516857,2.2074378e-06,3
+0430e84823f0,../training_data/human_talent/Sofi Tukker/Treehouse/04 Batshit.m4a,0,human:Sofi Tukker,-6.272765,41,0.18951043,0.18816733,0.27159086,0.0018834494,4
+0eb662b22238,../training_data/human_talent/Joywave/Content/10 Thanks. Thanks for Coming.m4a,0,human:Joywave,-8.055337,43,0.058561724,0.13327934,0.1388784,0.0003173027,4
+13581d2a0d80,../training_data/human_talent/Sofi Tukker/Treehouse/05 Good Time Girl (feat. Charlie Barker).m4a,0,human:Sofi Tukker,-10.0225725,38,0.071863204,0.03660964,0.019554207,4.4384647e-05,4
+139398566c3d,../training_data/ai_generated/Outro - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,0.034248296,66,0.5446716,0.51389444,0.5465329,0.50856125,4
+14fbb109b823,../training_data/human_talent/Joywave/Content/11 Let's Talk About Feelings.m4a,0,human:Joywave,-8.508965,43,0.038338352,0.036554493,0.052471068,0.00020161187,4
+1b87b0f29ffe,../training_data/human_talent/Sofi Tukker/Treehouse/08 The Dare 1.m4a,0,human:Sofi Tukker,-6.7708645,41,0.03196938,0.11311882,0.018807964,0.0011453895,4
+201b1f64317d,../training_data/human_talent/ZHU/THE NIGHTDAY EP/02 Faded.m4a,0,human:ZHU,-7.6637506,41,0.14451618,0.14192164,0.13480854,0.00046932267,4
+22f2e7ddcaab,../training_data/ai_generated/Ride... - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,4.5157676,67,0.71822846,0.73992825,0.7495289,0.98918307,4
+258fd73f31e0,../training_data/ai_generated/Marching Shadows - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-0.77559185,78,0.5289658,0.3639508,0.59199107,0.31527072,4
+2b06df8ed58e,../training_data/human_talent/Royaljag/Chameleon - EP/05 Tea.m4a,0,human:Royaljag,-4.539914,36,0.21538717,0.08603866,0.2650622,0.010561585,4
+2cea792d86b8,../training_data/human_talent/Sofi Tukker/Treehouse/06 Johny.m4a,0,human:Sofi Tukker,-8.146041,40,0.14923123,0.07968207,0.13409615,0.00028979674,4
+2eec88d1-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2eec88d1-6832-4422-baa3-d446ec1f9820/segments/clip000_human.wav,0,phone:live-2eec88d1,-4.684112,12,0.2114018,0.1829253,0.3272057,0.009156323,4
+2efd5081e93c,../training_data/human_talent/Joywave/Content/01 Content.m4a,0,human:Joywave,-7.0976315,42,0.040420637,0.084248245,0.052087523,0.00082637806,4
+3435c690126a,../training_data/human_talent/Sofi Tukker/Treehouse/05 Good Time Girl (feat. Charlie Barker) 1.m4a,0,human:Sofi Tukker,-10.015499,44,0.019223921,0.016176404,0.013327077,4.46997e-05,4
+36cf2d99-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip000_human.wav,0,phone:36cf2d99,4.121266,12,0.9452167,0.990737,0.90626055,0.98403513,4
+36cf2d99-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip001_human.wav,0,phone:36cf2d99,4.8779817,12,0.95037717,0.99765927,0.8254749,0.9924452,4
+36cf2d99-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip002_human.wav,0,phone:36cf2d99,1.180068,12,0.5671296,0.85129875,0.36793086,0.76496,4
+36cf2d99-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip003_human.wav,0,phone:36cf2d99,3.0538032,12,0.885964,0.82186794,0.6585217,0.95494646,4
+36cf2d99-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip004_human.wav,0,phone:36cf2d99,-0.75494355,12,0.51103055,0.56402093,0.29977235,0.31974506,4
+36cf2d99-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip005_human.wav,0,phone:36cf2d99,3.1416671,12,0.9368234,0.82459855,0.5544839,0.95857906,4
+36cf2d99-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip006_human.wav,0,phone:36cf2d99,2.0008218,12,0.71040386,0.78698426,0.69989395,0.88088334,4
+36cf2d99-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip007_human.wav,0,phone:36cf2d99,5.3644376,12,0.9655437,0.9973841,0.87233526,0.9953418,4
+36cf2d99-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip008_human.wav,0,phone:36cf2d99,1.532723,12,0.81711286,0.719325,0.6564093,0.8224043,4
+36cf2d99-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip009_human.wav,0,phone:36cf2d99,2.37693,12,0.78976244,0.8470698,0.62946635,0.91505104,4
+36cf2d99-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip010_human.wav,0,phone:36cf2d99,-3.0824966,12,0.21170919,0.36836925,0.31677312,0.04383505,4
+36cf2d99-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip011_human.wav,0,phone:36cf2d99,1.0071886,12,0.74575406,0.7366905,0.5344978,0.7324696,4
+36cf2d99-012,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip012_human.wav,0,phone:36cf2d99,1.8690639,12,0.84578323,0.8028279,0.5583026,0.86634994,4
+36cf2d99-013,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip013_human.wav,0,phone:36cf2d99,-0.26100153,12,0.5971913,0.52594453,0.24776465,0.4351175,4
+36cf2d99-014,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip014_human.wav,0,phone:36cf2d99,-10.815898,12,0.00861071,0.004416648,0.002175605,2.0077354e-05,4
+36cf2d99-015,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip015_human.wav,0,phone:36cf2d99,3.3938391,12,0.8288052,0.8345823,0.7344942,0.9675115,4
+36cf2d99-016,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip016_human.wav,0,phone:36cf2d99,3.962452,12,0.90824467,0.923979,0.8068003,0.9813385,4
+36cf2d99-017,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip017_human.wav,0,phone:36cf2d99,5.3524723,12,0.9552873,0.98302954,0.8858657,0.9952859,4
+36cf2d99-018,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip018_human.wav,0,phone:36cf2d99,5.084972,12,0.94817835,0.98393506,0.9582515,0.993849,4
+36cf2d99-019,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip019_human.wav,0,phone:36cf2d99,3.9468956,12,0.9045144,0.92228204,0.7870202,0.98105145,4
+36cf2d99-020,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/36cf2d99-877c-4b73-9da9-3d7eadb1354b/segments/clip020_human.wav,0,phone:36cf2d99,5.4711037,4,0.9797963,0.88719964,0.8685286,0.9958111,4
+3c6877bf9abc,../training_data/human_talent/Royaljag/Chameleon - EP/01 Daydream.m4a,0,human:Royaljag,-9.4234085,38,0.034181606,0.026236575,0.013694637,8.080358e-05,4
+40d78eeb4784,../training_data/ai_generated/Floating on Echoes - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,3.58465,62,0.7783168,0.77718097,0.7892172,0.97300273,4
+4127ab0b9993,../training_data/human_talent/Joywave/Content/09 When You're Bored.m4a,0,human:Joywave,-5.7863317,40,0.11650775,0.12886491,0.24869041,0.0030598294,4
+426706605bb5,../training_data/ai_generated/Drift Beyond the Flame - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,-1.2998061,73,0.36271,0.405542,0.32648954,0.21419765,4
+4352806345c0,../training_data/ai_generated/Back Home Never Came - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,5.400137,70,0.8548587,0.77789253,0.92486703,0.9955043,4
+45e906c7dcc4,../training_data/human_talent/Joywave/Content/05 Confidence.m4a,0,human:Joywave,-8.54717,18,0.023061741,0.065614134,0.058707222,0.00019405602,4
+4b2b48324f17,../training_data/ai_generated/Freedom's Song - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,4.0471683,74,0.8413555,0.8299267,0.8234602,0.98282826,4
+632b92efb170,../training_data/dj_mixes/[Halloween Remix] This is Halloween 6.mp3,0,human:[Halloween Remix] This is Halloween 6,-12.311592,41,0.01585742,0.013477238,0.018137425,4.4992644e-06,4
+632b92efb170,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip001_human_632b92efb170.wav,0,human:[Halloween Remix] This is Halloween 6,-1.2674705,1,0.08155393,0.06537925,0.83167595,0.21969056,4
+632b92efb170,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip002_human_632b92efb170.wav,0,human:[Halloween Remix] This is Halloween 6,-7.5321355,2,0.00040033998,0.0012566644,0.0776052,0.0005353066,4
+6a614dc64003,../training_data/human_talent/Joywave/Content/07 Going to a Place.m4a,0,human:Joywave,-5.7388678,45,0.16639528,0.21535341,0.17380382,0.0032080854,4
+6c2c6885833e,../training_data/human_talent/Royaljag/Chameleon - EP/03 Afterglow.m4a,0,human:Royaljag,-5.3012,41,0.20770024,0.2079814,0.16082823,0.004960875,4
+6c9940d0-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/6c9940d0-ba4e-48ba-af93-884b5ad1610b/segments/clip000_human.wav,0,phone:live-6c9940d0,-4.4121637,12,0.13802679,0.17292775,0.1788574,0.0119835595,4
+6c9940d0-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/6c9940d0-ba4e-48ba-af93-884b5ad1610b/segments/clip001_human.wav,0,phone:live-6c9940d0,-10.665272,12,0.0036591392,0.02633603,0.0009494508,2.3341094e-05,4
+7199dc62da9a,../training_data/human_talent/Royaljag/Chameleon - EP/04 Jungle.m4a,0,human:Royaljag,-9.293458,41,0.020875832,0.044450935,0.024374338,9.201582e-05,4
+7795bfb993bf,../training_data/ai_generated/The Wind Still Knows Our Name - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,9.239434,60,0.9755941,0.9306695,0.99285287,0.99990284,4
+7cd75e58311f,../training_data/ai_generated/End the Pain - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,8.266088,66,0.9225385,0.8896937,0.9373473,0.9997429,4
+81e810b99194,../training_data/human_talent/Sofi Tukker/Treehouse/03 Benadryl.m4a,0,human:Sofi Tukker,-7.5706897,41,0.03745328,0.08329288,0.14297004,0.00051507144,4
+8517a6a097dd,../training_data/human_talent/Joywave/Content/03 It's a Trip!.m4a,0,human:Joywave,-7.383601,37,0.07147479,0.095150985,0.09636819,0.00062097335,4
+897d46a90d22,../training_data/human_talent/Joywave/Content/08 Little Lies You're Told.m4a,0,human:Joywave,-13.425546,43,0.00045055317,0.0026315507,0.02505354,1.4769266e-06,4
+8c076d7dd3bf,../training_data/human_talent/Joywave/Content/02 Shutdown.m4a,0,human:Joywave,-6.146689,44,0.13752866,0.16885404,0.06087822,0.0021359853,4
+8e3c37f13839,../training_data/ai_generated/Dust on the Wind - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,0.26105154,66,0.5477691,0.5379481,0.49922052,0.56489474,4
+9452e512c78c,../training_data/human_talent/Sofi Tukker/Treehouse/03 Benadryl 1.m4a,0,human:Sofi Tukker,-6.7606187,41,0.1156064,0.11399707,0.150223,0.0011571716,4
+9a2c856ee46b,../training_data/human_talent/Sofi Tukker/Treehouse/08 The Dare.m4a,0,human:Sofi Tukker,-11.376882,41,0.010819703,0.018914934,0.005919114,1.1457189e-05,4
+a872f5b6cd9b,../training_data/human_talent/ZHU/Generationwhy/14 Working For It (Bonus Track).m4a,0,human:ZHU,-12.25714,43,0.010599403,0.0016539362,0.0040512877,4.7510503e-06,4
+ac2c6d437e94,"../training_data/human_talent/Sofi Tukker/Treehouse/10 Best Friend (feat. NERVO, The Knocks & Alisa Ueno).m4a",0,human:Sofi Tukker,-13.240637,39,0.00037746943,0.00073133555,1.835022e-05,1.776903e-06,4
+ae9839158e76,../training_data/human_talent/Sofi Tukker/Treehouse/07 My Body Hurts.m4a,0,human:Sofi Tukker,-5.117056,39,0.24058993,0.19470653,0.23790002,0.005957933,4
+b115e5e17fab,../training_data/human_talent/Royaljag/Chameleon - EP/02 Wallspace.m4a,0,human:Royaljag,-6.426909,39,0.21242657,0.14855258,0.062447242,0.0016148307,4
+b2aaaf251da3,../training_data/human_talent/Drake/Take Care (Deluxe Version)/19 The Motto (feat. Lil Wayne) [Bonus Track].m4a,0,human:Drake,-8.764251,41,0.14025351,0.16129458,0.14077277,0.00015619474,4
+b3866c97dc44,../training_data/human_talent/Sofi Tukker/Treehouse/02 Energia.m4a,0,human:Sofi Tukker,-8.773508,43,0.09134225,0.07943396,0.10273656,0.00015475569,4
+b776df59eedb,../training_data/human_talent/Joywave/Content/06 Doubt.m4a,0,human:Joywave,-5.583979,38,0.13485111,0.13224813,0.19403791,0.0037435174,4
+c0f45b84c5cb,../training_data/ai_generated/Rebel Shout - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,0.04104226,70,0.51750374,0.38738805,0.583583,0.51025915,4
+c4c373688d12,../training_data/human_talent/Sofi Tukker/Treehouse/07 My Body Hurts 1.m4a,0,human:Sofi Tukker,-4.944697,39,0.2159608,0.17634961,0.25872624,0.0070707216,4
+ca107f5d4119,../training_data/human_talent/Sofi Tukker/Treehouse/09 Baby I'm a Queen.m4a,0,human:Sofi Tukker,-7.0391655,46,0.16997826,0.17857778,0.19394064,0.0008760898,4
+d462ce888fc1,../training_data/human_talent/Joywave/Content/04 Rumors.m4a,0,human:Joywave,-6.5353827,43,0.11642336,0.13977589,0.06345444,0.0014490706,4
+d61cbde73c04,../training_data/ai_generated/Smoke and Silence - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,7.10741,67,0.8724219,0.8664727,0.8684704,0.9991817,4
+d8117e29d350,../training_data/ai_generated/Interlude - The Velvet Sundown.m4a,1,ai:The Velvet Sundown,4.4323545,52,0.83358014,0.8338718,0.8010244,0.9882532,4
+dba3ebe7e192,../training_data/human_talent/Sofi Tukker/Treehouse/06 Johny 1.m4a,0,human:Sofi Tukker,-3.2305095,40,0.30839133,0.29932708,0.41155964,0.0380336,4
+ddc6444af1d0,../training_data/human_talent/Andrew Gold/Unknown Album/Spooky Scary Skeletons (The Living Tombstone's Remix) Extended Mix.mp3,0,human:Andrew Gold,-11.529857,39,0.02631289,0.001811823,0.008033728,9.832016e-06,4
+f51a353b48f8,../training_data/human_talent/Sofi Tukker/Treehouse/01 Fuck They.m4a,0,human:Sofi Tukker,-9.295268,42,0.07205192,0.031121189,0.075064436,9.184943e-05,4
+0bb0e70281ac,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/08 Terrified.m4a",0,human:Childish Gambino,-7.2372327,41,0.11759158,0.114009336,0.060945045,0.0007187825,5
+189d2d3f68d5,../training_data/human_talent/Viticz/Helix/VITICZ - Helix.mp3,0,human:Viticz,-9.670022,41,0.039622407,0.020226056,0.052725665,6.314448e-05,5
+1c06932adf78,../training_data/ai_generated/suno/Justin Bernardez - Waste My Time - usesuno.com.wav,1,ai:suno,-10.058404,65,0.03988311,0.023217667,0.0640425,4.2822507e-05,5
+1c6f60522a47,../training_data/human_talent/Kiiara/Whippin (feat. Felix Snow) - Single/01 Whippin (feat. Felix Snow).m4a,0,human:Kiiara,-11.4704,41,0.020251077,0.040582743,0.010285126,1.0434319e-05,5
+1fac21ec2645,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/09 Baby Boy.m4a",0,human:Childish Gambino,-3.25507,46,0.3425882,0.3438008,0.35843566,0.03714513,5
+215d1dbbdc4c,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/10 The Night Me and Your Mama Met.m4a",0,human:Childish Gambino,-5.247793,42,0.18975489,0.07368455,0.11455134,0.005231598,5
+22e5f932a91d,../training_data/human_talent/Rich Brian/Amen/09 See Me.m4a,0,human:Rich Brian,-14.833905,43,0.005133138,0.012648642,0.015775679,3.6117413e-07,5
+278a5b7abc8e,../training_data/ai_generated/suno/Music Lover Digging [f4d86fc5].mp3,1,ai:suno,-1.7837368,86,0.30915198,0.32813323,0.5386412,0.14384232,5
+2798538317ea,../training_data/human_talent/Oliver Tree/Alien Boy - EP/04 All That.m4a,0,human:Oliver Tree,-11.200256,41,0.013418123,0.0038716767,0.007994449,1.3670505e-05,5
+2b14935fa778,../training_data/human_talent/Rich Brian/Amen/02 Cold.m4a,0,human:Rich Brian,-12.430254,40,0.027153153,0.017250072,0.018001875,3.995835e-06,5
+2bd3225d5558,../training_data/human_talent/Rich Brian/Amen/14 Arizona (feat. AUGUST 08).m4a,0,human:Rich Brian,-12.824064,42,0.022383206,0.006752407,0.008034827,2.6951225e-06,5
+38ddfcab7665,../training_data/ai_generated/suno/Pulse - usesuno.com.wav,1,ai:suno,2.7040963,89,0.61927795,0.67202616,0.81415695,0.93726796,5
+39fc6bbc917e,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/11 Stand Tall.m4a",0,human:Childish Gambino,-6.180052,46,0.1580375,0.11151974,0.048296135,0.0020660432,5
+3c41ad822fa6,../training_data/human_talent/Rich Brian/Amen/12 Little Prince (feat. NIKI).m4a,0,human:Rich Brian,-12.746052,39,0.0010284763,0.0041838544,0.010557609,2.9137934e-06,5
+3c41ad822fa6,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip001_human_3c41ad822fa6.wav,0,human:Rich Brian,-2.32918,2,0.24649179,0.1846993,0.38108408,0.08873495,5
+3d432827d5b4,../training_data/human_talent/Anderson .Paak/'Til It's Over - Single/01 'Til It's Over.m4a,0,human:Anderson .Paak,-5.45872,39,0.30824915,0.21022953,0.1546239,0.004240941,5
+40d04199b13a,../training_data/ai_generated/suno/Violet Tide [1d2171c8].mp3,1,ai:suno,5.4846964,85,0.8048767,0.84729624,0.9113404,0.9958674,5
+42fd27307b5e,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/01 Me and Your Mama.m4a",0,human:Childish Gambino,-6.689137,45,0.158023,0.18058354,0.17440584,0.0012428097,5
+46b90bd21d2f,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/03 Boogieman.m4a",0,human:Childish Gambino,-12.157791,41,0.031337414,0.02471917,0.019889282,5.2473024e-06,5
+568c2e97ad25,../training_data/human_talent/Rich Brian/Amen/03 Occupied.m4a,0,human:Rich Brian,-19.864693,43,0.00066135393,9.950143e-07,5.0039238e-05,2.3597913e-09,5
+5a395d299577,../training_data/human_talent/Rich Brian/Amen/13 Chaos.m4a,0,human:Rich Brian,-12.331963,36,0.00100372,0.0018200526,0.023786888,4.40854e-06,5
+5a7e9b33e60b,../training_data/ai_generated/suno/Don't Mind At All - usesuno.com.wav,1,ai:suno,6.4898458,68,0.8744476,0.8504772,0.9256588,0.9984836,5
+64011ef7908d,../training_data/human_talent/Youngblood Brass Band/Center_ Level_ Roar/04 Brooklyn.m4a,0,human:Youngblood Brass Band,-11.389129,45,0.014212612,0.013515639,0.019257236,1.131773e-05,5
+67a7cc721929,../training_data/human_talent/Rich Brian/Amen/04 Introvert (feat. Joji).m4a,0,human:Rich Brian,-11.841799,43,0.0064794538,0.0014463492,0.00044031537,7.19729e-06,5
+761485f29fc7,../training_data/human_talent/Oliver Tree/Alien Boy - EP/03 Enemy.m4a,0,human:Oliver Tree,-10.527708,33,0.073846,0.02892814,0.09431158,2.6783224e-05,5
+77d24f3a81df,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/06 Redbone.m4a",0,human:Childish Gambino,-16.43792,45,0.0009932739,3.3788434e-05,2.5980878e-05,7.262768e-08,5
+844e62b24e92,../training_data/human_talent/Oliver Tree/Alien Boy - EP/06 Upside Down.m4a,0,human:Oliver Tree,-12.175977,41,0.015683733,0.01285886,0.0232269,5.15274e-06,5
+8639a2479770,../training_data/ai_generated/suno/Never Forgotten - usesuno.com.wav,1,ai:suno,8.265173,75,0.9526428,0.9675781,0.9691981,0.9997427,5
+8b2b4432-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/8b2b4432-7967-4623-8a21-bcf0a87154b1/segments/clip000_human.wav,0,phone:live-8b2b4432,-0.6603068,12,0.59014684,0.2282634,0.5469101,0.34067068,5
+8b2b4432-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/8b2b4432-7967-4623-8a21-bcf0a87154b1/segments/clip001_human.wav,0,phone:live-8b2b4432,0.24038951,6,0.49052665,0.3429253,0.5404218,0.5598096,5
+933e7d2d-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip000_ai.wav,1,ai:suno,-6.947314,12,0.08442215,0.026238486,0.04841909,0.0009602907,5
+933e7d2d-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip001_ai.wav,1,ai:suno,7.7964168,12,0.9894605,0.98991734,0.995027,0.999589,5
+933e7d2d-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip002_ai.wav,1,ai:suno,9.00843,12,0.9914897,0.9956661,0.9993086,0.9998776,5
+933e7d2d-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip003_ai.wav,1,ai:suno,8.774028,12,0.9985078,0.9985492,0.9968693,0.99984527,5
+933e7d2d-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip004_ai.wav,1,ai:suno,10.405645,12,0.83736783,0.8408722,0.9265477,0.9999697,5
+933e7d2d-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip005_ai.wav,1,ai:suno,3.8103487,12,0.6483354,0.735876,0.6822867,0.9783391,5
+933e7d2d-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip006_ai.wav,1,ai:suno,14.341617,12,0.9981682,0.99895734,0.9993773,0.9999994,5
+933e7d2d-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip007_ai.wav,1,ai:suno,15.046159,12,0.998231,0.9998755,0.9999924,0.99999976,5
+933e7d2d-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip008_ai.wav,1,ai:suno,13.845768,12,0.9987757,0.9946571,0.99968076,0.99999905,5
+933e7d2d-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip009_ai.wav,1,ai:suno,17.378855,12,0.9999037,0.9998856,0.999971,1.0,5
+933e7d2d-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip010_ai.wav,1,ai:suno,12.819465,12,0.8330436,0.83297974,0.8346018,0.99999726,5
+933e7d2d-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip011_ai.wav,1,ai:suno,3.310531,12,0.5454543,0.49964914,0.5932773,0.9647884,5
+933e7d2d-012,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip012_ai.wav,1,ai:suno,11.114372,12,0.9996795,0.9900999,0.99990755,0.9999851,5
+933e7d2d-013,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip013_ai.wav,1,ai:suno,10.605903,12,0.99348587,0.980354,0.99980384,0.9999752,5
+933e7d2d-014,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip014_ai.wav,1,ai:suno,11.151315,12,0.9993908,0.9960826,0.99984837,0.9999857,5
+933e7d2d-015,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip015_ai.wav,1,ai:suno,13.663766,12,0.99722284,0.9986488,0.9999464,0.9999988,5
+933e7d2d-016,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip016_ai.wav,1,ai:suno,10.247711,12,0.85555834,0.8720999,0.899841,0.9999646,5
+933e7d2d-017,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip017_ai.wav,1,ai:suno,5.6647496,12,0.75155085,0.7764917,0.85780984,0.996546,5
+933e7d2d-018,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip018_ai.wav,1,ai:suno,5.02928,12,0.67760295,0.7230924,0.6923278,0.99349904,5
+933e7d2d-019,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip019_ai.wav,1,ai:suno,5.1426077,12,0.84860253,0.8668291,0.7184758,0.99419147,5
+933e7d2d-020,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip020_ai.wav,1,ai:suno,10.997561,12,0.9985698,0.99972135,0.99973613,0.9999833,5
+933e7d2d-021,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip021_ai.wav,1,ai:suno,12.765687,12,0.99546695,0.99148065,0.99019486,0.99999714,5
+933e7d2d-022,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip022_ai.wav,1,ai:suno,12.017837,12,0.995847,0.99995667,0.99970573,0.9999939,5
+933e7d2d-023,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip023_ai.wav,1,ai:suno,12.120763,12,0.99840087,0.99941355,0.99994063,0.9999945,5
+933e7d2d-024,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip024_ai.wav,1,ai:suno,8.12251,12,0.82919955,0.95471185,0.8239066,0.9997032,5
+933e7d2d-025,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip025_ai.wav,1,ai:suno,6.858133,12,0.8062156,0.83293897,0.9882677,0.9989503,5
+933e7d2d-026,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip026_ai.wav,1,ai:suno,6.7013087,12,0.92227834,0.7366951,0.98005366,0.9987722,5
+933e7d2d-027,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip027_ai.wav,1,ai:suno,8.670169,12,0.969933,0.96719766,0.99552697,0.99982834,5
+933e7d2d-028,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip028_ai.wav,1,ai:suno,-8.781781,12,0.1352817,0.055348217,0.28758004,0.00015348087,5
+933e7d2d-029,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip029_ai.wav,1,ai:suno,-1.038114,12,0.18297015,0.2163177,0.4994723,0.26151407,5
+933e7d2d-030,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip030_ai.wav,1,ai:suno,-0.43768582,12,0.3357862,0.36690155,0.43267354,0.39229253,5
+933e7d2d-031,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip031_ai.wav,1,ai:suno,-6.963869,12,0.06340172,0.12385414,0.1766829,0.00094453857,5
+933e7d2d-032,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip032_ai.wav,1,ai:suno,9.296654,12,0.9318469,0.9208617,0.99653155,0.9999083,5
+933e7d2d-033,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip033_ai.wav,1,ai:suno,12.373647,12,0.9950997,0.99349564,0.999883,0.9999958,5
+933e7d2d-034,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip034_ai.wav,1,ai:suno,14.114999,12,0.99882483,0.9989703,0.99961585,0.9999993,5
+933e7d2d-035,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip035_ai.wav,1,ai:suno,13.490018,12,0.9995999,0.991214,0.9999308,0.99999857,5
+933e7d2d-036,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip036_ai.wav,1,ai:suno,15.731633,12,0.99902123,0.99940103,0.99998856,0.9999999,5
+933e7d2d-037,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip037_ai.wav,1,ai:suno,12.657353,12,0.9958469,0.99183244,0.99997586,0.9999968,5
+933e7d2d-038,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip038_ai.wav,1,ai:suno,6.847855,12,0.9797724,0.6713311,0.6565799,0.99893945,5
+933e7d2d-039,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip039_ai.wav,1,ai:suno,-2.7553568,12,0.097697884,0.36003402,0.29949844,0.059784833,5
+933e7d2d-040,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip040_ai.wav,1,ai:suno,6.805097,12,0.79527,0.95249337,0.9863855,0.9988931,5
+933e7d2d-041,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip041_ai.wav,1,ai:suno,3.231198,12,0.5610332,0.8522987,0.8141957,0.9619916,5
+933e7d2d-042,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip042_ai.wav,1,ai:suno,0.66637194,12,0.41753784,0.55088204,0.50417835,0.6606903,5
+933e7d2d-043,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip043_ai.wav,1,ai:suno,7.0616455,12,0.7306443,0.9537174,0.97121173,0.99914336,5
+933e7d2d-044,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip044_ai.wav,1,ai:suno,8.045886,12,0.8721499,0.98721915,0.99343777,0.9996797,5
+933e7d2d-045,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip045_ai.wav,1,ai:suno,9.14008,12,0.879297,0.9874475,0.99712396,0.9998927,5
+933e7d2d-046,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip046_ai.wav,1,ai:suno,-1.5517774,12,0.3381206,0.37144747,0.36334476,0.1748297,5
+933e7d2d-047,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip047_ai.wav,1,ai:suno,9.293872,12,0.88024276,0.9937808,0.99480456,0.999908,5
+933e7d2d-048,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip048_ai.wav,1,ai:suno,3.9329987,12,0.74494094,0.7612059,0.8134995,0.98079133,5
+933e7d2d-049,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip049_ai.wav,1,ai:suno,6.8765655,12,0.8909994,0.91746235,0.8687641,0.99896944,5
+933e7d2d-050,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip050_ai.wav,1,ai:suno,3.627344,12,0.70429116,0.6691273,0.878025,0.9741019,5
+933e7d2d-051,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip051_ai.wav,1,ai:suno,8.017575,12,0.84027606,0.83854586,0.7145669,0.9996705,5
+933e7d2d-052,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip052_ai.wav,1,ai:suno,2.0573387,12,0.7873811,0.48663792,0.5639637,0.8866871,5
+933e7d2d-053,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip053_ai.wav,1,ai:suno,3.9897316,12,0.8488414,0.77550215,0.81350875,0.9818315,5
+933e7d2d-054,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip054_ai.wav,1,ai:suno,5.2038283,12,0.85831445,0.8640511,0.9267573,0.9945346,5
+933e7d2d-055,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip055_ai.wav,1,ai:suno,7.6024966,12,0.99170256,0.9657767,0.9776199,0.999501,5
+933e7d2d-056,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip056_ai.wav,1,ai:suno,4.389878,12,0.9384222,0.87886804,0.9133284,0.98774964,5
+933e7d2d-057,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip057_ai.wav,1,ai:suno,1.4131314,12,0.59323055,0.41147017,0.68492204,0.80425936,5
+933e7d2d-058,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip058_ai.wav,1,ai:suno,-1.6704632,12,0.2637525,0.37025452,0.36296633,0.15836243,5
+933e7d2d-059,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip059_ai.wav,1,ai:suno,-2.4214542,12,0.26290295,0.26538476,0.23810925,0.08155127,5
+933e7d2d-060,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip060_ai.wav,1,ai:suno,5.3366218,12,0.7426993,0.75914675,0.862776,0.99521095,5
+933e7d2d-061,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip061_ai.wav,1,ai:suno,7.665239,12,0.8401816,0.94418526,0.9957371,0.9995314,5
+933e7d2d-062,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip062_ai.wav,1,ai:suno,4.2249827,12,0.75231844,0.52848184,0.83498365,0.9855853,5
+933e7d2d-063,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip063_ai.wav,1,ai:suno,7.779718,12,0.82709175,0.8962562,0.9783364,0.999582,5
+933e7d2d-064,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip064_ai.wav,1,ai:suno,7.8604245,12,0.95524955,0.90995383,0.98848295,0.99961436,5
+933e7d2d-065,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip065_ai.wav,1,ai:suno,4.8841553,12,0.75508684,0.81143546,0.8117946,0.9924913,5
+933e7d2d-066,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip066_ai.wav,1,ai:suno,0.3566304,12,0.4545057,0.49960682,0.5390557,0.58822453,5
+933e7d2d-067,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip067_ai.wav,1,ai:suno,-2.239485,12,0.14410196,0.24743642,0.3687997,0.09626033,5
+933e7d2d-068,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip068_ai.wav,1,ai:suno,-0.58940333,12,0.29561377,0.51976305,0.57725483,0.3567718,5
+933e7d2d-069,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip069_ai.wav,1,ai:suno,3.2465384,12,0.4321979,0.49253836,0.6995225,0.9625485,5
+933e7d2d-070,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip070_ai.wav,1,ai:suno,-2.3757057,12,0.11013917,0.19173552,0.54987854,0.085044116,5
+933e7d2d-071,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip071_ai.wav,1,ai:suno,2.8519156,12,0.51461357,0.6656839,0.8177984,0.9454176,5
+933e7d2d-072,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip072_ai.wav,1,ai:suno,-1.9715396,12,0.18857622,0.29314858,0.44077873,0.12222362,5
+933e7d2d-073,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip073_ai.wav,1,ai:suno,5.9264894,12,0.6985793,0.8408969,0.9300036,0.9973393,5
+933e7d2d-074,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip074_ai.wav,1,ai:suno,8.153634,12,0.9275251,0.93586224,0.9887333,0.9997124,5
+933e7d2d-075,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip075_ai.wav,1,ai:suno,4.4906225,12,0.80801946,0.7011146,0.7546425,0.9889107,5
+933e7d2d-076,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip076_ai.wav,1,ai:suno,6.71014,12,0.89176315,0.985976,0.9796884,0.99878305,5
+933e7d2d-077,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip077_ai.wav,1,ai:suno,1.7509562,12,0.540565,0.78986245,0.6875406,0.8520734,5
+933e7d2d-078,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip078_ai.wav,1,ai:suno,-5.514788,12,0.032321047,0.031579364,0.015707852,0.0040106303,5
+933e7d2d-079,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip079_ai.wav,1,ai:suno,2.0416584,12,0.7505494,0.5858442,0.6378686,0.8851021,5
+933e7d2d-080,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip080_ai.wav,1,ai:suno,8.718686,12,0.9938957,0.9631748,0.99439526,0.99983644,5
+933e7d2d-081,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip081_ai.wav,1,ai:suno,9.958571,12,0.9899487,0.99395895,0.9998362,0.9999527,5
+933e7d2d-082,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip082_ai.wav,1,ai:suno,6.04368,12,0.9081586,0.85283947,0.9402945,0.99763274,5
+933e7d2d-083,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip083_ai.wav,1,ai:suno,-4.271126,12,0.3667678,0.081951626,0.2634086,0.013773688,5
+933e7d2d-084,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip084_ai.wav,1,ai:suno,0.5869476,12,0.48212245,0.25891033,0.47280908,0.6426645,5
+933e7d2d-085,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip085_ai.wav,1,ai:suno,4.5097294,12,0.8647637,0.73363066,0.9516459,0.9891182,5
+933e7d2d-086,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip086_ai.wav,1,ai:suno,4.1327214,12,0.82116336,0.75078464,0.804503,0.98421407,5
+933e7d2d-087,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip087_ai.wav,1,ai:suno,1.117548,12,0.47507796,0.47272336,0.6807923,0.7535336,5
+933e7d2d-088,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip088_ai.wav,1,ai:suno,6.7048035,12,0.9136617,0.92984027,0.9006081,0.9987765,5
+933e7d2d-089,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip089_ai.wav,1,ai:suno,7.0175457,12,0.9254784,0.8326586,0.70584637,0.9991048,5
+933e7d2d-090,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip090_ai.wav,1,ai:suno,1.737245,12,0.6679241,0.6749606,0.56191486,0.8503368,5
+933e7d2d-091,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip091_ai.wav,1,ai:suno,11.002248,12,0.9904477,0.9962804,0.99873155,0.9999833,5
+933e7d2d-092,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip092_ai.wav,1,ai:suno,10.826274,12,0.9917293,0.9994468,0.9898131,0.9999801,5
+933e7d2d-093,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip093_ai.wav,1,ai:suno,4.5778847,12,0.82956046,0.91033,0.9321449,0.989828,5
+933e7d2d-094,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip094_ai.wav,1,ai:suno,4.117433,12,0.72414845,0.79681224,0.83452433,0.98397475,5
+933e7d2d-095,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip095_ai.wav,1,ai:suno,7.3175454,12,0.95941657,0.9353514,0.91336733,0.99933666,5
+933e7d2d-096,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip096_ai.wav,1,ai:suno,10.842865,12,0.9971227,0.9989612,0.9878747,0.99998045,5
+933e7d2d-097,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip097_ai.wav,1,ai:suno,7.676534,12,0.7996383,0.8045525,0.987143,0.99953663,5
+933e7d2d-098,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip098_ai.wav,1,ai:suno,7.5967984,12,0.985287,0.9368333,0.9986002,0.9994981,5
+933e7d2d-099,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip099_ai.wav,1,ai:suno,4.608179,12,0.66936046,0.7304527,0.8352778,0.99012846,5
+933e7d2d-100,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip100_ai.wav,1,ai:suno,9.451902,12,0.9221677,0.8276832,0.97279876,0.99992144,5
+933e7d2d-101,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip101_ai.wav,1,ai:suno,3.4845116,12,0.7021177,0.5207367,0.82357126,0.9702439,5
+933e7d2d-102,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip102_ai.wav,1,ai:suno,6.9309063,12,0.83754426,0.8729128,0.85205793,0.9990238,5
+933e7d2d-103,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip103_ai.wav,1,ai:suno,8.815434,12,0.9710059,0.9973952,0.9981615,0.9998516,5
+933e7d2d-104,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip104_ai.wav,1,ai:suno,0.91992456,12,0.401922,0.49392018,0.535125,0.71502674,5
+933e7d2d-105,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip105_ai.wav,1,ai:suno,7.138313,12,0.9241219,0.84287167,0.9802489,0.9992066,5
+933e7d2d-106,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip106_ai.wav,1,ai:suno,4.478847,12,0.6650753,0.6595246,0.8344531,0.98878086,5
+933e7d2d-107,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip107_ai.wav,1,ai:suno,6.8356786,12,0.8090255,0.8618751,0.9727953,0.99892634,5
+933e7d2d-108,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip108_ai.wav,1,ai:suno,11.458037,12,0.9972179,0.99950534,0.9999108,0.9999894,5
+933e7d2d-109,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip109_ai.wav,1,ai:suno,0.21779864,12,0.624245,0.61892575,0.47512507,0.5542354,5
+933e7d2d-110,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip110_ai.wav,1,ai:suno,8.942989,12,0.9727683,0.96276826,0.99258274,0.99986935,5
+933e7d2d-111,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip111_ai.wav,1,ai:suno,2.9036791,12,0.52267045,0.62499976,0.78668714,0.948028,5
+933e7d2d-112,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip112_ai.wav,1,ai:suno,7.691584,12,0.8332746,0.8314391,0.8536822,0.9995435,5
+933e7d2d-113,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip113_ai.wav,1,ai:suno,8.99204,12,0.9858301,0.9687714,0.9919047,0.99987555,5
+933e7d2d-114,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip114_ai.wav,1,ai:suno,0.5136704,12,0.44440976,0.38479027,0.6409192,0.6256665,5
+933e7d2d-115,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip115_ai.wav,1,ai:suno,2.115822,12,0.51611775,0.6352992,0.51198953,0.8924315,5
+933e7d2d-116,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip116_ai.wav,1,ai:suno,7.6779594,12,0.8677223,0.9461755,0.9188078,0.99953735,5
+933e7d2d-117,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/933e7d2d-a9ca-431a-af8a-82762bfdc63e/segments/clip117_ai.wav,1,ai:suno,9.049214,12,0.9630983,0.9967962,0.99972814,0.99988246,5
+93b30ffaa623,../training_data/ai_generated/suno/One-Mo Time - usesuno.com.wav,1,ai:suno,8.699996,81,0.8930696,0.9272738,0.96799207,0.99983346,5
+93f89ad8b210,../training_data/ai_generated/suno/Time Never Moves [9730ff6a].mp3,1,ai:suno,3.5520887,70,0.6621606,0.71785885,0.7236263,0.97213405,5
+9a1a6e29b94e,../training_data/human_talent/Rich Brian/Amen/06 Glow Like Dat.m4a,0,human:Rich Brian,-16.354324,39,0.0019442766,0.000807171,0.0015521096,7.896e-08,5
+a015b4fd3eee,../training_data/human_talent/Rich Brian/Amen/08 Flight.m4a,0,human:Rich Brian,-12.406253,41,0.025286684,0.011304761,0.026410637,4.0928994e-06,5
+a300fd1ff781,../training_data/ai_generated/suno/Night to Night - usesuno.com.wav,1,ai:suno,7.130451,80,0.91091806,0.91660374,0.9148904,0.9992003,5
+a645fd312d60,../training_data/human_talent/Oliver Tree/Alien Boy - EP/02 All I Got.m4a,0,human:Oliver Tree,-10.485876,37,0.1025018,0.049233608,0.071841,2.7927352e-05,5
+aa0332f355e9,../training_data/ai_generated/suno/sound 9 [0ee28dcc].mp3,1,ai:suno,3.2262826,46,0.6904377,0.76125884,0.6819069,0.9618115,5
+ae36e5649186,../training_data/human_talent/Rich Brian/Amen/11 Kitty.m4a,0,human:Rich Brian,-19.585936,39,0.0034300429,0.0325813,0.016727775,3.1184317e-09,5
+b5297879d357,../training_data/human_talent/Rich Brian/Amen/10 Enemies.m4a,0,human:Rich Brian,-16.780966,42,0.0009892161,0.0069424184,0.00062408164,5.1536997e-08,5
+b73eb2dac486,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/02 Have Some Love.m4a",0,human:Childish Gambino,-14.922746,44,0.0049601076,0.00027565693,0.00037297112,3.304713e-07,5
+b9190e36318c,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/05 Riot.m4a",0,human:Childish Gambino,-13.386902,38,0.021873876,0.01644429,0.011964512,1.5351179e-06,5
+bc1efa4c373e,../training_data/ai_generated/suno/chickenlicker - usesuno.com.wav,1,ai:suno,0.973013,67,0.50920904,0.5962531,0.6139642,0.72571963,5
+bfeddee8-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip000_ai.wav,1,phone:bfeddee8,-7.9819617,12,0.03347065,0.03178761,0.008453148,0.00034145208,5
+bfeddee8-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip001_ai.wav,1,phone:bfeddee8,-7.254378,12,0.19773896,0.26325276,0.021084597,0.00070657255,5
+bfeddee8-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip002_ai.wav,1,phone:bfeddee8,-9.132454,12,0.20356344,0.1268111,0.10589116,0.00010808831,5
+bfeddee8-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip003_ai.wav,1,phone:bfeddee8,-3.4012098,12,0.29789412,0.4259893,0.015225266,0.032257676,5
+bfeddee8-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip004_ai.wav,1,phone:bfeddee8,-4.2639203,12,0.5144638,0.22668023,0.059880298,0.01387191,5
+bfeddee8-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip005_ai.wav,1,phone:bfeddee8,-5.583609,12,0.20881237,0.30736813,0.09178046,0.0037448977,5
+bfeddee8-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip006_ai.wav,1,phone:bfeddee8,-2.9543488,12,0.25322676,0.24439394,0.07738217,0.049531378,5
+bfeddee8-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip007_ai.wav,1,phone:bfeddee8,-4.0325084,12,0.31123462,0.25955373,0.14370213,0.017420933,5
+bfeddee8-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip008_ai.wav,1,phone:bfeddee8,-6.319847,12,0.08135467,0.07602654,0.00860753,0.0017969838,5
+bfeddee8-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip009_ai.wav,1,phone:bfeddee8,-4.0938964,12,0.2678863,0.18654938,0.19186087,0.01640067,5
+bfeddee8-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip010_ai.wav,1,phone:bfeddee8,-6.5616093,12,0.112210415,0.022464119,0.035029903,0.0014116135,5
+bfeddee8-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip011_ai.wav,1,phone:bfeddee8,-9.098513,12,0.008843043,0.0375211,0.0013032045,0.00011181951,5
+bfeddee8-012,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip012_ai.wav,1,phone:bfeddee8,-11.14541,12,0.005183267,0.00020241924,0.0005537442,1.4441219e-05,5
+bfeddee8-013,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip013_ai.wav,1,phone:bfeddee8,-5.260157,12,0.070306316,0.15960158,0.07069636,0.0051676454,5
+bfeddee8-014,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip014_ai.wav,1,phone:bfeddee8,-1.8583552,12,0.50964224,0.38178074,0.16846226,0.1348949,5
+bfeddee8-015,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip015_ai.wav,1,phone:bfeddee8,-4.25904,12,0.23668848,0.32779548,0.17264102,0.013938831,5
+bfeddee8-016,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/bfeddee8-3f17-4d17-8270-ee3a4dd829b7/segments/clip016_ai.wav,1,phone:bfeddee8,-6.8367777,8,0.3576206,0.22010854,0.04074557,0.0010724058,5
+c8200a313276,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/04 Zombies.m4a",0,human:Childish Gambino,-8.847803,46,0.044231907,0.052888867,0.06310514,0.00014367643,5
+cb2829bd5adb,../training_data/human_talent/Oliver Tree/Alien Boy - EP/01 Alien Boy.m4a,0,human:Oliver Tree,-11.712961,39,0.023298532,0.003487015,0.00070450926,8.1869475e-06,5
+d52f572c1328,../training_data/human_talent/Kiiara/Messy - Single/01 Messy.m4a,0,human:Kiiara,-17.2739,40,0.00018764846,9.2154005e-05,0.00803122,3.148045e-08,5
+d797b1952366,../training_data/human_talent/Oliver Tree/Alien Boy - EP/05 Welcome to LA.m4a,0,human:Oliver Tree,-10.023983,38,0.017206738,0.0038814521,0.02988808,4.4322092e-05,5
+d80a0149509a,../training_data/human_talent/Rich Brian/Amen/01 Amen.m4a,0,human:Rich Brian,-19.297771,37,0.00030043666,1.9086226e-06,3.0524505e-05,4.159914e-09,5
+ddb95827dcd4,../training_data/human_talent/Rich Brian/Amen/07 Trespass.m4a,0,human:Rich Brian,-20.123705,42,0.0003151542,2.2408813e-06,5.0056733e-05,1.8213189e-09,5
+e17c9d23e433,../training_data/ai_generated/suno/Window by Caio Klin - usesuno.com.wav,1,ai:suno,-0.14231692,70,0.57640433,0.52215713,0.48838043,0.4644807,5
+f04c006e7ba6,../training_data/ai_generated/suno/Spark - usesuno.com.wav,1,ai:suno,10.255146,78,0.9763385,0.984395,0.9853449,0.99996483,5
+f59eb7d0-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f59eb7d0-9bdc-49b8-99d7-edb7575a4ebd/segments/clip000_ai.wav,1,phone:f59eb7d0,0.89805466,12,0.64573807,0.78606105,0.6606455,0.71054953,5
+f59eb7d0-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f59eb7d0-9bdc-49b8-99d7-edb7575a4ebd/segments/clip001_ai.wav,1,phone:f59eb7d0,5.884087,12,0.8920819,0.91192967,0.85196704,0.99722433,5
+f59eb7d0-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f59eb7d0-9bdc-49b8-99d7-edb7575a4ebd/segments/clip002_ai.wav,1,phone:f59eb7d0,7.452554,12,0.9924102,0.9984508,0.9904917,0.9994204,5
+f59eb7d0-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/f59eb7d0-9bdc-49b8-99d7-edb7575a4ebd/segments/clip003_ai.wav,1,phone:f59eb7d0,8.577836,4,0.9995755,0.99904865,0.9953424,0.9998118,5
+fb91108ab11c,../training_data/human_talent/Rich Brian/Amen/05 Attention (feat. Offset).m4a,0,human:Rich Brian,-13.482987,38,0.091915295,0.093451805,0.10378621,1.3944803e-06,5
+fc962ac63cef,"../training_data/human_talent/Childish Gambino/_Awaken, My Love!_/07 California.m4a",0,human:Childish Gambino,-14.752344,42,0.0007349778,0.004208791,0.00078790664,3.9186654e-07,5
+0270c7001b2f,../training_data/human_talent/Rodriguez/Cold Fact/10 Gommorah (a Nursery Rhyme).m4a,0,human:Rodriguez,-9.671869,40,0.019928746,0.041773736,0.0085713,6.302795e-05,6
+033e82103007,../training_data/human_talent/Rodriguez/Cold Fact/07 Inner City Blues.m4a,0,human:Rodriguez,-14.565557,41,0.005907155,0.0023767622,0.0020813001,4.7234462e-07,6
+06cbdf4441e3,../training_data/human_talent/CHVRCHES/Love Is Dead/12 ii.m4a,0,human:CHVRCHES,-0.03391341,26,0.52220625,0.5211612,0.38424847,0.4915225,6
+0f674dfd2e6c,../training_data/human_talent/CHVRCHES/Love Is Dead/08 Graves.m4a,0,human:CHVRCHES,-2.0409915,41,0.5073387,0.38021305,0.49697912,0.11496581,6
+135644a8-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/135644a8-5b58-40aa-ab8c-06267548eba9/segments/clip000_ai.wav,1,phone:135644a8,-2.026232,12,0.31429753,0.51315707,0.28760684,0.11647612,6
+135644a8-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/135644a8-5b58-40aa-ab8c-06267548eba9/segments/clip001_ai.wav,1,phone:135644a8,-0.03148366,12,0.4548192,0.571472,0.2919933,0.4921297,6
+135644a8-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/135644a8-5b58-40aa-ab8c-06267548eba9/segments/clip002_ai.wav,1,phone:135644a8,4.1345677,12,0.75635654,0.93263596,0.7966414,0.9842427,6
+135644a8-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/135644a8-5b58-40aa-ab8c-06267548eba9/segments/clip003_ai.wav,1,phone:135644a8,3.5745814,12,0.7607388,0.92839247,0.5989349,0.97273695,6
+135644a8-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/135644a8-5b58-40aa-ab8c-06267548eba9/segments/clip004_ai.wav,1,phone:135644a8,6.679914,12,0.97415274,0.9892245,0.893954,0.9987457,6
+135644a8-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/135644a8-5b58-40aa-ab8c-06267548eba9/segments/clip005_ai.wav,1,phone:135644a8,2.146734,12,0.53642184,0.698827,0.6299738,0.8953632,6
+135644a8-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/135644a8-5b58-40aa-ab8c-06267548eba9/segments/clip006_ai.wav,1,phone:135644a8,1.6096928,8,0.6261245,0.659588,0.6243409,0.8333687,6
+18890a1de2e0,../training_data/human_talent/CHVRCHES/Love Is Dead/09 Heaven_Hell.m4a,0,human:CHVRCHES,-6.0463777,44,0.25366798,0.16145392,0.2707949,0.0023608317,6
+1d8c17cea1c0,../training_data/human_talent/Rodriguez/Cold Fact/01 Sugar Man.m4a,0,human:Rodriguez,-8.970583,37,0.04354855,0.07882602,0.014465348,0.00012707793,6
+224b2ad85ca7,../training_data/ai_generated/The First time I Laid Eyes On You.mp3,1,ai:unknown,11.170936,83,0.9816742,0.9872148,0.9848351,0.99998593,6
+245323379136,../training_data/human_talent/Amy Shark/Love Monster/04 I Said Hi.m4a,0,human:Amy Shark,-9.821206,40,0.012275355,0.0051758485,0.034723792,5.428512e-05,6
+2842e5894e4f,../training_data/human_talent/Rodriguez/Cold Fact/05 Hate Street Dialogue.m4a,0,human:Rodriguez,-6.0600986,40,0.21732111,0.16627316,0.27872768,0.002328735,6
+2f5da48d-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip000_ai.wav,1,phone:2f5da48d,-3.10486,12,0.14577018,0.21994968,0.06735758,0.042907227,6
+2f5da48d-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip001_ai.wav,1,phone:2f5da48d,-4.5481095,12,0.032885574,0.19336845,0.01820373,0.0104762865,6
+2f5da48d-002,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip002_ai.wav,1,phone:2f5da48d,-2.6824753,12,0.040823817,0.18396686,0.2710495,0.0640154,6
+2f5da48d-003,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip003_ai.wav,1,phone:2f5da48d,-3.271345,12,0.040292367,0.050731655,0.20751083,0.03656742,6
+2f5da48d-004,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip004_ai.wav,1,phone:2f5da48d,-3.2605774,12,0.05339681,0.12231892,0.11267681,0.03694866,6
+2f5da48d-005,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip005_ai.wav,1,phone:2f5da48d,-1.2526451,12,0.345845,0.17490727,0.721096,0.2222426,6
+2f5da48d-006,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip006_ai.wav,1,phone:2f5da48d,-0.37760428,12,0.47044882,0.48741463,0.75360554,0.40670484,6
+2f5da48d-007,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip007_ai.wav,1,phone:2f5da48d,0.03649956,12,0.34959063,0.41510427,0.90796596,0.50912386,6
+2f5da48d-008,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip008_ai.wav,1,phone:2f5da48d,-0.81307393,12,0.23683713,0.3036083,0.85339016,0.30723587,6
+2f5da48d-009,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip009_ai.wav,1,phone:2f5da48d,-0.24476929,12,0.30162862,0.44977835,0.8361964,0.43911138,6
+2f5da48d-010,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip010_ai.wav,1,phone:2f5da48d,-1.3240503,12,0.06842045,0.30686742,0.7826839,0.21014522,6
+2f5da48d-011,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc/segments/clip011_ai.wav,1,phone:2f5da48d,-1.7916001,4,0.2496847,0.37684506,0.3508005,0.14287665,6
+32f40ac9de34,../training_data/human_talent/Jain/Zanaka (Deluxe)/14 Come (Extended Version).m4a,0,human:Jain,-9.921268,44,0.059703253,0.027061535,0.06999587,4.91164e-05,6
+3ea407a83a30,../training_data/ai_generated/Midnight Confessiona.mp3,1,ai:unknown,0.6689196,77,0.5569257,0.55775464,0.4339613,0.66126126,6
+402423625a66,../training_data/ai_generated/A Mother's Love.mp3,1,ai:unknown,9.162985,84,0.96391135,0.9639494,0.955501,0.9998951,6
+402423625a66,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip008_ai_402423625a66.wav,1,ai:unknown,2.5616448,1,0.96135515,0.5958044,0.94563574,0.928352,6
+402423625a66,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e70d7729-200b-46b3-ac15-426d7b29350e/segments/clip009_ai_402423625a66.wav,1,ai:unknown,-0.68155706,2,0.4621067,0.30942723,0.6617035,0.33591387,6
+44e0c11f2970,../training_data/human_talent/CHVRCHES/Love Is Dead/05 Forever.m4a,0,human:CHVRCHES,-7.911631,40,0.061428476,0.076052986,0.043628138,0.0003663221,6
+4fd86149-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/4fd86149-6fa4-4e49-9103-4335e972698c/segments/clip000_ai.wav,1,phone:live-4fd86149,1.727383,12,0.6532715,0.7777283,0.66259503,0.8490774,6
+4fd86149-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/4fd86149-6fa4-4e49-9103-4335e972698c/segments/clip001_ai.wav,1,phone:live-4fd86149,5.7305284,12,0.836355,0.8949527,0.80947345,0.99676514,6
+530b00dc3598,../training_data/ai_generated/Miscarriage Blues.mp3,1,ai:unknown,-0.45726776,82,0.46183974,0.553176,0.3438901,0.38763416,6
+618f853a058f,../training_data/human_talent/Rodriguez/Cold Fact/06 Forget It.m4a,0,human:Rodriguez,-11.035355,33,0.0062473053,0.00692463,0.01731916,1.6121276e-05,6
+652dc0fb23f8,../training_data/human_talent/CHVRCHES/Love Is Dead/06 Never Say Die.m4a,0,human:CHVRCHES,-9.609194,40,0.006901347,0.009134031,0.016925564,6.71044e-05,6
+65c1e7dd7347,../training_data/human_talent/Rodriguez/Cold Fact/09 Like Janis.m4a,0,human:Rodriguez,-6.716269,37,0.02901793,0.04405415,0.01865501,0.0012095834,6
+65d527526c3d,../training_data/ai_generated/Social media Lies.mp3,1,ai:unknown,5.9469876,86,0.88020414,0.8624551,0.89733064,0.99739313,6
+6651233eb631,../training_data/human_talent/Amy Shark/Love Monster/02 Adore.m4a,0,human:Amy Shark,-10.383229,32,0.023463767,0.017992157,0.0030262035,3.0946205e-05,6
+7841a2706d71,../training_data/human_talent/CHVRCHES/Love Is Dead/11 Really Gone.m4a,0,human:CHVRCHES,-3.8256536,40,0.19394688,0.1506458,0.06334336,0.021338904,6
+7cdb9e37ab28,../training_data/human_talent/PrototyperRaptor/Unknown Album/PrototypeRaptor - Still Waiting.mp3,0,human:PrototyperRaptor,-8.739877,44,0.0232825,0.020160766,0.0403418,0.000160048,6
+7de061bbc321,../training_data/human_talent/Amy Shark/Love Monster/09 Don't Turn Around.m4a,0,human:Amy Shark,-7.9449825,41,0.05836018,0.03086964,0.02255297,0.00035431053,6
+87026c6ec59c,../training_data/ai_generated/I asked for so little.mp3,1,ai:unknown,10.586798,80,0.98636055,0.97824603,0.9906087,0.9999747,6
+98e4d17af335,../training_data/human_talent/CHVRCHES/Love Is Dead/02 Get Out.m4a,0,human:CHVRCHES,-4.899511,41,0.22350132,0.20657946,0.25037092,0.007395131,6
+991cce68a4d7,../training_data/human_talent/Jain/Zanaka (Deluxe)/03 Mr Johnson.m4a,0,human:Jain,-9.23441,39,0.03772641,0.0047527123,0.026399445,9.761222e-05,6
+9a0384bf517b,../training_data/human_talent/Jain/Zanaka (Deluxe)/01 Come.m4a,0,human:Jain,-12.566284,39,0.009302521,0.0023832454,0.010553087,3.4876316e-06,6
+9a35c4930bf1,../training_data/human_talent/CHVRCHES/Love Is Dead/10 God's Plan.m4a,0,human:CHVRCHES,-9.207186,44,0.018806996,0.009172865,0.0481976,0.00010030589,6
+9d07751d6d10,../training_data/human_talent/Jain/Zanaka (Deluxe)/04 Lil Mama.m4a,0,human:Jain,-9.881365,42,0.03994945,0.025511038,0.011168321,5.1115847e-05,6
+a794c9b1e220,"../training_data/human_talent/Rodriguez/Cold Fact/04 This is Not a Song, It's an Outburst! or, The Establishment Blues.m4a",0,human:Rodriguez,-10.923202,38,0.046692435,0.043657646,0.032600682,1.803458e-05,6
+a970333b4f8b,../training_data/human_talent/CHVRCHES/Love Is Dead/07 Miracle.m4a,0,human:CHVRCHES,-5.5805597,39,0.13100961,0.13666095,0.07842912,0.0037562917,6
+b637beb6c3d8,../training_data/human_talent/Rodriguez/Cold Fact/11 Rich Folks Hoax.m4a,0,human:Rodriguez,-12.954444,41,0.028552486,0.017007764,0.038094595,2.3656771e-06,6
+b8e734d4c416,../training_data/human_talent/CHVRCHES/Love Is Dead/01 Graffiti.m4a,0,human:CHVRCHES,-5.235282,43,0.07084275,0.05204389,0.12941928,0.005297114,6
+bfbe0cfbf6fa,../training_data/human_talent/CHVRCHES/Love Is Dead/04 My Enemy (feat. Matt Berninger).m4a,0,human:CHVRCHES,-8.051119,43,0.052758444,0.017894266,0.043689094,0.00031864352,6
+c022c80b5906,../training_data/human_talent/CHVRCHES/Love Is Dead/03 Deliverance.m4a,0,human:CHVRCHES,-7.819095,43,0.022586906,0.009300921,0.13082728,0.00040182375,6
+c122624aa8ea,../training_data/human_talent/Banks/Better - Single/01 Better.m4a,0,human:Banks,-5.198799,41,0.19699322,0.2487866,0.17068811,0.005492855,6
+c69ef89efe01,../training_data/human_talent/Nas/Illmatic/02 N.Y. State of Mind.m4a,0,human:Nas,-10.436086,44,0.026231127,0.017276304,0.03670833,2.9353021e-05,6
+d1a3860e41ae,../training_data/human_talent/CHVRCHES/Love Is Dead/13 Wonderland.m4a,0,human:CHVRCHES,-6.1531954,45,0.10206105,0.11875451,0.08079118,0.0021221624,6
+d237ba0dbea4,../training_data/human_talent/Rodriguez/Cold Fact/08 I Wonder.m4a,0,human:Rodriguez,-7.9859023,39,0.10004935,0.08424856,0.052556302,0.00034010963,6
+d2a1cb1f4b19,../training_data/human_talent/Jain/Zanaka (Deluxe)/08 Makeba.m4a,0,human:Jain,-13.55136,44,0.0018412374,0.0005569054,0.0063402816,1.3023224e-06,6
+d8076b23ba2f,../training_data/human_talent/Rodriguez/Cold Fact/02 Only Good for Conversation.m4a,0,human:Rodriguez,-9.883281,39,0.050910227,0.040573545,0.088467374,5.1018014e-05,6
+dcb6d674c457,../training_data/human_talent/Rodriguez/Cold Fact/03 Crucify Your Mind.m4a,0,human:Rodriguez,-11.001711,40,0.00276936,0.014934654,0.0006501392,1.6672871e-05,6
+e3bdb51b-000,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e3bdb51b-7e17-479d-a6bd-7e7e9698c1de/segments/clip000_human.wav,0,phone:live-e3bdb51b,-3.3667796,12,0.14326367,0.13562754,0.23842119,0.033349972,6
+e3bdb51b-001,/Users/ryanpaglinawan/Projects/WMG/reports/phone_captures/e3bdb51b-7e17-479d-a6bd-7e7e9698c1de/segments/clip001_human.wav,0,phone:live-e3bdb51b,-5.8031573,8,0.053761266,0.111055605,0.030389747,0.0030089298,6
+e6dd7da7756c,../training_data/ai_generated/This Aint No Tryout.mp3,1,ai:unknown,5.5067096,72,0.8161788,0.8869498,0.7274938,0.99595696,6
+ebab956b1ea4,../training_data/human_talent/Rodriguez/Cold Fact/12 Jane S. Piddy.m4a,0,human:Rodriguez,-12.362773,43,0.001724428,0.020797294,0.0038065994,4.274783e-06,6
+f47c0f69e24a,../training_data/ai_generated/How Was I supposed to Know_.mp3,1,ai:unknown,6.215243,82,0.9125013,0.8744635,0.9284938,0.9980052,6

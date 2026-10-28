@@ -1,0 +1,25 @@
+session_id,playlist_id,clip_index,clip_id,segment,label,category,ai_share_min,ai_share_max,song_id,group,source_path,source_start_s,duration_s,align_corr,sample_rate
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,0,42f3ce39-ba65-4b12-9e38-42cbba818816,segments/clip000_ai.wav,1,ai,0.4,1.0,7fd3b795-000,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,1,4f263dda-6244-4421-ba96-2118d0150786,segments/clip001_ai.wav,1,ai,0.4,1.0,7fd3b795-001,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,2,37d497eb-d128-40ef-82a2-a17f95595ae0,segments/clip002_ai.wav,1,ai,0.4,1.0,7fd3b795-002,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,3,62c960dd-e6da-4022-8e90-6c3c9794e63e,segments/clip003_ai.wav,1,ai,0.4,1.0,7fd3b795-003,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,4,fc8dd6ef-7c5f-4fe4-bd11-8275a496b434,segments/clip004_ai.wav,1,ai,0.4,1.0,7fd3b795-004,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,5,5712eb8d-4e2d-4744-bfcf-d4d57025a623,segments/clip005_ai.wav,1,ai,0.4,1.0,7fd3b795-005,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,6,46759633-b9ce-40bd-8932-0b26b39cd4c9,segments/clip006_ai.wav,1,ai,0.4,1.0,7fd3b795-006,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,7,88e03cf7-53fd-4cce-816c-81456faec2ca,segments/clip007_ai.wav,1,ai,0.4,1.0,7fd3b795-007,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,8,7d501a4a-74bb-4c3e-bfc5-baca88af421d,segments/clip008_ai.wav,1,ai,0.4,1.0,7fd3b795-008,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,9,e4844da8-07c6-4622-a310-99c05b6a6320,segments/clip009_ai.wav,1,ai,0.4,1.0,7fd3b795-009,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,10,88ed8765-852d-45bb-9e36-125bcac8dff0,segments/clip010_ai.wav,1,ai,0.4,1.0,7fd3b795-010,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,11,6511e46c-eb13-439b-85f3-669d0fedbf92,segments/clip011_ai.wav,1,ai,0.4,1.0,7fd3b795-011,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,12,20770069-67cb-4466-93f7-84dd9902cca6,segments/clip012_ai.wav,1,ai,0.4,1.0,7fd3b795-012,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,13,e761df71-df9e-4d86-8fe9-86a41fad0bf9,segments/clip013_ai.wav,1,ai,0.4,1.0,7fd3b795-013,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,14,d0ff1c4b-1ed7-4ec4-b050-375eea6bccea,segments/clip014_ai.wav,1,ai,0.4,1.0,7fd3b795-014,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,15,31b33385-cbb6-4079-b873-74eeade975c7,segments/clip015_ai.wav,1,ai,0.4,1.0,7fd3b795-015,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,16,6cbbe783-8e84-4767-a906-ccc097d756c5,segments/clip016_ai.wav,1,ai,0.4,1.0,7fd3b795-016,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,17,4cac317f-7119-4fec-b1a3-9534b42d9fbe,segments/clip017_ai.wav,1,ai,0.4,1.0,7fd3b795-017,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,18,53515807-34e4-4127-85d3-54b7635d6ab4,segments/clip018_ai.wav,1,ai,0.4,1.0,7fd3b795-018,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,19,ce7a4b24-dca7-4fa9-a9b4-657b3a502d3b,segments/clip019_ai.wav,1,ai,0.4,1.0,7fd3b795-019,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,20,a5d66df3-d204-41f7-a4c5-f661cb09515a,segments/clip020_ai.wav,1,ai,0.4,1.0,7fd3b795-020,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,21,50e9ce54-33b8-4108-8e2c-899346689866,segments/clip021_ai.wav,1,ai,0.4,1.0,7fd3b795-021,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,22,a3fe7266-f5d8-4c65-8410-b4bafa29881a,segments/clip022_ai.wav,1,ai,0.4,1.0,7fd3b795-022,phone:7fd3b795,app label,,30.0,,32000
+7fd3b795-5b19-4b71-85e6-36ee65d9ef69,,23,636482d7-c302-4132-8584-cc8069297115,segments/clip023_ai.wav,1,ai,0.4,1.0,7fd3b795-023,phone:7fd3b795,app label,,23.08,,32000

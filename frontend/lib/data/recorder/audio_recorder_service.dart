@@ -24,7 +24,7 @@ class AudioRecorderService {
   ///
   /// Voice processing (echo cancellation, noise suppression, auto gain) is off:
   /// it is tuned for speech and distorts music, which hurts identification.
-  Future<Stream<Uint8List>> startPcmStream({int sampleRate = 16000}) async {
+  Future<Stream<Uint8List>> startPcmStream({int sampleRate = 32000}) async {
     if (!await _recorder.hasPermission()) throw MicrophonePermissionDenied();
     try {
       return await _recorder.startStream(_config(sampleRate, AndroidAudioSource.unprocessed));

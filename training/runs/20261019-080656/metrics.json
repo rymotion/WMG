@@ -1,0 +1,171 @@
+{
+  "args": {
+    "cache": "cache-v2",
+    "out": "runs",
+    "epochs": 12,
+    "steps": 250,
+    "batch": 32,
+    "lr": 0.002,
+    "folds": "all"
+  },
+  "device": "mps",
+  "confound_gate_auc": 0.4545295390883626,
+  "feature_spec_hash": "9f612611d1fccf8a",
+  "feature_crate_commit": "f4063d9e6eb04b336db4b27dbe6e6bf5afcbe747",
+  "folds": [
+    {
+      "held_out_ai": "ai:BLOW RECORDS",
+      "window_auc": 0.9555,
+      "song_auc": 0.977,
+      "ai_recall@0.5": 0.429,
+      "human_fpr@0.5": 0.0,
+      "n_ai_songs": 7,
+      "n_human_songs": 93,
+      "window_auc_clean": 0.9696,
+      "window_auc_speaker": 0.9421
+    },
+    {
+      "held_out_ai": "ai:Enlly Blue",
+      "window_auc": 0.9929,
+      "song_auc": 1.0,
+      "ai_recall@0.5": 1.0,
+      "human_fpr@0.5": 0.0,
+      "n_ai_songs": 10,
+      "n_human_songs": 43,
+      "window_auc_clean": 0.9975,
+      "window_auc_speaker": 0.9844
+    },
+    {
+      "held_out_ai": "ai:Kayla Kross",
+      "window_auc": 0.9903,
+      "song_auc": 1.0,
+      "ai_recall@0.5": 1.0,
+      "human_fpr@0.5": 0.0,
+      "n_ai_songs": 9,
+      "n_human_songs": 43,
+      "window_auc_clean": 0.9946,
+      "window_auc_speaker": 0.9565
+    },
+    {
+      "held_out_ai": "ai:The Universe Sings",
+      "window_auc": 0.9596,
+      "song_auc": 1.0,
+      "ai_recall@0.5": 1.0,
+      "human_fpr@0.5": 0.0,
+      "n_ai_songs": 4,
+      "n_human_songs": 43,
+      "window_auc_clean": 0.9653,
+      "window_auc_speaker": 0.9521
+    },
+    {
+      "held_out_ai": "ai:The Velvet Sundown",
+      "window_auc": 0.8538,
+      "song_auc": 0.932,
+      "ai_recall@0.5": 0.231,
+      "human_fpr@0.5": 0.0,
+      "n_ai_songs": 13,
+      "n_human_songs": 43,
+      "window_auc_clean": 0.8784,
+      "window_auc_speaker": 0.813
+    },
+    {
+      "held_out_ai": "ai:unknown",
+      "window_auc": 0.9918,
+      "song_auc": 1.0,
+      "ai_recall@0.5": 1.0,
+      "human_fpr@0.5": 0.0,
+      "n_ai_songs": 8,
+      "n_human_songs": 43,
+      "window_auc_clean": 0.9962,
+      "window_auc_speaker": 0.9865
+    }
+  ],
+  "oof": {
+    "song_auc": 0.984,
+    "ai_recall@0.5": 0.725,
+    "human_fpr@0.5": 0.0,
+    "ai_recall_by_group": {
+      "ai:BLOW RECORDS": 0.429,
+      "ai:Enlly Blue": 1.0,
+      "ai:Kayla Kross": 1.0,
+      "ai:The Universe Sings": 1.0,
+      "ai:The Velvet Sundown": 0.231,
+      "ai:unknown": 1.0
+    },
+    "human_fpr_by_group": {
+      "human:88rising": 0.0,
+      "human:Amy Shark": 0.0,
+      "human:Anderson .Paak": 0.0,
+      "human:Andrew Gold": 0.0,
+      "human:Baauer": 0.0,
+      "human:Banks": 0.0,
+      "human:Beezy": 0.0,
+      "human:CHVRCHES": 0.0,
+      "human:Childish Gambino": 0.0,
+      "human:Compilations": 0.0,
+      "human:Drake": 0.0,
+      "human:Iggy Pop": 0.0,
+      "human:Jaden Smith": 0.0,
+      "human:Jain": 0.0,
+      "human:Joywave": 0.0,
+      "human:Kanye West": 0.0,
+      "human:Kiiara": 0.0,
+      "human:Lemaitre": 0.0,
+      "human:Marcus Marr": 0.0,
+      "human:Marian Hill": 0.0,
+      "human:NVDES": 0.0,
+      "human:Nas": 0.0,
+      "human:Oliver Tree": 0.0,
+      "human:Pale Waves": 0.0,
+      "human:PrototyperRaptor": 0.0,
+      "human:Rich Brian": 0.0,
+      "human:Rodriguez": 0.0,
+      "human:Royal Blood": 0.0,
+      "human:Royaljag": 0.0,
+      "human:Sofi Tukker": 0.0,
+      "human:Terror Jr": 0.0,
+      "human:The Avalanches": 0.0,
+      "human:The Buggles": 0.0,
+      "human:The Greeting Committee": 0.0,
+      "human:The Wombats": 0.0,
+      "human:Unknown Artist": 0.0,
+      "human:Viticz": 0.0,
+      "human:Weezer": 0.0,
+      "human:Youngblood Brass Band": 0.0,
+      "human:ZHU": 0.0
+    },
+    "calibration": [
+      {
+        "bin": "0.0-0.2",
+        "n": 319,
+        "mean_p": 0.002,
+        "frac_ai": 0.038
+      },
+      {
+        "bin": "0.2-0.4",
+        "n": 2,
+        "mean_p": 0.326,
+        "frac_ai": 0.5
+      },
+      {
+        "bin": "0.4-0.6",
+        "n": 3,
+        "mean_p": 0.531,
+        "frac_ai": 1.0
+      },
+      {
+        "bin": "0.6-0.8",
+        "n": 2,
+        "mean_p": 0.694,
+        "frac_ai": 1.0
+      },
+      {
+        "bin": "0.8-1.0",
+        "n": 33,
+        "mean_p": 0.985,
+        "frac_ai": 1.0
+      }
+    ]
+  },
+  "params": 388334
+}

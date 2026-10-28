@@ -94,6 +94,10 @@ curl -o mel.png "localhost:9000/audio/$ID/plot/mel?cmap=viridis&start=10&end=40"
 open "http://localhost:9000/audio/$ID/stream"   # plays in the browser
 ```
 
+## Deploy
+
+Production runs on Fly.io as one machine with a persistent volume, at `https://wmg-spectro-api.fly.dev`. Pushing to `main` runs the tests in GitHub Actions and then deploys. Setup and day-to-day commands are in [docs/deploy.md](docs/deploy.md).
+
 ## Configuration (env / `.env`)
 
 | Var | Default | |

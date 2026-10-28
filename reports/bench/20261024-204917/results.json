@@ -1,0 +1,218 @@
+{
+ "created_at": "2026-10-24T20:49:14+00:00",
+ "models": {
+  "10s": {
+   "run": "20261024-124305",
+   "window_seconds": 10.0,
+   "accuracy": {
+    "all": {
+     "window_auc": 0.9422,
+     "windows": 14229,
+     "items": {
+      "auc": 0.9433,
+      "ai_caught": 0.7733,
+      "human_flagged": 0.0467,
+      "n_ai": 225,
+      "n_human": 471
+     }
+    },
+    "clean": {
+     "window_auc": 0.9617,
+     "windows": 11080,
+     "items": {
+      "auc": 0.9874,
+      "ai_caught": 0.875,
+      "human_flagged": 0.0097,
+      "n_ai": 64,
+      "n_human": 310
+     }
+    },
+    "speaker_mic": {
+     "window_auc": 0.8674,
+     "windows": 3149,
+     "items": {
+      "auc": 0.8917,
+      "ai_caught": 0.7329,
+      "human_flagged": 0.118,
+      "n_ai": 161,
+      "n_human": 161
+     }
+    },
+    "recordings": {
+     "ai:suno": {
+      "label": "ai",
+      "clips": 118,
+      "flagged_as_ai": 0.8136
+     },
+     "phone:89+synth": {
+      "label": "human",
+      "clips": 28,
+      "flagged_as_ai": 0.3214
+     },
+     "phone:apple-playlist-mac": {
+      "label": "human",
+      "clips": 120,
+      "flagged_as_ai": 0.05
+     },
+     "phone:apple_mu": {
+      "label": "ai",
+      "clips": 35,
+      "flagged_as_ai": 0.4286
+     }
+    }
+   },
+   "listening_time": {
+    "5": null,
+    "10": {
+     "auc": 0.8684,
+     "ai_caught": 0.6918,
+     "human_flagged": 0.1258,
+     "n_ai": 159,
+     "n_human": 159,
+     "accuracy": 0.783
+    },
+    "15": {
+     "auc": 0.8738,
+     "ai_caught": 0.7044,
+     "human_flagged": 0.1069,
+     "n_ai": 159,
+     "n_human": 159,
+     "accuracy": 0.7987
+    },
+    "20": {
+     "auc": 0.8707,
+     "ai_caught": 0.6981,
+     "human_flagged": 0.0943,
+     "n_ai": 159,
+     "n_human": 159,
+     "accuracy": 0.8019
+    },
+    "30": {
+     "auc": 0.8861,
+     "ai_caught": 0.717,
+     "human_flagged": 0.1069,
+     "n_ai": 159,
+     "n_human": 159,
+     "accuracy": 0.805
+    }
+   },
+   "speed": {
+    "window_seconds": 10.0,
+    "coreml_ms_per_window": 1.08,
+    "features_ms_per_window": 4.07,
+    "time_to_first_result_s": 10.005,
+    "realtime_factor": 1941.1
+   }
+  },
+  "5s": {
+   "run": "20261024-132328",
+   "window_seconds": 5.0,
+   "accuracy": {
+    "all": {
+     "window_auc": 0.9404,
+     "windows": 20959,
+     "items": {
+      "auc": 0.9442,
+      "ai_caught": 0.6951,
+      "human_flagged": 0.0489,
+      "n_ai": 223,
+      "n_human": 470
+     }
+    },
+    "clean": {
+     "window_auc": 0.9625,
+     "windows": 17232,
+     "items": {
+      "auc": 0.9883,
+      "ai_caught": 0.8594,
+      "human_flagged": 0.0097,
+      "n_ai": 64,
+      "n_human": 310
+     }
+    },
+    "speaker_mic": {
+     "window_auc": 0.8382,
+     "windows": 3727,
+     "items": {
+      "auc": 0.8804,
+      "ai_caught": 0.6289,
+      "human_flagged": 0.125,
+      "n_ai": 159,
+      "n_human": 160
+     }
+    },
+    "recordings": {
+     "ai:suno": {
+      "label": "ai",
+      "clips": 118,
+      "flagged_as_ai": 0.6525
+     },
+     "phone:89+synth": {
+      "label": "human",
+      "clips": 28,
+      "flagged_as_ai": 0.4286
+     },
+     "phone:apple-playlist-mac": {
+      "label": "human",
+      "clips": 120,
+      "flagged_as_ai": 0.0417
+     },
+     "phone:apple_mu": {
+      "label": "ai",
+      "clips": 35,
+      "flagged_as_ai": 0.5143
+     }
+    }
+   },
+   "listening_time": {
+    "5": {
+     "auc": 0.8346,
+     "ai_caught": 0.6076,
+     "human_flagged": 0.1656,
+     "n_ai": 158,
+     "n_human": 157,
+     "accuracy": 0.7206
+    },
+    "10": {
+     "auc": 0.8439,
+     "ai_caught": 0.6266,
+     "human_flagged": 0.1338,
+     "n_ai": 158,
+     "n_human": 157,
+     "accuracy": 0.746
+    },
+    "15": {
+     "auc": 0.8541,
+     "ai_caught": 0.6203,
+     "human_flagged": 0.1329,
+     "n_ai": 158,
+     "n_human": 158,
+     "accuracy": 0.7437
+    },
+    "20": {
+     "auc": 0.8554,
+     "ai_caught": 0.6076,
+     "human_flagged": 0.1456,
+     "n_ai": 158,
+     "n_human": 158,
+     "accuracy": 0.731
+    },
+    "30": {
+     "auc": 0.8758,
+     "ai_caught": 0.6266,
+     "human_flagged": 0.1203,
+     "n_ai": 158,
+     "n_human": 158,
+     "accuracy": 0.7532
+    }
+   },
+   "speed": {
+    "window_seconds": 5.0,
+    "coreml_ms_per_window": 0.74,
+    "features_ms_per_window": 2.13,
+    "time_to_first_result_s": 5.003,
+    "realtime_factor": 1742.8
+   }
+  }
+ }
+}

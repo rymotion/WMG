@@ -14,9 +14,12 @@ class LiveAudioClient {
   final int sampleRate;
 
   /// Connects and waits for the handshake, so an unreachable server fails here
-  /// rather than after the mic is open.
-  Future<LiveAudioSession> connect() async {
-    final channel = WebSocketChannel.connect(uri);
+  /// rather than after the mic is open. `identify: false` makes the server skip
+  /// ACRCloud for this session; it can't turn identification back on if [uri]
+  /// already disables it.
+  Future<LiveAudioSession> connect({bool identify = true}) async {
+    final target = identify ? uri : uri.replace(queryParameters: {...uri.queryParameters, 'identify': 'false'});
+    final channel = WebSocketChannel.connect(target);
     await channel.ready;
     // 100 ms of mono s16le, the low end of the guide's 100–200 ms frame window.
     return WebSocketLiveAudioSession(channel, frameBytes: sampleRate ~/ 10 * 2);

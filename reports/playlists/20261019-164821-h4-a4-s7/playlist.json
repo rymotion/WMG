@@ -1,0 +1,92 @@
+{
+ "playlist_id": "20261019-164821-h4-a4-s7",
+ "sample_rate": 44100,
+ "gap_s": 2.0,
+ "env_rate": 100,
+ "duration_s": 338.0,
+ "n_human": 4,
+ "n_ai": 4,
+ "seed": 7,
+ "entries": [
+  {
+   "index": 0,
+   "song_id": "3c41ad822fa6",
+   "label": 0,
+   "group": "human:Rich Brian",
+   "path": "training_data/human_talent/Rich Brian/Amen/12 Little Prince (feat. NIKI).m4a",
+   "source_start_s": 104.714,
+   "playlist_start_s": 2.0,
+   "duration_s": 40.0
+  },
+  {
+   "index": 1,
+   "song_id": "632b92efb170",
+   "label": 0,
+   "group": "human:[Halloween Remix] This is Halloween 6",
+   "path": "training_data/dj_mixes/[Halloween Remix] This is Halloween 6.mp3",
+   "source_start_s": 45.559,
+   "playlist_start_s": 44.0,
+   "duration_s": 40.0
+  },
+  {
+   "index": 2,
+   "song_id": "c6756ef4819f",
+   "label": 1,
+   "group": "ai:Enlly Blue",
+   "path": "training_data/ai_generated/City's Too Big - Enlly Blue.m4a",
+   "source_start_s": 35.158,
+   "playlist_start_s": 86.0,
+   "duration_s": 40.0
+  },
+  {
+   "index": 3,
+   "song_id": "aa6967373cc2",
+   "label": 1,
+   "group": "ai:Kayla Kross",
+   "path": "training_data/ai_generated/Broke the Rules - Kayla Kross.m4a",
+   "source_start_s": 103.684,
+   "playlist_start_s": 128.0,
+   "duration_s": 40.0
+  },
+  {
+   "index": 4,
+   "song_id": "badf20ed019f",
+   "label": 0,
+   "group": "human:Lemaitre",
+   "path": "training_data/human_talent/Lemaitre/Chapter One/04 Higher (feat. Maty Noyes).m4a",
+   "source_start_s": 54.196,
+   "playlist_start_s": 170.0,
+   "duration_s": 40.0
+  },
+  {
+   "index": 5,
+   "song_id": "99109ba6375e",
+   "label": 0,
+   "group": "human:Weezer",
+   "path": "training_data/human_talent/Weezer/Weezer (White Album)/10 Endless Bummer.m4a",
+   "source_start_s": 117.789,
+   "playlist_start_s": 212.0,
+   "duration_s": 40.0
+  },
+  {
+   "index": 6,
+   "song_id": "402423625a66",
+   "label": 1,
+   "group": "ai:unknown",
+   "path": "training_data/ai_generated/A Mother's Love.mp3",
+   "source_start_s": 187.5,
+   "playlist_start_s": 254.0,
+   "duration_s": 40.0
+  },
+  {
+   "index": 7,
+   "song_id": "6baf0fb4e4cf",
+   "label": 1,
+   "group": "ai:BLOW RECORDS",
+   "path": "training_data/ai_generated/Na Raba Toma Tap\u00e3o (1988) - Ao Vivo - BLOW RECORDS, Niack.m4a",
+   "source_start_s": 38.507,
+   "playlist_start_s": 296.0,
+   "duration_s": 40.0
+  }
+ ]
+}

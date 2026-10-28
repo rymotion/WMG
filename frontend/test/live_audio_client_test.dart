@@ -51,7 +51,7 @@ void main() {
     final c = config();
     final session = await LiveAudioClient(uri: c.liveAudioUri, sampleRate: c.liveSampleRate).connect();
 
-    // 5 × 1500 bytes = 7500 → two full 3200-byte frames + 1100 flushed on stop.
+    // 5 × 1500 bytes = 7500 → one full 6400-byte frame (100 ms at 32 kHz) + 1100 flushed on stop.
     for (var i = 0; i < 5; i++) {
       session.addPcm(Uint8List.fromList(List.filled(1500, i)));
     }
@@ -60,8 +60,8 @@ void main() {
     await session.done;
 
     expect(requestUri.path, '/live');
-    expect(requestUri.queryParameters, {'sample_rate': '16000'});
-    expect(frameSizes, [3200, 3200, 1100]);
+    expect(requestUri.queryParameters, {'sample_rate': '32000'});
+    expect(frameSizes, [6400, 1100]);
     expect(received, [for (var i = 0; i < 5; i++) ...List.filled(1500, i)]);
     expect(session.bytesSent, 7500);
     expect(textFrames, ['{"type":"stop"}']);
@@ -70,12 +70,19 @@ void main() {
   });
 
   test('identify=false is passed through', () {
-    expect(config(identify: false).liveAudioUri.queryParameters, {'sample_rate': '16000', 'identify': 'false'});
+    expect(config(identify: false).liveAudioUri.queryParameters, {'sample_rate': '32000', 'identify': 'false'});
+  });
+
+  test('connect(identify: false) adds the flag without dropping the others', () async {
+    final c = config();
+    final session = await LiveAudioClient(uri: c.liveAudioUri, sampleRate: c.liveSampleRate).connect(identify: false);
+    expect(requestUri.queryParameters, {'sample_rate': '32000', 'identify': 'false'});
+    await session.close();
   });
 
   test('https base URL maps to wss', () {
     final uri = AppConfig(apiBaseUrl: Uri.parse('https://api.example.com')).liveAudioUri;
-    expect(uri.toString(), 'wss://api.example.com/live?sample_rate=16000');
+    expect(uri.toString(), 'wss://api.example.com/live?sample_rate=32000');
   });
 
   test('connect fails fast when nothing is listening', () async {

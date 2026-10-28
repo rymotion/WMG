@@ -1,0 +1,134 @@
+[
+ {
+  "clip_index": 0,
+  "clip_id": "3fabe557-718d-4c8a-abd0-272d8c747da2",
+  "duration_s": 30.0,
+  "p_ai": 0.0,
+  "band_scores": {
+   "bass": 0.001,
+   "mid": 0.0032,
+   "treble": 0.0013
+  }
+ },
+ {
+  "clip_index": 1,
+  "clip_id": "d019545a-cbf0-4154-abe9-77816710a3ee",
+  "duration_s": 30.0,
+  "p_ai": 0.0001,
+  "band_scores": {
+   "bass": 0.0004,
+   "mid": 0.0018,
+   "treble": 0.0111
+  }
+ },
+ {
+  "clip_index": 2,
+  "clip_id": "38d607e0-aa9c-4b0f-8f7c-738ad9a4a949",
+  "duration_s": 30.0,
+  "p_ai": 0.0,
+  "band_scores": {
+   "bass": 0.0001,
+   "mid": 0.0,
+   "treble": 0.0014
+  }
+ },
+ {
+  "clip_index": 3,
+  "clip_id": "30cd1371-c0b8-41e8-9571-d6d10ce20827",
+  "duration_s": 30.0,
+  "p_ai": 0.2843,
+  "band_scores": {
+   "bass": 0.4384,
+   "mid": 0.7294,
+   "treble": 0.1395
+  }
+ },
+ {
+  "clip_index": 4,
+  "clip_id": "c4294bcc-75a6-4871-9811-ba1bd4b6d381",
+  "duration_s": 30.0,
+  "p_ai": 0.0138,
+  "band_scores": {
+   "bass": 0.0965,
+   "mid": 0.242,
+   "treble": 0.0683
+  }
+ },
+ {
+  "clip_index": 5,
+  "clip_id": "9e8dac16-68a0-4b71-b7d3-e094eea74746",
+  "duration_s": 30.0,
+  "p_ai": 0.0019,
+  "band_scores": {
+   "bass": 0.1067,
+   "mid": 0.2226,
+   "treble": 0.0751
+  }
+ },
+ {
+  "clip_index": 6,
+  "clip_id": "032e1d26-6f9f-4ec3-b3c6-58c73ca0e87c",
+  "duration_s": 30.0,
+  "p_ai": 0.0003,
+  "band_scores": {
+   "bass": 0.0038,
+   "mid": 0.0049,
+   "treble": 0.0395
+  }
+ },
+ {
+  "clip_index": 7,
+  "clip_id": "55c6ec7d-9ddd-4697-a127-920b743d0201",
+  "duration_s": 30.0,
+  "p_ai": 0.0,
+  "band_scores": {
+   "bass": 0.0003,
+   "mid": 0.0047,
+   "treble": 0.0111
+  }
+ },
+ {
+  "clip_index": 8,
+  "clip_id": "32bf4fec-983f-4b86-803d-0bc30b37e223",
+  "duration_s": 30.0,
+  "p_ai": 0.0216,
+  "band_scores": {
+   "bass": 0.2477,
+   "mid": 0.4593,
+   "treble": 0.2205
+  }
+ },
+ {
+  "clip_index": 9,
+  "clip_id": "f9380727-f879-4928-83fa-8a03524f3621",
+  "duration_s": 30.0,
+  "p_ai": 0.7532,
+  "band_scores": {
+   "bass": 0.6472,
+   "mid": 0.7738,
+   "treble": 0.4375
+  }
+ },
+ {
+  "clip_index": 10,
+  "clip_id": "4474f25d-b314-4f51-85b7-aa4189866395",
+  "duration_s": 30.0,
+  "p_ai": 0.734,
+  "band_scores": {
+   "bass": 0.6669,
+   "mid": 0.6089,
+   "treble": 0.4496
+  }
+ },
+ {
+  "clip_index": 11,
+  "clip_id": "e0512711-c039-4544-8bc3-fc119c32708c",
+  "duration_s": 10.68465625,
+  "p_ai": 0.9954,
+  "band_scores": {
+   "bass": 1.0,
+   "mid": 0.9922,
+   "treble": 0.4094
+  }
+ }
+]

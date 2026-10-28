@@ -1,0 +1,3 @@
+session_id,playlist_id,clip_index,clip_id,segment,label,song_id,group,source_path,source_start_s,duration_s,align_corr,sample_rate
+e3bdb51b-7e17-479d-a6bd-7e7e9698c1de,,0,488eac7d-4c7f-4f28-bd85-81d306381d1c,segments/clip000_human.wav,0,e3bdb51b-000,phone:live-e3bdb51b,"single song, phone speaker -> mic",,30.0,,32000
+e3bdb51b-7e17-479d-a6bd-7e7e9698c1de,,1,f7b43f31-186e-4cb2-8fb8-43e2689d96ec,segments/clip001_human.wav,0,e3bdb51b-001,phone:live-e3bdb51b,"single song, phone speaker -> mic",,20.38,,32000

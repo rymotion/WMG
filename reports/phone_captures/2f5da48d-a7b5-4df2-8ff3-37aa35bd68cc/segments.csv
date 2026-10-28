@@ -1,0 +1,13 @@
+session_id,playlist_id,clip_index,clip_id,segment,label,category,ai_share_min,ai_share_max,song_id,group,source_path,source_start_s,duration_s,align_corr,sample_rate
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,0,717c7fab-483b-4c7e-8b7e-86e2bfcde91e,segments/clip000_ai.wav,1,ai,0.4,1.0,2f5da48d-000,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,1,ecb739ff-a3ef-428a-a0f0-ddade4c3df44,segments/clip001_ai.wav,1,ai,0.4,1.0,2f5da48d-001,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,2,7a4de2ff-200f-4ed1-af79-8148e1f9aae0,segments/clip002_ai.wav,1,ai,0.4,1.0,2f5da48d-002,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,3,3d060a25-bc7e-4aa4-8889-32315e6e0e79,segments/clip003_ai.wav,1,ai,0.4,1.0,2f5da48d-003,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,4,119b21ec-43d8-44e1-9a24-99a3538459f7,segments/clip004_ai.wav,1,ai,0.4,1.0,2f5da48d-004,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,5,08109d67-c56c-436f-bc65-19b7b7a0ce7c,segments/clip005_ai.wav,1,ai,0.4,1.0,2f5da48d-005,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,6,969960a3-7faa-4b20-bab7-fc82ca55b72b,segments/clip006_ai.wav,1,ai,0.4,1.0,2f5da48d-006,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,7,556e9938-bbe6-4f65-8957-ec4abc42154b,segments/clip007_ai.wav,1,ai,0.4,1.0,2f5da48d-007,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,8,8190dd4f-530d-4b0c-9ced-5b5c71a6c9b0,segments/clip008_ai.wav,1,ai,0.4,1.0,2f5da48d-008,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,9,8d7acce2-235c-4214-873d-e5edaffdd33f,segments/clip009_ai.wav,1,ai,0.4,1.0,2f5da48d-009,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,10,8e71cb5e-2b7f-4b94-9dd9-eb201ef8f624,segments/clip010_ai.wav,1,ai,0.4,1.0,2f5da48d-010,phone:2f5da48d,app label,,30.0,,32000
+2f5da48d-a7b5-4df2-8ff3-37aa35bd68cc,,11,3c2c2ef9-d965-4b53-b70b-f8b218e31ebf,segments/clip011_ai.wav,1,ai,0.4,1.0,2f5da48d-011,phone:2f5da48d,app label,,10.9,,32000

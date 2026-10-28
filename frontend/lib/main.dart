@@ -8,6 +8,7 @@ import 'data/api/spectro_api_client.dart';
 import 'data/recorder/audio_recorder_service.dart';
 import 'data/repository/identification_repository.dart';
 import 'features/recognizer/view/recognizer_page.dart';
+import 'features/results/data/session_history_store.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,11 +21,19 @@ void main() {
     MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: config),
-        RepositoryProvider(create: (_) => AudioRecorderService(), dispose: (recorder) => recorder.dispose()),
+        RepositoryProvider.value(value: api),
+        RepositoryProvider(create: (_) => SessionHistoryStore()),
+        RepositoryProvider(
+          create: (_) => AudioRecorderService(),
+          dispose: (recorder) => recorder.dispose(),
+        ),
         RepositoryProvider(
           create: (_) => IdentificationRepository(
             api: api,
-            live: LiveAudioClient(uri: config.liveAudioUri, sampleRate: config.liveSampleRate),
+            live: LiveAudioClient(
+              uri: config.liveAudioUri,
+              sampleRate: config.liveSampleRate,
+            ),
           ),
           dispose: (_) => api.close(),
         ),
@@ -40,10 +49,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Audio Identifier',
+      title: 'Audio Detector',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),
-      darkTheme: ThemeData(colorSchemeSeed: Colors.indigo, brightness: Brightness.dark, useMaterial3: true),
+      darkTheme: ThemeData(
+        colorSchemeSeed: Colors.indigo,
+        brightness: Brightness.dark,
+        useMaterial3: true,
+      ),
       home: const RecognizerPage(),
     );
   }
@@ -58,7 +71,8 @@ class _LoggingBlocObserver extends BlocObserver {
     super.onEvent(bloc, event);
     // Level/tick events fire ~20×/s; keep the log readable.
     final name = event.runtimeType.toString();
-    if (name != '_PcmChunkSent' && name != '_RecordingTicked') debugPrint('[${bloc.runtimeType}] event: $name');
+    if (name != '_PcmChunkSent' && name != '_RecordingTicked')
+      debugPrint('[${bloc.runtimeType}] event: $name');
   }
 
   @override

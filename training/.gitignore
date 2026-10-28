@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+manifests/
+.venv-arm64/
+cache/
+# Keep each run's metrics and per-song CV scores; model weights stay local.
+runs/*/*
+!runs/*/metrics.json
+!runs/*/oof_songs.csv
+cache-*/
+*.log
+scores/
+.DS_Store
+!runs/*/oof_windows.csv
+retrain/

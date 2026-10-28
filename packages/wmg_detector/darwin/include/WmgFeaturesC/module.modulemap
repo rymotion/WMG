@@ -1,0 +1,4 @@
+module WmgFeaturesC {
+    header "wmg_features.h"
+    export *
+}

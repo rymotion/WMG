@@ -1,0 +1,75 @@
+{
+ "path": "/Users/ryanpaglinawan/Projects/WMG/reports/scores/live/d6baee53-0c3a-4f0a-98f2-1d5c616d76e3/audio/session.wav",
+ "orig_sample_rate": 16000,
+ "input_rms_dbfs": -8.7,
+ "level_normalized_to_dbfs": -14.0,
+ "p_ai": 0.191,
+ "band_scores": {
+  "bass": 0.2817,
+  "mid": 0.0417,
+  "treble": 0.0585
+ },
+ "windows": [
+  {
+   "start_s": 0.0,
+   "p_ai": 0.191,
+   "band_scores": {
+    "bass": 0.2819,
+    "mid": 0.0417,
+    "treble": 0.0586
+   }
+  },
+  {
+   "start_s": 5.0,
+   "p_ai": 0.191,
+   "band_scores": {
+    "bass": 0.2818,
+    "mid": 0.0417,
+    "treble": 0.0585
+   }
+  },
+  {
+   "start_s": 10.0,
+   "p_ai": 0.191,
+   "band_scores": {
+    "bass": 0.2821,
+    "mid": 0.0417,
+    "treble": 0.0585
+   }
+  },
+  {
+   "start_s": 15.0,
+   "p_ai": 0.191,
+   "band_scores": {
+    "bass": 0.2821,
+    "mid": 0.0416,
+    "treble": 0.0586
+   }
+  },
+  {
+   "start_s": 20.0,
+   "p_ai": 0.191,
+   "band_scores": {
+    "bass": 0.2819,
+    "mid": 0.0417,
+    "treble": 0.0585
+   }
+  },
+  {
+   "start_s": 25.0,
+   "p_ai": 0.1907,
+   "band_scores": {
+    "bass": 0.2804,
+    "mid": 0.0416,
+    "treble": 0.0585
+   }
+  }
+ ],
+ "run_id": "20261020-061200-20261019-080656",
+ "session_id": "d6baee53-0c3a-4f0a-98f2-1d5c616d76e3",
+ "api": "http://localhost:9000",
+ "model_run": "20261019-080656",
+ "feature_spec_hash": "9f612611d1fccf8a",
+ "label": "",
+ "note": ""
+}

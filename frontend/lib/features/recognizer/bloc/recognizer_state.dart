@@ -22,6 +22,10 @@ final class RecognizerState extends Equatable {
     this.session,
     this.clips = const [],
     this.spectrogram = const Spectrogram(),
+    this.onDevice = const OnDeviceDetection(),
+    this.offline = false,
+    this.label,
+    this.recordingId,
     this.error,
   });
 
@@ -44,10 +48,25 @@ final class RecognizerState extends Equatable {
 
   /// Live mel spectrogram from `spectrum` messages.
   final Spectrogram spectrogram;
+
+  /// Local AI estimate (Rust features + Core ML), independent of the server.
+  final OnDeviceDetection onDevice;
+
+  /// This session runs on the on-device model only: no socket, so no
+  /// spectrogram, clips or identifications.
+  final bool offline;
+
+  /// The user's label for this recording (Human / AI-assisted / AI-generated); saved with it.
+  final RecordingLabel? label;
+
+  /// Local id the session is saved under (also used offline, where there is no server id).
+  final String? recordingId;
   final String? error;
 
   bool get isStreaming => status == RecognizerStatus.streaming;
-  bool get isBusy => status == RecognizerStatus.connecting || status == RecognizerStatus.finishing;
+  bool get isBusy =>
+      status == RecognizerStatus.connecting ||
+      status == RecognizerStatus.finishing;
 
   /// Seconds per server clip (30 unless the server says otherwise).
   double get clipSeconds => session?.clipSeconds ?? 30;
@@ -66,6 +85,10 @@ final class RecognizerState extends Equatable {
     LiveSessionStarted? session,
     List<ClipResult>? clips,
     Spectrogram? spectrogram,
+    OnDeviceDetection? onDevice,
+    bool? offline,
+    RecordingLabel? Function()? label,
+    String? recordingId,
     String? Function()? error,
   }) => RecognizerState(
     status: status ?? this.status,
@@ -75,9 +98,26 @@ final class RecognizerState extends Equatable {
     session: session ?? this.session,
     clips: clips ?? this.clips,
     spectrogram: spectrogram ?? this.spectrogram,
+    onDevice: onDevice ?? this.onDevice,
+    offline: offline ?? this.offline,
+    label: label != null ? label() : this.label,
+    recordingId: recordingId ?? this.recordingId,
     error: error != null ? error() : this.error,
   );
 
   @override
-  List<Object?> get props => [status, elapsed, level, bytesStreamed, session, clips, spectrogram, error];
+  List<Object?> get props => [
+    label,
+    recordingId,
+    status,
+    elapsed,
+    level,
+    bytesStreamed,
+    session,
+    clips,
+    spectrogram,
+    onDevice,
+    offline,
+    error,
+  ];
 }

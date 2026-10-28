@@ -1,0 +1,19 @@
+[
+ {
+  "clip_index": 0,
+  "clip_id": "cca5823d-050e-48c5-8269-5395925826f7",
+  "duration_s": 30.0,
+  "p_ai": 0.0016,
+  "band_scores": {
+   "bass": 0.2465,
+   "mid": 0.1387,
+   "treble": 0.3823
+  }
+ },
+ {
+  "clip_index": 1,
+  "clip_id": "2b995927-2d33-4eed-9f11-ecb271dc0cfe",
+  "duration_s": 9.18465625,
+  "error": "no window above the RMS gate (too short or silent)"
+ }
+]

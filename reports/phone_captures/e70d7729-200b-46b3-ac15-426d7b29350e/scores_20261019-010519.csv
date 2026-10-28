@@ -1,0 +1,13 @@
+segment,label,song_id,group,duration_s,p_ai,logit,band_bass,band_mid,band_treble
+segments/clip001_human_3c41ad822fa6.wav,0,3c41ad822fa6,human:Rich Brian,13.82,0.0,-20.72326583794641,0.0001,0.0002,0.0001
+segments/clip001_human_632b92efb170.wav,0,632b92efb170,human:[Halloween Remix] This is Halloween 6,11.18,0.0,-20.72326583794641,0.0001,0.0006,0.0001
+segments/clip002_human_632b92efb170.wav,0,632b92efb170,human:[Halloween Remix] This is Halloween 6,25.82,0.0,-20.72326583794641,0.0,0.0,0.0001
+segments/clip003_ai_c6756ef4819f.wav,1,c6756ef4819f,ai:Enlly Blue,28.5,0.0007,-7.2637285502367686,0.0086,0.021,0.0012
+segments/clip004_ai_aa6967373cc2.wav,1,aa6967373cc2,ai:Kayla Kross,17.18,0.0403,-3.1702692428990416,0.0703,0.2417,0.0281
+segments/clip005_ai_aa6967373cc2.wav,1,aa6967373cc2,ai:Kayla Kross,19.82,0.0084,-4.771087976272627,0.0346,0.3581,0.0152
+segments/clip006_human_badf20ed019f.wav,0,badf20ed019f,human:Lemaitre,28.5,0.0,-20.72326583794641,0.0011,0.001,0.0032
+segments/clip007_human_99109ba6375e.wav,0,99109ba6375e,human:Weezer,23.18,0.0,-20.72326583794641,0.0008,0.0007,0.0004
+segments/clip008_human_99109ba6375e.wav,0,99109ba6375e,human:Weezer,13.82,0.0001,-9.21023036802595,0.001,0.0004,0.0002
+segments/clip008_ai_402423625a66.wav,1,402423625a66,ai:unknown,11.18,0.0,-20.72326583794641,0.0,0.0007,0.0005
+segments/clip009_ai_402423625a66.wav,1,402423625a66,ai:unknown,25.82,0.0002,-8.51698817242627,0.0008,0.0052,0.0009
+segments/clip010_ai_6baf0fb4e4cf.wav,1,6baf0fb4e4cf,ai:BLOW RECORDS,28.5,0.0006,-7.417979057011419,0.015,0.0597,0.0086

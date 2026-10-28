@@ -1,0 +1,26 @@
+# BandNet student. Input: absolute-dB log-mel [B, 1, 128, 1000] from wmg_features
+# (32 kHz, 10 ms hop, 25 ms window, n_fft 1024, 128 slaney mels, fmin 20, fmax 16000).
+
+input:
+  n_mels: 128
+  frames: 1000
+  sample_rate: 32000
+  fmin: 20.0
+  fmax: 16000.0
+  mel_scale: slaney
+
+model:
+  stem_channels: [32, 64, 96]        # depthwise-separable stem, freq /2, time /4
+  branch_channels: [128, 192, 256]   # per band, time /2 more -> T' = 125 (80 ms frames)
+  attention_hidden: 128
+  activation: hardswish              # relu | hardswish
+  dropout: 0.1
+  bands:                             # Hz ranges -> mel bins via the slaney mel scale
+    bass:   [20.0, 250.0]
+    mid:    [250.0, 4000.0]
+    treble: [4000.0, 16000.0]
+  stems: [vocals, bass, drums, other]
+  max_params: 3000000
+
+export:
+  onnx_opset: 17

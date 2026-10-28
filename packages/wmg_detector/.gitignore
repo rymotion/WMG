@@ -1,0 +1,7 @@
+# Built artefacts: produced by tool/install.sh from features/ and a training run.
+darwin/Frameworks/WmgFeatures.xcframework
+darwin/wmg_detector/Resources/*.mlmodelc
+darwin/wmg_detector/Resources/model_meta*.json
+.dart_tool/
+build/
+darwin/include/WmgFeaturesC/wmg_features.h

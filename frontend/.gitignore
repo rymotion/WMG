@@ -46,3 +46,11 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Xcode/CocoaPods intermediates written next to the iOS project
+/ios/build/
+*.mp4
+*.wav
+*.mp3
+*.aiff
+*.flac

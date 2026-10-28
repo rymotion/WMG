@@ -1,0 +1,8 @@
+session_id,playlist_id,clip_index,clip_id,segment,label,category,ai_share_min,ai_share_max,song_id,group,source_path,source_start_s,duration_s,align_corr,sample_rate
+135644a8-5b58-40aa-ab8c-06267548eba9,,0,1119eee8-be85-4004-83b4-f87b027b035c,segments/clip000_ai.wav,1,ai,0.4,1.0,135644a8-000,phone:135644a8,app label,,30.0,,32000
+135644a8-5b58-40aa-ab8c-06267548eba9,,1,47f2dfec-0555-43ac-bf48-7a47be54ed31,segments/clip001_ai.wav,1,ai,0.4,1.0,135644a8-001,phone:135644a8,app label,,30.0,,32000
+135644a8-5b58-40aa-ab8c-06267548eba9,,2,625f17e2-4af4-4240-8117-df1a493de3c4,segments/clip002_ai.wav,1,ai,0.4,1.0,135644a8-002,phone:135644a8,app label,,30.0,,32000
+135644a8-5b58-40aa-ab8c-06267548eba9,,3,eb2adb12-8b34-4650-9806-46a651c8cb70,segments/clip003_ai.wav,1,ai,0.4,1.0,135644a8-003,phone:135644a8,app label,,30.0,,32000
+135644a8-5b58-40aa-ab8c-06267548eba9,,4,1710580e-5b6a-4c4d-89a1-50b9d0e42fde,segments/clip004_ai.wav,1,ai,0.4,1.0,135644a8-004,phone:135644a8,app label,,30.0,,32000
+135644a8-5b58-40aa-ab8c-06267548eba9,,5,ad02841e-b9b1-4a36-808d-ad6c803f474b,segments/clip005_ai.wav,1,ai,0.4,1.0,135644a8-005,phone:135644a8,app label,,30.0,,32000
+135644a8-5b58-40aa-ab8c-06267548eba9,,6,7ba1ff8a-b6f3-4661-a922-5c9438fed8c3,segments/clip006_ai.wav,1,ai,0.4,1.0,135644a8-006,phone:135644a8,app label,,22.3,,32000

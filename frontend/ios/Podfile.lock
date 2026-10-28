@@ -1,22 +1,47 @@
 PODS:
+  - file_selector_ios (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
   - record_ios (2.0.0):
     - Flutter
+  - share_plus (0.0.1):
+    - Flutter
+  - wmg_detector (0.1.0):
+    - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
+  - file_selector_ios (from `.symlinks/plugins/file_selector_ios/ios`)
   - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - record_ios (from `.symlinks/plugins/record_ios/ios`)
+  - share_plus (from `.symlinks/plugins/share_plus/ios`)
+  - wmg_detector (from `.symlinks/plugins/wmg_detector/darwin`)
 
 EXTERNAL SOURCES:
+  file_selector_ios:
+    :path: ".symlinks/plugins/file_selector_ios/ios"
   Flutter:
     :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
   record_ios:
     :path: ".symlinks/plugins/record_ios/ios"
+  share_plus:
+    :path: ".symlinks/plugins/share_plus/ios"
+  wmg_detector:
+    :path: ".symlinks/plugins/wmg_detector/darwin"
 
 SPEC CHECKSUMS:
+  file_selector_ios: ec57ec07954363dd730b642e765e58f199bb621a
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
   record_ios: 390a30c7caaf8b5d0fb1cb1d2fd5064b48b4520c
+  share_plus: eccd7beb7cea61271aeed1800e8ccb2b952c0c7f
+  wmg_detector: 9536b6f3b5ed08ee6a7c2d6cb6ca986407e03d47
 
-PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
+PODFILE CHECKSUM: 15493a09e6c7356e7217d6d0357fa632918bfa1e
 
 COCOAPODS: 1.16.2

@@ -13,12 +13,18 @@ import '../../../data/personalization/personal_model.dart' show PersonalHead;
 import '../../../data/personalization/personalization_store.dart';
 import '../../personalization/cubit/personalization_cubit.dart';
 import '../../personalization/view/personalization_page.dart';
+import '../../../data/retrain/retrain_client.dart';
+import '../../retrain/cubit/retrain_cubit.dart';
+import '../../../data/labels/recording_label.dart';
 import '../bloc/recognizer_bloc.dart';
 import '../models/clip_result.dart';
 import '../models/on_device_detection.dart';
 import '../widgets/mic_button.dart';
 import '../widgets/on_device_card.dart';
-import '../widgets/result_card.dart';
+import '../../results/data/session_history_store.dart';
+import '../../results/view/results_page.dart';
+import '../widgets/clip_results_grid.dart';
+import '../widgets/labelable_clip_grid.dart';
 import '../widgets/spectrogram_view.dart';
 
 class RecognizerPage extends StatelessWidget {
@@ -47,6 +53,7 @@ class RecognizerPage extends StatelessWidget {
             maxDuration: config.liveMaxDuration,
             finishTimeout: config.finishTimeout,
             detector: hasDetector ? detector : null,
+            history: context.read<SessionHistoryStore>(),
           ),
         ),
       ],
@@ -76,12 +83,27 @@ class _RecognizerViewState extends State<RecognizerView> {
         title: const Text('Audio Detector'),
         actions: [
           IconButton(
+            tooltip: 'Saved sessions',
+            icon: const Icon(Icons.history_rounded),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const ResultsPage()),
+            ),
+          ),
+          IconButton(
             tooltip: 'On-device training',
             icon: const Icon(Icons.tune_rounded),
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute<void>(
-                builder: (_) => BlocProvider.value(
-                  value: context.read<PersonalizationCubit>(),
+                builder: (_) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider.value(value: context.read<PersonalizationCubit>()),
+                    BlocProvider(
+                      create: (_) => RetrainCubit(
+                        client: RetrainClient(baseUrl: context.read<AppConfig>().trainerBaseUrl),
+                        history: context.read<SessionHistoryStore>(),
+                      ),
+                    ),
+                  ],
                   child: const PersonalizationPage(),
                 ),
               ),
@@ -102,6 +124,8 @@ class _RecognizerViewState extends State<RecognizerView> {
         ],
       ),
       body: BlocBuilder<RecognizerBloc, RecognizerState>(
+        // The mic level and clock change ~20×/s; only the mic row rebuilds for those.
+        buildWhen: (a, b) => !_onlyProgressChanged(a, b),
         builder: (context, state) => Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
@@ -110,7 +134,9 @@ class _RecognizerViewState extends State<RecognizerView> {
               children: [
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 520),
-                  child: recordingFeedback(state),
+                  child: BlocBuilder<RecognizerBloc, RecognizerState>(
+                    builder: (context, state) => recordingFeedback(state),
+                  ),
                 ),
                 _buildSpectrogram(state),
                 _buildError(state),
@@ -127,44 +153,19 @@ class _RecognizerViewState extends State<RecognizerView> {
     );
   }
 
-  /// Clip results laid out as a grid whose column count scales with the
-  /// available width (up to [_maxClipColumns]). Rows size to their content
-  /// so cards with several matches expand instead of overflowing.
   Widget _buildClipResults(BuildContext context, RecognizerState state) {
-    const spacing = 8.0;
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        final columns = (width / _minClipCardWidth).floor().clamp(
-          1,
-          _maxClipColumns,
-        );
-        final cardWidth = (width - spacing * (columns - 1)) / columns;
-        final detection = _detection(
-          state,
-          context.select((PersonalizationCubit c) => c.state.activeHead),
-        );
-        return Wrap(
-          spacing: spacing,
-          runSpacing: spacing,
-          children: [
-            for (final clip in state.clips)
-              SizedBox(
-                width: cardWidth,
-                child: ClipResultCard(
-                  context: context,
-                  clip: clip,
-                  selected: clip.index == _selectedClip,
-                  onTap: _region(clip) == null ? null : () => _showClip(clip),
-                  detection: switch ((detection, _region(clip))) {
-                    (final d?, final r?) => d.slice(r.startS, r.endS),
-                    _ => null,
-                  },
-                ),
-              ),
-          ],
-        );
-      },
+    return LabelableClipGrid(
+      clips: state.clips,
+      detection: _detection(
+        state,
+        context.select((PersonalizationCubit c) => c.state.activeHead),
+      ),
+      selectedIndex: _selectedClip,
+      onTap: _showClip,
+      recordingLabel: state.label,
+      onLabel: (indexes, c) => context.read<RecognizerBloc>().add(
+        RecognizerClipLabelled(indexes, c == null ? null : RecordingLabel.now(c)),
+      ),
     );
   }
 
@@ -237,6 +238,7 @@ class _RecognizerViewState extends State<RecognizerView> {
           regions: [for (final c in state.clips) ?_region(c)],
           highlight: _selectedRegion(state),
           scores: scoreSeries(d, colors),
+          label: state.label?.category,
           width: MediaQuery.of(context).size.width,
         );
       },
@@ -250,12 +252,11 @@ class _RecognizerViewState extends State<RecognizerView> {
         BlocBuilder<PersonalizationCubit, PersonalizationState>(
           builder: (context, p) {
             final head = p.activeHead;
-            final recordingId = state.session?.sessionId;
+            // Server session id, or the local recording id when offline.
+            final recordingId = state.session?.sessionId ?? state.recordingId;
             final canLabel =
-                p.trainingMode &&
                 state.status == RecognizerStatus.completed &&
-                state.onDevice.hasScore &&
-                recordingId != null;
+                state.onDevice.hasScore;
             return Column(
               children: [
                 const SizedBox(height: 16),
@@ -268,11 +269,21 @@ class _RecognizerViewState extends State<RecognizerView> {
                 if (canLabel) ...[
                   const SizedBox(height: 8),
                   _LabelCard(
-                    label: p.labelled[recordingId],
+                    label: state.label?.category,
+                    trainingMode: p.trainingMode && recordingId != null,
                     windows: state.onDevice.windows.length,
-                    onLabel: (l) => context
-                        .read<PersonalizationCubit>()
-                        .labelRecording(recordingId, l, state.onDevice.windows),
+                    onLabel: (category) {
+                      context.read<RecognizerBloc>().add(
+                        RecognizerLabelled(RecordingLabel.now(category)),
+                      );
+                      if (p.trainingMode && recordingId != null) {
+                        context.read<PersonalizationCubit>().labelRecording(
+                          recordingId,
+                          category,
+                          state.onDevice.windows,
+                        );
+                      }
+                    },
                   ),
                 ],
               ],
@@ -289,6 +300,14 @@ class _RecognizerViewState extends State<RecognizerView> {
       ],
     ];
   }
+
+  static bool _onlyProgressChanged(RecognizerState a, RecognizerState b) =>
+      a.copyWith(
+        level: b.level,
+        elapsed: b.elapsed,
+        bytesStreamed: b.bytesStreamed,
+      ) ==
+      b;
 
   /// Starts a session with the current settings, or stops the running one.
   void _onMicPressed(BuildContext context) {
@@ -335,15 +354,8 @@ class _RecognizerViewState extends State<RecognizerView> {
     return head == null ? d : d.personalised(head);
   }
 
-  static SpectrogramRegion? _region(ClipResult clip) {
-    final start = clip.startS;
-    final duration = clip.durationS;
-    if (start == null || duration == null) return null;
-    return (startS: start, endS: start + duration);
-  }
-
-  static const _maxClipColumns = 3;
-  static const _minClipCardWidth = 320.0;
+  static SpectrogramRegion? _region(ClipResult clip) =>
+      ClipResultsGrid.regionOf(clip);
 
   static String _statusLine(RecognizerState s) {
     final t = s.elapsed.inSeconds;
@@ -367,17 +379,21 @@ class _RecognizerViewState extends State<RecognizerView> {
   static String _kb(int bytes) => '${(bytes / 1024).round()} KB';
 }
 
-/// Training mode: tag the finished recording as human or AI for on-device retraining.
+/// After a recording: label it Human-made / AI-assisted / AI-generated. The label is saved
+/// with the session (and its audio); in Training mode the recording's windows are also kept
+/// for on-device retraining (AI-assisted ones are stored but not used by Retrain yet).
 class _LabelCard extends StatelessWidget {
   const _LabelCard({
     required this.label,
+    required this.trainingMode,
     required this.windows,
     required this.onLabel,
   });
 
-  final int? label;
+  final AiCategory? label;
+  final bool trainingMode;
   final int windows;
-  final ValueChanged<int> onLabel;
+  final ValueChanged<AiCategory> onLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -386,52 +402,35 @@ class _LabelCard extends StatelessWidget {
       color: theme.colorScheme.secondaryContainer,
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: label != null
-            ? Row(
-                children: [
-                  const Icon(Icons.check_circle_rounded),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'Saved $windows windows as ${label == 1 ? 'AI' : 'human'} for training.',
-                    ),
-                  ),
-                ],
-              )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Training mode: what was playing?',
-                    style: theme.textTheme.titleSmall,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Labels $windows windows (embeddings only, no audio) for on-device retraining.',
-                    style: theme.textTheme.bodySmall,
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: FilledButton.tonalIcon(
-                          icon: const Icon(Icons.person_rounded),
-                          label: const Text('Human-made'),
-                          onPressed: () => onLabel(0),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: FilledButton.tonalIcon(
-                          icon: const Icon(Icons.smart_toy_rounded),
-                          label: const Text('AI-generated'),
-                          onPressed: () => onLabel(1),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('What was playing?', style: theme.textTheme.titleSmall),
+            const SizedBox(height: 4),
+            Text(
+              label == null
+                  ? 'Label this recording; it\'s saved with the session and its audio'
+                        '${trainingMode ? ', and its $windows windows are kept for on-device training' : ''}.'
+                  : 'Labelled ${label!.displayName} '
+                        '(about ${(label!.aiShareMin * 100).round()}–${(label!.aiShareMax * 100).round()}% AI). '
+                        'Tap another to change it.',
+              style: theme.textTheme.bodySmall,
+            ),
+            const SizedBox(height: 12),
+            SegmentedButton<AiCategory>(
+              segments: [
+                for (final c in AiCategory.values)
+                  ButtonSegment(value: c, icon: Icon(c.icon), label: Text(c.displayName)),
+              ],
+              selected: {if (label != null) label!},
+              emptySelectionAllowed: true,
+              showSelectedIcon: false,
+              onSelectionChanged: (sel) {
+                if (sel.isNotEmpty) onLabel(sel.first);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

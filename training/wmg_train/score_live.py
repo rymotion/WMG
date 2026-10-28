@@ -155,13 +155,13 @@ def main() -> None:
     pick.add_argument("--session", help="live session id (default: most recent)")
     pick.add_argument("--all-new", action="store_true",
                       help="score every session this model hasn't scored yet (per index.csv)")
-    ap.add_argument("--label", default="", help="ground truth for this recording: human | ai")
+    ap.add_argument("--label", default="", help="ground truth for this recording: human | ai | ai_assisted")
     ap.add_argument("--note", default="", help="free text, e.g. 'phone speaker -> mic, song title'")
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--no-normalize", action="store_true", help="score at the recording's own level")
     args = ap.parse_args()
-    if args.label and args.label not in ("human", "ai"):
-        raise SystemExit("--label must be 'human' or 'ai'")
+    if args.label and args.label not in ("human", "ai", "ai_assisted"):
+        raise SystemExit("--label must be 'human', 'ai' or 'ai_assisted'")
     if args.all_new and (args.label or args.note):
         raise SystemExit("--label/--note describe one recording; use them with --session or the default latest")
     api = args.api.rstrip("/")

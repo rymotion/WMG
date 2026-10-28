@@ -28,6 +28,27 @@ final class RecognizerResetRequested extends RecognizerEvent {
   const RecognizerResetRequested();
 }
 
+/// The user labelled the current (finished) recording; saved with the session.
+final class RecognizerLabelled extends RecognizerEvent {
+  const RecognizerLabelled(this.label);
+
+  final RecordingLabel? label;
+
+  @override
+  List<Object?> get props => [label];
+}
+
+/// The user labelled clips of the current recording (null: back to the recording's label).
+final class RecognizerClipLabelled extends RecognizerEvent {
+  const RecognizerClipLabelled(this.clipIndexes, this.label);
+
+  final Set<int> clipIndexes;
+  final RecordingLabel? label;
+
+  @override
+  List<Object?> get props => [clipIndexes, label];
+}
+
 // Internal events fed back into the loop by timers, the mic and the socket.
 
 final class _RecordingTicked extends RecognizerEvent {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../retrain/view/retrain_section.dart';
 import '../cubit/personalization_cubit.dart';
 
 /// Training mode, on-device retraining, model choice and sending the result to the computer.
@@ -143,6 +144,8 @@ class PersonalizationPage extends StatelessWidget {
                   ),
                 ),
               ],
+              const Divider(height: 32),
+              const RetrainSection(),
               const Divider(height: 32),
               TextButton.icon(
                 icon: const Icon(Icons.delete_outline_rounded),

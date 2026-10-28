@@ -58,6 +58,7 @@ class DetectorInfo {
     required this.featureSpecHash,
     required this.modelSpecHash,
     required this.modelRun,
+    this.windowSeconds = 10,
     this.headWeights,
     this.headBias = 0,
   });
@@ -65,6 +66,9 @@ class DetectorInfo {
   final String featureSpecHash;
   final String modelSpecHash;
   final String modelRun;
+
+  /// Audio per model window: 10 s or 5 s.
+  final double windowSeconds;
 
   /// The bundled model's final-layer weights: the starting point for on-device fine-tuning.
   final Float64List? headWeights;
@@ -84,12 +88,16 @@ class WmgDetector {
   /// Native sample rate the features run at; other rates are resampled natively.
   static const featureSampleRate = 32000;
 
-  Future<DetectorInfo> info() async {
-    final m = (await _channel.invokeMapMethod<String, Object?>('info'))!;
+  /// Bundled models: `'10s'` (always) and `'5s'` (when installed).
+  static const models = ['10s', '5s'];
+
+  Future<DetectorInfo> info({String model = '10s'}) async {
+    final m = (await _channel.invokeMapMethod<String, Object?>('info', {'model': model}))!;
     return DetectorInfo(
       featureSpecHash: m['featureSpecHash']! as String,
       modelSpecHash: m['modelSpecHash']! as String,
       modelRun: m['modelRun']! as String,
+      windowSeconds: (m['windowSeconds'] as num?)?.toDouble() ?? 10,
       headWeights: m['headWeights'] as Float64List?,
       headBias: (m['headBias'] as num?)?.toDouble() ?? 0,
     );
@@ -98,10 +106,12 @@ class WmgDetector {
   /// Scores mono signed 16-bit little-endian PCM at [sampleRate] (the app's recorder format).
   /// Audio shorter than 3 s, or quieter than the -45 dBFS window gate after normalisation,
   /// yields an empty result.
-  Future<DetectorResult> scorePcm16(Uint8List pcm, int sampleRate) async {
+  /// [model] picks the 10 s or 5 s detector; both share the native feature path.
+  Future<DetectorResult> scorePcm16(Uint8List pcm, int sampleRate, {String model = '10s'}) async {
     final m = (await _channel.invokeMapMethod<String, Object?>('score', {
       'pcm': pcm,
       'sampleRate': sampleRate,
+      'model': model,
     }))!;
     final windows = [
       for (final w in (m['windows']! as List).cast<Map<Object?, Object?>>())

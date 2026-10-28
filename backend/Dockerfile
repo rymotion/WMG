@@ -22,15 +22,17 @@ RUN cargo test --release --locked
 # ---- runtime ----
 FROM debian:bookworm-slim AS runtime
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates \
+    && apt-get install -y --no-install-recommends ca-certificates util-linux \
     && rm -rf /var/lib/apt/lists/* \
     && useradd --system --uid 10001 --create-home app \
     && mkdir -p /data && chown app:app /data
 COPY --from=builder /app/target/release/spectro-api /usr/local/bin/spectro-api
-USER app
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+# Starts as root only to chown the data volume, then runs as `app` (see the entrypoint).
 ENV PORT=9000 DATA_DIR=/data RUST_LOG=info
 EXPOSE 9000
 VOLUME ["/data"]
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
     CMD ["spectro-api", "--healthcheck"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["spectro-api"]

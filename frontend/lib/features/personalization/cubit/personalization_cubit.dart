@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wmg_detector/wmg_detector.dart';
 
 import '../../../data/api/spectro_api_client.dart';
+import '../../../data/labels/recording_label.dart';
 import '../../../data/personalization/head_trainer.dart';
 import '../../../data/personalization/model_exporter.dart';
 import '../../../data/personalization/personal_model.dart';
@@ -78,20 +79,16 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
 
   SampleCounts _countFor(String modelRun) {
     final s = _samples.where((x) => x.modelRun == modelRun);
+    Iterable<LabelledSample> of(AiCategory c) => s.where((x) => x.category == c);
+    int recordings(AiCategory c) => of(c).map((x) => x.sessionId).toSet().length;
     return SampleCounts(
-      aiWindows: s.where((x) => x.label == 1).length,
-      humanWindows: s.where((x) => x.label == 0).length,
-      aiRecordings: s
-          .where((x) => x.label == 1)
-          .map((x) => x.sessionId)
-          .toSet()
-          .length,
-      humanRecordings: s
-          .where((x) => x.label == 0)
-          .map((x) => x.sessionId)
-          .toSet()
-          .length,
+      aiWindows: of(AiCategory.ai).length,
+      humanWindows: of(AiCategory.human).length,
+      aiRecordings: recordings(AiCategory.ai),
+      humanRecordings: recordings(AiCategory.human),
       otherModelWindows: _samples.length - s.length,
+      aiAssistedWindows: of(AiCategory.aiAssisted).length,
+      aiAssistedRecordings: recordings(AiCategory.aiAssisted),
     );
   }
 
@@ -125,7 +122,7 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
   /// Stores the recording's windows (embeddings only) with the user's label.
   Future<void> labelRecording(
     String recordingId,
-    int label,
+    AiCategory category,
     List<WindowScore> windows,
   ) async {
     final base = state.base;
@@ -136,7 +133,8 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
         if (w.embedding != null)
           LabelledSample(
             sessionId: recordingId,
-            label: label,
+            label: category.binaryLabel ?? -1,
+            category: category,
             embedding: w.embedding!,
             modelRun: base.modelRun,
             recordedAt: now,
@@ -153,14 +151,13 @@ class PersonalizationCubit extends Cubit<PersonalizationState> {
     }
     await _store.addSamples(samples);
     _samples = [..._samples, ...samples];
-
-    print('Saved ${samples.length} windows as ${label == 1 ? 'AI' : 'human'}');
     emit(
       state.copyWith(
         counts: _countFor(base.modelRun),
-        labelled: {...state.labelled, recordingId: label},
+        labelled: {...state.labelled, recordingId: category},
         message: () =>
-            'Saved ${samples.length} windows as ${label == 1 ? 'AI' : 'human'}.',
+            'Saved ${samples.length} windows as ${category.displayName}'
+            '${category.binaryLabel == null ? ' (kept for the AI-share model; Retrain uses Human and AI only)' : ''}.',
       ),
     );
   }

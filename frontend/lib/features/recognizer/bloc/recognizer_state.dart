@@ -24,7 +24,8 @@ final class RecognizerState extends Equatable {
     this.spectrogram = const Spectrogram(),
     this.onDevice = const OnDeviceDetection(),
     this.offline = false,
-    this.clipMetaData = const [],
+    this.label,
+    this.recordingId,
     this.error,
   });
 
@@ -45,9 +46,6 @@ final class RecognizerState extends Equatable {
   /// Saved clips, newest first, with their identifications as they arrive.
   final List<ClipResult> clips;
 
-  /// Saved clips metadata, newest first.
-  final List<ClipMetaData> clipMetaData;
-
   /// Live mel spectrogram from `spectrum` messages.
   final Spectrogram spectrogram;
 
@@ -57,6 +55,12 @@ final class RecognizerState extends Equatable {
   /// This session runs on the on-device model only: no socket, so no
   /// spectrogram, clips or identifications.
   final bool offline;
+
+  /// The user's label for this recording (Human / AI-assisted / AI-generated); saved with it.
+  final RecordingLabel? label;
+
+  /// Local id the session is saved under (also used offline, where there is no server id).
+  final String? recordingId;
   final String? error;
 
   bool get isStreaming => status == RecognizerStatus.streaming;
@@ -80,10 +84,11 @@ final class RecognizerState extends Equatable {
     int? bytesStreamed,
     LiveSessionStarted? session,
     List<ClipResult>? clips,
-    List<ClipMetaData>? clipMetaData,
     Spectrogram? spectrogram,
     OnDeviceDetection? onDevice,
     bool? offline,
+    RecordingLabel? Function()? label,
+    String? recordingId,
     String? Function()? error,
   }) => RecognizerState(
     status: status ?? this.status,
@@ -95,19 +100,21 @@ final class RecognizerState extends Equatable {
     spectrogram: spectrogram ?? this.spectrogram,
     onDevice: onDevice ?? this.onDevice,
     offline: offline ?? this.offline,
-    clipMetaData: clipMetaData ?? this.clipMetaData,
+    label: label != null ? label() : this.label,
+    recordingId: recordingId ?? this.recordingId,
     error: error != null ? error() : this.error,
   );
 
   @override
   List<Object?> get props => [
+    label,
+    recordingId,
     status,
     elapsed,
     level,
     bytesStreamed,
     session,
     clips,
-    clipMetaData,
     spectrogram,
     onDevice,
     offline,

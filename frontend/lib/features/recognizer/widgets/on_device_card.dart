@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wmg_frontend/common/star_builder.dart';
 
 import '../models/on_device_detection.dart';
 
@@ -70,7 +70,7 @@ class OnDeviceCard extends StatelessWidget {
               ),
               _ => _score(context, d),
             },
-            MaterialButton(onPressed: () {}, child: const Text('More details')),
+            MaterialButton(onPressed: () {}, child: const Text('Learn More')),
           ],
         ),
       ),
@@ -93,7 +93,7 @@ class OnDeviceCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildScoreComponent(p),
+        StarCount(score: p),
         Text(
           'Probability you caught AI generated sound: ${pct(p)}',
           style: theme.textTheme.displaySmall?.copyWith(color: Colors.white),
@@ -197,40 +197,6 @@ class OnDeviceCard extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildScoreComponent(double p) {
-    List<Widget> stars = _buildStarCount(((p * 100.0) / 20.0).toInt());
-
-    if (p == 1.0) {
-      stars.add(Icon(Icons.star, color: Colors.white, size: 12));
-    }
-
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(
-          'assets/music-disclosure.svg',
-          height: 250,
-          width: 250,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-          imageBuilder: (context, child) {
-            return Container(color: Colors.transparent, child: child);
-          },
-        ),
-        ...stars,
-      ],
-    );
-  }
-
-  List<Widget> _buildStarCount(int starCount) => List.generate(
-    5,
-    (index) => Icon(
-      index < starCount ? Icons.star : Icons.star_outline,
-      color: Colors.white,
-      size: 72,
-    ),
-  );
 }
 
 class _ModelPill extends StatelessWidget {

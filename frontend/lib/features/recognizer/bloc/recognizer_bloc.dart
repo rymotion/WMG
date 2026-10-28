@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
@@ -7,9 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wmg_detector/wmg_detector.dart';
 
 import '../../../data/api/live_audio_client.dart';
+import '../../../data/labels/recording_label.dart';
 import '../../../data/models/live_message.dart';
 import '../../../data/recorder/audio_recorder_service.dart';
 import '../../../data/repository/identification_repository.dart';
+import '../../results/data/session_history_store.dart';
+import '../../results/data/wav_writer.dart';
+import '../../results/models/saved_session.dart';
 import '../models/clip_result.dart';
 import '../models/on_device_detection.dart';
 import '../models/spectrogram.dart';
@@ -32,13 +37,25 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     this.maxDuration = const Duration(minutes: 60),
     this.finishTimeout = const Duration(seconds: 20),
     WmgDetector? detector,
+    SessionHistoryStore? history,
   }) : _recorder = recorder,
        _detector = detector,
+       _history = history,
        _repository = repository,
        super(const RecognizerState()) {
     // Taps that arrive while a connect/stop is still in flight are dropped.
     on<RecognizerMicPressed>(_onMicPressed, transformer: droppable());
     on<RecognizerResetRequested>(_onReset, transformer: sequential());
+    on<RecognizerLabelled>((e, emit) => emit(state.copyWith(label: () => e.label)));
+    on<RecognizerClipLabelled>(
+      (e, emit) => emit(
+        state.copyWith(
+          clips: [
+            for (final c in state.clips) e.clipIndexes.contains(c.index) ? c.copyWith(label: () => e.label) : c,
+          ],
+        ),
+      ),
+    );
     on<_RecordingTicked>(_onTicked);
     on<_PcmChunkSent>(_onPcmChunkSent);
     on<_MicStreamFailed>(_onMicStreamFailed, transformer: sequential());
@@ -55,6 +72,9 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
 
   /// Scores audio locally; null where no on-device model exists (Android, tests).
   final WmgDetector? _detector;
+
+  /// Keeps finished sessions (results, spectrogram, audio) on device; null in tests.
+  final SessionHistoryStore? _history;
   final int sampleRate;
 
   /// On-device scores update every 5 s: the last 5 s go to the 5 s model and the last 10 s
@@ -85,6 +105,14 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
   int _detectGeneration = 0;
   Future<void> _detectChain = Future<void>.value();
 
+  // Session history: the recording in progress and its debounced save.
+  String? _recordingId;
+  DateTime? _recordingStarted;
+  WavWriter? _audio;
+  Timer? _saveTimer;
+  ({RecognizerState state, String id, DateTime startedAt, WavWriter? audio})?
+  _pendingSave;
+
   Future<void> _onMicPressed(
     RecognizerMicPressed event,
     Emitter<RecognizerState> emit,
@@ -101,6 +129,10 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     required bool offline,
     required bool identify,
   }) async {
+    // The previous session's last save goes out before its id is dropped.
+    unawaited(_flushSave());
+    _recordingId = null;
+    _audio = null;
     emit(
       RecognizerState(status: RecognizerStatus.connecting, offline: offline),
     );
@@ -204,12 +236,16 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
       );
     }
 
+    await _openRecording();
+    if (_recordingId != null) emit(state.copyWith(recordingId: _recordingId));
+
     final drained = _pcmDrained = Completer<void>();
     var lastProgress = DateTime.fromMillisecondsSinceEpoch(0);
     var captured = 0;
     _pcmSub = pcm.listen(
       (chunk) {
         session?.addPcm(chunk);
+        _audio?.add(chunk);
         captured += chunk.length;
         _bufferForDetection(chunk);
         final now = DateTime.now();
@@ -326,11 +362,6 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
               result.id,
               (c) => c.copyWith(identification: result.identification),
             ),
-            clipMetaData: _upsertClipMeta(
-              result.index,
-              result.id,
-              (c) => c.copyWith(identification: result.identification),
-            ),
           ),
         );
       case LiveError(:final message):
@@ -353,60 +384,6 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     }
     clips.sort((a, b) => b.index.compareTo(a.index));
     return List.unmodifiable(clips);
-  }
-
-  List<ClipMetaData> _upsertClipMeta(
-    int index,
-    String id,
-    ClipMetaData Function(ClipMetaData) update,
-  ) {
-    final clips = [...state.clipMetaData];
-    final i = clips.indexWhere((c) => c.id == id);
-    if (i >= 0) {
-      clips[i] = update(clips[i]);
-    } else {
-      clips.add(
-        update(
-          ClipMetaData(
-            prediction: '',
-            id: id,
-            predictionWindow: PredictionWindow(
-              window10: '',
-              window5: '',
-              delta: '',
-            ),
-          ),
-        ),
-      );
-    }
-    clips.sort((a, b) => b.id.compareTo(a.id));
-    return List.unmodifiable(clips);
-  }
-
-  void updateClipMeta(
-    int index,
-    String id,
-    ClipMetaData metaData,
-    Emitter<RecognizerState> emit,
-  ) {
-    final clipMeta = state.clipMetaData.firstWhere((x) {
-      return x.id == id;
-    });
-
-    state.clipMetaData.removeWhere((x) => x.id == id);
-
-    emit(
-      state.copyWith(
-        clipMetaData: [
-          ...state.clipMetaData,
-          clipMeta.copyWith(
-            prediction: metaData.prediction,
-            predictionWindow: metaData.predictionWindow,
-            identification: metaData.identification,
-          ),
-        ],
-      ),
-    );
   }
 
   Future<void> _onSessionClosed(
@@ -446,7 +423,10 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     RecognizerResetRequested event,
     Emitter<RecognizerState> emit,
   ) async {
+    final unsaved = !_isFinished(state.status);
     await _teardown(closeSocket: true);
+    // A session dropped mid-recording isn't kept.
+    if (unsaved) await _discardRecording();
     emit(const RecognizerState());
   }
 
@@ -462,6 +442,7 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     );
     await _pcmSub?.cancel();
     _pcmSub = null;
+    await _audio?.close();
     _flushDetection();
   }
 
@@ -621,9 +602,105 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     if (closeSocket) await session?.close();
   }
 
+  // Session history. A session is saved once it completes or fails, and saved again
+  // (debounced) while late identifications and on-device scores keep arriving.
+
+  static bool _isFinished(RecognizerStatus s) =>
+      s == RecognizerStatus.completed || s == RecognizerStatus.failure;
+
+  Future<void> _openRecording() async {
+    final history = _history;
+    if (history == null) return;
+    final id = _recordingId = SessionHistoryStore.newId();
+    _recordingStarted = DateTime.now();
+    try {
+      _audio = await history.openAudio(id, sampleRate: sampleRate);
+    } catch (e, st) {
+      addError(e, st); // keep recording without audio
+    }
+  }
+
+  @override
+  void onChange(Change<RecognizerState> change) {
+    super.onChange(change);
+    final id = _recordingId;
+    final next = change.nextState;
+    if (id != null && _isFinished(next.status)) {
+      _pendingSave = (
+        state: next,
+        id: id,
+        startedAt: _recordingStarted!,
+        audio: _audio,
+      );
+      _saveTimer?.cancel();
+      _saveTimer = Timer(const Duration(milliseconds: 500), _flushSave);
+    }
+  }
+
+  /// Writes the pending save now. Everything it needs was captured when it was scheduled,
+  /// so a new session starting meanwhile doesn't change what's written.
+  Future<void> _flushSave() async {
+    _saveTimer?.cancel();
+    _saveTimer = null;
+    final pending = _pendingSave;
+    _pendingSave = null;
+    final history = _history;
+    if (pending == null || history == null) return;
+    final (:state, :id, :startedAt, :audio) = pending;
+    final audioS = audio?.durationS ?? 0;
+    if (audioS < 1 && state.clips.isEmpty && !state.onDevice.hasScore) {
+      await history.delete(id); // nothing worth keeping
+      return;
+    }
+    try {
+      await audio?.close();
+      await history.save(
+        SavedSession(
+          id: id,
+          startedAt: startedAt,
+          durationS: [
+            audioS,
+            state.spectrogram.durationS,
+            state.elapsed.inMilliseconds / 1000,
+          ].reduce(math.max),
+          serverSessionId: state.session?.sessionId,
+          offline: state.offline,
+          clips: state.clips,
+          onDevice: state.onDevice,
+          label: state.label,
+          nMels: state.spectrogram.nMels,
+          dbFloor: state.spectrogram.dbFloor,
+          hopS: state.spectrogram.hopS,
+          sampleRate: sampleRate,
+          hasSpectrogram: !state.spectrogram.isEmpty,
+          hasAudio: audio != null && audioS > 0,
+        ),
+        state.spectrogram,
+      );
+    } catch (e, st) {
+      addError(e, st);
+    }
+  }
+
+  Future<void> _discardRecording() async {
+    final id = _recordingId;
+    _recordingId = null;
+    _pendingSave = null;
+    _saveTimer?.cancel();
+    await _audio?.close();
+    _audio = null;
+    if (id != null) await _history?.delete(id);
+  }
+
   @override
   Future<void> close() async {
+    final unsaved = !_isFinished(state.status);
     await _teardown(closeSocket: true);
+    if (unsaved) {
+      await _discardRecording();
+    } else {
+      await _flushSave();
+    }
     return super.close();
   }
 }

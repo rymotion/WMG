@@ -13,3 +13,5 @@ cache-*/
 *.log
 scores/
 .DS_Store
+!runs/*/oof_windows.csv
+retrain/

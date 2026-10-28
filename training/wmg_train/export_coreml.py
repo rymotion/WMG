@@ -76,14 +76,15 @@ def main() -> None:
     ckpt = torch.load(args.model, map_location="cpu", weights_only=False)
     wrap = _Wrap(model).eval()
 
-    x = sample_windows()
+    frames = model.frames  # 1000 for 10 s windows, 500 for 5 s
+    x = np.ascontiguousarray(sample_windows()[..., :frames])
     with torch.no_grad():
         traced = torch.jit.trace(wrap, torch.from_numpy(x[:1]))
         ref = [t.numpy() for t in wrap(torch.from_numpy(x))]
 
     mlmodel = ct.convert(
         traced,
-        inputs=[ct.TensorType(name="logmel", shape=(ct.RangeDim(1, MAX_BATCH, default=1), 1, 128, 1000),
+        inputs=[ct.TensorType(name="logmel", shape=(ct.RangeDim(1, MAX_BATCH, default=1), 1, 128, frames),
                               dtype=np.float32)],
         outputs=[ct.TensorType(name=n) for n in OUTPUTS],
         convert_to="mlprogram",
@@ -98,6 +99,8 @@ def main() -> None:
         "outputs": list(OUTPUTS),
         "bands": ["bass", "mid", "treble"],
         "embedding_dim": int(model.clip_head.in_features),
+        "frames": int(frames),
+        "window_seconds": frames / 100,
     }
     head = {"head_weights": model.clip_head.weight.detach().reshape(-1).tolist(),
             "head_bias": float(model.clip_head.bias.detach().item())}

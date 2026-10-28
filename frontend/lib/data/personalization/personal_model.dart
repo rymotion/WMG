@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
+import '../labels/recording_label.dart';
+
 /// One labelled 10 s window: the model's final-layer input, never the audio itself.
 class LabelledSample {
   LabelledSample({
@@ -11,11 +13,14 @@ class LabelledSample {
     required this.modelRun,
     required this.recordedAt,
     this.note = '',
-  });
+    AiCategory? category,
+  }) : category = category ?? AiCategory.fromBinary(label);
 
   factory LabelledSample.fromJson(Map<String, dynamic> j) => LabelledSample(
     sessionId: j['session_id'] as String,
     label: j['label'] as int,
+    // Samples stored before the AI-assisted label only have the binary label.
+    category: j['category'] == null ? null : AiCategory.fromWire(j['category'] as String),
     embedding: Float32List.fromList([for (final v in j['embedding'] as List) (v as num).toDouble()]),
     modelRun: j['model_run'] as String,
     recordedAt: DateTime.parse(j['recorded_at'] as String),
@@ -24,8 +29,14 @@ class LabelledSample {
 
   final String sessionId;
 
-  /// 1 = AI-generated, 0 = human.
+  /// Binary target: 1 = AI-generated, 0 = human, -1 = not used for binary training (AI-assisted).
   final int label;
+
+  /// Human / AI-assisted / AI-generated, with its AI-share range.
+  final AiCategory category;
+
+  /// Usable by the current Human-vs-AI layer.
+  bool get binary => category.binaryLabel != null;
   final Float32List embedding;
 
   /// Embeddings come from one specific base model; they can't be mixed across models.
@@ -36,6 +47,9 @@ class LabelledSample {
   Map<String, dynamic> toJson() => {
     'session_id': sessionId,
     'label': label,
+    'category': category.wire,
+    'ai_share_min': category.aiShareMin,
+    'ai_share_max': category.aiShareMax,
     'embedding': embedding,
     'model_run': modelRun,
     'recorded_at': recordedAt.toUtc().toIso8601String(),

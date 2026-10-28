@@ -34,6 +34,11 @@ class AppConfig {
 
   final Uri apiBaseUrl;
 
+  /// The Mac's retrain service (`training/Retrain Service.command`). It runs natively, not in
+  /// Docker, because training needs the GPU. Override with `--dart-define=TRAINER_URL=...`.
+  Uri get trainerBaseUrl =>
+      Uri.parse(const String.fromEnvironment('TRAINER_URL', defaultValue: 'http://localhost:9100'));
+
   /// PCM is sent as mono s16le at this rate (~64 KB/s at 32 kHz). The AI-music detector's
   /// features run at 32 kHz up to 16 kHz; a 16 kHz stream would leave its treble band empty.
   final int liveSampleRate;

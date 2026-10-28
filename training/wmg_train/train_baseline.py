@@ -68,6 +68,50 @@ def load_all(cache: Path, phone_cache: Path | None) -> tuple[Windows, pd.DataFra
     return Windows(parts), index
 
 
+class SplitWindows:
+    """View 10 s windows as `parts` shorter windows (e.g. 2 x 5 s) without recomputing features.
+
+    The detector's frames are identical whatever the window length (same STFT and hop), so a
+    5 s window is a 500-frame slice of a 10 s one; only the last few frames at a cut differ from
+    a direct 5 s extraction (real audio instead of zero padding).
+    """
+
+    def __init__(self, base, src_rows: np.ndarray, part: np.ndarray, parts: int):
+        self.base, self.src, self.part, self.parts = base, src_rows, part, parts
+        self.frames = 1000 // parts
+
+    def __len__(self) -> int:
+        return len(self.src)
+
+    def __getitem__(self, idx) -> np.ndarray:
+        idx = np.asarray(idx)
+        full = self.base[self.src[idx]]
+        out = np.empty((len(idx), 128, self.frames), dtype=full.dtype)
+        for i, p in enumerate(self.part[idx]):
+            out[i] = full[i, :, p * self.frames : (p + 1) * self.frames]
+        return out
+
+
+def split_windows(x, index: pd.DataFrame, parts: int) -> tuple[SplitWindows, pd.DataFrame]:
+    """Each window row becomes `parts` rows with start_s shifted. Overlapping 10 s windows (5 s
+    hop) yield the same 5 s audio twice; those duplicates are dropped."""
+    seg = 10.0 / parts
+    rep = index.loc[index.index.repeat(parts)].copy()
+    rep["src_row"] = np.repeat(index["row"].to_numpy(), parts)
+    rep["part"] = np.tile(np.arange(parts), len(index))
+    rep["start_s"] = rep["start_s"] + rep["part"] * seg
+    rep = rep.drop_duplicates(["song_id", "variant", "start_s"]).reset_index(drop=True)
+    rep["row"] = np.arange(len(rep))
+    return SplitWindows(x, rep["src_row"].to_numpy(), rep["part"].to_numpy(), parts), rep
+
+
+def load_cfg(window_seconds: int) -> dict:
+    cfg = yaml.safe_load(CFG.read_text())
+    cfg["input"]["frames"] = 1000 * window_seconds // 10
+    cfg["input"]["window_seconds"] = window_seconds
+    return cfg
+
+
 def make_folds(index: pd.DataFrame, seed: int = 0) -> list[tuple[str, set[str]]]:
     """One fold per clean AI group; human groups spread greedily so folds get similar song counts.
 
@@ -137,8 +181,7 @@ def batches_balanced(labels: np.ndarray, batch: int, steps: int, rng: np.random.
 
 def train_model(x: np.memmap, index: pd.DataFrame, rows: np.ndarray, args, device, seed: int) -> BandNet:
     torch.manual_seed(seed)
-    cfg = yaml.safe_load(CFG.read_text())
-    model = BandNet.from_config(cfg).to(device)
+    model = BandNet.from_config(args.cfg).to(device)
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-2)
     total = args.epochs * args.steps
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=args.lr, total_steps=total, pct_start=0.1)
@@ -267,12 +310,20 @@ def main() -> None:
     ap.add_argument("--phone-cache", type=Path, help="cache of real phone captures (wmg_train.phone_cache)")
     ap.add_argument("--phone-frac", type=float, default=0.25,
                     help="share of each class's half-batch drawn from phone windows of that class")
+    ap.add_argument("--window-seconds", type=int, choices=[10, 5], default=10,
+                    help="detector window; 5 s windows are halves of the cached 10 s ones")
+    ap.add_argument("--save-oof-windows", action="store_true",
+                    help="write per-window held-out scores (oof_windows.csv) for the test bench")
+    ap.add_argument("--no-final", action="store_true", help="cross-validation only; skip the final model")
     ap.add_argument("--allow-imbalanced-phone", action="store_true",
                     help="train even if phone audio is >80%% one class (risks learning 'phone = that class')")
     args = ap.parse_args()
 
     device = pick_device()
     x, index = load_all(args.cache, args.phone_cache)
+    args.cfg = load_cfg(args.window_seconds)
+    if args.window_seconds != 10:
+        x, index = split_windows(x, index, 10 // args.window_seconds)
     phone_stats = None
     if args.phone_cache:
         ph = index[index.source == "phone"]
@@ -301,7 +352,7 @@ def main() -> None:
     print(f"confound gate (augmented recording-chain metadata, clean data) AUC = {gate:.3f} "
           f"({'PASS' if gate_passes(gate) else 'FAIL'}: needs {GATE_RANGE[0]}-{GATE_RANGE[1]})", flush=True)
 
-    metrics: dict = {"args": vars(args) | {"cache": str(args.cache), "out": str(args.out),
+    metrics: dict = {"args": {k: v for k, v in vars(args).items() if k != "cfg"} | {"cache": str(args.cache), "out": str(args.out),
                                            "phone_cache": str(args.phone_cache) if args.phone_cache else None},
                      "phone": phone_stats,
                      "device": str(device), "confound_gate_auc": gate,
@@ -312,7 +363,7 @@ def main() -> None:
         keep = set() if args.folds == "none" else set(args.folds.split(","))
         folds = [f for f in folds if f[0] in keep]
 
-    oof = []
+    oof, oof_windows = [], []
     for k, (ai_group, test_groups) in enumerate(folds):
         test = index.group.isin(test_groups).to_numpy()
         tr_rows, te_rows = np.flatnonzero(~test), np.flatnonzero(test)
@@ -323,6 +374,12 @@ def main() -> None:
         songs = song_table(index, te_rows, pred)
         songs["fold"] = k
         oof.append(songs)
+        if args.save_oof_windows:
+            w = index.iloc[te_rows][["song_id", "path", "label", "group", "variant", "start_s"]].copy()
+            if "source" in index:
+                w["source"] = index.source.to_numpy()[te_rows]
+            w["logit"], w["fold"] = pred["logit"], k
+            oof_windows.append(w)
         win_auc = roc_auc_score(index.label.to_numpy()[te_rows], pred["logit"])
         song_auc = roc_auc_score(songs.label, songs.logit)
         ai = songs[songs.label == 1]
@@ -378,10 +435,18 @@ def main() -> None:
             }
         print("OOF:", json.dumps({k: metrics[k] for k in ("oof", "oof_phone") if k in metrics}, indent=1), flush=True)
 
+    if oof_windows:
+        pd.concat(oof_windows).to_csv(run / "oof_windows.csv", index=False)
+    metrics["window_seconds"] = args.window_seconds
+    if args.no_final:
+        (run / "metrics.json").write_text(json.dumps(metrics, indent=2))
+        print(f"saved {run}/metrics.json (cross-validation only)")
+        return
+
     print("final model on all data", flush=True)
     model = train_model(x, index, np.arange(len(index)), args, device, seed=100)
     model = model.cpu().eval()
-    torch.save({"state_dict": model.state_dict(), "config": yaml.safe_load(CFG.read_text()),
+    torch.save({"state_dict": model.state_dict(), "config": args.cfg,
                 "feature_spec_hash": cache_meta["feature_spec_hash"]}, run / "model.pt")
     export_onnx(model, run / "model.onnx")
     metrics["params"] = count_params(model)

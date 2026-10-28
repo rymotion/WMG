@@ -16,7 +16,8 @@ Pod::Spec.new do |s|
   # Static Rust library (wmg-features, built by features/apple/build_xcframework.sh).
   s.vendored_frameworks = 'Frameworks/WmgFeatures.xcframework'
   # Compiled Core ML model + metadata (installed by tool/install.sh from a training run).
-  s.resource_bundles = { 'WmgDetectorModel' => ['wmg_detector/Resources/WmgDetector.mlmodelc', 'wmg_detector/Resources/model_meta.json'] }
+  # 10 s model (WmgDetector) and optional 5 s model (WmgDetector5s), each with its metadata.
+  s.resource_bundles = { 'WmgDetectorModel' => ['wmg_detector/Resources/*.mlmodelc', 'wmg_detector/Resources/model_meta*.json'] }
   # C header + module map for `import WmgFeaturesC` (works for iOS, simulator and macOS slices).
   s.preserve_paths  = ['Frameworks/WmgFeatures.xcframework', 'include/**/*']
   s.pod_target_xcconfig = {

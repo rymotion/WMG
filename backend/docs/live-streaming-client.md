@@ -21,7 +21,9 @@ The server side is tracked in [live-streaming-build-plan.md](live-streaming-buil
 ws://<host>:<port>/live?sample_rate=16000[&identify=false]
 ```
 
-Use `wss://` when the API sits behind TLS.
+Use `wss://` when the API sits behind TLS. In production that is
+`wss://wmg-spectro-api.fly.dev/live?sample_rate=16000`. HTTPS is also what lets browsers use
+the microphone on a deployed page.
 
 | Query param | Required | Notes |
 |---|---|---|

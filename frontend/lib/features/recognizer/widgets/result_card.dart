@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../data/labels/recording_label.dart';
+import 'package:wmg_frontend/common/star_builder.dart';
+
 import '../../../data/models/identification.dart';
 import '../../../data/models/track_match.dart';
 import '../models/clip_result.dart';
@@ -15,6 +18,10 @@ class ClipResultCard extends StatelessWidget {
     this.selected = false,
     this.detection,
     this.onTap,
+    this.label,
+    this.labelInherited = false,
+    this.onLabel,
+    this.checked,
   });
 
   final BuildContext context;
@@ -27,6 +34,17 @@ class ClipResultCard extends StatelessWidget {
   /// Outlined, e.g. while its span is highlighted on the spectrogram.
   final bool selected;
   final VoidCallback? onTap;
+
+  /// The clip's label: its own, or the recording's when [labelInherited].
+  final RecordingLabel? label;
+  final bool labelInherited;
+
+  /// Sets this clip's own label; null goes back to the recording's. Without it the label is
+  /// only shown.
+  final ValueChanged<AiCategory?>? onLabel;
+
+  /// Non-null while clips are being selected: shows a checkbox in this state.
+  final bool? checked;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +68,12 @@ class ClipResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildScoreCardHeader(status, theme, clip),
+              _buildStarRating(context),
               ..._buildProbability(theme),
+              if (label != null || onLabel != null) ...[
+                const SizedBox(height: 8),
+                _ClipLabelRow(label: label, inherited: labelInherited, onLabel: onLabel),
+              ],
               if (id != null && id.matches.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 for (final match in id.matches) _MatchTile(match: match),
@@ -70,6 +93,15 @@ class ClipResultCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildStarRating(BuildContext context) {
+    try {
+      final d = detection;
+      return StarCount(score: d?.pAi ?? 0, height: 45, width: 45);
+    } catch (e) {
+      return const SizedBox();
+    }
   }
 
   /// This clip's on-device P(AI): headline, both models and their gap, and
@@ -99,8 +131,8 @@ class ClipResultCard extends StatelessWidget {
       const SizedBox(height: 2),
       Text(
         [
-          '10 s ${pct(d.p10)}',
           '5 s ${pct(d.p5)}',
+          '10 s ${pct(d.p10)}',
           if (delta != null)
             'Δ ${delta >= 0 ? '+' : ''}${delta.toStringAsFixed(2)}',
         ].join(' · '),
@@ -111,6 +143,7 @@ class ClipResultCard extends StatelessWidget {
         scores: scoreSeries(d, theme.colorScheme),
         startS: start,
         endS: start + duration,
+        label: label?.category,
       ),
     ];
   }
@@ -123,6 +156,14 @@ class ClipResultCard extends StatelessWidget {
     final id = result.identification;
     return Row(
       children: [
+        if (checked != null)
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: Icon(
+              checked! ? Icons.check_box_rounded : Icons.check_box_outline_blank_rounded,
+              color: checked! ? theme.colorScheme.primary : theme.colorScheme.outline,
+            ),
+          ),
         if (id == null)
           const SizedBox.square(
             dimension: 20,
@@ -161,10 +202,11 @@ class ClipResultCard extends StatelessWidget {
   };
 
   String _generatedProbability(double confidence) => switch (confidence) {
-    >= 0.9 => 'High',
-    >= 0.7 => 'Medium',
-    >= 0.5 => 'Low',
-    _ => 'Very Low',
+    >= 0.9 => 'Fully AI-generated',
+    >= 0.7 => 'Mostly AI-generated',
+    >= 0.5 => 'Partially AI-generated',
+    >= 0.2 => 'Computers used in production',
+    _ => 'Not AI-generated',
   };
 
   static IconData _icon(IdentificationStatus s) => switch (s) {
@@ -181,6 +223,58 @@ class ClipResultCard extends StatelessWidget {
     IdentificationStatus.error => c.error,
     _ => c.onSurfaceVariant,
   };
+}
+
+/// "AI-generated (recording)" plus a menu to give this clip its own label.
+class _ClipLabelRow extends StatelessWidget {
+  const _ClipLabelRow({required this.label, required this.inherited, required this.onLabel});
+
+  final RecordingLabel? label;
+  final bool inherited;
+  final ValueChanged<AiCategory?>? onLabel;
+
+  static const _inherit = 'inherit';
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final c = label?.category;
+    final muted = theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant);
+    final text = Text.rich(
+      TextSpan(
+        text: c?.displayName ?? 'Unlabelled clip',
+        children: [if (c != null && inherited) TextSpan(text: ' · from recording', style: muted)],
+      ),
+      style: theme.textTheme.labelLarge?.copyWith(color: c?.color),
+    );
+    final row = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(c?.icon ?? Icons.label_outline_rounded, size: 18, color: c?.color ?? theme.colorScheme.outline),
+        const SizedBox(width: 6),
+        Flexible(child: text),
+        if (onLabel != null) Icon(Icons.arrow_drop_down_rounded, color: theme.colorScheme.outline),
+      ],
+    );
+    if (onLabel == null) return row;
+    return PopupMenuButton<String>(
+      tooltip: 'Label this clip',
+      onSelected: (v) => onLabel!(v == _inherit ? null : AiCategory.fromWire(v)),
+      itemBuilder: (_) => [
+        for (final cat in AiCategory.values)
+          CheckedPopupMenuItem(
+            value: cat.wire,
+            checked: !inherited && c == cat,
+            child: Text(cat.displayName),
+          ),
+        if (label != null && !inherited) ...[
+          const PopupMenuDivider(),
+          const PopupMenuItem(value: _inherit, child: Text('Same as recording')),
+        ],
+      ],
+      child: row,
+    );
+  }
 }
 
 class _MatchTile extends StatelessWidget {

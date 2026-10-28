@@ -49,3 +49,6 @@ app.*.map.json
 
 # Xcode/CocoaPods intermediates written next to the iOS project
 /ios/build/
+*.mp4
+*.wav
+*.mp3

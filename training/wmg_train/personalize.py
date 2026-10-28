@@ -75,7 +75,10 @@ def cmd_merge(args) -> None:
     if w.shape != w_base.shape:
         raise SystemExit(f"head has {w.size} weights, base clip_head has {w_base.size}")
 
-    samples = bundle.get("samples", [])
+    all_samples = bundle.get("samples", [])
+    # AI-assisted samples ride along in the bundle (kept for the AI-share model) but aren't part
+    # of the Human-vs-AI layer, so they're excluded from its accuracy.
+    samples = [s for s in all_samples if s.get("category", "ai" if s["label"] == 1 else "human") != "ai_assisted"]
     x = np.asarray([s["embedding"] for s in samples], dtype=np.float64).reshape(len(samples), -1) if samples else np.zeros((0, w.size))
     y = np.asarray([s["label"] for s in samples], dtype=int)
     sessions = np.asarray([s["session_id"] for s in samples])
@@ -90,7 +93,8 @@ def cmd_merge(args) -> None:
     report = {
         "head_id": bundle["id"], "base_model_run": base_run, "device": bundle.get("device"),
         "exported_at": bundle.get("exported_at"), "device_train_report": bundle.get("train"),
-        "samples": int(len(y)), "ai_samples": int(y.sum()), "recordings": int(len(set(sessions))),
+        "samples": int(len(y)), "ai_samples": int(y.sum()),
+        "ai_assisted_samples": int(len(all_samples) - len(samples)), "recordings": int(len(set(sessions))),
         "accuracy_base_head": accuracy(x, y, w_base, b_base), "accuracy_personal_head": accuracy(x, y, w, b),
         "weight_change_l2": float(np.linalg.norm(w - w_base)), "feature_spec_hash": bundle["feature_spec_hash"],
     }

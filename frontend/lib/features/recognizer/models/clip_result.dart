@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../data/labels/recording_label.dart';
 import '../../../data/models/identification.dart';
 
 /// One saved clip of the live session and, once ACRCloud is done, its result.
@@ -10,7 +11,29 @@ class ClipResult extends Equatable {
     this.startS,
     this.durationS,
     this.identification,
+    this.label,
   });
+
+  factory ClipResult.fromJson(Map<String, dynamic> json) => ClipResult(
+    index: (json['index'] as num).toInt(),
+    id: json['id'] as String,
+    startS: (json['start_s'] as num?)?.toDouble(),
+    durationS: (json['duration_s'] as num?)?.toDouble(),
+    identification: switch (json['identification']) {
+      final Map<String, dynamic> j => Identification.fromJson(j),
+      _ => null,
+    },
+    label: json['label'] == null ? null : RecordingLabel.fromJson(json['label'] as Map<String, dynamic>),
+  );
+
+  Map<String, dynamic> toJson() => {
+    'index': index,
+    'id': id,
+    if (startS != null) 'start_s': startS,
+    if (durationS != null) 'duration_s': durationS,
+    if (identification != null) 'identification': identification!.toJson(),
+    if (label != null) 'label': label!.toJson(),
+  };
 
   final int index;
   final String id;
@@ -20,78 +43,24 @@ class ClipResult extends Equatable {
   /// Null while identification is still running.
   final Identification? identification;
 
+  /// What the user says this clip is, when it differs from (or there is no) label for the
+  /// whole recording. Null: the clip takes the recording's label.
+  final RecordingLabel? label;
+
   ClipResult copyWith({
     double? startS,
     double? durationS,
     Identification? identification,
+    RecordingLabel? Function()? label,
   }) => ClipResult(
     index: index,
     id: id,
     startS: startS ?? this.startS,
     durationS: durationS ?? this.durationS,
     identification: identification ?? this.identification,
+    label: label != null ? label() : this.label,
   );
 
   @override
-  List<Object?> get props => [index, id, startS, durationS, identification];
-}
-
-class ClipMetaData {
-  final String prediction;
-  final String id;
-  final PredictionWindow predictionWindow;
-  final Identification? identification;
-
-  ClipMetaData({
-    required this.prediction,
-    required this.id,
-    required this.predictionWindow,
-    this.identification,
-  });
-
-  ClipMetaData copyWith({
-    String? prediction,
-    String? id,
-    PredictionWindow? predictionWindow,
-    Identification? identification,
-  }) => ClipMetaData(
-    prediction: prediction ?? this.prediction,
-    id: id ?? this.id,
-    predictionWindow: predictionWindow ?? this.predictionWindow,
-    identification: identification ?? this.identification,
-  );
-}
-
-class PredictionWindow {
-  final String? window10;
-  final String? window5;
-  final String? delta;
-  final String? bass;
-  final String? mid;
-  final String? treble;
-
-  PredictionWindow({
-    this.window10,
-    this.window5,
-    this.delta,
-    this.bass,
-    this.mid,
-    this.treble,
-  });
-
-  PredictionWindow copyWith({
-    String? window10,
-    String? window5,
-    String? delta,
-    String? bass,
-    String? mid,
-    String? treble,
-  }) => PredictionWindow(
-    window10: window10 ?? this.window10,
-    window5: window5 ?? this.window5,
-    delta: delta ?? this.delta,
-    bass: bass ?? this.bass,
-    mid: mid ?? this.mid,
-    treble: treble ?? this.treble,
-  );
+  List<Object?> get props => [index, id, startS, durationS, identification, label];
 }

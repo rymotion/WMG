@@ -20,6 +20,7 @@ import pandas as pd
 import soundfile as sf
 
 from . import features
+from . import labels
 from .augment import GAIN_JITTER_DB, TARGET_RMS_DBFS
 from .playlist import CAPTURES
 
@@ -40,6 +41,13 @@ def main() -> None:
     if not segs:
         raise SystemExit(f"no segments.csv under {args.captures}; run playlist match / label-session first")
     segs = pd.concat(segs, ignore_index=True)
+    segs["category"] = [labels.category_of(r) for r in segs.to_dict("records")]
+    assisted = segs[segs.category == "ai_assisted"]
+    if len(assisted):
+        # Kept on disk with their labels for a future AI-share model; not Human-vs-AI training data.
+        print(f"skipping {len(assisted)} AI-assisted segments from {assisted.session_id.nunique()} sessions "
+              f"(kept in {args.captures})")
+    segs = segs[segs.category.isin(labels.BINARY)].reset_index(drop=True)
 
     args.out.mkdir(parents=True, exist_ok=True)
     rows, n = [], 0

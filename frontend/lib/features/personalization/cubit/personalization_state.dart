@@ -7,6 +7,8 @@ final class SampleCounts extends Equatable {
     this.aiRecordings = 0,
     this.humanRecordings = 0,
     this.otherModelWindows = 0,
+    this.aiAssistedWindows = 0,
+    this.aiAssistedRecordings = 0,
   });
 
   final int aiWindows;
@@ -17,6 +19,10 @@ final class SampleCounts extends Equatable {
   /// Labelled with a different base model; kept, but unusable for this model's layer.
   final int otherModelWindows;
 
+  /// AI-assisted windows: kept for the future AI-share model, not used by Retrain.
+  final int aiAssistedWindows;
+  final int aiAssistedRecordings;
+
   @override
   List<Object?> get props => [
     aiWindows,
@@ -24,6 +30,8 @@ final class SampleCounts extends Equatable {
     aiRecordings,
     humanRecordings,
     otherModelWindows,
+    aiAssistedWindows,
+    aiAssistedRecordings,
   ];
 }
 
@@ -57,8 +65,8 @@ final class PersonalizationState extends Equatable {
   final bool usePersonal;
   final SampleCounts counts;
 
-  /// Recordings labelled in this app session: id -> label.
-  final Map<String, int> labelled;
+  /// Recordings labelled in this app session: id -> category.
+  final Map<String, AiCategory> labelled;
   final String? busy;
   final String? message;
 
@@ -78,7 +86,7 @@ final class PersonalizationState extends Equatable {
     bool? identifyMode,
     bool? usePersonal,
     SampleCounts? counts,
-    Map<String, int>? labelled,
+    Map<String, AiCategory>? labelled,
     String? Function()? busy,
     String? Function()? message,
   }) => PersonalizationState(

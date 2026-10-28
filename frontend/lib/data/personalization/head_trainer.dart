@@ -124,7 +124,10 @@ class HeadTrainer {
     required String baseModelRun,
     required String featureSpecHash,
   }) {
-    final usable = samples.where((s) => s.modelRun == baseModelRun && s.embedding.length == w0.length).toList();
+    // AI-assisted samples are kept (and exported) but not part of the Human-vs-AI fit.
+    final usable = samples
+        .where((s) => s.binary && s.modelRun == baseModelRun && s.embedding.length == w0.length)
+        .toList();
     check(usable);
     final (w, b) = fit(usable, w0, b0);
     final held = heldOut(usable, w0, b0);

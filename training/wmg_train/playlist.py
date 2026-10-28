@@ -33,6 +33,7 @@ from pathlib import Path
 import numpy as np
 import soundfile as sf
 
+from . import labels
 from .augment import decode
 from .groups import inventory
 
@@ -280,7 +281,8 @@ def cmd_match(args) -> None:
             sf.write(str(seg_dir / name), c["mono"][i0:i1], c["sr"], subtype="PCM_16")
             rows.append({
                 "session_id": session, "playlist_id": meta["playlist_id"], "clip_index": c["idx"],
-                "clip_id": c["clip_id"] or "", "segment": f"segments/{name}", "label": e["label"],
+                "clip_id": c["clip_id"] or "", "segment": f"segments/{name}",
+                **labels.columns("ai" if e["label"] == 1 else "human"),
                 "song_id": e["song_id"], "group": e["group"], "source_path": e["path"],
                 "source_start_s": round(e["source_start_s"] + (a - e["playlist_start_s"]), 2),
                 "duration_s": round(b - a, 2), "align_corr": round(c["corr"], 3), "sample_rate": c["sr"],
@@ -297,15 +299,23 @@ def cmd_match(args) -> None:
 
 
 def cmd_label_session(args) -> None:
-    """Label every clip of a live session with one label, e.g. a streaming playlist that is all
-    human-made. Nothing to align against, so each 30 s clip becomes a segment as recorded.
+    """Label the clips of a live session: one label for all of them (e.g. a streaming playlist
+    that is all human-made), and/or a label per clip (--clip-label) where they differ. Nothing
+    to align against, so each 30 s clip becomes a segment as recorded.
     The session is one CV group (artists are unknown), so it is held out as a whole."""
+    per_clip = {}
+    for item in args.clip_label:
+        idx, _, lab = item.partition("=")
+        if not idx.strip().isdigit() or lab not in labels.CATEGORIES:
+            raise SystemExit(f"--clip-label {item!r}: expected INDEX=LABEL with LABEL one of {list(labels.CATEGORIES)}")
+        per_clip[int(idx)] = lab
+    if args.label is None and not per_clip:
+        raise SystemExit("pass --label for the whole session and/or --clip-label INDEX=LABEL")
     session, clips = _session_clips(args.api.rstrip("/"), args.session)
     sdir = CAPTURES / session
     if (sdir / "segments.csv").exists() and not args.force:
         raise SystemExit(f"{sdir}/segments.csv exists; pass --force to redo this session")
     (sdir / "segments").mkdir(parents=True, exist_ok=True)
-    label = 1 if args.label == "ai" else 0
     # A name with a prefix ("ai:The Velvet Sundown", "human:CHVRCHES") joins that existing training
     # group, so CV holds the phone clips out together with the artist's clean files.
     group = args.group if args.group and ":" in args.group else f"phone:{args.group or session[:8]}"
@@ -315,25 +325,31 @@ def cmd_label_session(args) -> None:
         if info.duration < MIN_SEGMENT_S:
             print(f"  clip {idx:3d}: {info.duration:.1f} s, shorter than one window; skipped")
             continue
-        name = f"clip{idx:03d}_{args.label}.wav"
+        lab = per_clip.get(idx, args.label)
+        if lab is None:
+            print(f"  clip {idx:3d}: no label; left out")
+            continue
+        name = f"clip{idx:03d}_{lab}.wav"
         dest = sdir / "segments" / name
         if not dest.exists():
             dest.write_bytes(Path(f).read_bytes())
         rows.append({
             "session_id": session, "playlist_id": "", "clip_index": idx, "clip_id": clip_id or "",
-            "segment": f"segments/{name}", "label": label,
+            "segment": f"segments/{name}", **labels.columns(lab),
             # Songs are unknown; each clip stands in for a "song" when scores are aggregated.
             "song_id": f"{session[:8]}-{idx:03d}", "group": group, "source_path": args.source,
             "source_start_s": "", "duration_s": round(info.duration, 2), "align_corr": "",
             "sample_rate": info.samplerate,
         })
     if not rows:
-        raise SystemExit("no clip long enough to use")
+        raise SystemExit("no labelled clip long enough to use")
     with (sdir / "segments.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
-    print(f"{session}: {len(rows)} clips labelled {args.label} "
+    counts = ", ".join(f"{sum(r['category'] == c for r in rows)} {c}" for c in labels.CATEGORIES
+                       if any(r["category"] == c for r in rows))
+    print(f"{session}: {len(rows)} clips labelled ({counts}) "
           f"({sum(r['duration_s'] for r in rows) / 60:.1f} min), group {group} -> {sdir}")
 
 
@@ -346,6 +362,13 @@ def cmd_score(args) -> None:
 
     sdir = CAPTURES / args.session
     segs = pd.read_csv(sdir / "segments.csv")
+    segs["category"] = [labels.category_of(r) for r in segs.to_dict("records")]
+    n_assisted = int((segs.category == "ai_assisted").sum())
+    segs = segs[segs.category.isin(labels.BINARY)]
+    if n_assisted:
+        print(f"  ({n_assisted} AI-assisted segments kept but not scored against Human-vs-AI)")
+    if segs.empty:
+        raise SystemExit("no Human/AI segments to score in this capture")
     model_run = args.model.resolve().parent.name
     norm = not args.no_normalize
     out = sdir / f"scores_{model_run}{'' if norm else '_unnormalized'}.csv"
@@ -393,7 +416,12 @@ def main() -> None:
     mt.add_argument("--force", action="store_true")
     ls = sub.add_parser("label-session", help="label every clip of a live session (e.g. an all-human streaming playlist)")
     ls.add_argument("--session", help="live session id (default: most recent)")
-    ls.add_argument("--label", required=True, choices=["human", "ai"])
+    ls.add_argument("--label", choices=list(labels.CATEGORIES),
+                    help="label for every clip: human, ai, or ai_assisted (human-made with AI parts, "
+                         "~10-50%% AI; kept but not used for Human-vs-AI training yet)")
+    ls.add_argument("--clip-label", action="append", default=[], metavar="INDEX=LABEL",
+                    help="label one clip differently, e.g. --clip-label 3=ai (repeatable). Clips with "
+                         "neither this nor --label are left out")
     ls.add_argument("--source", default="", help="what was played, e.g. 'Spotify: Indie Mix'")
     ls.add_argument("--group", help="CV group name (default: the session id); reuse a name to keep "
                                     "sessions of the same playlist/artists in one group. Use an existing "

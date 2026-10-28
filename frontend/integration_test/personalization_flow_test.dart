@@ -11,6 +11,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:wmg_detector/wmg_detector.dart';
 import 'package:wmg_frontend/data/api/spectro_api_client.dart';
+import 'package:wmg_frontend/data/labels/recording_label.dart';
 import 'package:wmg_frontend/data/personalization/personal_model.dart';
 import 'package:wmg_frontend/data/personalization/personalization_store.dart';
 import 'package:wmg_frontend/features/personalization/cubit/personalization_cubit.dart';
@@ -49,7 +50,7 @@ void main() {
     for (var i = 0; i < 4; i++) {
       final bright = i.isEven;
       final r = await detector.scorePcm16(_recording(i, bright: bright), 32000);
-      await cubit.labelRecording('rec-$i', bright ? 1 : 0, r.windows);
+      await cubit.labelRecording('rec-$i', bright ? AiCategory.ai : AiCategory.human, r.windows);
     }
     final c = cubit.state.counts;
     expect(c.aiRecordings, 2);

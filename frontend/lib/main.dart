@@ -8,6 +8,7 @@ import 'data/api/spectro_api_client.dart';
 import 'data/recorder/audio_recorder_service.dart';
 import 'data/repository/identification_repository.dart';
 import 'features/recognizer/view/recognizer_page.dart';
+import 'features/results/data/session_history_store.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,7 @@ void main() {
       providers: [
         RepositoryProvider.value(value: config),
         RepositoryProvider.value(value: api),
+        RepositoryProvider(create: (_) => SessionHistoryStore()),
         RepositoryProvider(
           create: (_) => AudioRecorderService(),
           dispose: (recorder) => recorder.dispose(),

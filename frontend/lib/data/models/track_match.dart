@@ -27,6 +27,20 @@ class TrackMatch extends Equatable {
     acrid: json['acrid'] as String?,
   );
 
+  /// Same keys as [TrackMatch.fromJson], for saving sessions on device.
+  Map<String, dynamic> toJson() => {
+    'source': source,
+    if (title != null) 'title': title,
+    'artists': artists,
+    if (album != null) 'album': album,
+    if (label != null) 'label': label,
+    if (releaseDate != null) 'release_date': releaseDate,
+    if (score != null) 'score': score,
+    if (durationMs != null) 'duration_ms': durationMs,
+    if (playOffsetMs != null) 'play_offset_ms': playOffsetMs,
+    if (acrid != null) 'acrid': acrid,
+  };
+
   final String source;
   final String? title;
   final List<String> artists;

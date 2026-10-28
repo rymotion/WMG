@@ -1,3 +1,4 @@
+import '../../../data/labels/recording_label.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/gestures.dart' show PointerPanZoomUpdateEvent;
@@ -6,6 +7,7 @@ import 'package:wmg_detector/wmg_detector.dart';
 
 import '../models/on_device_detection.dart';
 import '../models/spectrogram.dart';
+import 'spectrogram_tiles.dart';
 
 /// A span of stream time drawn over the spectrogram, e.g. one saved clip.
 typedef SpectrogramRegion = ({double startS, double endS});
@@ -34,12 +36,16 @@ class WindowScoreChart extends StatelessWidget {
     required this.startS,
     required this.endS,
     this.height = 56,
+    this.label,
   });
 
   final List<ScoreSeries> scores;
   final double startS;
   final double endS;
   final double height;
+
+  /// The recording's label: shades its AI-share band and marks the chart in its colour.
+  final AiCategory? label;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +63,7 @@ class WindowScoreChart extends StatelessWidget {
               endS: endS,
               regions: const [],
               highlight: null,
+              label: label,
             ),
           ),
         ),
@@ -88,9 +95,13 @@ class SpectrogramView extends StatefulWidget {
     this.regions = const [],
     this.highlight,
     this.scores = const [],
+    this.playheadS,
+    this.onTapTime,
+    this.endLabel = 'Back to live',
     this.height = 128,
     this.scoreHeight = 56,
     this.width = double.infinity,
+    this.label,
   });
 
   final Spectrogram spectrogram;
@@ -104,9 +115,21 @@ class SpectrogramView extends StatefulWidget {
 
   /// Window P(AI) series; the chart is hidden when empty.
   final List<ScoreSeries> scores;
+
+  /// Playback position, drawn as a line; the view follows it when it leaves the screen.
+  final double? playheadS;
+
+  /// Called with the stream time under a tap, e.g. to seek playback there.
+  final ValueChanged<double>? onTapTime;
+
+  /// Tooltip of the button that jumps back to the newest audio.
+  final String endLabel;
   final double height;
   final double scoreHeight;
   final double width;
+
+  /// The recording's label, drawn on the P(AI) chart (see [WindowScoreChart.label]).
+  final AiCategory? label;
 
   @override
   State<SpectrogramView> createState() => _SpectrogramViewState();
@@ -136,6 +159,14 @@ class _SpectrogramViewState extends State<SpectrogramView>
   static const _minSpanS = 2.0;
   static const _maxSpanS = 120.0;
 
+  /// Image tiles of the spectrogram, repainted as they become ready.
+  late final _tiles = SpectrogramTiles(
+    onChanged: () {
+      if (mounted) setState(() => _tileRevision++);
+    },
+  );
+  int _tileRevision = 0;
+
   /// Touch points on the view, for pinch-to-zoom.
   final _pointers = <int, Offset>{};
   ({double distance, double spanS, double fx, double timeS})? _pinch;
@@ -162,6 +193,7 @@ class _SpectrogramViewState extends State<SpectrogramView>
   void initState() {
     super.initState();
     widget.controller?._view = this;
+    _tiles.update(widget.spectrogram);
     _anim.addListener(() => setState(() {}));
     _anim.addStatusListener((status) {
       if (status == AnimationStatus.completed) _settle(_seek!.value);
@@ -175,14 +207,28 @@ class _SpectrogramViewState extends State<SpectrogramView>
       if (old.controller?._view == this) old.controller!._view = null;
       widget.controller?._view = this;
     }
+    _tiles.update(widget.spectrogram);
     // A new session starts from scratch.
     if (_liveEnd < _liveEndOf(old)) _followLive();
+    _keepPlayheadInView(old.playheadS);
+  }
+
+  /// Pages the view along with playback, unless the user is holding it.
+  void _keepPlayheadInView(double? previous) {
+    final t = widget.playheadS;
+    final held = _pointers.isNotEmpty || _seek != null;
+    if (t == null || t == previous || held) return;
+    final end = _viewEnd;
+    if (t >= end - _spanS && t <= end) return;
+    _end = _clampEnd(t + _spanS * (1 - _seekLead));
+    if (_end! >= _liveEnd) _end = null;
   }
 
   @override
   void dispose() {
     if (widget.controller?._view == this) widget.controller!._view = null;
     _anim.dispose();
+    _tiles.dispose();
     super.dispose();
   }
 
@@ -292,6 +338,10 @@ class _SpectrogramViewState extends State<SpectrogramView>
     }
     final end = _viewEnd;
     final start = end - _spanS;
+    if (!_spec.isEmpty) {
+      final perTile = SpectrogramTiles.tileFrames * _spec.hopS;
+      _tiles.request((start / perTile).floor(), (end / perTile).floor());
+    }
     return _frame(
       widget.height + (showScores ? 1 + widget.scoreHeight : 0),
       Stack(
@@ -303,7 +353,7 @@ class _SpectrogramViewState extends State<SpectrogramView>
               right: 4,
               top: 4,
               child: IconButton(
-                tooltip: 'Back to live',
+                tooltip: widget.endLabel,
                 visualDensity: VisualDensity.compact,
                 color: Colors.white,
                 icon: const Icon(Icons.fast_forward_rounded),
@@ -336,6 +386,17 @@ class _SpectrogramViewState extends State<SpectrogramView>
           behavior: HitTestBehavior.opaque,
           onHorizontalDragUpdate: (d) => _onDrag(d, constraints.maxWidth),
           onDoubleTap: _resetZoom,
+          onTapUp: widget.onTapTime == null
+              ? null
+              : (d) => widget.onTapTime!(
+                  math.max(
+                    0,
+                    start +
+                        d.localPosition.dx /
+                            constraints.maxWidth *
+                            (end - start),
+                  ),
+                ),
           child: Column(
             children: [
               SizedBox(
@@ -351,10 +412,13 @@ class _SpectrogramViewState extends State<SpectrogramView>
                       CustomPaint(
                         painter: _SpectrogramPainter(
                           spec: _spec,
+                          tiles: _tiles,
+                          tileRevision: _tileRevision,
                           startS: start,
                           endS: end,
                           regions: widget.regions,
                           highlight: widget.highlight,
+                          playheadS: widget.playheadS,
                         ),
                       ),
                     Positioned(
@@ -384,6 +448,8 @@ class _SpectrogramViewState extends State<SpectrogramView>
                           endS: end,
                           regions: widget.regions,
                           highlight: widget.highlight,
+                          playheadS: widget.playheadS,
+                          label: widget.label,
                         ),
                       ),
                       const Positioned(left: 8, top: 2, child: _Label('P(AI)')),
@@ -412,12 +478,15 @@ class _SpectrogramViewState extends State<SpectrogramView>
     );
   }
 
-  Widget _frame(double height, Widget child) => ClipRRect(
-    borderRadius: BorderRadius.circular(8),
-    child: SizedBox(
-      height: height,
-      width: double.infinity,
-      child: ColoredBox(color: Colors.black, child: child),
+  // Its own layer, so the page around it (the mic level, timers) never repaints it.
+  Widget _frame(double height, Widget child) => RepaintBoundary(
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: SizedBox(
+        height: height,
+        width: double.infinity,
+        child: ColoredBox(color: Colors.black, child: child),
+      ),
     ),
   );
 
@@ -455,6 +524,7 @@ void _paintOverlays(
   double Function(double) xOfTime,
   List<SpectrogramRegion> regions,
   SpectrogramRegion? highlight,
+  double? playheadS,
 ) {
   if (highlight != null) {
     final rect = Rect.fromLTRB(
@@ -485,6 +555,19 @@ void _paintOverlays(
       canvas.drawLine(Offset(x, 0), Offset(x, size.height), marker);
     }
   }
+
+  if (playheadS != null) {
+    final x = xOfTime(playheadS);
+    if (x >= 0 && x <= size.width) {
+      canvas.drawLine(
+        Offset(x, 0),
+        Offset(x, size.height),
+        Paint()
+          ..color = Colors.amberAccent
+          ..strokeWidth = 2,
+      );
+    }
+  }
 }
 
 bool _sameRegions(List<SpectrogramRegion> a, List<SpectrogramRegion> b) {
@@ -498,69 +581,69 @@ bool _sameRegions(List<SpectrogramRegion> a, List<SpectrogramRegion> b) {
 class _SpectrogramPainter extends CustomPainter {
   _SpectrogramPainter({
     required this.spec,
+    required this.tiles,
+    required this.tileRevision,
     required this.startS,
     required this.endS,
     required this.regions,
     required this.highlight,
+    required this.playheadS,
   });
 
   final Spectrogram spec;
+  final SpectrogramTiles tiles;
+
+  /// Bumped when a tile image lands, so the painter knows to repaint.
+  final int tileRevision;
 
   /// Stream time at the left and right edges (fractional while scrubbing).
   final double startS;
   final double endS;
   final List<SpectrogramRegion> regions;
   final SpectrogramRegion? highlight;
+  final double? playheadS;
 
   @override
   void paint(Canvas canvas, Size size) {
     final xOfTime = _timeToX(size, startS, endS);
-    final colWidth = size.width / ((endS - startS) / spec.hopS);
-    // Zoomed out, frames narrower than a pixel are skipped, so cost stays ~width × bins.
-    final stride = math.max(1, (1 / colWidth).ceil());
-
-    final paint = Paint()..isAntiAlias = false;
-    final floor = spec.dbFloor;
-    // Only the frames on screen; the session can hold tens of thousands.
-    final last = (endS / spec.hopS).ceil();
-    final first = (startS / spec.hopS).floor();
-    // Aligned to the stride so the sampled frames don't shimmer while scrolling.
-    for (var f = first - first % stride; f < last; f += stride) {
-      final frame = spec.frameAt(f);
-      if (frame == null || frame.isEmpty) continue;
-      final bins = frame.length;
-      final rowHeight = size.height / bins;
-      final left = xOfTime(f * spec.hopS);
-      for (var b = 0; b < bins; b++) {
-        // Absolute dB: floor → 0, ~0 dBFS → 1. Same mapping as the guide's canvas example.
-        final v = ((frame[b] - floor) / -floor).clamp(0.0, 1.0);
-        paint.color = HSLColor.fromAHSL(
-          1,
-          (280 - v * 240) % 360,
-          0.9,
-          v * 0.6,
-        ).toColor();
-        canvas.drawRect(
-          Rect.fromLTWH(
-            left,
-            size.height - (b + 1) * rowHeight,
-            colWidth * stride + 0.5,
-            rowHeight + 0.5,
-          ),
-          paint,
-        );
-      }
+    const frames = SpectrogramTiles.tileFrames;
+    final perTile = frames * spec.hopS;
+    // Nearest-neighbour keeps cells crisp when zoomed in; zoomed out the GPU downsamples.
+    final paint = Paint()..filterQuality = FilterQuality.none;
+    canvas.save();
+    canvas.clipRect(Offset.zero & size);
+    for (
+      var k = (startS / perTile).floor();
+      k <= (endS / perTile).floor();
+      k++
+    ) {
+      final image = k < 0 ? null : tiles[k];
+      if (image == null) continue;
+      canvas.drawImageRect(
+        image,
+        Rect.fromLTWH(0, 0, frames.toDouble(), image.height.toDouble()),
+        Rect.fromLTRB(
+          xOfTime(k * perTile),
+          0,
+          xOfTime((k + 1) * perTile),
+          size.height,
+        ),
+        paint,
+      );
     }
+    canvas.restore();
 
-    _paintOverlays(canvas, size, xOfTime, regions, highlight);
+    _paintOverlays(canvas, size, xOfTime, regions, highlight, playheadS);
   }
 
   @override
   bool shouldRepaint(_SpectrogramPainter old) =>
       old.spec != spec ||
+      old.tileRevision != tileRevision ||
       old.startS != startS ||
       old.endS != endS ||
       old.highlight != highlight ||
+      old.playheadS != playheadS ||
       !_sameRegions(old.regions, regions);
 }
 
@@ -573,13 +656,20 @@ class _ScorePainter extends CustomPainter {
     required this.endS,
     required this.regions,
     required this.highlight,
+    this.playheadS,
+    this.label,
   });
 
   final List<ScoreSeries> series;
+
+  /// Labelled recordings get their category's AI-share band shaded (e.g. 10–50% for
+  /// AI-assisted) with dashed edges, and a strip in the category colour along the top.
+  final AiCategory? label;
   final double startS;
   final double endS;
   final List<SpectrogramRegion> regions;
   final SpectrogramRegion? highlight;
+  final double? playheadS;
 
   /// Keeps dots at 0 and 1 from being clipped.
   static const _pad = 6.0;
@@ -603,7 +693,22 @@ class _ScorePainter extends CustomPainter {
       canvas.drawLine(Offset(x, mid), Offset(x + 4, mid), dash);
     }
 
-    _paintOverlays(canvas, size, xOfTime, regions, highlight);
+    final l = label;
+    if (l != null) {
+      final band = Rect.fromLTRB(0, yOf(l.aiShareMax), size.width, yOf(l.aiShareMin));
+      canvas.drawRect(band, Paint()..color = l.color.withValues(alpha: 0.18));
+      final edge = Paint()
+        ..color = l.color.withValues(alpha: 0.7)
+        ..strokeWidth = 1;
+      for (final y in [band.top, band.bottom]) {
+        for (var x = 0.0; x < size.width; x += 6) {
+          canvas.drawLine(Offset(x, y), Offset(x + 3, y), edge);
+        }
+      }
+      canvas.drawRect(Rect.fromLTWH(0, 0, size.width, 3), Paint()..color = l.color);
+    }
+
+    _paintOverlays(canvas, size, xOfTime, regions, highlight, playheadS);
 
     for (final s in series) {
       final line = Path();
@@ -635,6 +740,8 @@ class _ScorePainter extends CustomPainter {
       old.startS != startS ||
       old.endS != endS ||
       old.highlight != highlight ||
+      old.label != label ||
+      old.playheadS != playheadS ||
       !_sameRegions(old.regions, regions) ||
       old.series.length != series.length ||
       [

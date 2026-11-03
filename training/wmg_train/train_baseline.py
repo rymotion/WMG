@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import time
 from pathlib import Path
 
@@ -106,7 +107,7 @@ def split_windows(x, index: pd.DataFrame, parts: int) -> tuple[SplitWindows, pd.
 
 
 def load_cfg(window_seconds: int) -> dict:
-    cfg = yaml.safe_load(CFG.read_text())
+    cfg = yaml.safe_load(Path(os.environ.get("WMG_STUDENT_CFG", CFG)).read_text())
     cfg["input"]["frames"] = 1000 * window_seconds // 10
     cfg["input"]["window_seconds"] = window_seconds
     return cfg

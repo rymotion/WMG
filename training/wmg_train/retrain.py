@@ -12,7 +12,12 @@
                session not captured yet, or captured from the app with different labels
                (audio comes from the backend). Conflicting labels are reported, never guessed.
   2. cache     rebuild cache-phone (AI-assisted recordings are kept but skipped).
-  3. train     10 s model, then 5 s model, same settings as the bundled ones.
+  3. train     10 s model, then 5 s model, same settings as the bundled ones -- on this Mac, or
+               with `--trainer modal` (or WMG_TRAINER=modal) on a Modal GPU: the feature caches
+               go to a Modal Volume and the run folder comes back (training/modal_app.py,
+               wmg_train/cloud.py), or with `--trainer baseten` as a Baseten training job: the
+               caches go to an R2/S3 bucket (training/baseten/, wmg_train/baseten_cloud.py).
+               Audio never leaves the Mac.
   4. compare   each new model against the one in the app, on its own cross-validation:
                confound gate, clean and phone AUC, AI recall and human false positives
                (allowed movement in TOLERANCE). Always reported.
@@ -68,6 +73,7 @@ TOLERANCE = {"song_auc": (0.01, 1), "phone_auc": (0.02, 1), "ai_recall": (0.05, 
              "phone_ai_recall": (0.05, 1), "phone_human_fpr": (0.05, -1)}
 GATE_RANGE = (0.40, 0.55)
 MIN_FREE_GB = 4
+WHERE = {"local": "on this Mac", "modal": "on Modal", "baseten": "on Baseten"}
 STEPS = ["labels", "cache", "train_10s", "train_5s", "compare", "install", "build_app"]
 
 
@@ -93,10 +99,11 @@ def write_json(p: Path, data) -> None:
 class Run:
     """Status of the current run, rewritten to status.json on every change."""
 
-    def __init__(self, build_app: bool):
+    def __init__(self, build_app: bool, trainer: str = "local"):
         self.s = {"state": "running", "pid": os.getpid(), "started_at": now(), "finished_at": None,
                   "step": None, "steps": {k: {"state": "pending"} for k in STEPS if k != "build_app" or build_app},
-                  "labels": None, "comparison": None, "installed": None, "message": None, "last_line": ""}
+                  "labels": None, "comparison": None, "installed": None, "message": None, "last_line": "",
+                  "trainer": trainer}
         self._t = 0.0
         self.save()
 
@@ -260,12 +267,51 @@ def step_labels(run: Run, args) -> dict:
 # ---------------------------------------------------------------- 3/4. train + compare
 
 def train(run: Run, name: str) -> Path:
+    if run.s.get("trainer") == "modal":
+        return train_on_modal(run, name)
+    if run.s.get("trainer") == "baseten":
+        return train_on_baseten(run, name)
     before = set(RUNS.iterdir()) if RUNS.exists() else set()
     rc = sh([PY, "-m", "wmg_train.train_baseline", *TRAIN_ARGS, *MODELS[name]], run)
     new = sorted(p for p in set(RUNS.iterdir()) - before if (p / "model.pt").exists())
     if rc != 0 or not new:
         raise StepFailed(f"{name} training failed (exit {rc}); see training/retrain/retrain.log")
     return new[-1]
+
+
+def train_on_modal(run: Run, name: str) -> Path:
+    """Same step on a Modal GPU (training/modal_app.py): caches up, run folder back."""
+    from . import cloud
+
+    def line(text: str) -> None:
+        log(text)
+        run.line(text)
+
+    try:
+        run.step(f"train_{name}", "running", "syncing feature caches to Modal")
+        cloud.sync_caches(line)
+        run.step(f"train_{name}", "running", "training on Modal")
+        return cloud.train_remote(name, MODELS[name], line)
+    except cloud.CloudError as e:
+        raise StepFailed(str(e)) from e
+
+
+def train_on_baseten(run: Run, name: str) -> Path:
+    """Same step as a Baseten training job (training/baseten/): caches to the bucket, run folder back."""
+    from . import baseten_cloud
+    from .cloud import CloudError
+
+    def line(text: str) -> None:
+        log(text)
+        run.line(text)
+
+    try:
+        run.step(f"train_{name}", "running", "syncing feature caches to the bucket")
+        baseten_cloud.sync_caches(line)
+        run.step(f"train_{name}", "running", "training on Baseten")
+        return baseten_cloud.train_remote(name, MODELS[name], line)
+    except CloudError as e:
+        raise StepFailed(str(e)) from e
 
 
 def installed_run(name: str) -> str | None:
@@ -359,7 +405,7 @@ def finish_message(installed: dict, build_app: bool) -> str:
 def cmd_run(args) -> None:
     lock = take_lock()  # noqa: F841  held until exit
     LOG.write_text("")
-    run = Run(args.build_app)
+    run = Run(args.build_app, getattr(args, "trainer", "local"))
     signal.signal(signal.SIGTERM, _cancel)
     try:
         free = shutil.disk_usage(TRAINING).free / 1e9
@@ -455,9 +501,12 @@ def cmd_decide(args) -> None:
 class Server:
     proc: subprocess.Popen | None = None
     lock = threading.Lock()
+    trainer = "local"  # where `run` trains; set by `serve --trainer`
 
     @classmethod
     def spawn(cls, argv: list[str]) -> None:
+        if argv[0] == "run":
+            argv = [*argv, "--trainer", cls.trainer]
         cls.proc = subprocess.Popen([PY, "-m", "wmg_train.retrain", *argv], cwd=TRAINING,
                                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                                     start_new_session=True)
@@ -473,7 +522,7 @@ class Server:
             tail = []
         return {**s, "log_tail": tail, "pending": read_json(PENDING),
                 "current": {k: installed_run(k) for k in META},
-                "built_app": BUILT_APP.exists()}
+                "built_app": BUILT_APP.exists(), "trainer": s.get("trainer") or Server.trainer}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -537,8 +586,10 @@ class Handler(BaseHTTPRequestHandler):
 
 def cmd_serve(args) -> None:
     STATE.mkdir(parents=True, exist_ok=True)
+    Server.trainer = args.trainer
     srv = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
-    print(f"retrain service on http://127.0.0.1:{args.port} (app: Training page -> Retrain models). Ctrl-C to stop.")
+    print(f"retrain service on http://127.0.0.1:{args.port} (app: Training page -> Retrain models); "
+          f"training runs {WHERE[args.trainer]}. Ctrl-C to stop.")
     srv.serve_forever()
 
 
@@ -561,6 +612,11 @@ def main() -> None:
     sub.add_parser("reject", help="discard the held models and keep the current ones")
     s = sub.add_parser("serve", help="HTTP service for the app's Retrain button")
     s.add_argument("--port", type=int, default=9100)
+    for p in (r, s):
+        p.add_argument("--trainer", choices=["local", "modal", "baseten"], default=os.environ.get("WMG_TRAINER", "local"),
+                       help="where the two models train: this Mac (default, or $WMG_TRAINER), Modal "
+                            "(training/modal_app.py; needs `modal setup` + `modal deploy modal_app.py` once) "
+                            "or Baseten (training/baseten/; needs `truss login` and WMG_BUCKET)")
     sub.add_parser("status")
     args = ap.parse_args()
     {"run": cmd_run, "approve": cmd_decide, "reject": cmd_decide, "serve": cmd_serve, "status": cmd_status}[args.cmd](args)

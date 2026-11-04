@@ -88,12 +88,12 @@ From docs.baseten.co (Training, Truss, Deployments):
 Replace only the training step. The Mac still does labels, the cache, compare and install. This
 step exists to prove that Baseten gives the same metrics.
 
-**Status (2026-11-02):** the code is written and unit-tested against fakes; no job has run on
-Baseten yet. It differs from the outline below in one way: the job copies the caches from the
-bucket into `$BT_PROJECT_CACHE_DIR` with boto3, keyed by fingerprint, instead of mounting them
-through BDN `weights`. That means one auth path (the two secrets) for both reading caches and
-writing runs. Moving to BDN mounts later is an optimization. Setup steps are in the training
-README under "Training on Baseten".
+**Status (2026-11-03):** the code is written and unit-tested against fakes; no job has run on
+Baseten yet. It differs from the outline below: there is no bucket. Caches ride along in the job
+upload the first time a fingerprint is used and are kept in `$BT_PROJECT_CACHE_DIR`; the run
+folder comes back through Baseten's checkpoint downloads. No secrets are needed beyond the
+Baseten API key in `~/.trussrc`. A bucket (or BDN mounts) comes back if the caches outgrow the
+5 GB upload limit. Setup steps are in the training README under "Training on Baseten".
 
 - `training/baseten/config.py`
   - `Image`: a PyTorch CUDA base image, with the same pins as `modal_app.py` installed in `run.sh`

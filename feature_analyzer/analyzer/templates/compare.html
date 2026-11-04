@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Compare · WMG analyzer{% endblock %}
+{% block content %}
+<h1>Compare</h1>
+{% if problem %}
+<div class="notice">{{ problem }}</div>
+<form method="get" action="/compare">
+{% for a in all_analyses %}<label style="font-weight:normal"><input type="checkbox" name="ids" value="{{ a.id }}" {{ 'checked' if a in analyses }}> {{ a.name }} <span class="muted">{{ a.category or '' }}</span></label>{% endfor %}
+<p><button type="submit">Compare</button></p>
+</form>
+{% endif %}
+{% if analyses | length >= 2 %}
+<div class="legend"><span class="in-human">human band</span><span class="in-ai">ai band</span><span class="in-both">both</span><span class="in-neither">neither</span> (p10–p90 of the training set)</div>
+<div class="wrap">
+<table>
+<tr><th></th>{% for a in analyses %}<th><a href="/analyses/{{ a.id }}">{{ a.name }}</a><br><span class="muted">{{ a.category or 'unknown' }} {{ a.generator }} {{ a.artist }}</span></th>{% endfor %}</tr>
+<tr><th>verdict</th>{% for a in analyses %}{% set v = a.verdict() %}<td class="{{ v.css }}" title="{{ v.reason }}">{{ v.label }}{% if v.estimate != '–' %}<br><span class="muted">{{ v.estimate }}</span>{% endif %}</td>{% endfor %}</tr>
+{% for m in MODEL_NAMES %}
+<tr><th>P(AI) {{ m }} model</th>{% for a in analyses %}<td class="num {{ a.p_ai(m) | pclass }}">{{ a.p_ai(m) | fmt }}</td>{% endfor %}</tr>
+{% endfor %}
+{% for b in ['bass', 'mid', 'treble'] %}
+<tr><th>band {{ b }} (10 s)</th>{% for a in analyses %}{% set s = a.scores.get('10s') or {} %}<td class="num">{{ (s.band_scores or {}).get(b) | fmt(2) }}</td>{% endfor %}</tr>
+{% endfor %}
+<tr><th>AI windows (10 s, P ≥ 0.5)</th>{% for a in analyses %}{% set w = (a.scores.get('10s') or {}).get('windows') or [] %}<td class="num">{% if w %}{{ (w | selectattr('p_ai', '>=', 0.5) | list | length) }} / {{ w | length }}{% else %}–{% endif %}</td>{% endfor %}</tr>
+<tr><th>sample rate / codec / kbps</th>{% for a in analyses %}<td>{{ a.profile.sample_rate }} / {{ a.profile.codec or '–' }} / {{ a.profile.bitrate_kbps or '–' }}</td>{% endfor %}</tr>
+<tr><th>duration / RMS dBFS</th>{% for a in analyses %}<td>{{ a.profile.duration_s | fmt }} s / {{ a.profile.rms_dbfs }}</td>{% endfor %}</tr>
+{% for c in CONDITIONS %}
+<tr><th colspan="{{ analyses | length + 1 }}" style="background:#e9e9ee">hand-crafted features, {{ c }}</th></tr>
+{% for i in range(rows[analyses[0].id] | length) %}{% set name = rows[analyses[0].id][i].name %}
+<tr><th title="{{ rows[analyses[0].id][i].help }}">{{ name }}<br><span class="muted" style="font-weight:normal">h {{ rows[analyses[0].id][i].conds[c].human | band }}<br>ai {{ rows[analyses[0].id][i].conds[c].ai | band }}</span></th>
+{% for a in analyses %}{% set x = rows[a.id][i].conds[c] %}<td class="num {{ 'in-' + x.where if x.where }}">{{ x.value | fmt }}</td>{% endfor %}</tr>
+{% endfor %}
+{% endfor %}
+<tr><th colspan="{{ analyses | length + 1 }}" style="background:#e9e9ee">side features (median over windows)</th></tr>
+{% for k in SIDE_KEYS %}
+<tr><th>{{ k }}</th>{% for a in analyses %}<td class="num">{{ (a.side_features | map(attribute=k) | list | median) | fmt }}</td>{% endfor %}</tr>
+{% endfor %}
+</table>
+</div>
+<h2>Heatmaps</h2>
+<div class="grid">
+{% for a in analyses %}<div>{% if a.images.heatmap_10s %}<img class="plot" src="/analyses/{{ a.id }}/files/{{ a.images.heatmap_10s }}">{% endif %}</div>{% endfor %}
+</div>
+<h2>Spectra</h2>
+<div class="grid">
+{% for a in analyses %}<div>{% if a.images.spectrum %}<img class="plot" src="/analyses/{{ a.id }}/files/{{ a.images.spectrum }}">{% endif %}</div>{% endfor %}
+</div>
+{% endif %}
+{% endblock %}

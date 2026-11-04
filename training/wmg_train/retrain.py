@@ -297,7 +297,8 @@ def train_on_modal(run: Run, name: str) -> Path:
 
 
 def train_on_baseten(run: Run, name: str) -> Path:
-    """Same step as a Baseten training job (training/baseten/): caches to the bucket, run folder back."""
+    """Same step as a Baseten training job (training/baseten/): caches go up with the job when the
+    project doesn't have them yet, the run folder comes back."""
     from . import baseten_cloud
     from .cloud import CloudError
 
@@ -306,8 +307,6 @@ def train_on_baseten(run: Run, name: str) -> Path:
         run.line(text)
 
     try:
-        run.step(f"train_{name}", "running", "syncing feature caches to the bucket")
-        baseten_cloud.sync_caches(line)
         run.step(f"train_{name}", "running", "training on Baseten")
         return baseten_cloud.train_remote(name, MODELS[name], line)
     except CloudError as e:

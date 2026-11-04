@@ -54,11 +54,15 @@ class _RetrainSectionState extends State<RetrainSection> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('Retrain on the Mac', style: theme.textTheme.titleMedium),
+              Text(s.onModal ? 'Retrain (training on Modal)' : 'Retrain on the Mac', style: theme.textTheme.titleMedium),
               const SizedBox(height: 4),
               Text(
-                'Retrains the 10 s and 5 s models from every labelled recording (about 75 minutes), '
-                'compares them with the current ones and installs them if they are not worse.',
+                s.onModal
+                    ? 'Retrains the 10 s and 5 s models from every labelled recording on a Modal GPU '
+                          '(only the feature caches are uploaded, never audio), compares them with the '
+                          'current ones and installs them here if they are not worse.'
+                    : 'Retrains the 10 s and 5 s models from every labelled recording (about 75 minutes), '
+                          'compares them with the current ones and installs them if they are not worse.',
                 style: theme.textTheme.bodySmall,
               ),
               if (s.current.isNotEmpty) ...[

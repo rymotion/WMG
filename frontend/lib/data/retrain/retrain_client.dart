@@ -114,6 +114,7 @@ class RetrainStatus extends Equatable {
     this.newRecordings = 0,
     this.conflicts = 0,
     this.startedAt,
+    this.trainer = 'local',
   });
 
   factory RetrainStatus.fromJson(Map<String, dynamic> j) {
@@ -142,6 +143,7 @@ class RetrainStatus extends Equatable {
       newRecordings: (labels?['new'] as List?)?.length ?? 0,
       conflicts: (labels?['conflicts'] as List?)?.length ?? 0,
       startedAt: DateTime.tryParse(j['started_at'] as String? ?? ''),
+      trainer: j['trainer'] as String? ?? 'local',
     );
   }
 
@@ -161,11 +163,16 @@ class RetrainStatus extends Equatable {
   final int conflicts;
   final DateTime? startedAt;
 
+  /// Where the service trains: `local` (this Mac) or `modal` (cloud GPU).
+  final String trainer;
+
   bool get running => state == 'running';
   bool get awaitingApproval => state == 'awaiting_approval';
+  bool get onModal => trainer == 'modal';
 
   @override
   List<Object?> get props => [
     state, step, steps, message, lastLine, comparison, current, builtApp, newRecordings, conflicts, startedAt,
+    trainer,
   ];
 }

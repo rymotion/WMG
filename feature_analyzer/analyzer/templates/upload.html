@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Upload · WMG analyzer{% endblock %}
+{% block content %}
+<h1>Upload</h1>
+{% if problems %}<div class="error">{% for p in problems %}{{ p }}<br>{% endfor %}</div>{% endif %}
+<p class="muted">Audio never leaves this Mac. Uploaded copies go to <code>{{ data_dir }}/uploads/</code>; a folder path is analysed in place.
+Each file is cached by content hash, so the same file is not analysed twice unless you tick "re-analyse".</p>
+<form method="post" action="/upload" enctype="multipart/form-data">
+  <label>Files (any format afconvert can read: m4a, mp3, wav, flac, aiff, …)</label>
+  <input type="file" name="files" multiple accept="audio/*,.m4a,.mp3,.wav,.flac,.aiff,.aif,.aac,.ogg,.caf">
+  <label>… or a file / folder path on this Mac (folders are scanned recursively, 200 files max)</label>
+  <input type="text" name="folder" placeholder="/Users/you/Music/suno exports">
+  <label>Category (optional)</label>
+  <select name="category">
+    <option value="">unknown</option>
+    {% for c in CATEGORIES %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
+  </select>
+  <label>Generator (for AI / AI-assisted)</label>
+  <input type="text" name="generator" placeholder="suno v4, udio, …">
+  <label>Artist (for human / AI-assisted)</label>
+  <input type="text" name="artist">
+  <label>Notes</label>
+  <textarea name="notes"></textarea>
+  <label><input type="checkbox" name="force" value="1"> re-analyse even if cached</label>
+  <p><button class="primary" type="submit">Analyse</button></p>
+</form>
+{% endblock %}

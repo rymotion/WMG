@@ -26,7 +26,7 @@ export = ["onnx>=1.16", "onnxruntime>=1.17"]
 # Training on a Modal GPU (`retrain --trainer modal`, modal_app.py).
 cloud = ["modal>=1.0"]
 # Training as a Baseten training job (`retrain --trainer baseten`, baseten/config.py).
-baseten = ["truss>=0.18", "boto3>=1.34"]
+baseten = ["truss>=0.18"]
 
 [project.scripts]
 wmg-check = "wmg_train.cli:main"

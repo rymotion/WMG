@@ -1,0 +1,15 @@
+{% if not rs.reachable %}
+<div class="error"><strong>Retrain service unreachable</strong> ({{ rs.error }}): {{ rs.hint }}</div>
+<div data-active="0"></div>
+{% else %}{% set s = rs.status %}
+<dl>
+  <dt>state</dt><dd><strong>{{ s.state }}</strong> {{ s.message or '' }}</dd>
+  <dt>trainer</dt><dd>{{ s.trainer }}</dd>
+  <dt>installed runs</dt><dd>{% for k, v in (s.current or {}).items() %}{{ k }}: {{ v }}{{ ' · ' if not loop.last }}{% endfor %}</dd>
+  {% if s.steps %}<dt>steps</dt><dd>{% for st in s.steps %}{{ st.name if st.name is defined else st }}{% if st.state is defined %} ({{ st.state }}){% endif %}{{ ', ' if not loop.last }}{% endfor %}</dd>{% endif %}
+  {% if s.pending %}<dt>pending approval</dt><dd>{{ s.pending }}</dd>{% endif %}
+  <dt>built app</dt><dd>{{ 'yes' if s.built_app else 'no' }}</dd>
+</dl>
+{% if s.log_tail %}<pre>{{ s.log_tail | join('\n') }}</pre>{% endif %}
+<div data-active="{{ 1 if s.state == 'running' else 0 }}"></div>
+{% endif %}

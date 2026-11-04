@@ -1,22 +1,22 @@
 """Training on Baseten (`retrain run --trainer baseten`; the job is defined in training/baseten/).
 
-    python -m wmg_train.baseten_cloud sync                 # upload cache-v3 / cache-phone if they changed
-    python -m wmg_train.baseten_cloud train 10s|5s         # train one model on Baseten, download runs/<ts>/
-    python -m wmg_train.baseten_cloud smoke                # one short epoch, no CV folds
-    python -m wmg_train.baseten_cloud job                  # inside the Baseten container (baseten/run.sh)
+    python -m wmg_train.baseten_cloud train 10s|5s [--reseed]   # train one model, download runs/<ts>/
+    python -m wmg_train.baseten_cloud smoke [--reseed]          # one short epoch, no CV folds
+    python -m wmg_train.baseten_cloud job                       # inside the container (baseten/run.sh)
 
-An S3-compatible bucket (R2 or S3) sits between the Mac and the job, because the caches are far
-over Baseten's upload limit and its checkpoint links expire after 7 days:
+Everything goes through Baseten; there is no bucket of our own:
 
-    caches/<cache>/<fingerprint>/...   immutable; written by `sync`, read by the job
-    runs/<ts>/...                      the finished run folder, written by the job
-    jobs/<tag>.json                    {"run", "rc", "device"} of one job
+- Feature caches (derived log-mels, no audio) ride along in the job upload, but only when this
+  Mac hasn't shipped that fingerprint to the project yet (.baseten-seeded.json). The job copies
+  them into the project cache ($BT_PROJECT_CACHE_DIR/caches/<cache>/<fingerprint>/), which
+  persists between jobs, so later jobs upload only code. If Baseten ever drops the project cache,
+  the job says so; rerun with --reseed.
+- The job trains into $BT_CHECKPOINT_DIR; the finished run folder comes back through the
+  checkpoint download links into training/runs/, so compare/install work exactly as with a
+  local run.
 
-Only the feature caches go up (derived log-mels, no audio); the run folder comes back into
-training/runs/ so compare/install work exactly as with a local run. Bucket settings: WMG_BUCKET,
-WMG_S3_ENDPOINT (R2: https://<account>.r2.cloudflarestorage.com), WMG_S3_REGION, and the usual
-AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY (or AWS_PROFILE). `boto3` and `truss` are imported
-lazily: the local trainer never needs them.
+The upload limit is 5 GB, so cache-v3 + cache-phone (4.4 GB) only just fit in one job. `truss`
+is imported lazily: the local trainer never needs it.
 """
 
 from __future__ import annotations
@@ -28,6 +28,7 @@ import shutil
 import subprocess
 import sys
 import time
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
@@ -37,8 +38,11 @@ from .cloud import CACHES, CloudError, fingerprint
 TRAINING = Path(__file__).resolve().parents[1]
 RUNS = TRAINING / "runs"
 JOB_DIR = TRAINING / "baseten"
-COMPLETE = ".complete"  # written last, so a half-uploaded or half-downloaded cache never counts
+PROJECT = "wmg-detector"  # the training project in baseten/config.py
+SEEDED = TRAINING / ".baseten-seeded.json"  # {remote/project: {cache: fingerprint}} shipped to the project cache
+COMPLETE = ".complete"  # written last, so a half-copied cache never counts
 POLL_S = 10
+CHECKPOINT_WAIT_S = 120  # checkpoint files can show up a little after the job completes
 DONE = {"TRAINING_JOB_COMPLETED", "TRAINING_JOB_FAILED", "TRAINING_JOB_DEPLOY_FAILED", "TRAINING_JOB_STOPPED"}
 SETUP_HINT = ("Baseten is not set up: in training/, run `.venv-arm64/bin/truss login` once "
               "(or set BASETEN_TRUSS_AUTH_REMOTE_URL and BASETEN_TRUSS_AUTH_API_KEY)")
@@ -46,61 +50,7 @@ SETUP_HINT = ("Baseten is not set up: in training/, run `.venv-arm64/bin/truss l
 Line = Callable[[str], None]
 
 
-# ---------------------------------------------------------------- bucket
-
-class Bucket:
-    """The few S3 calls this module needs, on one bucket."""
-
-    def __init__(self, name: str | None = None, client=None):
-        self.name = name or os.environ.get("WMG_BUCKET")
-        if not self.name:
-            raise CloudError("WMG_BUCKET is not set (the R2/S3 bucket between the Mac and Baseten)")
-        if client is None:
-            try:
-                import boto3
-            except ImportError as e:  # pragma: no cover
-                raise CloudError("the `boto3` package is missing: pip install -e '.[baseten]'") from e
-            client = boto3.client("s3", endpoint_url=os.environ.get("WMG_S3_ENDPOINT") or None,
-                                  region_name=os.environ.get("WMG_S3_REGION") or None)
-        self.s3 = client
-
-    def exists(self, key: str) -> bool:
-        try:
-            self.s3.head_object(Bucket=self.name, Key=key)
-            return True
-        except Exception:  # botocore ClientError 404 (or 403 without ListBucket)
-            return False
-
-    def keys(self, prefix: str) -> list[str]:
-        out, token = [], None
-        while True:
-            kw = {"Bucket": self.name, "Prefix": prefix, **({"ContinuationToken": token} if token else {})}
-            page = self.s3.list_objects_v2(**kw)
-            out += [o["Key"] for o in page.get("Contents", [])]
-            if not page.get("IsTruncated"):
-                return out
-            token = page["NextContinuationToken"]
-
-    def put(self, key: str, data: bytes) -> None:
-        self.s3.put_object(Bucket=self.name, Key=key, Body=data)
-
-    def get(self, key: str) -> bytes | None:
-        try:
-            return self.s3.get_object(Bucket=self.name, Key=key)["Body"].read()
-        except Exception:
-            return None
-
-    def upload(self, path: Path, key: str) -> None:
-        self.s3.upload_file(str(path), self.name, key)  # multipart for the 2.6 GB windows file
-
-    def download(self, key: str, path: Path) -> None:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        self.s3.download_file(self.name, key, str(path))
-
-
-def cache_prefix(name: str, fp: str) -> str:
-    return f"caches/{name}/{fp}/"
-
+# ---------------------------------------------------------------- caches
 
 def local_fingerprints(root: Path = TRAINING, caches=CACHES) -> dict[str, str]:
     out = {}
@@ -111,41 +61,32 @@ def local_fingerprints(root: Path = TRAINING, caches=CACHES) -> dict[str, str]:
     return out
 
 
-def sync_caches(line: Line = print, caches=CACHES, root: Path = TRAINING, bucket: Bucket | None = None) -> list[str]:
-    """Upload each cache whose fingerprint is not in the bucket yet. Returns what was uploaded."""
-    bucket = bucket or Bucket()
-    uploaded = []
-    for name, fp in local_fingerprints(root, caches).items():
-        prefix = cache_prefix(name, fp)
-        if bucket.exists(prefix + COMPLETE):
-            line(f"{name}: already in bucket {bucket.name} ({fp[:10]})")
-            continue
-        files = [p for p in (root / name).iterdir() if p.is_file()]
-        line(f"{name}: uploading {sum(p.stat().st_size for p in files) / 1e9:.1f} GB to bucket {bucket.name}...")
-        t0 = time.monotonic()
-        for p in files:
-            bucket.upload(p, prefix + p.name)
-        bucket.put(prefix + COMPLETE, fp.encode())
-        line(f"{name}: uploaded in {time.monotonic() - t0:.0f} s")
-        uploaded.append(name)
-    return uploaded
+class Seeded:
+    """Which cache fingerprints this Mac has already shipped to a Baseten project."""
 
+    def __init__(self, key: str, path: Path = SEEDED):
+        self.key, self.path = key, path
 
-def download_run(bucket: Bucket, run: str, runs: Path = RUNS, line: Line = print) -> Path:
-    dest = runs / run
-    for key in bucket.keys(f"runs/{run}/"):
-        rel = key[len(f"runs/{run}/"):]
-        bucket.download(key, dest / rel)
-        line(f"downloaded runs/{run}/{rel} ({(dest / rel).stat().st_size / 1e6:.1f} MB)")
-    if not (dest / "model.pt").exists():
-        raise CloudError(f"runs/{run} came back without model.pt")
-    return dest
+    def _all(self) -> dict:
+        try:
+            return json.loads(self.path.read_text())
+        except (OSError, ValueError):
+            return {}
+
+    def to_ship(self, fingerprints: dict[str, str], reseed: bool = False) -> list[str]:
+        have = {} if reseed else self._all().get(self.key, {})
+        return [name for name, fp in fingerprints.items() if have.get(name) != fp]
+
+    def record(self, shipped: dict[str, str]) -> None:
+        data = self._all()
+        data[self.key] = {**data.get(self.key, {}), **shipped}
+        self.path.write_text(json.dumps(data, indent=2) + "\n")
 
 
 # ---------------------------------------------------------------- Baseten API
 
 class Baseten:
-    """Push / status / logs / stop for training jobs, through the truss SDK."""
+    """Push / status / logs / stop / checkpoints for training jobs, through the truss SDK."""
 
     def __init__(self, remote: str | None = None):
         try:
@@ -162,7 +103,14 @@ class Baseten:
     def push(self, project, source_dir: Path) -> tuple[str, str]:
         from truss_train import push
 
-        job = push(project, remote=self.remote, source_dir=source_dir)
+        try:
+            job = push(project, remote=self.remote, source_dir=source_dir)
+        except Exception as e:
+            status = getattr(getattr(e, "response", None), "status_code", None)
+            if status == 403:
+                raise CloudError("Baseten refused the training job (403): this account is not enabled for "
+                                 "Baseten Training yet. Ask Baseten to turn on Training for the workspace.") from e
+            raise CloudError(f"pushing the Baseten job failed ({type(e).__name__}: {e})") from e
         return job["training_project"]["id"], job["id"]
 
     def status(self, project_id: str, job_id: str) -> tuple[str, str | None]:
@@ -175,6 +123,15 @@ class Baseten:
 
     def stop(self, project_id: str, job_id: str) -> None:
         self.api.stop_training_job(project_id, job_id)
+
+    def checkpoint_files(self, project_id: str, job_id: str) -> list[dict]:
+        """[{relative_file_name, url}] of everything the job wrote to $BT_CHECKPOINT_DIR."""
+        return self.api.get_training_job_checkpoint_presigned_url(project_id, job_id, page_size=1000)
+
+    def fetch(self, url: str, dest: Path) -> None:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        with urllib.request.urlopen(url, timeout=300) as r, open(dest, "wb") as f:
+            shutil.copyfileobj(r, f)
 
 
 class LogTail:
@@ -203,26 +160,52 @@ def new_tag(name: str) -> str:
     return f"{name}-{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}"
 
 
-def _make_project(name, extra_args, tag, fingerprints):
+def _make_project(name, extra_args, tag, fingerprints, ship=()):
     import importlib.util
 
     spec = importlib.util.spec_from_file_location("wmg_baseten_config", JOB_DIR / "config.py")
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
-    return config.make_project(name, list(extra_args), tag, fingerprints)
+    return config.make_project(name, list(extra_args), tag, fingerprints, ship=list(ship))
+
+
+def download_run(api, project_id: str, job_id: str, runs: Path = RUNS, line: Line = print,
+                 wait_s: float = CHECKPOINT_WAIT_S, poll_s: float = POLL_S) -> Path:
+    """The checkpoint folder that holds model.pt, into runs/<that folder's name>/."""
+    deadline = time.monotonic() + wait_s
+    while True:
+        files = api.checkpoint_files(project_id, job_id)
+        models = [f["relative_file_name"] for f in files if f["relative_file_name"].endswith("/model.pt")]
+        if models or time.monotonic() >= deadline:
+            break
+        time.sleep(poll_s)
+    if not models:
+        raise CloudError(f"job {job_id} finished without a <run>/model.pt in its checkpoints")
+    run_dir = min(models, key=len).rsplit("/", 1)[0]
+    run = run_dir.rsplit("/", 1)[-1]
+    for f in files:
+        if f["relative_file_name"].startswith(run_dir + "/"):
+            rel = f["relative_file_name"][len(run_dir) + 1:]
+            api.fetch(f["url"], runs / run / rel)
+            line(f"downloaded runs/{run}/{rel} ({(runs / run / rel).stat().st_size / 1e6:.1f} MB)")
+    return runs / run
 
 
 def train_remote(name: str, extra_args: list[str], line: Line = print, runs: Path = RUNS,
-                 bucket: Bucket | None = None, api: Baseten | None = None, make_project=_make_project,
-                 fingerprints: dict[str, str] | None = None, poll_s: float = POLL_S) -> Path:
-    """Push one training job, follow its log into `line`, download the finished run. Any exception
-    while waiting (incl. the retrain's Cancelled) stops the job. Run `sync_caches` first."""
-    bucket = bucket or Bucket()
+                 api: Baseten | None = None, make_project=_make_project, fingerprints: dict[str, str] | None = None,
+                 seeded: Seeded | None = None, reseed: bool = False, poll_s: float = POLL_S,
+                 wait_s: float = CHECKPOINT_WAIT_S) -> Path:
+    """Push one training job, follow its log into `line`, download the finished run. Caches the
+    project doesn't have yet go up with the job. Any exception while waiting (incl. the retrain's
+    Cancelled) stops the job."""
     api = api or Baseten()
-    fingerprints = fingerprints or local_fingerprints()
+    fingerprints = local_fingerprints() if fingerprints is None else fingerprints
+    seeded = seeded or Seeded(f"{getattr(api, 'remote', 'baseten')}/{PROJECT}")
+    ship = seeded.to_ship(fingerprints, reseed)
     tag = new_tag(name)
-    line(f"Baseten: pushing train({name}) as {tag}")
-    project_id, job_id = api.push(make_project(name, extra_args, tag, fingerprints), JOB_DIR)
+    line(f"Baseten: pushing train({name}) as {tag}"
+         + (f", with {' + '.join(ship)} for the project cache" if ship else ""))
+    project_id, job_id = api.push(make_project(name, extra_args, tag, fingerprints, ship), JOB_DIR)
     line(f"Baseten: job {job_id} (project {project_id})")
     tail, state, error = LogTail(line), None, None
     try:
@@ -239,33 +222,35 @@ def train_remote(name: str, extra_args: list[str], line: Line = print, runs: Pat
         except Exception:
             pass
         raise
-    raw = bucket.get(f"jobs/{tag}.json")
-    result = json.loads(raw) if raw else {}
-    if state != "TRAINING_JOB_COMPLETED" or result.get("rc") != 0 or not result.get("run"):
-        raise CloudError(f"remote training failed ({state}, exit {result.get('rc')}"
-                         f"{', ' + error if error else ''}); log: truss train logs --job-id {job_id}")
-    line(f"Baseten: {name} trained on {result.get('device')} -> runs/{result['run']}")
-    return download_run(bucket, result["run"], runs, line)
+    if state != "TRAINING_JOB_COMPLETED":
+        raise CloudError(f"remote training failed ({state}{', ' + error if error else ''}); "
+                         f"log: truss train logs --job-id {job_id}")
+    seeded.record({n: fingerprints[n] for n in ship})
+    return download_run(api, project_id, job_id, runs, line, wait_s, poll_s)
 
 
 # ---------------------------------------------------------------- inside the job
 
-def fetch_cache(bucket: Bucket, name: str, fp: str, root: Path) -> Path:
-    """The cache with this fingerprint under root/<name>/<fp>, downloaded only if it isn't there
-    yet; older fingerprints of the same cache are removed to keep the project cache small."""
-    dest = root / name / fp
-    if not (dest / COMPLETE).exists():
-        if not bucket.exists(cache_prefix(name, fp) + COMPLETE):
-            raise CloudError(f"{name} {fp[:10]} is not in bucket {bucket.name}: run `baseten_cloud sync` first")
-        print(f"{name}: downloading {fp[:10]} from bucket {bucket.name}", flush=True)
-        dest.mkdir(parents=True, exist_ok=True)
-        for key in bucket.keys(cache_prefix(name, fp)):
-            if not key.endswith(COMPLETE):
-                bucket.download(key, dest / key.rsplit("/", 1)[1])
+def place_cache(name: str, fp: str, store: Path, workdir: Path = Path(".")) -> Path:
+    """The cache with this fingerprint in the project cache (store/<name>/<fp>), copied in from the
+    job upload when it came along. Older fingerprints of the same cache are removed."""
+    dest = store / name / fp
+    shipped = workdir / name
+    if shipped.is_dir():
+        if fingerprint(shipped) != fp:
+            raise CloudError(f"{name}: the uploaded cache is not fingerprint {fp[:10]}")
+        print(f"{name}: copying {fp[:10]} into the project cache", flush=True)
+        shutil.rmtree(dest, ignore_errors=True)
+        dest.mkdir(parents=True)
+        for p in shipped.iterdir():
+            if p.is_file():
+                shutil.copyfile(p, dest / p.name)
         (dest / COMPLETE).write_text(fp)
-    else:
+    elif (dest / COMPLETE).exists():
         print(f"{name}: {fp[:10]} already in the project cache", flush=True)
-    for old in (root / name).iterdir():
+    else:
+        raise CloudError(f"{name} {fp[:10]} is not in the project cache: rerun with --reseed")
+    for old in (store / name).iterdir():
         if old.name != fp:
             shutil.rmtree(old, ignore_errors=True)
     return dest
@@ -280,13 +265,11 @@ def _device() -> str:
         return "unknown"
 
 
-def run_job(env=os.environ, bucket: Bucket | None = None, train=None) -> int:
-    """Fetch the caches, run `train_baseline`, upload the run and jobs/<tag>.json. Returns the exit code."""
-    bucket = bucket or Bucket()
-    tag = env["WMG_TAG"]
+def run_job(env=os.environ, train=None, workdir: Path = Path(".")) -> int:
+    """Place the caches, run `train_baseline` into the checkpoint folder. Returns the exit code."""
     store = Path(env.get("BT_PROJECT_CACHE_DIR", "/root/.cache/user_artifacts")) / "caches"
     out = Path(env.get("BT_CHECKPOINT_DIR", "/tmp/training_checkpoints"))
-    caches = {name: fetch_cache(bucket, name, env[f"WMG_FP_{name.replace('-', '_').upper()}"], store)
+    caches = {name: place_cache(name, env[f"WMG_FP_{name.replace('-', '_').upper()}"], store, workdir)
               for name in CACHES}
     out.mkdir(parents=True, exist_ok=True)
     before = {p.name for p in out.iterdir()}
@@ -296,35 +279,37 @@ def run_job(env=os.environ, bucket: Bucket | None = None, train=None) -> int:
     print(f"[{env.get('WMG_MODEL')}] {device}\n$ {' '.join(cmd)}", flush=True)
     rc = (train or subprocess.call)(cmd)
     new = sorted(p.name for p in out.iterdir() if p.name not in before and (p / "model.pt").exists())
-    run = new[-1] if new else None
-    if run:
-        for p in sorted((out / run).rglob("*")):
-            if p.is_file():
-                bucket.upload(p, f"runs/{run}/{p.relative_to(out / run)}")
-        print(f"uploaded runs/{run}", flush=True)
-    bucket.put(f"jobs/{tag}.json", json.dumps({"run": run, "rc": rc, "device": device, "tag": tag}).encode())
-    return rc if run else (rc or 1)
+    if not new:
+        print("no run folder with model.pt was written", flush=True)
+        return rc or 1
+    (out / new[-1] / "baseten.json").write_text(json.dumps({"tag": env.get("WMG_TAG"), "device": device}) + "\n")
+    print(f"run {new[-1]} written to the checkpoint folder", flush=True)
+    return rc
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("sync", help="upload cache-v3 and cache-phone if they changed")
     t = sub.add_parser("train", help="train one model on Baseten and download the run")
     t.add_argument("name", choices=["10s", "5s"])
-    sub.add_parser("smoke", help="one short epoch without CV folds: proves image, GPU and bucket")
+    s = sub.add_parser("smoke", help="one short epoch without CV folds: proves image, GPU and caches")
+    for p in (t, s):
+        p.add_argument("--reseed", action="store_true", help="upload the caches again even if already shipped")
     sub.add_parser("job", help="run inside the Baseten container")
     args = ap.parse_args()
     try:
         if args.cmd == "job":
-            sys.exit(run_job())
-        sync_caches()
+            try:
+                sys.exit(run_job())
+            except CloudError as e:
+                print(e, flush=True)
+                sys.exit(1)
         if args.cmd == "train":
             from .retrain import MODELS  # the same per-model arguments the local trainer uses
 
-            print(train_remote(args.name, MODELS[args.name]))
-        elif args.cmd == "smoke":
-            print(train_remote("smoke", ["--epochs", "1", "--steps", "5", "--folds", "none"]))
+            print(train_remote(args.name, MODELS[args.name], reseed=args.reseed))
+        else:
+            print(train_remote("smoke", ["--epochs", "1", "--steps", "5", "--folds", "none"], reseed=args.reseed))
     except CloudError as e:
         sys.exit(str(e))
 

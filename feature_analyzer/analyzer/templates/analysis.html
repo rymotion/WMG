@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}{{ a.name }} · WMG analyzer{% endblock %}
+{% block content %}
+<h1>{{ a.name }}</h1>
+<p class="muted">{{ a.source_path }}{% if not source_exists %} <strong>(file no longer there)</strong>{% endif %} · sha1 {{ a.id[:12] }} · analysed {{ a.created_at[:16].replace('T', ' ') }}
+ · <a href="/analyses/{{ a.id }}/json">JSON</a></p>
+{% if a.errors %}<div class="error">{% for e in a.errors %}{{ e }}<br>{% endfor %}</div>{% endif %}
+
+<div class="grid">
+<div class="card">
+  <strong>Detector</strong>
+  {% set v = a.verdict() %}
+  <p class="verdict"><span class="{{ v.css }}">{{ v.label }}</span>{% if v.n %} · {{ v.confidence }} confidence{% if v.estimate != '–' %}, about {{ v.estimate }} chance of AI{% endif %}<br><span class="muted">{{ v.reason }}</span>{% endif %}</p>
+  <dl>
+  {% for m in MODEL_NAMES %}{% set s = a.scores.get(m) or {} %}
+    <dt>{{ m }} model{% if s.run %} ({{ s.run }}){% endif %}</dt>
+    <dd>{% if s.error %}{{ s.error }}{% elif s %}<span class="{{ s.p_ai | pclass }}">P(AI) <strong>{{ s.p_ai | fmt }}</strong></span>
+      &nbsp; bands: {% for b, v in s.band_scores.items() %}{{ b }} {{ v | fmt(2) }}{{ ', ' if not loop.last }}{% endfor %} · {{ s.windows | length }} windows{% else %}not scored{% endif %}</dd>
+  {% endfor %}
+  {% if a.models_skipped %}<dt>models</dt><dd>skipped</dd>{% endif %}
+  {% set s10 = a.scores.get('10s') or {} %}
+  {% if s10.input_rms_dbfs is defined %}<dt>input level</dt><dd>{{ s10.input_rms_dbfs }} dBFS, normalised to {{ s10.level_normalized_to_dbfs }} dBFS before scoring</dd>{% endif %}
+  </dl>
+</div>
+<div class="card">
+  <strong>Profile</strong>
+  <dl>
+    <dt>duration</dt><dd>{{ a.profile.duration_s | fmt }} s</dd>
+    <dt>sample rate</dt><dd>{{ a.profile.sample_rate }} Hz, {{ a.profile.channels }} ch</dd>
+    <dt>codec</dt><dd>{{ a.profile.codec or '–' }}{% if a.profile.file_type %} ({{ a.profile.file_type }}){% endif %}{% if a.profile.bit_depth %}, {{ a.profile.bit_depth }}{% endif %}</dd>
+    <dt>bitrate</dt><dd>{{ a.profile.bitrate_kbps or '–' }} kbps</dd>
+    <dt>level</dt><dd>RMS {{ a.profile.rms_dbfs }} dBFS, peak {{ a.profile.peak_dbfs }} dBFS</dd>
+    <dt>size</dt><dd>{{ (a.profile.size_bytes / 1048576) | fmt }} MB</dd>
+  </dl>
+</div>
+<div class="card">
+  <strong>Label</strong>
+  <form method="post" action="/analyses/{{ a.id }}/meta">
+    <label>Category</label>
+    <select name="category"><option value="">unknown</option>
+      {% for c in CATEGORIES %}<option value="{{ c }}" {{ 'selected' if a.category == c }}>{{ c }}</option>{% endfor %}</select>
+    <label>Generator</label><input type="text" name="generator" value="{{ a.generator }}">
+    <label>Artist</label><input type="text" name="artist" value="{{ a.artist }}">
+    <label>Notes</label><textarea name="notes">{{ a.notes }}</textarea>
+    <p><button type="submit">Save</button></p>
+  </form>
+  <form class="inline" method="post" action="/analyses/{{ a.id }}/sidecar"><button {{ 'disabled' if not a.category or not source_exists }} title="register in Sources and write the sidecar JSON wmg_train.manifest expects next to the audio">{{ 'rewrite' if sidecar_exists else 'write' }} training sidecar</button></form>
+  <form class="inline" method="post" action="/analyses/{{ a.id }}/reanalyze"><button {{ 'disabled' if not source_exists }}>re-analyse</button></form>
+  {% if sidecar_exists %}<span class="muted">sidecar present</span>{% endif %}
+</div>
+</div>
+
+<h2>Spectrogram and AI evidence (10 s model)</h2>
+{% if a.images.heatmap_10s %}<img class="plot" src="/analyses/{{ a.id }}/files/{{ a.images.heatmap_10s }}" alt="heatmap">{% else %}<p class="muted">no heatmap (model not run)</p>{% endif %}
+
+<h2>Window timeline</h2>
+{% if a.images.timeline %}<img class="plot" src="/analyses/{{ a.id }}/files/{{ a.images.timeline }}" alt="timeline">{% endif %}
+<div class="legend"><span class="p-human">&lt; 0.4</span><span class="p-mid">0.4–0.7</span><span class="p-ai">≥ 0.7</span> window P(AI); hover a cell for the band scores.
+Verdict: mostly red → AI-generated; red+yellow majority → likely AI (~75–80%); mostly green → likely human; otherwise undetermined.</div>
+{% for m in MODEL_NAMES %}{% set s = a.scores.get(m) or {} %}{% if s.windows %}
+<p><strong>{{ m }} model</strong> ({{ s.windows | length }} windows of {{ s.window_s }} s)</p>
+<div class="windows">{% for w in s.windows %}<span class="{{ w.p_ai | pclass }}" title="{{ w.start_s }} s: P(AI) {{ w.p_ai }} · bass {{ w.band_scores.bass }} mid {{ w.band_scores.mid }} treble {{ w.band_scores.treble }}"></span>{% endfor %}</div>
+{% endif %}{% endfor %}
+
+<h2>Long-term spectrum</h2>
+{% if a.images.spectrum %}<img class="plot" src="/analyses/{{ a.id }}/files/{{ a.images.spectrum }}" alt="spectrum">{% endif %}
+
+<h2>Hand-crafted top-end features</h2>
+<p class="muted">Middle 60 s. Reference bands are p10 · p50 · p90 over the training set
+{% if reference.folder %}({{ reference.folder.split('/')[-1] }}: {{ reference.counts.raw.human }} human, {{ reference.counts.raw.ai }} AI){% endif %}.
+"sits in" says which class's p10–p90 band holds the value.</p>
+<div class="legend"><span class="in-human">human</span><span class="in-ai">ai</span><span class="in-both">both</span><span class="in-neither">neither</span></div>
+<div class="wrap">
+<table>
+<tr><th rowspan="2">feature</th>{% for c in CONDITIONS %}<th colspan="4">{{ c }}</th>{% endfor %}</tr>
+<tr>{% for c in CONDITIONS %}<th class="num">value</th><th>human band</th><th>AI band</th><th>sits in</th>{% endfor %}</tr>
+{% for r in rows %}
+<tr>
+  <td title="{{ r.help }}">{{ r.name }}</td>
+  {% for c in CONDITIONS %}{% set x = r.conds[c] %}
+  <td class="num">{{ x.value | fmt }}</td><td class="muted">{{ x.human | band }}</td><td class="muted">{{ x.ai | band }}</td>
+  <td class="{{ 'in-' + x.where if x.where }}">{{ x.where }}</td>
+  {% endfor %}
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<h2>Side features (wmg_features.side_features_raw, per 10 s window at 32 kHz)</h2>
+{% if a.side_features %}
+<p>Medians: {% for k in SIDE_KEYS %}{{ k }} <strong>{{ (a.side_features | map(attribute=k) | list | median) | fmt }}</strong>{{ ' · ' if not loop.last }}{% endfor %}</p>
+<div class="wrap">
+<table>
+<tr><th class="num">start s</th>{% for k in SIDE_KEYS %}<th class="num">{{ k }}</th>{% endfor %}</tr>
+{% for s in a.side_features %}<tr><td class="num">{{ s.start_s }}</td>{% for k in SIDE_KEYS %}<td class="num">{{ s[k] | fmt }}</td>{% endfor %}</tr>{% endfor %}
+</table>
+</div>
+{% else %}<p class="muted">none</p>{% endif %}
+{% endblock %}

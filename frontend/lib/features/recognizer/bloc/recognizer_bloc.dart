@@ -9,6 +9,7 @@ import 'package:wmg_detector/wmg_detector.dart';
 
 import '../../../data/api/live_audio_client.dart';
 import '../../../data/labels/recording_label.dart';
+import '../../../data/models/identification.dart';
 import '../../../data/models/live_message.dart';
 import '../../../data/recorder/audio_recorder_service.dart';
 import '../../../data/repository/identification_repository.dart';
@@ -98,6 +99,10 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
   Timer? _ticker;
   Timer? _finishTimer;
 
+  /// This session's own limit (a metered tap's listen window); null: [maxDuration].
+  Duration? _listenFor;
+  bool _stopOnMatch = false;
+
   final _detectBuffer = BytesBuilder(copy: false);
   int _detectedBytes = 0;
   Uint8List? _prevHop;
@@ -120,7 +125,9 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     if (state.isStreaming) {
       await _stop(emit);
     } else if (!state.isBusy) {
-      await _start(emit, offline: event.offline, identify: event.identify);
+      _listenFor = event.listenFor;
+      _stopOnMatch = event.stopOnMatch;
+      await _start(emit, offline: event.offline, identify: event.identify, ticket: event.ticket);
     }
   }
 
@@ -128,6 +135,7 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     Emitter<RecognizerState> emit, {
     required bool offline,
     required bool identify,
+    String? ticket,
   }) async {
     // The previous session's last save goes out before its id is dropped.
     unawaited(_flushSave());
@@ -164,7 +172,7 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
     if (!offline) {
       final LiveAudioSession live;
       try {
-        live = await _repository.openLiveSession(identify: identify);
+        live = await _repository.openLiveSession(identify: identify, ticket: ticket);
       } catch (e) {
         emit(
           state.copyWith(
@@ -303,7 +311,10 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
   void _onTicked(_RecordingTicked event, Emitter<RecognizerState> emit) {
     if (!state.isStreaming) return;
     emit(state.copyWith(elapsed: event.elapsed));
-    if (event.elapsed >= maxDuration) add(const RecognizerMicPressed());
+    final limit = _listenFor;
+    if (event.elapsed >= (limit != null && limit < maxDuration ? limit : maxDuration)) {
+      add(const RecognizerMicPressed());
+    }
   }
 
   void _onPcmChunkSent(_PcmChunkSent event, Emitter<RecognizerState> emit) {
@@ -364,6 +375,9 @@ class RecognizerBloc extends Bloc<RecognizerEvent, RecognizerState> {
             ),
           ),
         );
+        if (_stopOnMatch && state.isStreaming && result.identification.status == IdentificationStatus.matched) {
+          add(const RecognizerMicPressed());
+        }
       case LiveError(:final message):
         // Fatal; the server closes with 1008 next and _SessionClosed reports it.
         emit(state.copyWith(error: () => message));

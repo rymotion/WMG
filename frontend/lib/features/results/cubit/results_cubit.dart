@@ -49,3 +49,33 @@ final class ResultsState extends Equatable {
   @override
   List<Object?> get props => [loaded, sessions, error];
 }
+
+/// What a plan shows of [sessions] (newest first): those started within [retention]
+/// (null: all) that match [query] by song, label or date. [hidden] counts the ones
+/// past retention; they stay on the device and come back on upgrade.
+({List<SavedSession> shown, int hidden}) visibleSessions(
+  List<SavedSession> sessions, {
+  Duration? retention,
+  String query = '',
+  DateTime? now,
+}) {
+  final cutoff = retention == null
+      ? null
+      : (now ?? DateTime.now()).subtract(retention);
+  final kept = cutoff == null
+      ? sessions
+      : sessions.where((s) => s.startedAt.isAfter(cutoff)).toList();
+  final q = query.trim().toLowerCase();
+  final shown = q.isEmpty
+      ? kept
+      : kept
+            .where(
+              (s) => [
+                ...s.matchedTitles,
+                ?s.label?.category.displayName,
+                s.startedAt.toIso8601String(),
+              ].any((text) => text.toLowerCase().contains(q)),
+            )
+            .toList();
+  return (shown: shown, hidden: sessions.length - kept.length);
+}

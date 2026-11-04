@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% block title %}WMG analyzer{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <span class="brand">WMG feature analyzer</span>
+  {% set p = request.url.path %}
+  <a href="/upload" class="{{ 'active' if p.startswith('/upload') }}">Upload</a>
+  <a href="/analyses" class="{{ 'active' if p.startswith('/analyses') }}">Analyses {% if active_jobs %}<span class="badge">{{ active_jobs }}</span>{% endif %}</a>
+  <a href="/compare" class="{{ 'active' if p.startswith('/compare') }}">Compare</a>
+  <a href="/sources" class="{{ 'active' if p.startswith('/sources') }}">Sources</a>
+  <a href="/retrain" class="{{ 'active' if p.startswith('/retrain') }}">Retrain</a>
+</header>
+<main>
+{% block content %}{% endblock %}
+</main>
+<script>
+// Tiny poller: any element with data-poll="<url>" and data-every="<ms>" refreshes its innerHTML.
+document.querySelectorAll('[data-poll]').forEach(function (el) {
+  var url = el.dataset.poll, every = parseInt(el.dataset.every || '3000', 10);
+  function tick() {
+    fetch(url).then(function (r) { return r.text(); }).then(function (html) {
+      el.innerHTML = html;
+      if (el.dataset.stopWhenIdle === '1' && el.querySelector('[data-active="0"]')) { return; }
+      setTimeout(tick, every);
+    }).catch(function () { setTimeout(tick, every * 2); });
+  }
+  setTimeout(tick, every);
+});
+</script>
+</body>
+</html>

@@ -1,9 +1,12 @@
 import 'dart:io' show Platform;
 
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 /// Runtime configuration. Override at build time:
 ///
 ///   flutter run --dart-define=API_BASE_URL=http://192.168.1.20:8010 --dart-define=LIVE_IDENTIFY=false
 ///     [--dart-define=LIVE_SAMPLE_RATE=16000]
+///     [--dart-define=ACCOUNT_BACKEND=http] [--dart-define=DEV_TOOLS=true]
 class AppConfig {
   const AppConfig({
     required this.apiBaseUrl,
@@ -33,6 +36,20 @@ class AppConfig {
   }
 
   final Uri apiBaseUrl;
+
+  /// iPhone and Android: accounts, metering and paywalls apply. macOS keeps the research
+  /// build as it is.
+  static bool get isHandset => !kIsWeb && (Platform.isIOS || Platform.isAndroid);
+
+  bool get billingEnabled => isHandset;
+
+  /// Shows the research tools (on-device training, Retrain, clip labelling, spectrogram,
+  /// byte counters) on handsets. Always on for macOS.
+  bool get devTools => !isHandset || const bool.fromEnvironment('DEV_TOOLS');
+
+  /// `fake` (default until the server has the endpoints in `docs/billing-api.md`) runs an
+  /// in-memory account backend with a dev sign-in; `http` talks to [apiBaseUrl].
+  bool get fakeAccountBackend => const String.fromEnvironment('ACCOUNT_BACKEND', defaultValue: 'fake') == 'fake';
 
   /// The Mac's retrain service (`training/Retrain Service.command`). It runs natively, not in
   /// Docker, because training needs the GPU. Override with `--dart-define=TRAINER_URL=...`.

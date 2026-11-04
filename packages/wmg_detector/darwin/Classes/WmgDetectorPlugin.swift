@@ -13,7 +13,7 @@ import FlutterMacOS
 ///   info  {model?: "10s" | "5s"}
 ///         -> {featureSpecHash, modelSpecHash, modelRun, windowSeconds, headWeights: Float64List, headBias}
 ///   score {pcm: Int16 LE bytes, sampleRate, model?: "10s" | "5s"}
-///         -> {inputRmsDbfs, windows: [{startS, logit, bands, embedding: Float32List}]}
+///         -> {inputRmsDbfs, windows: [{startS, logit, bands, embedding: Float32List, side: Float32List}]}
 /// Features come from the Rust wmg-features library (identical to training). Two compiled Core ML
 /// BandNets can be bundled: `WmgDetector` (10 s windows) and `WmgDetector5s` (5 s windows).
 /// The 5 s model scores halves of the library's 10 s windows, exactly as it was trained.
@@ -140,12 +140,17 @@ public class WmgDetectorPlugin: NSObject, FlutterPlugin {
     let per = nMels * fullFrames
     let maxWindows = wmg_max_windows(n, UInt32(sampleRate))
     guard maxWindows > 0 else { return ["inputRmsDbfs": inputRmsDbfs, "windows": [Any]()] }
+    let nSide = Int(wmg_n_side())
     var mel = [Float](repeating: 0, count: maxWindows * per)
     var starts = [Float](repeating: 0, count: maxWindows)
+    var side = [Float](repeating: 0, count: maxWindows * nSide)
     let got = samples.withUnsafeBufferPointer { s in
       mel.withUnsafeMutableBufferPointer { mm in
         starts.withUnsafeMutableBufferPointer { st in
-          wmg_extract_windows(s.baseAddress, n, UInt32(sampleRate), 1, mm.baseAddress, st.baseAddress, maxWindows)
+          side.withUnsafeMutableBufferPointer { sd in
+            wmg_extract_windows_side(s.baseAddress, n, UInt32(sampleRate), 1, mm.baseAddress, st.baseAddress,
+                                     sd.baseAddress, maxWindows)
+          }
         }
       }
     }
@@ -197,11 +202,15 @@ public class WmgDetectorPlugin: NSObject, FlutterPlugin {
       for j in 0..<b {
         var e = [Float](repeating: 0, count: dim)
         for k in 0..<dim { e[k] = emb[[NSNumber(value: j), NSNumber(value: k)]].floatValue }
+        // Side features belong to the 10 s source window; a 5 s slice shares its window's.
+        let w = inputs[i + j].src
+        let sd = Array(side[w * nSide..<(w + 1) * nSide])
         windows.append([
           "startS": inputs[i + j].start,
           "logit": logits[j].doubleValue,
           "bands": (0..<3).map { bands[[NSNumber(value: j), NSNumber(value: $0)]].doubleValue },
           "embedding": FlutterStandardTypedData(float32: e.withUnsafeBufferPointer { Data(buffer: $0) }),
+          "side": FlutterStandardTypedData(float32: sd.withUnsafeBufferPointer { Data(buffer: $0) }),
         ])
       }
       i += b

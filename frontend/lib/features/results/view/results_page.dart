@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/app_config.dart';
+import '../../../data/account/plan.dart';
+import '../../account/cubit/account_cubit.dart';
+import '../../account/view/paywall_sheet.dart';
 import '../cubit/results_cubit.dart';
 import '../data/session_history_store.dart';
 import '../models/saved_session.dart';
@@ -20,13 +24,39 @@ class ResultsPage extends StatelessWidget {
   }
 }
 
-class ResultsView extends StatelessWidget {
+class ResultsView extends StatefulWidget {
   const ResultsView({super.key});
 
   @override
+  State<ResultsView> createState() => _ResultsViewState();
+}
+
+class _ResultsViewState extends State<ResultsView> {
+  var _query = '';
+
+  @override
   Widget build(BuildContext context) {
+    // Handsets apply the plan's history rules; macOS shows everything.
+    final entitlements = context.read<AppConfig>().billingEnabled
+        ? context.select((AccountCubit c) => c.state.entitlements)
+        : Entitlements.pro;
     return Scaffold(
-      appBar: AppBar(title: const Text('Saved sessions')),
+      appBar: AppBar(
+        title: const Text('Saved sessions'),
+        bottom: entitlements.searchableHistory
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(64),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                  child: SearchBar(
+                    hintText: 'Search songs, artists, labels',
+                    leading: const Icon(Icons.search_rounded),
+                    onChanged: (q) => setState(() => _query = q),
+                  ),
+                ),
+              )
+            : null,
+      ),
       body: BlocBuilder<ResultsCubit, ResultsState>(
         builder: (context, state) {
           if (!state.loaded) {
@@ -38,12 +68,18 @@ class ResultsView extends StatelessWidget {
               child: Text('Finished sessions are saved here.'),
             );
           }
+          final (:shown, :hidden) = visibleSessions(
+            state.sessions,
+            retention: entitlements.historyRetention,
+            query: _query,
+          );
           return ListView.separated(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            itemCount: state.sessions.length,
+            itemCount: shown.length + (hidden > 0 ? 1 : 0),
             separatorBuilder: (_, _) => const Divider(height: 1),
-            itemBuilder: (context, i) =>
-                _SessionTile(session: state.sessions[i]),
+            itemBuilder: (context, i) => i < shown.length
+                ? _SessionTile(session: shown[i])
+                : _HiddenHistoryTile(hidden: hidden),
           );
         },
       ),
@@ -116,6 +152,26 @@ class _SessionTile extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Free keeps 7 days of history; older sessions stay on the device until an upgrade shows them.
+class _HiddenHistoryTile extends StatelessWidget {
+  const _HiddenHistoryTile({required this.hidden});
+
+  final int hidden;
+
+  @override
+  Widget build(BuildContext context) => ListTile(
+    leading: const Icon(Icons.lock_clock_rounded),
+    title: Text('$hidden older session${hidden == 1 ? '' : 's'} hidden'),
+    subtitle: const Text(
+      'Free keeps 7 days. Plus keeps your whole history, searchable.',
+    ),
+    trailing: FilledButton.tonal(
+      onPressed: () => showPaywall(context),
+      child: const Text('Upgrade'),
+    ),
+  );
 }
 
 /// Asks before a session and its recording are deleted.

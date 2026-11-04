@@ -4,6 +4,13 @@ import 'dart:typed_data';
 
 import '../labels/recording_label.dart';
 
+/// Side features per window (`wmg_features::N_SIDE`): hand-crafted 8-16 kHz numbers the
+/// native side appends to the embedding. Samples saved before they existed get zeros, which
+/// the head's zero starting weight ignores.
+const kSideFeatures = 3;
+
+Float32List _zeroSide() => Float32List(kSideFeatures);
+
 /// One labelled 10 s window: the model's final-layer input, never the audio itself.
 class LabelledSample {
   LabelledSample({
@@ -14,7 +21,9 @@ class LabelledSample {
     required this.recordedAt,
     this.note = '',
     AiCategory? category,
-  }) : category = category ?? AiCategory.fromBinary(label);
+    Float32List? side,
+  }) : category = category ?? AiCategory.fromBinary(label),
+       side = side ?? _zeroSide();
 
   factory LabelledSample.fromJson(Map<String, dynamic> j) => LabelledSample(
     sessionId: j['session_id'] as String,
@@ -22,6 +31,7 @@ class LabelledSample {
     // Samples stored before the AI-assisted label only have the binary label.
     category: j['category'] == null ? null : AiCategory.fromWire(j['category'] as String),
     embedding: Float32List.fromList([for (final v in j['embedding'] as List) (v as num).toDouble()]),
+    side: j['side'] == null ? null : Float32List.fromList([for (final v in j['side'] as List) (v as num).toDouble()]),
     modelRun: j['model_run'] as String,
     recordedAt: DateTime.parse(j['recorded_at'] as String),
     note: j['note'] as String? ?? '',
@@ -38,6 +48,10 @@ class LabelledSample {
   /// Usable by the current Human-vs-AI layer.
   bool get binary => category.binaryLabel != null;
   final Float32List embedding;
+  final Float32List side;
+
+  /// What the personal head multiplies: embedding followed by the side features.
+  Float32List get input => headInput(embedding, side);
 
   /// Embeddings come from one specific base model; they can't be mixed across models.
   final String modelRun;
@@ -51,6 +65,7 @@ class LabelledSample {
     'ai_share_min': category.aiShareMin,
     'ai_share_max': category.aiShareMax,
     'embedding': embedding,
+    'side': side,
     'model_run': modelRun,
     'recorded_at': recordedAt.toUtc().toIso8601String(),
     'note': note,
@@ -111,7 +126,18 @@ class TrainReport {
   };
 }
 
-/// A fine-tuned final layer for one base model: logit = weights . embedding + bias.
+/// `embedding ++ side` (zeros when the window has no side features).
+Float32List headInput(Float32List embedding, Float32List? side) {
+  final s = side ?? _zeroSide();
+  final x = Float32List(embedding.length + kSideFeatures);
+  x.setRange(0, embedding.length, embedding);
+  x.setRange(embedding.length, embedding.length + math.min(kSideFeatures, s.length), s);
+  return x;
+}
+
+/// A fine-tuned final layer for one base model: logit = weights . (embedding ++ side) + bias.
+/// Heads fitted before side features existed have only the embedding weights; the extra
+/// inputs then count for nothing.
 class PersonalHead {
   PersonalHead({
     required this.id,
@@ -141,10 +167,12 @@ class PersonalHead {
   final DateTime createdAt;
   final TrainReport report;
 
-  double logit(Float32List embedding) {
+  double logit(Float32List embedding, [Float32List? side]) {
+    final x = headInput(embedding, side);
     var s = bias;
-    for (var i = 0; i < weights.length; i++) {
-      s += weights[i] * embedding[i];
+    final n = math.min(weights.length, x.length);
+    for (var i = 0; i < n; i++) {
+      s += weights[i] * x[i];
     }
     return s;
   }

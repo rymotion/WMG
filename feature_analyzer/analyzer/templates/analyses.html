@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Analyses · WMG analyzer{% endblock %}
+{% block content %}
+<h1>Analyses</h1>
+{% if queued %}<div class="notice">queued {{ queued }} file(s){% if problems %}; {{ problems }} skipped{% endif %}. The list below refreshes when you reload.</div>{% endif %}
+<div class="card">
+  <strong>Jobs</strong> <form class="inline" method="post" action="/jobs/clear"><button class="small">clear finished</button></form>
+  <div data-poll="/jobs/partial" data-every="2000">{% include "partials/jobs.html" %}</div>
+</div>
+{% if reference.folder %}<p class="muted">Reference bands from {{ reference.folder.split('/')[-1] }}
+ ({{ reference.counts.raw.human }} human / {{ reference.counts.raw.ai }} AI training files).</p>{% endif %}
+<form method="get" action="/compare">
+<div class="wrap">
+<table>
+<tr><th></th><th>file</th><th>category</th><th>verdict</th><th class="num">P(AI) 10 s</th><th class="num">P(AI) 5 s</th><th class="num">fc kHz</th><th class="num">rate</th><th>codec</th><th class="num">kbps</th><th class="num">length</th><th>analysed</th><th></th></tr>
+{% for a in analyses %}
+<tr>
+  <td><input type="checkbox" name="ids" value="{{ a.id }}"></td>
+  <td><a href="/analyses/{{ a.id }}">{{ a.name }}</a>{% if a.errors %} <span class="muted" title="{{ a.errors | join(' | ') }}">⚠</span>{% endif %}</td>
+  <td>{{ a.category or '–' }}{% if a.generator %} <span class="muted">{{ a.generator }}</span>{% endif %}{% if a.artist %} <span class="muted">{{ a.artist }}</span>{% endif %}</td>
+  {% set v = a.verdict() %}<td class="{{ v.css }}" title="{{ v.reason }}">{{ v.label }}{% if v.estimate != '–' %} <span class="muted">{{ v.estimate }}</span>{% endif %}</td>
+  <td class="num {{ a.p_ai('10s') | pclass }}">{{ a.p_ai('10s') | fmt }}</td>
+  <td class="num {{ a.p_ai('5s') | pclass }}">{{ a.p_ai('5s') | fmt }}</td>
+  <td class="num">{{ ((a.features.raw or {}).fc_hz / 1000) | fmt if (a.features.raw or {}).fc_hz else '–' }}</td>
+  <td class="num">{{ a.profile.sample_rate }}</td>
+  <td>{{ a.profile.codec or '–' }}</td>
+  <td class="num">{{ a.profile.bitrate_kbps or '–' }}</td>
+  <td class="num">{{ a.profile.duration_s | fmt }} s</td>
+  <td class="muted">{{ a.created_at[:16].replace('T', ' ') }}</td>
+  <td><form class="inline" method="post" action="/analyses/{{ a.id }}/delete" onsubmit="return confirm('Delete this analysis (not the audio)?')"><button class="small">delete</button></form></td>
+</tr>
+{% else %}
+<tr><td colspan="13" class="muted">nothing analysed yet: <a href="/upload">upload</a> something</td></tr>
+{% endfor %}
+</table>
+</div>
+<p><button type="submit">Compare selected (2–6)</button></p>
+</form>
+{% endblock %}

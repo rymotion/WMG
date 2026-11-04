@@ -9,7 +9,8 @@ class IdentificationRepository {
   final SpectroApiClient _api;
   final LiveAudioClient _live;
 
-  Future<LiveAudioSession> openLiveSession({bool identify = true}) => _live.connect(identify: identify);
+  Future<LiveAudioSession> openLiveSession({bool identify = true, String? ticket}) =>
+      _live.connect(identify: identify, ticket: ticket);
 
   /// All clips saved by one live session, sorted by clip index.
   Future<List<AudioUpload>> sessionClips(String sessionId) => _api.listSessionClips(sessionId);

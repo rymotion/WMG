@@ -13,14 +13,26 @@ sealed class RecognizerEvent extends Equatable {
 /// The flags only apply when starting. [offline] scores audio with the
 /// on-device model alone and never opens the socket; [identify] `false` keeps
 /// the server from running ACRCloud on the saved clips.
+///
+/// A metered tap (one tap = one ID) passes its [ticket], stops on its own after
+/// [listenFor], and with [stopOnMatch] as soon as a song is named.
 final class RecognizerMicPressed extends RecognizerEvent {
-  const RecognizerMicPressed({this.offline = false, this.identify = true});
+  const RecognizerMicPressed({
+    this.offline = false,
+    this.identify = true,
+    this.ticket,
+    this.listenFor,
+    this.stopOnMatch = false,
+  });
 
   final bool offline;
   final bool identify;
+  final String? ticket;
+  final Duration? listenFor;
+  final bool stopOnMatch;
 
   @override
-  List<Object?> get props => [offline, identify];
+  List<Object?> get props => [offline, identify, ticket, listenFor, stopOnMatch];
 }
 
 /// Drop the session (closing the socket) and return to idle.

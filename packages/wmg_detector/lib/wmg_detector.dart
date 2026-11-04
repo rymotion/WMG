@@ -13,7 +13,7 @@ import 'package:flutter/services.dart';
 /// Score for one 10 s window.
 @immutable
 class WindowScore {
-  const WindowScore({required this.startS, required this.logit, required this.bands, this.embedding});
+  const WindowScore({required this.startS, required this.logit, required this.bands, this.embedding, this.side});
 
   /// Start of the window within the scored audio, in seconds.
   final double startS;
@@ -28,9 +28,14 @@ class WindowScore {
   /// fine-tune that layer on device. Null where the native side doesn't provide it.
   final Float32List? embedding;
 
+  /// Hand-crafted 8-16 kHz numbers for the window (flux peakiness, modulation peak, flatness),
+  /// standardised; appended to [embedding] by the personal head. Null where not provided.
+  final Float32List? side;
+
   double get pAi => sigmoid(logit);
 
-  WindowScore withLogit(double l) => WindowScore(startS: startS, logit: l, bands: bands, embedding: embedding);
+  WindowScore withLogit(double l) =>
+      WindowScore(startS: startS, logit: l, bands: bands, embedding: embedding, side: side);
 }
 
 /// Result of scoring one piece of audio.
@@ -120,6 +125,7 @@ class WmgDetector {
           logit: (w['logit']! as num).toDouble(),
           bands: [for (final b in (w['bands']! as List)) (b as num).toDouble()],
           embedding: w['embedding'] as Float32List?,
+          side: w['side'] as Float32List?,
         ),
     ];
     return DetectorResult(windows: windows, inputRmsDbfs: (m['inputRmsDbfs']! as num).toDouble());

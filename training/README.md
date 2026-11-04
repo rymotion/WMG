@@ -113,6 +113,60 @@ installer, and make a separate venv:
 
 The x86 `.venv` is still fine for running the pytest suite on CPU.
 
+## Training on Modal (optional)
+
+`retrain --trainer modal` (or `WMG_TRAINER=modal` for `Retrain Service.command` / `Retrain.command`)
+trains the two models on a Modal GPU instead of the Mac. Labels, the phone cache, comparison and
+the Core ML install still run locally; only `cache-v3/` and `cache-phone/` (float16 log-mel
+windows, no audio) are uploaded, to the Modal Volume `wmg-train`, and `runs/<ts>/` comes back.
+
+```bash
+uv pip install --python .venv-arm64/bin/python modal   # or: pip install -e '.[cloud]'
+.venv-arm64/bin/modal setup                             # once: log in
+.venv-arm64/bin/modal deploy modal_app.py               # once per change to modal_app.py / wmg_train
+.venv-arm64/bin/modal run modal_app.py::smoke           # optional: 1 short epoch to check the setup
+.venv-arm64/bin/python -m wmg_train.cloud sync          # upload the caches (only when they changed)
+.venv-arm64/bin/python -m wmg_train.retrain run --trainer modal
+```
+
+`modal_app.py` pins the same torch/numpy/pandas/sklearn versions as `.venv-arm64` so cloud and
+local metrics compare like for like. The GPU list is `L4, A10, T4` (first available); BandNet is
+small, so a full retrain is minutes of GPU time, plus the upload of the rebuilt phone cache.
+
+## Training on Baseten (optional)
+
+`retrain --trainer baseten` (or `WMG_TRAINER=baseten`) trains each model as a Baseten training
+job (`baseten/config.py`, `baseten/run.sh`, `wmg_train/baseten_cloud.py`). Everything goes
+through Baseten; no bucket or secrets of our own:
+
+- The first job (and the first after a cache is rebuilt) uploads `cache-v3/` and/or
+  `cache-phone/` with the code. The job copies them into the project cache, which persists
+  between jobs. `.baseten-seeded.json` records what was shipped, so later jobs upload only code.
+- The job trains with the same pins as `.venv-arm64` into Baseten's checkpoint folder.
+- `train` downloads that run folder into `training/runs/`.
+- If Baseten ever drops the project cache, the job says so: rerun with `--reseed`.
+
+The upload limit is 5 GB; the two caches are 4.4 GB, so they only just fit in one job. As with
+Modal, no audio leaves the Mac.
+
+One-time setup:
+
+```bash
+uv pip install --python .venv-arm64/bin/python -e '.[baseten]'
+.venv-arm64/bin/truss login                        # paste a Baseten API key; saved in ~/.trussrc
+```
+
+Then:
+
+```bash
+.venv-arm64/bin/python -m wmg_train.baseten_cloud smoke       # 1 short epoch: image + GPU + caches
+.venv-arm64/bin/python -m wmg_train.baseten_cloud train 10s   # one model, run folder comes back
+.venv-arm64/bin/python -m wmg_train.retrain run --trainer baseten
+```
+
+Jobs default to one H100 on spot capacity (`WMG_BASETEN_SPOT=0` for dedicated). Set
+`WMG_BASETEN_GPU=none` to try a CPU-only job. Follow a job with `truss train logs --job-id <id>`.
+
 ## BandNet
 
 Input: log-mel `[B, 1, 128, 1000]`. A shared depthwise-separable stem halves frequency and

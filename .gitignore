@@ -1,2 +1,15 @@
 # Training audio (~6 GB) stays local; never commit it.
 training_data/
+# Analyzer uploads and cached analyses (audio + derived plots stay local).
+feature_analyzer/data/
+# Secrets: env files, keys and credentials stay local. Templates end in .example.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+.trussrc
+.modal.toml
+credentials.json
+service-account*.json

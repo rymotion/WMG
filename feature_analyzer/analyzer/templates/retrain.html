@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Retrain · WMG analyzer{% endblock %}
+{% block content %}
+<h1>Retrain</h1>
+<p class="muted">Talks to the existing retrain service at <code>{{ retrain_url }}</code> (GET /status, POST /retrain). Start it with <strong>training/Retrain Service.command</strong>.</p>
+{% if msg %}<div class="notice">{{ msg }}</div>{% endif %}
+<div class="card" data-poll="/retrain/status" data-every="3000">{% include "partials/retrain_status.html" %}</div>
+<form method="post" action="/retrain/start" onsubmit="return confirm('Start a retrain of both models now?')">
+  <label>Trainer</label>
+  <select name="trainer" style="max-width:200px">
+    <option value="local" {{ 'selected' if rs.reachable and rs.status.trainer != 'modal' }}>local (this Mac's GPU)</option>
+    <option value="modal" {{ 'selected' if rs.reachable and rs.status.trainer == 'modal' }}>modal (cloud GPU)</option>
+  </select>
+  <p><button class="primary" type="submit" {{ 'disabled' if not rs.reachable or rs.status.state == 'running' }}>Retrain both models</button>
+  <span class="muted">posts {"labels": [], "build_app": false, "trainer": …}</span></p>
+</form>
+{% endblock %}

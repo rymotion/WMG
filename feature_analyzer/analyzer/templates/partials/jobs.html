@@ -1,0 +1,16 @@
+{% set active = jobs | selectattr('state', 'in', ['queued', 'running']) | list %}
+<div data-active="{{ active | length }}">
+{% if jobs %}
+<table>
+<tr><th>job</th><th>state</th><th>message</th><th>result</th></tr>
+{% for j in jobs[:12] %}
+<tr>
+  <td>{{ j.label }}</td>
+  <td class="{{ 'p-mid' if j.state == 'running' else 'p-ai' if j.state == 'failed' else '' }}">{{ j.state }}</td>
+  <td class="muted">{{ j.message }}</td>
+  <td>{% if j.result.analysis_id %}<a href="/analyses/{{ j.result.analysis_id }}">{{ j.result.name }}</a> P(AI) {{ j.result.p_ai | fmt }}{% endif %}</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}<span class="muted">no jobs yet</span>{% endif %}
+</div>

@@ -82,3 +82,35 @@ fn spec_hash_is_stable() {
     assert_eq!(spec_hash().len(), 16);
     assert_eq!(spec_hash(), spec_hash());
 }
+
+#[test]
+fn side_features_follow_the_top_end() {
+    use wmg_features::{N_SIDE, side_features, side_features_raw};
+    // Deterministic white noise (LCG), so the band has a noise-like, unstructured envelope.
+    let sr = 32_000u32;
+    let n = (10.0 * sr as f64) as usize;
+    let mut state: u64 = 0x9E37_79B9_7F4A_7C15;
+    let smooth: Vec<f64> = (0..n)
+        .map(|_| {
+            state = state.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            ((state >> 11) as f64 / (1u64 << 53) as f64 - 0.5) * 0.2
+        })
+        .collect();
+    let raw = side_features_raw(&smooth);
+    assert_eq!(raw.len(), N_SIDE);
+    assert!(raw.iter().all(|v| v.is_finite()), "{raw:?}");
+    // Re-synthesised every 1/75 s: the modulation peak jumps.
+    let framed: Vec<f64> = smooth
+        .iter()
+        .enumerate()
+        .map(|(i, &v)| {
+            let t = i as f64 / sr as f64;
+            v * (1.0 + 0.6 * if (t * 75.0).fract() < 0.5 { 1.0 } else { -1.0 })
+        })
+        .collect();
+    let raw2 = side_features_raw(&framed);
+    assert!(raw2[1] > raw[1] + 6.0, "mod peak {} vs {}", raw2[1], raw[1]);
+    // Standardised values are finite and the silent window maps to 0 (NaN -> 0).
+    assert!(side_features(&smooth).iter().all(|v| v.is_finite()));
+    assert_eq!(side_features(&vec![0.0; n]), [0.0; N_SIDE]);
+}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Sources · WMG analyzer{% endblock %}
+{% block content %}
+<h1>Sources</h1>
+<p class="muted">Registry at <code>{{ registry_path }}</code>. "write sidecar" puts the JSON that <code>wmg_train.manifest</code> expects next to the audio file
+(track_id, category, generator / artist, codec, bitrate, …; "n/a" where a field doesn't apply).</p>
+{% if msg %}<div class="notice">{{ msg }}</div>{% endif %}
+<div class="card">
+<form method="post" action="/sources/add">
+  <label>File or folder path on this Mac</label><input type="text" name="path" required placeholder="/Users/you/Music/…">
+  <label>Category</label><select name="category">{% for c in CATEGORIES %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select>
+  <label>Generator</label><input type="text" name="generator">
+  <label>Artist</label><input type="text" name="artist">
+  <label>Notes</label><input type="text" name="notes">
+  <label><input type="checkbox" name="sidecar" value="1"> write sidecar JSON now</label>
+  <p><button class="primary" type="submit">Add</button></p>
+</form>
+</div>
+<div class="wrap">
+<table>
+<tr><th>path</th><th>category</th><th>generator</th><th>artist</th><th>notes</th><th>sidecar</th><th></th></tr>
+{% for it in items %}{% set s = it.s %}
+<tr>
+  <td>{{ s.path }}{% if not it.exists %} <strong>(missing)</strong>{% endif %}</td>
+  <td>{{ s.category }}</td><td>{{ s.generator }}</td><td>{{ s.artist }}</td><td>{{ s.notes }}</td>
+  <td>{% if it.sidecar %}yes{% if s.sidecar_written_at %} <span class="muted">{{ s.sidecar_written_at[:16].replace('T',' ') }}</span>{% endif %}{% else %}<span class="muted">no</span>{% endif %}</td>
+  <td>
+    <form class="inline" method="post" action="/sources/action"><input type="hidden" name="path" value="{{ s.path }}"><button class="small" name="action" value="sidecar" {{ 'disabled' if not it.exists }}>write sidecar</button>
+    <button class="small" name="action" value="analyze" {{ 'disabled' if not it.exists }}>analyse</button>
+    <button class="small" name="action" value="remove">remove</button></form>
+  </td>
+</tr>
+{% else %}<tr><td colspan="7" class="muted">no sources registered</td></tr>{% endfor %}
+</table>
+</div>
+{% endblock %}
